@@ -9,7 +9,6 @@
   <modules>
     <module>skill6-common</module>
     <module>skill6-website</module>
-    <module>skill6-website</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -54,5 +53,28 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.spotify</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>1.1.1</version>
+          <configuration>
+            <imageName>${project.name}:${project.version}</imageName>
+            <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+            <skipDockerBuild>true</skipDockerBuild>
+            <resources>
+              <resource>
+                <directory>${project.build.directory}</directory>
+                <include>${project.build.finalName}.jar</include>
+              </resource>
+            </resources>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>
