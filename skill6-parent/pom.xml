@@ -9,6 +9,7 @@
   <modules>
     <module>skill6-common</module>
     <module>skill6-website</module>
+    <module>skill6-service</module>
   </modules>
   <packaging>pom</packaging>
 
