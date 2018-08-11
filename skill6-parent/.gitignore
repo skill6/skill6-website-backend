@@ -24,3 +24,31 @@ config.txt
 /dist/
 /nbdist/
 /.nb-gradle/
+
+# build files
+build
+target
+
+# jrebel
+rebel.xml
+
+# project files
+.settings
+.project
+.classpath
+.factorypath
+.springBeans
+
+# log file
+logs
+
+# test file
+result.conf
+
+#backup file
+pom.xml.versionsBackup
+
+#secret file
+
+## self
+##.gitignore
