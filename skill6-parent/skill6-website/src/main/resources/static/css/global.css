@@ -1,14 +1,31 @@
 @charset "UTF-8";
+/**
+为保证各种客户端自适应，非特殊情况不得固定元素位置，元素大小！！！
+ */
 
-body {
-	padding-top: 200px; 
+.icon-bar {
+  background-color: red;
 }
 
-.header-right{
-	left: 20%;
-	top : 50px;
+a {
+  color: #000;
 }
 
-.logo-position{
-	padding: 0 50px;
+.blog-info-div {
+  padding: 20px 0px 0px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-radius: 3px;
+}
+
+.blog-info-div-border {
+  border-left-color: red;
+  border-bottom-color: #1b809e;
+}
+
+[v-cloak] {
+  display: none;
 }
