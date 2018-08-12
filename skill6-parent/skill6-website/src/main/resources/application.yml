@@ -1,5 +1,15 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
     name: skill6-website
+  datasource:
+    username: ${SKILL6_MYSQL_USERNAME}
+    password: ${SKILL6_MYSQL_PASSWROD}
+    url: ${SKILL6_MYSQL_URL}
+    druid:
+      name: skill6-mysql-01
+  redis:
+    host: ${SKILL6_REDIS_HOST}
+    password: ${SKILL6_REDIS_PASSWORD}
+    port: ${SKILL6_REDIS_PORT}
