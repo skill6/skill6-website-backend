@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: ${SKILL6_MYSQL_USERNAME}
+    password: ${SKILL6_MYSQL_PASSWROD}
+    url: ${SKILL6_MYSQL_URL}
+  redis:
+    host: ${SKILL6_REDIS_HOST}
+    password: ${SKILL6_REDIS_PASSWORD}
+    port: ${SKILL6_REDIS_PORT}
+
