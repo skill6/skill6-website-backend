@@ -50,6 +50,7 @@ result.conf
 pom.xml.versionsBackup
 
 #secret file
+skill6-website/src/main/resources/config/
 
 ## self
 ##.gitignore
