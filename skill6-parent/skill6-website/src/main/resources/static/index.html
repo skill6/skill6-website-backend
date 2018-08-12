@@ -1,14 +1,75 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>skill6-技术流</title>
-  <link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css">
-  <script type="application/javascript" src="webjars/vue/vue.min.js"></script>
-</head>
-<body>
-<h1>技术流主页</h1>
-<script type="application/javascript" src="webjars/jquery/dist/jquery.min.js"></script>
-<script type="application/javascript" src="webjars/bootstrap/js/bootstrap.min.js"></script>
-</body>
+<html lang="zh-CN">
+  <head>
+	<meta charset="UTF-8">
+	<title>skill6-技术流</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="技术流，Java全栈开发，技术分享交流" />
+	<meta name="keywords" content="技术流，Java，全栈" />
+	<meta name="author" content="刘纪春，何明胜，刘健">
+
+	<!-- 网站图标 -->
+	<link rel="shortcut icon" href="images/logo/favicon.ico">
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="webjars/bootstrap/css/bootstrap.min.css">
+    <!-- 全局css -->
+	<link rel="stylesheet" href="css/global.css" >
+
+	<!-- jQuery -->
+	
+	<script src="webjars/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script src="webjars/vue/vue.min.js"></script>
+
+  </head>
+  <body>
+  <div class="grid">
+    <div class="navbar-fixed-top">
+      <h1>
+        <a href="/" class="logo-position">
+          <img src="images/logo/logo.jpg" width="200" height="100" alt="">
+        </a>
+      </h1>
+    </div>
+    
+	<nav class="navbar navbar-success navbar-fixed-top header-right">
+		  <ul class="nav navbar-nav nav-pills">
+			<li class="active"><a href="#">文章<span class="sr-only">(current)</span></a></li>
+			<li><a href="#">技术专题</a></li>
+			<li><a href="#">问答</a></li>
+			<li><a href="#">项目</a></li>
+			<li><a href="#">代码库</a></li>
+			<li><a href="#">资源</a></li>
+			<li><a href="#">灌水区</a></li>
+			<li><a href="#">开发中</a></li>
+		  </ul>
+		  
+		 <form class="navbar-form navbar-left">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-primary">搜索</button>
+		</form>
+		
+		<button type="button" class="btn btn-success navbar-btn ">登录/注册</button>
+	 
+  
+	</nav>
+  </div>
+	
+	<h3>导航栏顶部固定，如上所示。</h3>
+    <h3>首页采用类似github首页的信息流方式。如下：</h3>
+	<ol>
+		<li>实时更新谁做了什么，比如何明胜1分钟前发表了博客《Java开发环境搭建》</li>
+		<li>推荐好的文章和下载</li>
+		<li>显示实时在线、最大同时在线</li>
+		<li>显示注册会员人数、功能更新说明等</li>
+		<li>底部显示版权信息、捐赠链接</li>
+	</ol>
+
+   
+  </body>
 </html>

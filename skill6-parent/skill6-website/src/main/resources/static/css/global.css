@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+body {
+	padding-top: 200px; 
+}
+
+.header-right{
+	left: 20%;
+	top : 50px;
+}
+
+.logo-position{
+	padding: 0 50px;
+}
