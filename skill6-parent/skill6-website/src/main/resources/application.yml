@@ -13,3 +13,5 @@ spring:
     host: ${SKILL6_REDIS_HOST}
     password: ${SKILL6_REDIS_PASSWORD}
     port: ${SKILL6_REDIS_PORT}
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
