@@ -34,6 +34,61 @@ new Vue({
             'thumn-down-d': true,
             'thumb-down': 10,
             'update-time': 1534075455
+          },
+          {
+            id: 002,
+            title: '如何配置Java环境变量',
+            summary: '安装Jdk，配置<code>JAVA_HOME</code>环境变量',
+            'key-words': ['Java', '环境变量'],
+            'thumb-up': 20,
+            'thumn-up-d': false,
+            'thumn-down-d': true,
+            'thumb-down': 10,
+            'update-time': 1534075455
+          },
+          {
+            id: 002,
+            title: '如何配置Java环境变量',
+            summary: '安装Jdk，配置<code>JAVA_HOME</code>环境变量',
+            'key-words': ['Java', '环境变量'],
+            'thumb-up': 20,
+            'thumn-up-d': false,
+            'thumn-down-d': true,
+            'thumb-down': 10,
+            'update-time': 1534075455
+          },
+          {
+            id: 002,
+            title: '如何配置Java环境变量',
+            summary: '安装Jdk，配置<code>JAVA_HOME</code>环境变量',
+            'key-words': ['Java', '环境变量'],
+            'thumb-up': 20,
+            'thumn-up-d': false,
+            'thumn-down-d': true,
+            'thumb-down': 10,
+            'update-time': 1534075455
+          },
+          {
+            id: 002,
+            title: '如何配置Java环境变量',
+            summary: '安装Jdk，配置<code>JAVA_HOME</code>环境变量',
+            'key-words': ['Java', '环境变量'],
+            'thumb-up': 20,
+            'thumn-up-d': false,
+            'thumn-down-d': true,
+            'thumb-down': 10,
+            'update-time': 1534075455
+          },
+          {
+            id: 002,
+            title: '如何配置Java环境变量',
+            summary: '安装Jdk，配置<code>JAVA_HOME</code>环境变量',
+            'key-words': ['Java', '环境变量'],
+            'thumb-up': 20,
+            'thumn-up-d': false,
+            'thumn-down-d': true,
+            'thumb-down': 10,
+            'update-time': 1534075455
           }
         ]
       }
@@ -53,9 +108,21 @@ new Vue({
           == 'false') {
         that.index.notice.show = false;
       }
+    },
+    route: function (data, title, url) {
+      var that = this;
+      window.history.pushState(data, title, url);
+    },
+    cancelHref: function () {
+      var that = this;
+      $('.route-btn a').click(function (e) {
+        e.preventDefault()
+        that.route('xyz', 'abc', $(this).attr('href'));
+      });
     }
   },
   mounted: function () {
     this.checkShowNotice();
+    this.cancelHref();
   }
 })
