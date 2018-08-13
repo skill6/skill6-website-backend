@@ -521,7 +521,7 @@
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
-        <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+        <!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
@@ -530,9 +530,7 @@
             <classesDirectory>target/classes/</classesDirectory>
             <archive>
               <manifest>
-                <!-- 指定dubbo main方法入口 -->
                 <mainClass>com.alibaba.dubbo.container.Main</mainClass>
-                <!-- 打包时 MANIFEST.MF文件不记录的时间戳版本 -->
                 <useUniqueVersions>false</useUniqueVersions>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>lib/</classpathPrefix>
@@ -542,7 +540,7 @@
               </manifestEntries>
             </archive>
           </configuration>
-        </plugin>
+        </plugin>-->
         <!-- 依赖插件 -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
