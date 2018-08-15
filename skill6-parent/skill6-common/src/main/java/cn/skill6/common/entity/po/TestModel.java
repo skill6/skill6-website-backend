@@ -1,4 +1,4 @@
-package cn.skill6.website.model;
+package cn.skill6.common.entity.po;
 
 public class TestModel {
 
