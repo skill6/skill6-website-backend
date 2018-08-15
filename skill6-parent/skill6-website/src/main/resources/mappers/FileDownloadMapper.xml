@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.FileDownloadMapper">
+	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.FileDownload">
+		<constructor>
+			<idArg column="file_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="file_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="file_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="file_upload_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="file_download_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="file_hash_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="file_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from file_download
+		where file_id = #{fileId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.skill6.common.entity.po.FileDownload">
+		insert into file_download (file_id, file_name, file_url,
+		file_upload_date, file_download_count, file_hash_code,
+		file_type)
+		values (#{fileId,jdbcType=BIGINT}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR},
+		#{fileUploadDate,jdbcType=TIMESTAMP}, #{fileDownloadCount,jdbcType=INTEGER}, #{fileHashCode,jdbcType=VARCHAR},
+		#{fileType,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.FileDownload">
+		update file_download
+		set file_name = #{fileName,jdbcType=VARCHAR},
+		file_url = #{fileUrl,jdbcType=VARCHAR},
+		file_upload_date = #{fileUploadDate,jdbcType=TIMESTAMP},
+		file_download_count = #{fileDownloadCount,jdbcType=INTEGER},
+		file_hash_code = #{fileHashCode,jdbcType=VARCHAR},
+		file_type = #{fileType,jdbcType=VARCHAR}
+		where file_id = #{fileId,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select file_id, file_name, file_url, file_upload_date, file_download_count, file_hash_code,
+		file_type
+		from file_download
+		where file_id = #{fileId,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select file_id, file_name, file_url, file_upload_date, file_download_count, file_hash_code,
+		file_type
+		from file_download
+	</select>
+</mapper>
