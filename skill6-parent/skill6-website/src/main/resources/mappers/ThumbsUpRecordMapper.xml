@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.ThumbsUpRecordMapper">
+	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.ThumbsUpRecord">
+		<constructor>
+			<idArg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<idArg column="article_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<idArg column="thumbs_up_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="thumbs_up_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="map">
+		delete from thumbs_up_record
+		where user_id = #{userId,jdbcType=VARCHAR}
+		and article_id = #{articleId,jdbcType=VARCHAR}
+		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.skill6.common.entity.po.ThumbsUpRecord">
+		insert into thumbs_up_record (user_id, article_id, thumbs_up_type,
+		thumbs_up_date)
+		values (#{userId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{thumbsUpType,jdbcType=VARCHAR},
+		#{thumbsUpDate,jdbcType=TIMESTAMP})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.ThumbsUpRecord">
+		update thumbs_up_record
+		set thumbs_up_date = #{thumbsUpDate,jdbcType=TIMESTAMP}
+		where user_id = #{userId,jdbcType=VARCHAR}
+		and article_id = #{articleId,jdbcType=VARCHAR}
+		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+		select user_id, article_id, thumbs_up_type, thumbs_up_date
+		from thumbs_up_record
+		where user_id = #{userId,jdbcType=VARCHAR}
+		and article_id = #{articleId,jdbcType=VARCHAR}
+		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select user_id, article_id, thumbs_up_type, thumbs_up_date
+		from thumbs_up_record
+	</select>
+</mapper>
