@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.LoginRecordMapper">
+	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.LoginRecord">
+		<constructor>
+			<idArg column="login_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="login_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="login_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="login_equipment" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="login_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="login_user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="login_success" javaType="java.lang.Boolean" jdbcType="BIT" />
+			<arg column="login_fail_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from login_record
+		where login_id = #{loginId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.skill6.common.entity.po.LoginRecord">
+		insert into login_record (login_id, login_ip, login_type,
+		login_equipment, login_date, login_user_id,
+		login_success, login_fail_reason)
+		values (#{loginId,jdbcType=BIGINT}, #{loginIp,jdbcType=VARCHAR}, #{loginType,jdbcType=VARCHAR},
+		#{loginEquipment,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP}, #{loginUserId,jdbcType=VARCHAR},
+		#{loginSuccess,jdbcType=BIT}, #{loginFailReason,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.LoginRecord">
+		update login_record
+		set login_ip = #{loginIp,jdbcType=VARCHAR},
+		login_type = #{loginType,jdbcType=VARCHAR},
+		login_equipment = #{loginEquipment,jdbcType=VARCHAR},
+		login_date = #{loginDate,jdbcType=TIMESTAMP},
+		login_user_id = #{loginUserId,jdbcType=VARCHAR},
+		login_success = #{loginSuccess,jdbcType=BIT},
+		login_fail_reason = #{loginFailReason,jdbcType=VARCHAR}
+		where login_id = #{loginId,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select login_id, login_ip, login_type, login_equipment, login_date, login_user_id,
+		login_success, login_fail_reason
+		from login_record
+		where login_id = #{loginId,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select login_id, login_ip, login_type, login_equipment, login_date, login_user_id,
+		login_success, login_fail_reason
+		from login_record
+	</select>
+</mapper>
