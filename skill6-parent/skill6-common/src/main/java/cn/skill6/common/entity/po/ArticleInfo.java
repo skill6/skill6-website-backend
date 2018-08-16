@@ -42,6 +42,45 @@ public class ArticleInfo {
 
   private String articleAttachUrl;
 
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */ @Override
+  public String toString() {
+    return "ArticleInfo [articleId="
+        + articleId
+        + ", articleTitle="
+        + articleTitle
+        + ", articleAuthor="
+        + articleAuthor
+        + ", articleSummary="
+        + articleSummary
+        + ", articleLabel="
+        + articleLabel
+        + ", articleReadTotal="
+        + articleReadTotal
+        + ", articleCreateDate="
+        + articleCreateDate
+        + ", articleLastModifyDate="
+        + articleLastModifyDate
+        + ", articleCategoryId="
+        + articleCategoryId
+        + ", artilcePlaceTop="
+        + artilcePlaceTop
+        + ", articleTopPriority="
+        + articleTopPriority
+        + ", articleAttachFile="
+        + articleAttachFile
+        + ", articleValid="
+        + articleValid
+        + ", articleHtmlContent="
+        + articleHtmlContent
+        + ", articleMdContent="
+        + articleMdContent
+        + ", articleAttachUrl="
+        + articleAttachUrl
+        + "]";
+  }
+
   public ArticleInfo(
       Long articleId,
       String articleTitle,
