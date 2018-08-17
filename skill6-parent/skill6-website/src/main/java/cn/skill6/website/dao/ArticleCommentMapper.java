@@ -3,6 +3,8 @@ package cn.skill6.website.dao;
 import cn.skill6.common.entity.po.ArticleComment;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 /**
  * 文章评论mapper
  *
@@ -10,6 +12,7 @@ import java.util.List;
  * @created at 2018年8月15日 下午11:38:54
  * @version 1.0.0
  */
+@Mapper
 public interface ArticleCommentMapper {
   int deleteByPrimaryKey(Long commentId);
 
