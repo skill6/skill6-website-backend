@@ -1,4 +1,4 @@
-# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)
+# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)
 技术流（skill6）网站的需求分析、版本说明
 
 
