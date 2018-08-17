@@ -571,8 +571,8 @@
           <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
           <configuration>
             <forkMode>once</forkMode>
-            <argLine>-Dfile.encoding=UTF-8</argLine>
-            <skipTests>true</skipTests>
+            <argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
+            <skipTests>false</skipTests>
           </configuration>
         </plugin>
         <!-- 编译 -->
