@@ -19,3 +19,4 @@ logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
+
