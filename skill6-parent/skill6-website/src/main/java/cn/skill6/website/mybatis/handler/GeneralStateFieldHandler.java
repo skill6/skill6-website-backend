@@ -90,7 +90,7 @@ public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseType
   /**
    * 枚举类型转换，由于构造函数获取了枚举的子类enums,让遍历更加高效快捷
    *
-   * @param code 数据库中存储的自定义code属性
+   * @param stateCode 数据库中存储的自定义code属性
    * @return code对应的枚举类
    */
   private E locateEnumStatus(String stateCode) {
