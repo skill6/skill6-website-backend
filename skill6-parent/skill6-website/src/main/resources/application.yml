@@ -14,4 +14,9 @@ spring:
     password: ${SKILL6_REDIS_PASSWORD}
     port: ${SKILL6_REDIS_PORT}
 mybatis:
-  mapper-locations: classpath*:mappers/*.xml
+  mapper-locations: classpath*:mappers/**/*.xml
+logging:
+  level:
+    root: INFO
+    cn.skill6.website.dao: DEBUG
+

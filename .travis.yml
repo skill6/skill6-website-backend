@@ -3,3 +3,6 @@ jdk:
   - oraclejdk8
 install:
   - cd skill6-parent && mvn clean package -DskipTests
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
