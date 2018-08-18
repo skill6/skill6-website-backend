@@ -1,7 +1,22 @@
 language: java
 jdk:
   - oraclejdk8
+services:
+  - mysql
+  - redis-server
+before_install:
+  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
+  - sudo mysql_upgrade --force
+  - sudo service mysql restart
 install:
   - cd skill6-parent
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+    - SKILL6_MYSQL_PASSWROD=
+    - SKILL6_MYSQL_URL="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8"
+    - SKILL6_MYSQL_USERNAME=root
+    - SKILL6_REDIS_HOST=localhost
+    - SKILL6_REDIS_PASSWORD=
+    - SKILL6_REDIS_PORT=6379

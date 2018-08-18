@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,14 @@ public class UserInfoMapperTest {
 
   @Autowired private UserInfoMapper userInfoMapper;
 
+  @Autowired private StringRedisTemplate stringRedisTemplate;
+
   private static final Logger LOGGER = LoggerFactory.getLogger(UserInfoMapperTest.class);
+
+  @Test
+  public void testRedis() {
+    LOGGER.info("获取redis keys {}", stringRedisTemplate.keys("*"));
+  }
 
   @Test
   public void deleteByPrimaryKey() {}
