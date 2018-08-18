@@ -16,7 +16,7 @@ after_success:
 env:
   global:
     - SKILL6_MYSQL_PASSWROD=test
-    - SKILL6_MYSQL_URL="jdbc:mysql://localhost:3306/skill6?useUnicode=true&characterEncoding=utf8"
+    - SKILL6_MYSQL_URL="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8"
     - SKILL6_MYSQL_USERNAME=root
     - SKILL6_REDIS_HOST=localhost
     - SKILL6_REDIS_PASSWORD=
