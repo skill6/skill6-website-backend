@@ -2,6 +2,12 @@ language: java
 jdk:
 - oraclejdk8
 install:
+- export SKILL6_MYSQL_USERNAME=${SKILL6_MYSQL_USERNAME}
+- export SKILL6_MYSQL_PASSWROD=${UWJjUNmh}
+- export SKILL6_MYSQL_URL=${SKILL6_MYSQL_URL}
+- export SKILL6_REDIS_HOST=${SKILL6_REDIS_HOST}
+- export SKILL6_REDIS_PASSWORD=${SKILL6_REDIS_PASSWORD}
+- export SKILL6_REDIS_PORT=${SKILL6_REDIS_PORT}
 - cd skill6-parent
 after_success:
 - bash <(curl -s https://codecov.io/bash)
