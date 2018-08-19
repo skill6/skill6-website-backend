@@ -1,6 +1,10 @@
 # skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)
-技术流（skill6）网站的需求分析、版本说明
 
+技术流（skill6）网站的架构设计、需求分析、技术选型等
+
+### 架构设计
+
+![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
 
 ### 技术选型
 
