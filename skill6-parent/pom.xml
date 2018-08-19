@@ -571,8 +571,8 @@
           <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
           <configuration>
             <forkMode>once</forkMode>
-            <argLine>-Dfile.encoding=UTF-8</argLine>
-            <skipTests>true</skipTests>
+            <argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
+            <skipTests>false</skipTests>
           </configuration>
         </plugin>
         <!-- 编译 -->
@@ -658,6 +658,25 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.9</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
