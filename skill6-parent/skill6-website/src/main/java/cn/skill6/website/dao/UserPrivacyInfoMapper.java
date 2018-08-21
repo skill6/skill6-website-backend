@@ -7,8 +7,8 @@ import java.util.List;
  * 用户隐私信息mapper
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:41:46
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:41:46
  */
 public interface UserPrivacyInfoMapper {
   int deleteByPrimaryKey(Long userId);

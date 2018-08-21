@@ -14,8 +14,8 @@ import cn.skill6.common.entity.enums.BaseEnum;
  * 实现Mybatis中状态枚举转换成状态码的通用处理类（数据库字段和Java枚举）
  *
  * @author 何明胜
- * @created at 2018年8月16日 上午12:01:07
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月16日 上午12:01:07
  */
 @SuppressWarnings("rawtypes")
 public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseTypeHandler<E> {

@@ -6,8 +6,8 @@ import java.util.Date;
  * 文章阅读记录实体类
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:30:46
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:30:46
  */
 public class ArticleReadRecord {
   private String artilceId;

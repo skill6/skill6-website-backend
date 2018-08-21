@@ -4,6 +4,13 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 测试启动类
+ *
+ * @author 何明胜
+ * @version 1.0.0
+ * @since 2018年8月21日 下午11:40:08
+ */
 @SpringBootApplication
 @MapperScan(basePackages = {"cn.skill6"})
 public class Skill6WebsiteApplication {

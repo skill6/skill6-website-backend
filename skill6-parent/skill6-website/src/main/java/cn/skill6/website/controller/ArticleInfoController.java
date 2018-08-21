@@ -23,8 +23,8 @@ import cn.skill6.website.service.ArticleInfoSvc;
  * 文章信息控制器
  *
  * @author 何明胜
- * @created at 2018年8月16日 下午11:05:32
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月16日 下午11:05:32
  */
 @Controller
 public class ArticleInfoController {
@@ -47,11 +47,11 @@ public class ArticleInfoController {
 
   @ResponseBody
   @RequestMapping(value = "/article", method = RequestMethod.PUT)
-  public ResponseJson modifyByArticleId(HttpServletRequest request)
+  public ResponseJson modifyArticleById(HttpServletRequest request)
       throws Skill6Exception, IOException {
     Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
 
-    return articleInfoSvc.modifyByArticleId(jsonMap);
+    return articleInfoSvc.modifyArticleById(jsonMap);
   }
 
   @ResponseBody

@@ -12,18 +12,18 @@ import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.exception.db.NullPointerException;
 import cn.skill6.common.sequence.SequenceManager;
-import cn.skill6.service.intf.ArticleInfoIntf;
+import cn.skill6.service.intf.ArticleInfoOper;
 import cn.skill6.website.dao.ArticleInfoMapper;
 
 /**
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @created at 2018年8月16日 下午10:29:29
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月16日 下午10:29:29
  */
 @Repository
-public class ArticleInfoImpl implements ArticleInfoIntf {
+public class ArticleInfoImpl implements ArticleInfoOper {
 
   private static final Logger logger = LoggerFactory.getLogger(ArticleInfoImpl.class);
 

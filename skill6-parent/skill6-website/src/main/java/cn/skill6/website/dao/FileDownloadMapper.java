@@ -7,8 +7,8 @@ import java.util.List;
  * 文件下载mapper
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:40:27
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:40:27
  */
 public interface FileDownloadMapper {
   int deleteByPrimaryKey(Long fileId);
