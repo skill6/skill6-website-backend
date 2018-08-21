@@ -6,8 +6,8 @@ import java.util.Date;
  * 用户信息修改记录实体类
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:37:07
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:37:07
  */
 public class UserModifyRecord {
   private String userId;

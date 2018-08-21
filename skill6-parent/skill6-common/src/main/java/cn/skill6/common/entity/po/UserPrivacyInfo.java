@@ -4,8 +4,8 @@ package cn.skill6.common.entity.po;
  * 用户隐私信息实体类
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:37:40
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:37:40
  */
 public class UserPrivacyInfo {
   private Long userId;

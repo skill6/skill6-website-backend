@@ -6,8 +6,8 @@ import java.util.Date;
  * 文件下载实体类
  *
  * @author 何明胜
- * @create at 2018年8月15日 下午11:33:07
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:33:07
  */
 public class FileDownload {
   private Long fileId;

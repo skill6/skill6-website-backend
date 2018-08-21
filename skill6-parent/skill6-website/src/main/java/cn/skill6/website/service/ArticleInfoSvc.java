@@ -14,14 +14,14 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.restful.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.service.intf.ArticleInfoIntf;
+import cn.skill6.service.intf.ArticleInfoOper;
 
 /**
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @created at 2018年8月16日 下午11:05:49
  * @version 1.0.0
+ * @since 2018年8月21日 下午11:07:30
  */
 @Service
 public class ArticleInfoSvc {
@@ -29,8 +29,16 @@ public class ArticleInfoSvc {
 
   @Autowired
   @Qualifier("articleInfoImpl")
-  private ArticleInfoIntf articleInfoIntf;
+  private ArticleInfoOper articleInfoOper;
 
+  /**
+   * 添加新文章
+   *
+   * @param jsonMap
+   * @return
+   * @throws Skill6Exception
+   * @throws IOException
+   */
   public ResponseJson addArticle(Map<String, String> jsonMap) throws Skill6Exception, IOException {
     ResponseJson responseJson;
 
@@ -39,7 +47,7 @@ public class ArticleInfoSvc {
     ArticleInfo articleInfo = objectMapper.readValue(jsonStr, ArticleInfo.class);
 
     try {
-      Long articleId = articleInfoIntf.addArticleInfo(articleInfo);
+      Long articleId = articleInfoOper.addArticleInfo(articleInfo);
       responseJson = new ResponseJson(true, String.valueOf(articleId));
     } catch (Exception e) {
       responseJson = new ResponseJson(false, "注册失败");
@@ -48,13 +56,28 @@ public class ArticleInfoSvc {
     return responseJson;
   }
 
+  /**
+   * 根据id删除文章
+   *
+   * @param articleId
+   * @return
+   * @throws Skill6Exception
+   */
   public ResponseJson deleteArticleById(Long articleId) throws Skill6Exception {
-    articleInfoIntf.deleteByPrimaryKey(articleId);
+    articleInfoOper.deleteByPrimaryKey(articleId);
 
     return new ResponseJson(true, "删除成功");
   }
 
-  public ResponseJson modifyByArticleId(Map<String, String> jsonMap)
+  /**
+   * 根据id修改文章
+   *
+   * @param jsonMap
+   * @return
+   * @throws Skill6Exception
+   * @throws IOException
+   */
+  public ResponseJson modifyArticleById(Map<String, String> jsonMap)
       throws Skill6Exception, IOException {
     ResponseJson responseJson;
 
@@ -63,7 +86,7 @@ public class ArticleInfoSvc {
     ArticleInfo articleInfo = objectMapper.readValue(jsonStr, ArticleInfo.class);
 
     try {
-      articleInfoIntf.modifyByArticleId(articleInfo);
+      articleInfoOper.modifyByArticleId(articleInfo);
       responseJson = new ResponseJson(false, "修改成功");
     } catch (Exception e) {
       responseJson = new ResponseJson(false, "修改失败");
@@ -72,11 +95,23 @@ public class ArticleInfoSvc {
     return responseJson;
   }
 
+  /**
+   * 根据id获取文章
+   *
+   * @param articleId
+   * @return
+   * @throws Skill6Exception
+   */
   public ArticleInfo getArticleById(Long articleId) throws Skill6Exception {
-    return articleInfoIntf.findByArticleId(articleId);
+    return articleInfoOper.findByArticleId(articleId);
   }
 
+  /**
+   * 获取所有文章
+   *
+   * @return
+   */
   public List<ArticleInfo> getAllArticles() {
-    return articleInfoIntf.findAll();
+    return articleInfoOper.findAll();
   }
 }

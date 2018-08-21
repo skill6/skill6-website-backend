@@ -6,8 +6,8 @@ import java.util.Date;
  * 文章信息实体类
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:30:31
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:30:31
  */
 public class ArticleInfo {
   private Long articleId;

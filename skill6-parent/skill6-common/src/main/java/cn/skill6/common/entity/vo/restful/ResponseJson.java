@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * RESTful 返回json
  *
  * @author 何明胜
- * @created at 2018年3月21日 下午3:52:46
- * @version 1.0.1
+ * @version 1.0.0
+ * @since 2018年3月21日 下午3:52:46
  */
 @JsonInclude(Include.NON_NULL)
 public class ResponseJson implements Serializable {

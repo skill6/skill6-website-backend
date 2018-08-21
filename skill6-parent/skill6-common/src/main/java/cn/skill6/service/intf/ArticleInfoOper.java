@@ -11,7 +11,7 @@ import cn.skill6.common.entity.po.ArticleInfo;
  * @created at 2018年8月16日 下午10:28:04
  * @version 1.0.0
  */
-public interface ArticleInfoIntf {
+public interface ArticleInfoOper {
 
   int deleteByPrimaryKey(Long articleId);
 

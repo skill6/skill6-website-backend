@@ -1,103 +1,103 @@
 package cn.skill6.common.exception;
 
 /**
- * @Desc skill6系统异常基类
+ * skill6系统异常基类
  *
- * @Author 何明胜
- *
- * @Created at 2018年2月26日 下午11:58:54
- * 
- * @Version 1.0.1
+ * @author 何明胜
+ * @version 1.0.2
+ * @since 2018年2月26日 下午11:58:54
  */
 public class Skill6Exception extends RuntimeException {
-	private static final long serialVersionUID = 7462624691843766045L;
-	
-	/** 错误编码 */
-	private int errorCode;
+  private static final long serialVersionUID = 7462624691843766045L;
 
-	public Skill6Exception() {
-		super();
-	}
+  /** 错误编码 */
+  private int errorCode;
 
-	/* ----------------------- added constructors ---------------------------*/
-	
-	/**
-	 * @param errorCode
-	 * @param cause
-	 */
-	public Skill6Exception(int errorCode,Throwable cause) {
-		super(cause);
-	}
-	
-	/**
-	 * @param errorCode
-	 * @param message
-	 */
-	public Skill6Exception(int errorCode,String message) {
-		super(message);
-	}
-	
-	/**
-	 * @param errorCode
-	 * @param message
-	 * @param cause
-	 */
-	public Skill6Exception(int errorCode,String message, Throwable cause) {
-		super(message, cause);
-	}
-	
-	/**
-	 * @param errorCode
-	 * @param message
-	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
-	 */
-	public Skill6Exception(int errorCode, String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+  public Skill6Exception() {
+    super();
+  }
 
-	/* ----------------------- origin constructors ---------------------------*/
-	
-	/**
-	 * @param cause
-	 */
-	public Skill6Exception(Throwable cause) {
-		super(cause);
-	}
+  /* ----------------------- added constructors ---------------------------*/
 
-	/**
-	 * @param message
-	 */
-	public Skill6Exception(String message) {
-		super(message);
-	}
-	
-	/**
-	 * @param message
-	 * @param cause
-	 */
-	public Skill6Exception(String message, Throwable cause) {
-		super(message, cause);
-	}
-	
-	/**
-	 * @param message
-	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
-	 */
-	public Skill6Exception(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+  /**
+   * @param errorCode
+   * @param cause
+   */
+  public Skill6Exception(int errorCode, Throwable cause) {
+    super(cause);
+  }
 
-	/* ----------------------- setter/getter ---------------------------*/
-	
-	public int getErrorCode() {
-		return errorCode;
-	}
+  /**
+   * @param errorCode
+   * @param message
+   */
+  public Skill6Exception(int errorCode, String message) {
+    super(message);
+  }
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+  /**
+   * @param errorCode
+   * @param message
+   * @param cause
+   */
+  public Skill6Exception(int errorCode, String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  /**
+   * @param errorCode
+   * @param message
+   * @param cause
+   * @param enableSuppression
+   * @param writableStackTrace
+   */
+  public Skill6Exception(
+      int errorCode,
+      String message,
+      Throwable cause,
+      boolean enableSuppression,
+      boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
+
+  /* ----------------------- origin constructors ---------------------------*/
+
+  /** @param cause */
+  public Skill6Exception(Throwable cause) {
+    super(cause);
+  }
+
+  /** @param message */
+  public Skill6Exception(String message) {
+    super(message);
+  }
+
+  /**
+   * @param message
+   * @param cause
+   */
+  public Skill6Exception(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  /**
+   * @param message
+   * @param cause
+   * @param enableSuppression
+   * @param writableStackTrace
+   */
+  public Skill6Exception(
+      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
+  }
+
+  /* ----------------------- setter/getter ---------------------------*/
+
+  public int getErrorCode() {
+    return errorCode;
+  }
+
+  public void setErrorCode(int errorCode) {
+    this.errorCode = errorCode;
+  }
 }

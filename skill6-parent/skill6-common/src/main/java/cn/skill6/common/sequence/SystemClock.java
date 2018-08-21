@@ -11,9 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 /**
- * @Desc 高并发场景下System.currentTimeMillis()的性能问题的优化
- *
- * <p>
+ * 高并发场景下System.currentTimeMillis()的性能问题的优化
  *
  * <p>System.currentTimeMillis()的调用比new一个普通对象要耗时的多（具体耗时高出多少我还没测试过,有人说是100倍左右）
  *
@@ -29,7 +27,9 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
  *
  * <p>100万：50,10,5.0%
  *
- * <p>@Author 何明胜 @Created at 2018年4月16日 下午9:48:21 @Version 1.0.0
+ * @author 何明胜
+ * @version 1.0.1
+ * @since 2018年4月16日 下午9:48:21
  */
 public class SystemClock {
 
