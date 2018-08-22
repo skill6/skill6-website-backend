@@ -16,6 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.skill6.common.entity.po.UserInfo;
 import cn.skill6.common.sequence.SequenceManager;
 
+/**
+ * 用户信息测试类
+ *
+ * @author 刘纪春
+ * @version 1.0.0
+ * @since 2018年8月21日 下午11:41:17
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserInfoMapperTest {

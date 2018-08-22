@@ -7,8 +7,8 @@ import java.util.List;
  * 登录记录mapper
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:40:54
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:40:54
  */
 public interface LoginRecordMapper {
   int deleteByPrimaryKey(Long loginId);

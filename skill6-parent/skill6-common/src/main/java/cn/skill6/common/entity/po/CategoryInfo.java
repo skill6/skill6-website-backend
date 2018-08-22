@@ -6,8 +6,8 @@ import java.util.Date;
  * 目录分类实体类
  *
  * @author 何明胜
- * @created at 2018年8月15日 下午11:31:09
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 2018年8月15日 下午11:31:09
  */
 public class CategoryInfo {
   private Long categoryId;
