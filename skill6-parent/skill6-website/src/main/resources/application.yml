@@ -9,16 +9,16 @@ spring:
     url: ${SKILL6_MYSQL_URL}
     druid:
       name: skill6-mysql-01
-    schema: classpath*:schema/init_db.sql #测试库时使用此脚本进行数据库初始化
+    schema: classpath*:schema/init_db.sql
     initialization-mode: always
   redis:
     host: ${SKILL6_REDIS_HOST}
     password: ${SKILL6_REDIS_PASSWORD}
     port: ${SKILL6_REDIS_PORT}
 mybatis:
+  config-location: classpath:mybatis/mybatis-spring-config.xml
   mapper-locations: classpath*:mappers/**/*.xml
 logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
-
