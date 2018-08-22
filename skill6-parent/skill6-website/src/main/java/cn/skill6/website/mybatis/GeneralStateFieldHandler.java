@@ -1,4 +1,4 @@
-package cn.skill6.website.mybatis.handler;
+package cn.skill6.website.mybatis;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
