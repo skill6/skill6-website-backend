@@ -7,17 +7,17 @@ import java.util.List;
  * 版本信息mapper
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:41:56
  */
 public interface VersionInfoMapper {
   int deleteByPrimaryKey(String versionId);
 
-  int insert(VersionInfo record);
+  int insert(VersionInfo versionInfo);
 
   VersionInfo selectByPrimaryKey(String versionId);
 
   List<VersionInfo> selectAll();
 
-  int updateByPrimaryKey(VersionInfo record);
+  int updateByPrimaryKey(VersionInfo versionInfo);
 }

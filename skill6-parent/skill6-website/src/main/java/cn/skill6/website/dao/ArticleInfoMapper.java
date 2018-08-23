@@ -14,13 +14,13 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleInfoMapper {
-  int deleteByPrimaryKey(Long articleId);
-
   int insert(ArticleInfo articleInfo);
+  
+  int deleteByArticle(Long articleId);
+
+  int modifyByArticleId(ArticleInfo articleInfo);
 
   ArticleInfo selectByPrimaryKey(Long articleId);
 
   List<ArticleInfo> selectAll();
-
-  int updateByPrimaryKey(ArticleInfo articleInfo);
 }
