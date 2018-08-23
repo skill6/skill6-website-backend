@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * 点赞记录mapper
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:41:09
  */
 public interface ThumbsUpRecordMapper {
@@ -17,7 +17,7 @@ public interface ThumbsUpRecordMapper {
       @Param("articleId") String articleId,
       @Param("thumbsUpType") String thumbsUpType);
 
-  int insert(ThumbsUpRecord record);
+  int insert(ThumbsUpRecord thumbsUpRecord);
 
   ThumbsUpRecord selectByPrimaryKey(
       @Param("userId") String userId,
@@ -26,5 +26,5 @@ public interface ThumbsUpRecordMapper {
 
   List<ThumbsUpRecord> selectAll();
 
-  int updateByPrimaryKey(ThumbsUpRecord record);
+  int updateByPrimaryKey(ThumbsUpRecord thumbsUpRecord);
 }

@@ -103,4 +103,5 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 	</dependencies>
+	<url>https://github.com/skill6/skill6</url>
 </project>

@@ -1,4 +1,4 @@
-package cn.skill6.service.intf;
+package cn.skill6.service.intf.basic;
 
 import java.util.List;
 

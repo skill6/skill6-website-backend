@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.restful.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.service.intf.ArticleInfoOper;
+import cn.skill6.service.intf.basic.ArticleInfoOper;
 
 /**
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
