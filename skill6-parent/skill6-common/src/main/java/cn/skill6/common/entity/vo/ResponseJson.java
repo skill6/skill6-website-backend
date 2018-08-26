@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.vo.restful;
+package cn.skill6.common.entity.vo;
 
 import java.io.Serializable;
 

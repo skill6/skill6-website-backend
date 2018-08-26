@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.common.entity.vo.restful.ResponseJson;
+import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.transform.ConvertRequestParams;
+import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.service.ArticleInfoSvc;
 
 /**
  * 文章信息控制器
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月16日 下午11:05:32
  */
 @Controller
@@ -33,15 +34,18 @@ public class ArticleInfoController {
   @ResponseBody
   @RequestMapping(value = "/article", method = RequestMethod.POST)
   public ResponseJson addArticle(HttpServletRequest request) throws Skill6Exception, IOException {
-    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
 
-    return articleInfoSvc.addArticle(jsonMap);
+    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
+    ArticleInfo articleInfo = JacksonUtil.map2Entity(jsonMap, ArticleInfo.class);
+
+    return articleInfoSvc.addArticle(articleInfo);
   }
 
   @ResponseBody
   @RequestMapping(value = "/article", method = RequestMethod.DELETE)
   public ResponseJson deleteArticleById(@RequestParam(value = "article_id") Long articleId)
       throws Skill6Exception {
+
     return articleInfoSvc.deleteArticleById(articleId);
   }
 
@@ -49,9 +53,11 @@ public class ArticleInfoController {
   @RequestMapping(value = "/article", method = RequestMethod.PUT)
   public ResponseJson modifyArticleById(HttpServletRequest request)
       throws Skill6Exception, IOException {
-    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
 
-    return articleInfoSvc.modifyArticleById(jsonMap);
+    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
+    ArticleInfo articleInfo = JacksonUtil.map2Entity(jsonMap, ArticleInfo.class);
+
+    return articleInfoSvc.modifyArticleById(articleInfo);
   }
 
   @ResponseBody
@@ -64,6 +70,7 @@ public class ArticleInfoController {
   @ResponseBody
   @RequestMapping(value = "/article/all", method = RequestMethod.GET)
   public List<ArticleInfo> getAllArticles() throws Skill6Exception {
+
     return articleInfoSvc.getAllArticles();
   }
 }
