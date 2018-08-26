@@ -1,7 +1,9 @@
 package cn.skill6.website.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import cn.skill6.common.constant.HttpConstants;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
@@ -40,15 +43,20 @@ public class ArticleInfoSvc {
    */
   public ResponseJson addArticle(ArticleInfo articleInfo) throws Skill6Exception, IOException {
     ResponseJson responseJson;
+    Map<String, String> mapMsg = new HashMap<>(3);
 
     try {
       Long articleId = articleInfoOper.addArticleInfo(articleInfo);
-      responseJson = new ResponseJson(true, String.valueOf(articleId));
+
+      mapMsg.put("articleId", String.valueOf(articleId));
+
+      responseJson = new ResponseJson(true, mapMsg);
       logger.error("注册成功，id为{}", articleId);
     } catch (Exception e) {
       logger.error(StackTrace2Str.exceptionStackTrace2Str("注册失败", e));
 
-      responseJson = new ResponseJson(false, "注册失败");
+      mapMsg.put(HttpConstants.KEY_DESCRIPTION, "注册失败");
+      responseJson = new ResponseJson(false, mapMsg);
     }
 
     return responseJson;
@@ -65,7 +73,10 @@ public class ArticleInfoSvc {
     articleInfoOper.deleteByPrimaryKey(articleId);
 
     logger.error("删除成功");
-    return new ResponseJson(true, "删除成功");
+    Map<String, String> mapMsg = new HashMap<>(3);
+    mapMsg.put(HttpConstants.KEY_DESCRIPTION, "删除成功");
+
+    return new ResponseJson(true, mapMsg);
   }
 
   /**
@@ -79,14 +90,18 @@ public class ArticleInfoSvc {
   public ResponseJson modifyArticleById(ArticleInfo articleInfo)
       throws Skill6Exception, IOException {
     ResponseJson responseJson;
+    Map<String, String> mapMsg = new HashMap<>(1);
 
     try {
       articleInfoOper.modifyByArticleId(articleInfo);
-      logger.error("修改文章成功");
-      responseJson = new ResponseJson(false, "修改成功");
+      logger.info("修改文章成功");
+
+      mapMsg.put(HttpConstants.KEY_DESCRIPTION, "修改成功");
+      responseJson = new ResponseJson(true, mapMsg);
     } catch (Exception e) {
       logger.error(StackTrace2Str.exceptionStackTrace2Str("修改文章失败", e));
-      responseJson = new ResponseJson(false, "修改失败");
+      mapMsg.put(HttpConstants.KEY_DESCRIPTION, "修改失败");
+      responseJson = new ResponseJson(false, mapMsg);
     }
 
     return responseJson;
