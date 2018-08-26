@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.vo.restful;
+package cn.skill6.common.entity.vo;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * RESTful 返回json
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年3月21日 下午3:52:46
  */
 @JsonInclude(Include.NON_NULL)
@@ -46,7 +46,7 @@ public class ResponseJson implements Serializable {
    * @param success
    * @param message
    */
-  public ResponseJson(Boolean success, String message) {
+  public ResponseJson(Boolean success, Object message) {
     super();
     this.success = success;
     this.message = message;

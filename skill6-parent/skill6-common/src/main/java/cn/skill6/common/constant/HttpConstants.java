@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * http请求返回的header常量
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年2月3日 下午4:42:09
  */
 public class HttpConstants {
@@ -14,4 +14,7 @@ public class HttpConstants {
 
   /** 返回json */
   public static final String RESPONSE_JSON = "application/json;charset=UTF-8";
+
+  /** 返回json的描述的key */
+  public static final String KEY_DESCRIPTION = "description";
 }
