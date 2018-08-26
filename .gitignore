@@ -1,0 +1,6 @@
+*.crt
+*.csr
+*.key
+*.jks
+**/cert/**/*.txt
+*.pfx
