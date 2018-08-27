@@ -19,7 +19,7 @@ import cn.skill6.website.dao.ArticleInfoMapper;
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月16日 下午10:29:29
  */
 @Repository
@@ -46,10 +46,9 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     // 设置分布式用户id
     Long articleId = SequenceManager.getNextId();
     if (articleId != null) {
-      articleInfo.setArticleId(articleId);
-    } else {
       throw new NullPointerException("获取的userId为空");
     }
+    articleInfo.setArticleId(articleId);
 
     // 设置创建日期和最后修改日期
     articleInfo.setArticleCreateDate(new Date());
@@ -65,9 +64,9 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     // TODO 增加其他字段的校验
     articleInfoMapper.insert(articleInfo);
 
-    logger.info("增加文章成功,{}", articleInfo.toString());
+    logger.info("增加文章成功,{}", articleInfo);
 
-    return articleInfo.getArticleId();
+    return articleId;
   }
 
   /* (non-Javadoc)
@@ -77,7 +76,7 @@ public class ArticleInfoImpl implements ArticleInfoOper {
   public ArticleInfo findByArticleId(Long articleId) {
     ArticleInfo articleInfo = articleInfoMapper.selectByPrimaryKey(articleId);
 
-    logger.info("找到id为{}文章,{}", articleId, articleInfo.toString());
+    logger.info("找到id为{}的文章,{}", articleId, articleInfo);
 
     return articleInfo;
   }
@@ -88,6 +87,7 @@ public class ArticleInfoImpl implements ArticleInfoOper {
   @Override
   public List<ArticleInfo> findAll() {
     List<ArticleInfo> articleInfos = articleInfoMapper.selectAll();
+   
     logger.info("找到所有文章");
 
     return articleInfos;
