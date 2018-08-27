@@ -11,11 +11,11 @@ import java.util.List;
  * @since 2018年8月15日 下午11:39:38
  */
 public interface ArticleReadRecordMapper {
-  int deleteByPrimaryKey(String artilceId);
+  int deleteByPrimaryKey(Long articleId);
 
   int insert(ArticleReadRecord articleReadRecord);
 
-  ArticleReadRecord selectByPrimaryKey(String artilceId);
+  ArticleReadRecord selectByPrimaryKey(Long articleId);
 
   List<ArticleReadRecord> selectAll();
 

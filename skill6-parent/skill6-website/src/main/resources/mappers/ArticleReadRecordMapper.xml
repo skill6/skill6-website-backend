@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.ArticleReadRecordMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.ArticleReadRecord">
+	<resultMap id="BaseResultMap" type="ArticleReadRecord">
 		<constructor>
-			<idArg column="artilce_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<idArg column="artilce_id" javaType="java.lang.Long" jdbcType="VARCHAR" />
 			<arg column="article_read_daily" javaType="java.lang.Integer" jdbcType="INTEGER" />
 			<arg column="article_date_daily" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		</constructor>
 	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from article_read_record
 		where artilce_id = #{artilceId,jdbcType=VARCHAR}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.ArticleReadRecord">
+	<insert id="insert" parameterType="ArticleReadRecord">
 		insert into article_read_record (artilce_id, article_read_daily, article_date_daily
 		)
 		values (#{artilceId,jdbcType=VARCHAR}, #{articleReadDaily,jdbcType=INTEGER}, #{articleDateDaily,jdbcType=TIMESTAMP}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.ArticleReadRecord">
+	<update id="updateByPrimaryKey" parameterType="ArticleReadRecord">
 		update article_read_record
-		set article_read_daily = #{articleReadDaily,jdbcType=INTEGER},
+		set article_read_daily = #{articleReadDaily,jdbcType=BIGINT},
 		article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
 		where artilce_id = #{artilceId,jdbcType=VARCHAR}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select artilce_id, article_read_daily, article_date_daily
 		from article_read_record
-		where artilce_id = #{artilceId,jdbcType=VARCHAR}
+		where artilce_id = #{artilceId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select artilce_id, article_read_daily, article_date_daily

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.FileDownloadMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.FileDownload">
+	<resultMap id="BaseResultMap" type="FileDownload">
 		<constructor>
 			<idArg column="file_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="file_name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
 		delete from file_download
 		where file_id = #{fileId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.FileDownload">
+	<insert id="insert" parameterType="FileDownload">
 		insert into file_download (file_id, file_name, file_url,
 		file_upload_date, file_download_count, file_hash_code,
 		file_type)
@@ -24,7 +24,7 @@
 		#{fileUploadDate,jdbcType=TIMESTAMP}, #{fileDownloadCount,jdbcType=INTEGER}, #{fileHashCode,jdbcType=VARCHAR},
 		#{fileType,jdbcType=VARCHAR})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.FileDownload">
+	<update id="updateByPrimaryKey" parameterType="FileDownload">
 		update file_download
 		set file_name = #{fileName,jdbcType=VARCHAR},
 		file_url = #{fileUrl,jdbcType=VARCHAR},
