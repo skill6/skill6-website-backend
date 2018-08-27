@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.VersionInfoMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.VersionInfo">
+	<resultMap id="BaseResultMap" type="VersionInfo">
 		<constructor>
 			<idArg column="version_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="version_user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -14,13 +14,13 @@
 		delete from version_info
 		where version_id = #{versionId,jdbcType=VARCHAR}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.VersionInfo">
+	<insert id="insert" parameterType="VersionInfo">
 		insert into version_info (version_id, version_user_id, version_number,
 		version_date, version_content)
 		values (#{versionId,jdbcType=VARCHAR}, #{versionUserId,jdbcType=VARCHAR}, #{versionNumber,jdbcType=VARCHAR},
 		#{versionDate,jdbcType=TIMESTAMP}, #{versionContent,jdbcType=LONGVARCHAR})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.VersionInfo">
+	<update id="updateByPrimaryKey" parameterType="VersionInfo">
 		update version_info
 		set version_user_id = #{versionUserId,jdbcType=VARCHAR},
 		version_number = #{versionNumber,jdbcType=VARCHAR},

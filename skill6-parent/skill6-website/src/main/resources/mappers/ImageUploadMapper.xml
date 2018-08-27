@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.ImageUploadMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.ImageUpload">
+	<resultMap id="BaseResultMap" type="ImageUpload">
 		<constructor>
 			<idArg column="image_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="image_name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
 		delete from image_upload
 		where image_id = #{imageId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.ImageUpload">
+	<insert id="insert" parameterType="ImageUpload">
 		insert into image_upload (image_id, image_name, image_url,
 		image_upload_date, image_type, image_download_count
 		)
@@ -23,7 +23,7 @@
 		#{imageUploadDate,jdbcType=TIMESTAMP}, #{imageType,jdbcType=VARCHAR}, #{imageDownloadCount,jdbcType=INTEGER}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.ImageUpload">
+	<update id="updateByPrimaryKey" parameterType="ImageUpload">
 		update image_upload
 		set image_name = #{imageName,jdbcType=VARCHAR},
 		image_url = #{imageUrl,jdbcType=VARCHAR},

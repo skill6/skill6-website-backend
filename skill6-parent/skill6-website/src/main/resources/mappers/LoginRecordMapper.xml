@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.LoginRecordMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.LoginRecord">
+	<resultMap id="BaseResultMap" type="LoginRecord">
 		<constructor>
 			<idArg column="login_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="login_ip" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
 		delete from login_record
 		where login_id = #{loginId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.LoginRecord">
+	<insert id="insert" parameterType="LoginRecord">
 		insert into login_record (login_id, login_ip, login_type,
 		login_equipment, login_date, login_user_id,
 		login_success, login_fail_reason)
@@ -25,7 +25,7 @@
 		#{loginEquipment,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP}, #{loginUserId,jdbcType=VARCHAR},
 		#{loginSuccess,jdbcType=BIT}, #{loginFailReason,jdbcType=VARCHAR})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.LoginRecord">
+	<update id="updateByPrimaryKey" parameterType="LoginRecord">
 		update login_record
 		set login_ip = #{loginIp,jdbcType=VARCHAR},
 		login_type = #{loginType,jdbcType=VARCHAR},
