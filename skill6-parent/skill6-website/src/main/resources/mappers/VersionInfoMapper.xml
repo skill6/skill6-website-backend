@@ -3,7 +3,7 @@
 <mapper namespace="cn.skill6.website.dao.VersionInfoMapper">
 	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.VersionInfo">
 		<constructor>
-			<idArg column="version_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<idArg column="version_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="version_user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="version_number" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="version_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />

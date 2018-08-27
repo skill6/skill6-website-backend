@@ -17,7 +17,7 @@ import cn.skill6.website.dao.ArticleCommentMapper;
  * 文章评论操作实现类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年8月27日 下午11:47:52
  */
 public class ArticleCommentImpl implements ArticleCommentOper {
