@@ -2,176 +2,235 @@ package cn.skill6.common.entity.po;
 
 import java.util.Date;
 
+/**
+ * 文章历史版本实体类
+ *
+ * @author 何明胜
+ * @version 1.0.0
+ * @since 2018年8月28日 上午1:25:48
+ */
 public class ArticleModifyRecord {
-    private Long articleId;
+  private Long articleId;
 
-    private Date articleLastModifyDate;
+  private Date articleLastModifyDate;
 
-    private String articleTitle;
+  private String articleTitle;
 
-    private String articleAuthor;
+  private String articleAuthor;
 
-    private String articleSummary;
+  private String articleSummary;
 
-    private String articleLabel;
+  private String articleLabel;
 
-    private Integer articleReadTotal;
+  private Integer articleReadTotal;
 
-    private Date articleCreateDate;
+  private Date articleCreateDate;
 
-    private String articleCategoryId;
+  private String articleCategoryId;
 
-    private Boolean artilcePlaceTop;
+  private Boolean artilcePlaceTop;
 
-    private Integer articleTopPriority;
+  private Integer articleTopPriority;
 
-    private Boolean articleAttachFile;
+  private Boolean articleAttachFile;
 
-    private String articleHtmlContent;
+  private String articleHtmlContent;
 
-    private String articleMdContent;
+  private String articleMdContent;
 
-    private String articleAttachUrl;
+  private String articleAttachUrl;
 
-    public ArticleModifyRecord(Long articleId, Date articleLastModifyDate, String articleTitle, String articleAuthor, String articleSummary, String articleLabel, Integer articleReadTotal, Date articleCreateDate, String articleCategoryId, Boolean artilcePlaceTop, Integer articleTopPriority, Boolean articleAttachFile, String articleHtmlContent, String articleMdContent, String articleAttachUrl) {
-        this.articleId = articleId;
-        this.articleLastModifyDate = articleLastModifyDate;
-        this.articleTitle = articleTitle;
-        this.articleAuthor = articleAuthor;
-        this.articleSummary = articleSummary;
-        this.articleLabel = articleLabel;
-        this.articleReadTotal = articleReadTotal;
-        this.articleCreateDate = articleCreateDate;
-        this.articleCategoryId = articleCategoryId;
-        this.artilcePlaceTop = artilcePlaceTop;
-        this.articleTopPriority = articleTopPriority;
-        this.articleAttachFile = articleAttachFile;
-        this.articleHtmlContent = articleHtmlContent;
-        this.articleMdContent = articleMdContent;
-        this.articleAttachUrl = articleAttachUrl;
-    }
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */ @Override
+  public String toString() {
+    return "ArticleModifyRecord [articleId="
+        + articleId
+        + ", articleLastModifyDate="
+        + articleLastModifyDate
+        + ", articleTitle="
+        + articleTitle
+        + ", articleAuthor="
+        + articleAuthor
+        + ", articleSummary="
+        + articleSummary
+        + ", articleLabel="
+        + articleLabel
+        + ", articleReadTotal="
+        + articleReadTotal
+        + ", articleCreateDate="
+        + articleCreateDate
+        + ", articleCategoryId="
+        + articleCategoryId
+        + ", artilcePlaceTop="
+        + artilcePlaceTop
+        + ", articleTopPriority="
+        + articleTopPriority
+        + ", articleAttachFile="
+        + articleAttachFile
+        + ", articleHtmlContent="
+        + articleHtmlContent
+        + ", articleMdContent="
+        + articleMdContent
+        + ", articleAttachUrl="
+        + articleAttachUrl
+        + "]";
+  }
 
-    public ArticleModifyRecord() {
-        super();
-    }
+  public ArticleModifyRecord(
+      Long articleId,
+      Date articleLastModifyDate,
+      String articleTitle,
+      String articleAuthor,
+      String articleSummary,
+      String articleLabel,
+      Integer articleReadTotal,
+      Date articleCreateDate,
+      String articleCategoryId,
+      Boolean artilcePlaceTop,
+      Integer articleTopPriority,
+      Boolean articleAttachFile,
+      String articleHtmlContent,
+      String articleMdContent,
+      String articleAttachUrl) {
+    this.articleId = articleId;
+    this.articleLastModifyDate = articleLastModifyDate;
+    this.articleTitle = articleTitle;
+    this.articleAuthor = articleAuthor;
+    this.articleSummary = articleSummary;
+    this.articleLabel = articleLabel;
+    this.articleReadTotal = articleReadTotal;
+    this.articleCreateDate = articleCreateDate;
+    this.articleCategoryId = articleCategoryId;
+    this.artilcePlaceTop = artilcePlaceTop;
+    this.articleTopPriority = articleTopPriority;
+    this.articleAttachFile = articleAttachFile;
+    this.articleHtmlContent = articleHtmlContent;
+    this.articleMdContent = articleMdContent;
+    this.articleAttachUrl = articleAttachUrl;
+  }
 
-    public Long getArticleId() {
-        return articleId;
-    }
+  public ArticleModifyRecord() {
+    super();
+  }
 
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
+  public Long getArticleId() {
+    return articleId;
+  }
 
-    public Date getArticleLastModifyDate() {
-        return articleLastModifyDate;
-    }
+  public void setArticleId(Long articleId) {
+    this.articleId = articleId;
+  }
 
-    public void setArticleLastModifyDate(Date articleLastModifyDate) {
-        this.articleLastModifyDate = articleLastModifyDate;
-    }
+  public Date getArticleLastModifyDate() {
+    return articleLastModifyDate;
+  }
 
-    public String getArticleTitle() {
-        return articleTitle;
-    }
+  public void setArticleLastModifyDate(Date articleLastModifyDate) {
+    this.articleLastModifyDate = articleLastModifyDate;
+  }
 
-    public void setArticleTitle(String articleTitle) {
-        this.articleTitle = articleTitle == null ? null : articleTitle.trim();
-    }
+  public String getArticleTitle() {
+    return articleTitle;
+  }
 
-    public String getArticleAuthor() {
-        return articleAuthor;
-    }
+  public void setArticleTitle(String articleTitle) {
+    this.articleTitle = articleTitle == null ? null : articleTitle.trim();
+  }
 
-    public void setArticleAuthor(String articleAuthor) {
-        this.articleAuthor = articleAuthor == null ? null : articleAuthor.trim();
-    }
+  public String getArticleAuthor() {
+    return articleAuthor;
+  }
 
-    public String getArticleSummary() {
-        return articleSummary;
-    }
+  public void setArticleAuthor(String articleAuthor) {
+    this.articleAuthor = articleAuthor == null ? null : articleAuthor.trim();
+  }
 
-    public void setArticleSummary(String articleSummary) {
-        this.articleSummary = articleSummary == null ? null : articleSummary.trim();
-    }
+  public String getArticleSummary() {
+    return articleSummary;
+  }
 
-    public String getArticleLabel() {
-        return articleLabel;
-    }
+  public void setArticleSummary(String articleSummary) {
+    this.articleSummary = articleSummary == null ? null : articleSummary.trim();
+  }
 
-    public void setArticleLabel(String articleLabel) {
-        this.articleLabel = articleLabel == null ? null : articleLabel.trim();
-    }
+  public String getArticleLabel() {
+    return articleLabel;
+  }
 
-    public Integer getArticleReadTotal() {
-        return articleReadTotal;
-    }
+  public void setArticleLabel(String articleLabel) {
+    this.articleLabel = articleLabel == null ? null : articleLabel.trim();
+  }
 
-    public void setArticleReadTotal(Integer articleReadTotal) {
-        this.articleReadTotal = articleReadTotal;
-    }
+  public Integer getArticleReadTotal() {
+    return articleReadTotal;
+  }
 
-    public Date getArticleCreateDate() {
-        return articleCreateDate;
-    }
+  public void setArticleReadTotal(Integer articleReadTotal) {
+    this.articleReadTotal = articleReadTotal;
+  }
 
-    public void setArticleCreateDate(Date articleCreateDate) {
-        this.articleCreateDate = articleCreateDate;
-    }
+  public Date getArticleCreateDate() {
+    return articleCreateDate;
+  }
 
-    public String getArticleCategoryId() {
-        return articleCategoryId;
-    }
+  public void setArticleCreateDate(Date articleCreateDate) {
+    this.articleCreateDate = articleCreateDate;
+  }
 
-    public void setArticleCategoryId(String articleCategoryId) {
-        this.articleCategoryId = articleCategoryId == null ? null : articleCategoryId.trim();
-    }
+  public String getArticleCategoryId() {
+    return articleCategoryId;
+  }
 
-    public Boolean getArtilcePlaceTop() {
-        return artilcePlaceTop;
-    }
+  public void setArticleCategoryId(String articleCategoryId) {
+    this.articleCategoryId = articleCategoryId == null ? null : articleCategoryId.trim();
+  }
 
-    public void setArtilcePlaceTop(Boolean artilcePlaceTop) {
-        this.artilcePlaceTop = artilcePlaceTop;
-    }
+  public Boolean getArtilcePlaceTop() {
+    return artilcePlaceTop;
+  }
 
-    public Integer getArticleTopPriority() {
-        return articleTopPriority;
-    }
+  public void setArtilcePlaceTop(Boolean artilcePlaceTop) {
+    this.artilcePlaceTop = artilcePlaceTop;
+  }
 
-    public void setArticleTopPriority(Integer articleTopPriority) {
-        this.articleTopPriority = articleTopPriority;
-    }
+  public Integer getArticleTopPriority() {
+    return articleTopPriority;
+  }
 
-    public Boolean getArticleAttachFile() {
-        return articleAttachFile;
-    }
+  public void setArticleTopPriority(Integer articleTopPriority) {
+    this.articleTopPriority = articleTopPriority;
+  }
 
-    public void setArticleAttachFile(Boolean articleAttachFile) {
-        this.articleAttachFile = articleAttachFile;
-    }
+  public Boolean getArticleAttachFile() {
+    return articleAttachFile;
+  }
 
-    public String getArticleHtmlContent() {
-        return articleHtmlContent;
-    }
+  public void setArticleAttachFile(Boolean articleAttachFile) {
+    this.articleAttachFile = articleAttachFile;
+  }
 
-    public void setArticleHtmlContent(String articleHtmlContent) {
-        this.articleHtmlContent = articleHtmlContent == null ? null : articleHtmlContent.trim();
-    }
+  public String getArticleHtmlContent() {
+    return articleHtmlContent;
+  }
 
-    public String getArticleMdContent() {
-        return articleMdContent;
-    }
+  public void setArticleHtmlContent(String articleHtmlContent) {
+    this.articleHtmlContent = articleHtmlContent == null ? null : articleHtmlContent.trim();
+  }
 
-    public void setArticleMdContent(String articleMdContent) {
-        this.articleMdContent = articleMdContent == null ? null : articleMdContent.trim();
-    }
+  public String getArticleMdContent() {
+    return articleMdContent;
+  }
 
-    public String getArticleAttachUrl() {
-        return articleAttachUrl;
-    }
+  public void setArticleMdContent(String articleMdContent) {
+    this.articleMdContent = articleMdContent == null ? null : articleMdContent.trim();
+  }
 
-    public void setArticleAttachUrl(String articleAttachUrl) {
-        this.articleAttachUrl = articleAttachUrl == null ? null : articleAttachUrl.trim();
-    }
+  public String getArticleAttachUrl() {
+    return articleAttachUrl;
+  }
+
+  public void setArticleAttachUrl(String articleAttachUrl) {
+    this.articleAttachUrl = articleAttachUrl == null ? null : articleAttachUrl.trim();
+  }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.ArticleModifyRecordMapper">
-  <resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.ArticleModifyRecord">
+  <resultMap id="BaseResultMap" type="ArticleModifyRecord">
     <constructor>
       <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <idArg column="article_last_modify_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
@@ -25,7 +25,7 @@
     where article_id = #{articleId,jdbcType=BIGINT}
       and article_last_modify_date = #{articleLastModifyDate,jdbcType=TIMESTAMP}
   </delete>
-  <insert id="insert" parameterType="cn.skill6.common.entity.po.ArticleModifyRecord">
+  <insert id="insert" parameterType="ArticleModifyRecord">
     insert into article_modify_record (article_id, article_last_modify_date, 
       article_title, article_author, article_summary, 
       article_label, article_read_total, article_create_date, 
@@ -41,7 +41,7 @@
       #{articleMdContent,jdbcType=LONGVARCHAR}, #{articleAttachUrl,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.ArticleModifyRecord">
+  <update id="updateByPrimaryKey" parameterType="ArticleModifyRecord">
     update article_modify_record
     set article_title = #{articleTitle,jdbcType=VARCHAR},
       article_author = #{articleAuthor,jdbcType=VARCHAR},
