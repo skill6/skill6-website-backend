@@ -4,13 +4,13 @@
 	<resultMap id="BaseResultMap" type="ArticleReadRecord">
 		<constructor>
 			<idArg column="artilce_id" javaType="java.lang.Long" jdbcType="VARCHAR" />
+			<idArg column="article_date_daily" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="article_read_daily" javaType="java.lang.Integer" jdbcType="INTEGER" />
-			<arg column="article_date_daily" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 		</constructor>
 	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+	<delete id="deleteByPrimaryKey" parameterType="map">
 		delete from article_read_record
-		where artilce_id = #{artilceId,jdbcType=VARCHAR}
+		where artilce_id = #{artilceId,jdbcType=VARCHAR} and article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
 	</delete>
 	<insert id="insert" parameterType="ArticleReadRecord">
 		insert into article_read_record (artilce_id, article_read_daily, article_date_daily
@@ -18,16 +18,16 @@
 		values (#{artilceId,jdbcType=VARCHAR}, #{articleReadDaily,jdbcType=INTEGER}, #{articleDateDaily,jdbcType=TIMESTAMP}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="ArticleReadRecord">
+	<update id="updateByPrimaryKey" parameterType="map">
 		update article_read_record
 		set article_read_daily = #{articleReadDaily,jdbcType=BIGINT},
 		article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
-		where artilce_id = #{artilceId,jdbcType=VARCHAR}
+		where artilce_id = #{artilceId,jdbcType=VARCHAR} and article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
 		select artilce_id, article_read_daily, article_date_daily
 		from article_read_record
-		where artilce_id = #{artilceId,jdbcType=BIGINT}
+		where artilce_id = #{artilceId,jdbcType=BIGINT} and article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select artilce_id, article_read_daily, article_date_daily

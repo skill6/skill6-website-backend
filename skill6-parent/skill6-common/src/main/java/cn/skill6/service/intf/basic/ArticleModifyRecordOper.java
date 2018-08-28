@@ -15,11 +15,11 @@ import cn.skill6.common.entity.po.ArticleModifyRecord;
 public interface ArticleModifyRecordOper {
   int deleteByPrimaryKey(Long articleId, Date lastModifyDate);
 
-  Long addArticleInfo(ArticleModifyRecord articleModifyRecord);
+  Long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord);
 
-  ArticleModifyRecord findByArticleId(Long articleId);
+  ArticleModifyRecord findByPrimaryKey(Long articleId, Date lastModifyDate);
 
   List<ArticleModifyRecord> findAll();
 
-  void modifyByArticleId(ArticleModifyRecord articleModifyRecord);
+  void modifyByPrimaryKey(ArticleModifyRecord articleModifyRecord);
 }
