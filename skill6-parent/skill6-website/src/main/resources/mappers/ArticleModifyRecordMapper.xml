@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.ArticleModifyRecordMapper">
-  <resultMap id="BaseResultMap" type="ArticleModifyRecord">
-    <constructor>
-      <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <idArg column="article_last_modify_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="article_author" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="article_label" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="article_read_total" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="article_create_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="article_category_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="artilce_place_top" javaType="java.lang.Boolean" jdbcType="BIT" />
-      <arg column="article_top_priority" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="article_attach_file" javaType="java.lang.Boolean" jdbcType="BIT" />
-      <arg column="article_html_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-      <arg column="article_md_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-      <arg column="article_attach_url" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-    </constructor>
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="map">
+	<resultMap id="BaseResultMap" type="ArticleModifyRecord">
+		<constructor>
+			<idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<idArg column="article_last_modify_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="article_author" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="article_label" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="article_read_total" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="article_create_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="article_category_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="artilce_place_top" javaType="java.lang.Boolean" jdbcType="BIT" />
+			<arg column="article_top_priority" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="article_attach_file" javaType="java.lang.Boolean" jdbcType="BIT" />
+			<arg column="article_html_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+			<arg column="article_md_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+			<arg column="article_attach_url" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="map">
     delete from article_modify_record
     where article_id = #{articleId,jdbcType=BIGINT}
       and article_last_modify_date = #{articleLastModifyDate,jdbcType=TIMESTAMP}
-  </delete>
-  <insert id="insert" parameterType="ArticleModifyRecord">
+	</delete>
+	<insert id="insert" parameterType="ArticleModifyRecord">
     insert into article_modify_record (article_id, article_last_modify_date, 
       article_title, article_author, article_summary, 
       article_label, article_read_total, article_create_date, 
@@ -40,8 +40,8 @@
       #{articleAttachFile,jdbcType=BIT}, #{articleHtmlContent,jdbcType=LONGVARCHAR}, 
       #{articleMdContent,jdbcType=LONGVARCHAR}, #{articleAttachUrl,jdbcType=LONGVARCHAR}
       )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="ArticleModifyRecord">
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="ArticleModifyRecord">
     update article_modify_record
     set article_title = #{articleTitle,jdbcType=VARCHAR},
       article_author = #{articleAuthor,jdbcType=VARCHAR},
@@ -58,8 +58,8 @@
       article_attach_url = #{articleAttachUrl,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=BIGINT}
       and article_last_modify_date = #{articleLastModifyDate,jdbcType=TIMESTAMP}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+	</update>
+	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
     select article_id, article_last_modify_date, article_title, article_author, article_summary, 
     article_label, article_read_total, article_create_date, article_category_id, artilce_place_top, 
     article_top_priority, article_attach_file, article_html_content, article_md_content, 
@@ -67,12 +67,12 @@
     from article_modify_record
     where article_id = #{articleId,jdbcType=BIGINT}
       and article_last_modify_date = #{articleLastModifyDate,jdbcType=TIMESTAMP}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
     select article_id, article_last_modify_date, article_title, article_author, article_summary, 
     article_label, article_read_total, article_create_date, article_category_id, artilce_place_top, 
     article_top_priority, article_attach_file, article_html_content, article_md_content, 
     article_attach_url
     from article_modify_record
-  </select>
+	</select>
 </mapper>

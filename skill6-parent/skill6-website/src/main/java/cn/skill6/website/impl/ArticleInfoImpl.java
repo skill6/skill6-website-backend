@@ -45,8 +45,8 @@ public class ArticleInfoImpl implements ArticleInfoOper {
   public Long addArticleInfo(ArticleInfo articleInfo) {
     // 设置分布式用户id
     Long articleId = SequenceManager.getNextId();
-    if (articleId != null) {
-      throw new NullPointerException("获取的userId为空");
+    if (articleId == null) {
+      throw new NullPointerException("获取的articleId为空");
     }
     articleInfo.setArticleId(articleId);
 
@@ -87,8 +87,8 @@ public class ArticleInfoImpl implements ArticleInfoOper {
   @Override
   public List<ArticleInfo> findAll() {
     List<ArticleInfo> articleInfos = articleInfoMapper.selectAll();
-   
-    logger.info("找到所有文章");
+
+    logger.info("找到所有文章, {}", articleInfos);
 
     return articleInfos;
   }

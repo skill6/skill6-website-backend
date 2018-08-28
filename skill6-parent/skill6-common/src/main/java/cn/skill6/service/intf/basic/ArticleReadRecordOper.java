@@ -1,5 +1,6 @@
 package cn.skill6.service.intf.basic;
 
+import java.util.Date;
 import java.util.List;
 
 import cn.skill6.common.entity.po.ArticleReadRecord;
@@ -12,11 +13,11 @@ import cn.skill6.common.entity.po.ArticleReadRecord;
  * @since 2018年8月24日 上午12:27:47
  */
 public interface ArticleReadRecordOper {
-  int deleteByArtilceId(Long articleId);
+  int deleteByPrimaryKey(Long articleId, Date articleDateDaily);
 
-  int addArticleReadRecord(ArticleReadRecord articleReadRecord);
+  Long addArticleReadRecord(ArticleReadRecord articleReadRecord);
 
-  ArticleReadRecord findByArticleId(Long articleId);
+  ArticleReadRecord findByPrimaryKey(Long articleId, Date articleDateDaily);
 
   List<ArticleReadRecord> findAll();
 
