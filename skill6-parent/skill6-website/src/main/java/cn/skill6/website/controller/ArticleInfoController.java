@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.common.entity.vo.restful.ResponseJson;
+import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.service.ArticleInfoSvc;
 
 /**

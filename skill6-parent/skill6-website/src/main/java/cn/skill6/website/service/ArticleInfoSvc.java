@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.common.entity.vo.restful.ResponseJson;
+import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.service.intf.basic.ArticleInfoOper;
 
@@ -25,10 +25,8 @@ public class ArticleInfoSvc {
   @Qualifier("articleInfoImpl")
   private ArticleInfoOper articleInfoOper;
 
-  /**
-   * 添加新文章
-   */
-  public ResponseJson addArticle(ArticleInfo articleInfo) throws Skill6Exception {
+  /** 添加新文章 */
+  public ResponseJson addArticle(ArticleInfo articleInfo) {
     ResponseJson responseJson;
     try {
       Long articleId = articleInfoOper.addArticleInfo(articleInfo);
@@ -40,22 +38,14 @@ public class ArticleInfoSvc {
     return responseJson;
   }
 
-  /**
-   * 根据id删除文章
-   *
-   * @param articleId
-   * @return
-   * @throws Skill6Exception
-   */
-  public ResponseJson deleteArticleById(Long articleId) throws Skill6Exception {
+  /** 根据id删除文章 */
+  public ResponseJson deleteArticleById(Long articleId) {
     articleInfoOper.deleteByPrimaryKey(articleId);
     return new ResponseJson(true, "删除成功");
   }
 
-  /**
-   * 根据id修改文章
-   */
-  public ResponseJson modifyArticleById(ArticleInfo articleInfo){
+  /** 根据id修改文章 */
+  public ResponseJson modifyArticleById(ArticleInfo articleInfo) {
     ResponseJson responseJson;
 
     try {
@@ -75,7 +65,7 @@ public class ArticleInfoSvc {
    * @return
    * @throws Skill6Exception
    */
-  public ArticleInfo getArticleById(Long articleId) throws Skill6Exception {
+  public ArticleInfo getArticleById(Long articleId) {
     return articleInfoOper.findByArticleId(articleId);
   }
 
