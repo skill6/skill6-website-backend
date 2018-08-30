@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.UserPrivacyInfoMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.UserPrivacyInfo">
+	<resultMap id="BaseResultMap" type="UserPrivacyInfo">
 		<constructor>
 			<idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
 		delete from user_privacy_info
 		where user_id = #{userId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.UserPrivacyInfo">
+	<insert id="insert" parameterType="UserPrivacyInfo">
 		insert into user_privacy_info (user_id, user_name, user_email,
 		user_phone, user_login_from, user_password,
 		user_pwd_salt, user_type, user_state
@@ -28,7 +28,7 @@
 		#{userPwdSalt,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.UserPrivacyInfo">
+	<update id="updateByPrimaryKey" parameterType="UserPrivacyInfo">
 		update user_privacy_info
 		set user_name = #{userName,jdbcType=VARCHAR},
 		user_email = #{userEmail,jdbcType=VARCHAR},

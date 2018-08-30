@@ -1,6 +1,8 @@
 package cn.skill6.website.dao;
 
 import cn.skill6.common.entity.po.ArticleReadRecord;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,11 +13,11 @@ import java.util.List;
  * @since 2018年8月15日 下午11:39:38
  */
 public interface ArticleReadRecordMapper {
-  int deleteByPrimaryKey(String artilceId);
+  int deleteByPrimaryKey(Long articleId, Date articleDateDaily);
 
   int insert(ArticleReadRecord articleReadRecord);
 
-  ArticleReadRecord selectByPrimaryKey(String artilceId);
+  ArticleReadRecord selectByPrimaryKey(Long articleId, Date articleDateDaily);
 
   List<ArticleReadRecord> selectAll();
 
