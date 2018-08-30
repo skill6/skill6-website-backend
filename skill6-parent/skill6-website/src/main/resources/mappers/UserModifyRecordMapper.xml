@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.UserModifyRecordMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.UserModifyRecord">
+	<resultMap id="BaseResultMap" type="UserModifyRecord">
 		<constructor>
-			<idArg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="user_modify_type" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="user_modify_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="user_modify_before" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -11,11 +11,11 @@
 			<arg column="user_modufy_success" javaType="java.lang.Boolean" jdbcType="BIT" />
 		</constructor>
 	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from user_modify_record
-		where user_id = #{userId,jdbcType=VARCHAR}
+		where user_id = #{userId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.UserModifyRecord">
+	<insert id="insert" parameterType="UserModifyRecord">
 		insert into user_modify_record (user_id, user_modify_type, user_modify_date,
 		user_modify_before, user_modify_after, user_modufy_success
 		)
@@ -23,7 +23,7 @@
 		#{userModifyBefore,jdbcType=VARCHAR}, #{userModifyAfter,jdbcType=VARCHAR}, #{userModufySuccess,jdbcType=BIT}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.UserModifyRecord">
+	<update id="updateByPrimaryKey" parameterType="UserModifyRecord">
 		update user_modify_record
 		set user_modify_type = #{userModifyType,jdbcType=VARCHAR},
 		user_modify_date = #{userModifyDate,jdbcType=TIMESTAMP},
@@ -32,11 +32,11 @@
 		user_modufy_success = #{userModufySuccess,jdbcType=BIT}
 		where user_id = #{userId,jdbcType=VARCHAR}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select user_id, user_modify_type, user_modify_date, user_modify_before, user_modify_after,
 		user_modufy_success
 		from user_modify_record
-		where user_id = #{userId,jdbcType=VARCHAR}
+		where user_id = #{userId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select user_id, user_modify_type, user_modify_date, user_modify_before, user_modify_after,

@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cn.skill6.common.constant.Encode;
 import cn.skill6.common.constant.HttpConstants;
 import cn.skill6.common.constant.HttpStatusCode;
-import cn.skill6.common.entity.vo.restful.ResponseJson;
+import cn.skill6.common.entity.vo.ResponseJson;
 
 /**
  * restful请求异常拦截器

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.DiscussAreaMapper">
-	<resultMap id="BaseResultMap" type="cn.skill6.common.entity.po.DiscussArea">
+	<resultMap id="BaseResultMap" type="DiscussArea">
 		<constructor>
 			<idArg column="discuss_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="discuss_belong_id" javaType="java.lang.Long" jdbcType="BIGINT" />
@@ -16,7 +16,7 @@
 		delete from discuss_area
 		where discuss_id = #{discussId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="cn.skill6.common.entity.po.DiscussArea">
+	<insert id="insert" parameterType="DiscussArea">
 		insert into discuss_area (discuss_id, discuss_belong_id, discuss_parent_id,
 		discuss_comitter_id, discuss_create_date,
 		discuss_valid, discuss_content)
@@ -24,7 +24,7 @@
 		#{discussComitterId,jdbcType=VARCHAR}, #{discussCreateDate,jdbcType=TIMESTAMP},
 		#{discussValid,jdbcType=BIT}, #{discussContent,jdbcType=LONGVARCHAR})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="cn.skill6.common.entity.po.DiscussArea">
+	<update id="updateByPrimaryKey" parameterType="DiscussArea">
 		update discuss_area
 		set discuss_belong_id = #{discussBelongId,jdbcType=BIGINT},
 		discuss_parent_id = #{discussParentId,jdbcType=BIGINT},

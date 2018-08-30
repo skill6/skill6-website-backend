@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cn.skill6.common.constant.ExceptionName;
-import cn.skill6.common.entity.vo.restful.ResponseJson;
+import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.db.SqlException;
 
 /**

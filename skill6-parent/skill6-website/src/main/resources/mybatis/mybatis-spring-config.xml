@@ -21,6 +21,7 @@
 		<!-- 系统实体类别名 -->
 		<typeAlias alias="ArticleComment" type="cn.skill6.common.entity.po.ArticleComment" />
 		<typeAlias alias="ArticleInfo" type="cn.skill6.common.entity.po.ArticleInfo" />
+		<typeAlias alias="ArticleModifyRecord" type="cn.skill6.common.entity.po.ArticleModifyRecord" />
 		<typeAlias alias="ArticleReadRecord" type="cn.skill6.common.entity.po.ArticleReadRecord" />
 		<typeAlias alias="CategoryInfo" type="cn.skill6.common.entity.po.CategoryInfo" />
 		<typeAlias alias="DiscussArea" type="cn.skill6.common.entity.po.DiscussArea" />
