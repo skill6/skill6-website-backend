@@ -4,8 +4,10 @@
       <div class="blog-info-div blog-info-div-border" v-for="info in blog.top" :key="info.id" :id="info.id">
         <div class="row">
           <div class="col-md-10">
-            <h4 style="color: #1b809e;margin-top: 0;margin-bottom: 10px;font-size: 18px"
-                v-html="info.title"></h4>
+            <h4>
+              <a style="color: #1b809e;margin-top: 0;margin-bottom: 10px;font-size: 18px" v-html="info.title"
+                 href="/topic/java/你好" target="_blank"></a>
+            </h4>
           </div>
           <div class="col-md-2">
                 <span style="margin-right: 10px">
@@ -64,9 +66,9 @@
           top: [
             {
               id: 1,
-              title: '学习党的指导思想',
-              summary: '始终围绕在以习近平为核心的党中央周围',
-              'key-words': ['党', '习近平'],
+              title: 'Java代码基础',
+              summary: 'Java代码基础',
+              'key-words': ['Java', '基础'],
               'thumb-up': 20,
               'thumb-up-d': false,
               'thumb-down-d': true,
