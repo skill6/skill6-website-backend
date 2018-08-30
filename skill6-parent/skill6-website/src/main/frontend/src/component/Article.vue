@@ -8,11 +8,23 @@
 
 <script>
   import $ from 'jquery/dist/jquery.min'
+
   export default {
     name: "Article",
     data: function () {
       return {
+        article: null
+      }
+    },
+    methods: {
+      getArticle: function () {
+        $.ajax({
+          url: "/article",
+          method: "get",
+          success: function (resp) {
 
+          }
+        })
       }
     },
     mounted: function () {

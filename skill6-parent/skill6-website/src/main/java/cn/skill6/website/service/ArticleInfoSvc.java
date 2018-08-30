@@ -2,14 +2,10 @@ package cn.skill6.website.service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.restful.ResponseJson;
@@ -25,7 +21,6 @@ import cn.skill6.service.intf.basic.ArticleInfoOper;
  */
 @Service
 public class ArticleInfoSvc {
-  private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Autowired
   @Qualifier("articleInfoImpl")
@@ -33,19 +28,9 @@ public class ArticleInfoSvc {
 
   /**
    * 添加新文章
-   *
-   * @param jsonMap
-   * @return
-   * @throws Skill6Exception
-   * @throws IOException
    */
-  public ResponseJson addArticle(Map<String, String> jsonMap) throws Skill6Exception, IOException {
+  public ResponseJson addArticle(ArticleInfo articleInfo) throws Skill6Exception {
     ResponseJson responseJson;
-
-    String jsonStr = objectMapper.writeValueAsString(jsonMap);
-    objectMapper.setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE);
-    ArticleInfo articleInfo = objectMapper.readValue(jsonStr, ArticleInfo.class);
-
     try {
       Long articleId = articleInfoOper.addArticleInfo(articleInfo);
       responseJson = new ResponseJson(true, String.valueOf(articleId));
@@ -65,25 +50,14 @@ public class ArticleInfoSvc {
    */
   public ResponseJson deleteArticleById(Long articleId) throws Skill6Exception {
     articleInfoOper.deleteByPrimaryKey(articleId);
-
     return new ResponseJson(true, "删除成功");
   }
 
   /**
    * 根据id修改文章
-   *
-   * @param jsonMap
-   * @return
-   * @throws Skill6Exception
-   * @throws IOException
    */
-  public ResponseJson modifyArticleById(Map<String, String> jsonMap)
-      throws Skill6Exception, IOException {
+  public ResponseJson modifyArticleById(ArticleInfo articleInfo){
     ResponseJson responseJson;
-
-    String jsonStr = objectMapper.writeValueAsString(jsonMap);
-    objectMapper.setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE);
-    ArticleInfo articleInfo = objectMapper.readValue(jsonStr, ArticleInfo.class);
 
     try {
       articleInfoOper.modifyByArticleId(articleInfo);

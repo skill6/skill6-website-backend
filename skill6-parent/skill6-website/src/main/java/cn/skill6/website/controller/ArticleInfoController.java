@@ -1,22 +1,18 @@
 package cn.skill6.website.controller;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.restful.ResponseJson;
-import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.common.transform.ConvertRequestParams;
 import cn.skill6.website.service.ArticleInfoSvc;
 
 /**
@@ -26,44 +22,34 @@ import cn.skill6.website.service.ArticleInfoSvc;
  * @version 1.0.1
  * @since 2018年8月16日 下午11:05:32
  */
-@Controller
+@RestController
+@RequestMapping(value = "/article")
 public class ArticleInfoController {
+
   @Autowired private ArticleInfoSvc articleInfoSvc;
 
-  @ResponseBody
-  @RequestMapping(value = "/article", method = RequestMethod.POST)
-  public ResponseJson addArticle(HttpServletRequest request) throws Skill6Exception, IOException {
-    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
-
-    return articleInfoSvc.addArticle(jsonMap);
+  @PostMapping
+  public ResponseJson addArticle(ArticleInfo articleInfo) {
+    return articleInfoSvc.addArticle(articleInfo);
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/article", method = RequestMethod.DELETE)
-  public ResponseJson deleteArticleById(@RequestParam(value = "article_id") Long articleId)
-      throws Skill6Exception {
+  @DeleteMapping(value = "/{articleId}")
+  public ResponseJson deleteArticleById(@PathVariable(name = "articleId") Long articleId) {
     return articleInfoSvc.deleteArticleById(articleId);
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/article", method = RequestMethod.PUT)
-  public ResponseJson modifyArticleById(HttpServletRequest request)
-      throws Skill6Exception, IOException {
-    Map<String, String> jsonMap = ConvertRequestParams.params2Map(request);
-
-    return articleInfoSvc.modifyArticleById(jsonMap);
+  @PutMapping
+  public ResponseJson modifyArticleById(ArticleInfo articleInfo) {
+    return articleInfoSvc.modifyArticleById(articleInfo);
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/article", method = RequestMethod.GET)
-  public ArticleInfo getArticleById(@RequestParam(value = "article_id") Long articleId)
-      throws Skill6Exception {
+  @GetMapping(value = "/{articleId}")
+  public ArticleInfo getArticleById(@PathVariable(name = "articleId") Long articleId) {
     return articleInfoSvc.getArticleById(articleId);
   }
 
-  @ResponseBody
-  @RequestMapping(value = "/article/all", method = RequestMethod.GET)
-  public List<ArticleInfo> getAllArticles() throws Skill6Exception {
+  @GetMapping(value = "/all")
+  public List<ArticleInfo> getAllArticles() {
     return articleInfoSvc.getAllArticles();
   }
 }
