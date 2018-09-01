@@ -11,7 +11,7 @@
         </button>
         <div id="headerlist" class="navbar-collapse collapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <router-link class="nav-link" to="/topic">技术专题</router-link>
             </li>
             <li class="nav-item">

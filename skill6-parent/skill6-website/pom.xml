@@ -33,6 +33,12 @@
       <artifactId>selenium-java</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring-boot-web-starter</artifactId>
+      <version>1.4.0-RC2</version>
+    </dependency>
+
     <!--前台依赖 -->
     <dependency>
       <groupId>org.webjars.bower</groupId>

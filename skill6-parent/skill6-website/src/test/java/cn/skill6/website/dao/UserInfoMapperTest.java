@@ -3,18 +3,17 @@ package cn.skill6.website.dao;
 import java.util.Date;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.skill6.common.entity.po.UserInfo;
 import cn.skill6.common.sequence.SequenceManager;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 
 /**
  * 用户信息测试类
@@ -23,9 +22,8 @@ import cn.skill6.common.sequence.SequenceManager;
  * @version 1.0.0
  * @since 2018年8月21日 下午11:41:17
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserInfoMapperTest {
+@SpringBootTest
+public class UserInfoMapperTest extends Skill6WebsiteApplicationTest {
 
   @Autowired private UserInfoMapper userInfoMapper;
 
@@ -39,11 +37,13 @@ public class UserInfoMapperTest {
   }
 
   @Test
-  public void deleteByPrimaryKey() {}
+  public void deleteByPrimaryKey() {
+    Long id = SequenceManager.getNextId();
+    userInfoMapper.deleteByPrimaryKey(id);
+    LOGGER.info("delete user {} success", id);
+  }
 
   @Test
-  @Transactional
-  @Rollback
   public void insert() {
     Long id = SequenceManager.getNextId();
     LOGGER.info("id:{}", id);

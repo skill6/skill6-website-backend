@@ -18,4 +18,5 @@ public class Skill6WebsiteApplication {
   public static void main(String[] args) {
     SpringApplication.run(Skill6WebsiteApplication.class, args);
   }
+
 }
