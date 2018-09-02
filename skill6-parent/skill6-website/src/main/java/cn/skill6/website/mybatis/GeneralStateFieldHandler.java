@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
-import cn.skill6.common.entity.enums.BaseEnum;
+import cn.skill6.common.entity.enums.intf.BaseEnum;
 
 /**
  * 实现Mybatis中状态枚举转换成状态码的通用处理类（数据库字段和Java枚举）
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月16日 上午12:01:07
  */
 @SuppressWarnings("rawtypes")
