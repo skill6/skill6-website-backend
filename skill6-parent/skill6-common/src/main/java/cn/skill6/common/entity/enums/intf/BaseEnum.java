@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.enums;
+package cn.skill6.common.entity.enums.intf;
 
 /**
  * 数据库状态字段枚举基类

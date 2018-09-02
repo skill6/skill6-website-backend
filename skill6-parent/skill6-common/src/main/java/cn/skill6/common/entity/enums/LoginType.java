@@ -1,5 +1,7 @@
 package cn.skill6.common.entity.enums;
 
+import cn.skill6.common.entity.enums.intf.BaseEnum;
+
 /**
  * 登录方式枚举
  *
