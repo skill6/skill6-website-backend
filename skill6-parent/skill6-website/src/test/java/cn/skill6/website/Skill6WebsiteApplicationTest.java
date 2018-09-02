@@ -37,7 +37,8 @@ public class Skill6WebsiteApplicationTest {
 
   protected static MockMvc mockMvc;
 
-  @Before
+  @SuppressWarnings("static-access")
+@Before
   public void setup() {
     this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
   }

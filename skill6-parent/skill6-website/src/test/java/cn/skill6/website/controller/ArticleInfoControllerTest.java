@@ -1,7 +1,7 @@
 package cn.skill6.website.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -22,6 +22,7 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 @SpringBootTest
 public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
 
+  @SuppressWarnings("static-access")
   @Test
   public void addArticle() throws Exception {
     this.mockMvc
@@ -33,6 +34,7 @@ public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
         .andExpect(jsonPath("$.success").value(false));
   }
 
+  @SuppressWarnings("static-access")
   @Test
   public void deleteArticleById() throws Exception {
     this.mockMvc
