@@ -30,6 +30,8 @@ spring:
     host: ${SKILL6_REDIS_HOST}
     password: ${SKILL6_REDIS_PASSWORD}
     port: ${SKILL6_REDIS_PORT}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 mybatis:
   config-location: classpath:mybatis/mybatis-spring-config.xml
   mapper-locations: classpath*:mappers/**/*.xml
