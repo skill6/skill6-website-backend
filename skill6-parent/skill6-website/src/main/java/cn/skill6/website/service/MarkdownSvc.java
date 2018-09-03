@@ -30,25 +30,30 @@ public class MarkdownSvc {
     private String text;
     private String mode = "markdown";
 
-    public GithubMarkdownReq() {}
+    @SuppressWarnings("unused")
+  public GithubMarkdownReq() {}
 
     public GithubMarkdownReq(String text) {
       this.text = text;
     }
 
-    public String getText() {
+    @SuppressWarnings("unused")
+  public String getText() {
       return text;
     }
 
-    public void setText(String text) {
+    @SuppressWarnings("unused")
+  public void setText(String text) {
       this.text = text;
     }
 
-    public String getMode() {
+    @SuppressWarnings("unused")
+  public String getMode() {
       return mode;
     }
 
-    public void setMode(String mode) {
+    @SuppressWarnings("unused")
+  public void setMode(String mode) {
       this.mode = mode;
     }
   }

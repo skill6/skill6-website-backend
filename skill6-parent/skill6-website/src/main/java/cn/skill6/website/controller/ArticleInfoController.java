@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.website.service.ArticleInfoSvc;
+import cn.skill6.service.basic.ArticleInfoSvc;
 
 /**
  * 文章信息控制器
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月16日 下午11:05:32
  */
 @RestController
