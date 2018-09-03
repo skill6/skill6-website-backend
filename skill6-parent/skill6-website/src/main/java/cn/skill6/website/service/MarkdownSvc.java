@@ -1,6 +1,6 @@
 package cn.skill6.website.service;
 
-import static cn.skill6.website.consts.Consts.GITHUB_MARKDOWN_RENDER_V3_URL;
+import static cn.skill6.website.constant.Constant.GITHUB_MARKDOWN_RENDER_V3_URL;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
