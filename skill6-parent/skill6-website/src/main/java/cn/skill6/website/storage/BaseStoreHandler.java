@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.StringUtils;
 
 import cn.skill6.common.constant.Encode;
+import cn.skill6.common.encrypt.Md5Encrypt;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.common.sequence.SequenceManager;
@@ -31,21 +33,23 @@ import cn.skill6.common.sequence.SequenceManager;
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
-  public void storeFile(InputStream inputStream, String storePath) throws IOException {
-    // 创建一个文件输出流
+  public String storeFile(InputStream inputStream, String storePath) throws IOException {
     FileOutputStream out = new FileOutputStream(storePath);
-    // 创建一个缓冲区
     byte buffer[] = new byte[1024];
-    // 判断输入流中的数据是否已经读完的标识
-    int len = 0;
-    // 循环将输入流读入到缓冲区当中，(len=in.read(buffer))>0就表示in里面还有数据
-    while ((len = inputStream.read(buffer)) > 0) {
-      // 使用FileOutputStream输出流将缓冲区的数据写入到指定的目录(savePath + "\\" + filename)当中
-      out.write(buffer, 0, len);
+    int length = 0;
+
+    MessageDigest messageDigest = Md5Encrypt.getMD5Instance();
+
+    while ((length = inputStream.read(buffer)) > 0) {
+      out.write(buffer, 0, length);
+      messageDigest.update(buffer, 0, length);
     }
 
     inputStream.close();
     out.close();
+
+    // 生成文件的MD5哈希
+    return Md5Encrypt.getHashCode(messageDigest);
   }
 
   public void readFile(HttpServletResponse response, String storeParentPath, String fileName)

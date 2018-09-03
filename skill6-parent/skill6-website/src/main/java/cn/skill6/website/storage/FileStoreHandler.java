@@ -21,7 +21,7 @@ import cn.skill6.common.exception.file.FileNotFoundException;
  * 文件存储处理
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月3日 上午1:34:37
  */
 public class FileStoreHandler extends BaseStoreHandler {
@@ -63,19 +63,20 @@ public class FileStoreHandler extends BaseStoreHandler {
         String fileId = isFileExist(storeParentPath, fileSuffix);
         String fileUrl = storeParentPath + "/" + fileId + "." + fileSuffix;
 
+        // 获取item中的上传文件的输入流
+        InputStream in = item.getInputStream();
+        String fileHashCode = storeFile(in, fileUrl);
+
+        // 删除处理文件上传时生成的临时文件
+        item.delete();
+        logger.info("上传文件url：{}", fileUrl);
+        
         // TODO 存储到数据库
         FileDownload fileDownload = new FileDownload();
         fileDownload.setFileId(Long.valueOf(fileId));
         fileDownload.setFileName(fileName);
         fileDownload.setFileUrl(fileUrl);
-
-        // 获取item中的上传文件的输入流
-        InputStream in = item.getInputStream();
-        storeFile(in, fileUrl);
-
-        // 删除处理文件上传时生成的临时文件
-        item.delete();
-        logger.info("上传文件url：{}", fileUrl);
+        fileDownload.setFileHashCode(fileHashCode);
       }
     }
   }
