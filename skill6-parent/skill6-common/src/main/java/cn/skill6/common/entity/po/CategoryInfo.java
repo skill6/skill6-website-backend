@@ -2,11 +2,13 @@ package cn.skill6.common.entity.po;
 
 import java.util.Date;
 
+import cn.skill6.common.entity.enums.CategoryType;
+
 /**
  * 目录分类实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:31:09
  */
 public class CategoryInfo {
@@ -14,7 +16,7 @@ public class CategoryInfo {
 
   private String categoryName;
 
-  private String categoryType;
+  private CategoryType categoryType;
 
   private Date categoryCreateDate;
 
@@ -25,7 +27,7 @@ public class CategoryInfo {
   public CategoryInfo(
       Long categoryId,
       String categoryName,
-      String categoryType,
+      CategoryType categoryType,
       Date categoryCreateDate,
       Date categoryModifyDate,
       Boolean categoryValid) {
@@ -57,12 +59,12 @@ public class CategoryInfo {
     this.categoryName = categoryName == null ? null : categoryName.trim();
   }
 
-  public String getCategoryType() {
+  public CategoryType getCategoryType() {
     return categoryType;
   }
 
-  public void setCategoryType(String categoryType) {
-    this.categoryType = categoryType == null ? null : categoryType.trim();
+  public void setCategoryType(CategoryType categoryType) {
+    this.categoryType = categoryType;
   }
 
   public Date getCategoryCreateDate() {

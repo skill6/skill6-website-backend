@@ -1,7 +1,5 @@
 package cn.skill6.website.controller;
 
-import java.util.UUID;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -39,7 +37,6 @@ public class HelloController {
         "/topic/*/*",
       })
   public String index() {
-    LOGGER.info("index uuid lijichun {}", UUID.randomUUID().toString());
     return "/index.html";
   }
 }
