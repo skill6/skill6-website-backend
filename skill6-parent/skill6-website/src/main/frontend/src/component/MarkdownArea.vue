@@ -6,8 +6,6 @@
 
 <script>
 
-  import scriptjs from 'scriptjs'
-
   export default {
     name: "MarkdownArea",
     props: {
@@ -22,23 +20,26 @@
       toHtml: function () {
         var that = this;
         $.ajax({
-          url: "https://api.github.com/markdown",
+          url: "/md",
           data: JSON.stringify({
-            text: that.md_content,
-            model: "markdown"
+            text: that.md_content
           }),
           method: "post",
           contentType: "application/json;charset=utf-8",
           success: function (t) {
             that.html = t;
-            $("#markdown-body table").addClass("table table-striped");
-            console.info(t)
+            that.$nextTick(function () {
+              $("#markdown-body table").addClass("table table-striped");
+              $("#markdown-body img").css("max-width", "100%");
+              console.info($("#markdown-body table"))
+            })
           }
         })
       }
     },
     mounted: function () {
       console.info(jQuery)
+      this.toHtml()
       var script = document.createElement("script")
       script.src = "/editormd/editormd.min.js";
       script.type = "text/javascript"
@@ -48,6 +49,12 @@
 
 </script>
 
-<style>
+<style scoped>
+  #markdown-body img {
+    max-width: 100%;
+  }
 
+  #markdown-body hr {
+    background-color: red;
+  }
 </style>
