@@ -18,7 +18,7 @@ import cn.skill6.website.dao.intf.ArticleInfoOper;
  * @version 1.0.1
  * @since 2018年8月21日 下午11:07:30
  */
-@Service("articleInfoSvc")
+@Service
 public class ArticleInfoSvcImpl implements ArticleInfoSvc {
 
   @Autowired

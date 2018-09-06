@@ -3,6 +3,7 @@ package cn.skill6.website.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,9 @@ import cn.skill6.service.basic.ArticleInfoSvc;
 @RequestMapping(value = "/article")
 public class ArticleInfoController {
 
-  @Autowired private ArticleInfoSvc articleInfoSvc;
+  @Autowired
+  @Qualifier("articleInfoSvcImpl")
+  private ArticleInfoSvc articleInfoSvc;
 
   @PostMapping
   public ResponseJson addArticle(ArticleInfo articleInfo) {

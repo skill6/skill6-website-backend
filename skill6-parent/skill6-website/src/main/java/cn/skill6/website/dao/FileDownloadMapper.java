@@ -3,6 +3,8 @@ package cn.skill6.website.dao;
 import cn.skill6.common.entity.po.FileDownload;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 /**
  * 文件下载mapper
  *
@@ -10,6 +12,7 @@ import java.util.List;
  * @version 1.0.2
  * @since 2018年8月15日 下午11:40:27
  */
+@Mapper
 public interface FileDownloadMapper {
   int deleteByPrimaryKey(Long fileId);
 
