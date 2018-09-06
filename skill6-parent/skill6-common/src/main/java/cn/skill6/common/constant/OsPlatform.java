@@ -27,4 +27,20 @@ public enum OsPlatform {
   public void setOsName(String osName) {
     this.osName = osName;
   }
+
+  /**
+   * 获取当前操作系统
+   *
+   * @return
+   */
+  public static OsPlatform getCurrentOs() {
+    String currOsName = System.getProperty("os.name");
+    if (currOsName.indexOf(OsPlatform.WINDOWS.getOsName()) != -1) {
+      return OsPlatform.WINDOWS;
+    }
+    if (currOsName.indexOf(OsPlatform.MAC.getOsName()) != -1) {
+      return OsPlatform.MAC;
+    }
+    return OsPlatform.LINUX;
+  }
 }

@@ -14,7 +14,7 @@ import cn.skill6.common.entity.po.FileDownload;
 public interface FileDownloadOper {
   int deleteByFileId(Long fileId);
 
-  int addFileDownload(FileDownload fileDownload);
+  Long addFileDownload(FileDownload fileDownload);
 
   FileDownload findByFileId(Long fileId);
 

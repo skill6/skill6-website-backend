@@ -32,6 +32,11 @@ spring:
     port: ${SKILL6_REDIS_PORT}
   jackson:
     property-naming-strategy: SNAKE_CASE
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
 mybatis:
   config-location: classpath:mybatis/mybatis-spring-config.xml
   mapper-locations: classpath*:mappers/**/*.xml

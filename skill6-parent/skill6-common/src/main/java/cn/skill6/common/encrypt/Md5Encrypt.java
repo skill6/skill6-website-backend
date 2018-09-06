@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.springframework.util.DigestUtils;
+
 /**
  * MD5加密工具, 支持加盐和定义加密次数
  *
@@ -37,26 +39,7 @@ public class Md5Encrypt {
    * @throws Exception
    */
   public static String getMD5Code(String dataSource) {
-    MessageDigest md = getMD5Instance();
-
-    byte[] byteArray = md.digest(dataSource.getBytes());
-    StringBuffer sBuffer = new StringBuffer();
-    for (int i = 0; i < byteArray.length; i++) {
-      String[] stringDigits = {
-        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"
-      };
-
-      int iRet = byteArray[i];
-      if (iRet < 0) {
-        iRet += 256;
-      }
-      int iD1 = iRet / 16;
-      int iD2 = iRet % 16;
-
-      sBuffer.append(stringDigits[iD1] + stringDigits[iD2]);
-    }
-
-    return sBuffer.toString();
+    return DigestUtils.md5DigestAsHex(dataSource.getBytes());
   }
 
   /**
@@ -66,46 +49,7 @@ public class Md5Encrypt {
    * @return
    */
   public static String getMD5CodeUpperCase(String dataSource) {
-    // 获得MD5摘要算法的 MessageDigest 对象
-    MessageDigest mdInst = getMD5Instance();
-
-    try {
-      byte[] btInput = dataSource.getBytes();
-
-      // 使用指定的字节更新摘要
-      mdInst.update(btInput);
-
-      return getHashCode(mdInst);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-    return null;
-  }
-
-  /**
-   * 获取长度为32位的MD5哈希值
-   *
-   * @param messageDigest
-   * @return
-   */
-  public static String getHashCode(MessageDigest messageDigest) {
-    char hexDigits[] = {
-      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
-    };
-
-    // 获得密文
-    byte[] md = messageDigest.digest();
-    // 把密文转换成十六进制的字符串形式
-    int j = md.length;
-    char str[] = new char[j * 2];
-    int k = 0;
-    for (int i = 0; i < j; i++) {
-      byte byte0 = md[i];
-      str[k++] = hexDigits[byte0 >>> 4 & 0xf];
-      str[k++] = hexDigits[byte0 & 0xf];
-    }
-    return new String(str);
+    return getMD5Code(dataSource).toUpperCase();
   }
 
   /**
