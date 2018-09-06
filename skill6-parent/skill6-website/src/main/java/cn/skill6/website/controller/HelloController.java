@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+  private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
   @ResponseBody
   @GetMapping("/helloskill6")

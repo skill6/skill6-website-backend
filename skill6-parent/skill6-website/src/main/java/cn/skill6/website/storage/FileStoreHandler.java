@@ -64,11 +64,14 @@ public class FileStoreHandler extends BaseStoreHandler {
 
     // 上传,分为1、windows 2、linux 和 mac
     OsPlatform currentOs = OsPlatform.getCurrentOs();
+    long startTime = System.currentTimeMillis();
     if (currentOs == OsPlatform.WINDOWS) {
       storeFile(multipartFile.getInputStream(), fileUrl);
     } else {
       multipartFile.transferTo(new File(fileUrl));
     }
+    long endTime = System.currentTimeMillis();
+    logger.info("存储文件耗时：{}ms", endTime - startTime);
 
     fileDownload.setFileId(Long.valueOf(fileId));
     fileDownload.setFileName(fileName);
