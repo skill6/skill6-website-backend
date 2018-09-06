@@ -18,7 +18,7 @@
     data: function () {
       return {
         article: {
-          article_md_content: "# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)\n\n技术流（skill6）网站的架构设计、需求分析、技术选型等\n\n------------\n \n### 1、架构设计\n\n ![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)\n\n------------\n"
+          article_md_content: "# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)\n\n技术流（skill6）网站的架构设计、需求分析、技术选型等\n\n------------\n \n### 1、架构设计\n\n ![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg?raw=true)\n\n------------\n"
           + "\n### 2、技术选型\n\n#### 2.1 后端\n技术 | 功能点 | 官网链接\n----|------|----\n"
           + "Maven | 项目依赖管理  | [http://maven.apache.org/](http://maven.apache.org/)\n"
           + "Spring | 容器 | [http://projects.spring.io/spring-framework/](http://projects.spring.io/spring-framework/)\n"
@@ -50,7 +50,7 @@
           + "\n"
           + "### 3、数据库设计\n"
           + "\n"
-          + "![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%9B%BE.jpg)\n"
+          + "![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%9B%BE.jpg?raw=true)\n"
           + "\n"
           + "**补充说明**\n"
           + "1. 目前已设计上述15个表，其中category_info表数据量较小，所以设计包含文章分类、代码分类等所有分类，通过type字段区别；\n"
