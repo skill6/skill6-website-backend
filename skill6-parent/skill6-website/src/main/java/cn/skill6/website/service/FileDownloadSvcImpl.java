@@ -1,9 +1,11 @@
 package cn.skill6.website.service;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +23,7 @@ import cn.skill6.website.storage.FileStoreHandler;
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
@@ -46,6 +48,22 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
 
     fileDownloadOper.addFileDownload(fileDownload);
 
-    return new ResponseJson(true, "上传成功");
+    @SuppressWarnings("unchecked")
+    Map<String, String> resultMap = new HashedMap(5);
+    resultMap.put("information", "上传成功");
+
+    StringBuffer url = request.getRequestURL();
+    String contextUrl =
+        url.delete(url.length() - request.getRequestURI().length(), url.length()).toString();
+    String fileUrl = contextUrl + "/" + dateFormat + "/" + fileDownload.getFileId();
+    resultMap.put("file_url", fileUrl);
+
+    return new ResponseJson(true, resultMap);
+  }
+
+  /* (non-Javadoc)
+   * @see cn.skill6.service.basic.FileDownloadSvc#downloadFileById(java.lang.Long)
+   */ @Override
+  public void downloadFileById(Long fileId) {
   }
 }

@@ -12,7 +12,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 文件存储接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月4日 下午9:44:31
  */
 public interface FileDownloadSvc {
@@ -26,4 +26,10 @@ public interface FileDownloadSvc {
    */
   public ResponseJson uploadFile(HttpServletRequest request)
       throws IOException, FileUploadException;
+
+  /**
+   * @param fileId
+   * @return
+   */
+  public void downloadFileById(Long fileId);
 }
