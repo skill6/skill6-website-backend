@@ -3,6 +3,7 @@ package cn.skill6.website.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import cn.skill6.service.basic.FileDownloadSvc;
  * 文件存储控制器
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年9月4日 下午9:49:27
  */
 @RestController
@@ -38,9 +39,10 @@ public class FileDownloadController {
     return fileDownloadSvc.uploadFile(request);
   }
 
-  @GetMapping(value = "/{fileId}")
-  public void downloadFileById(@PathVariable(name = "fileId") Long fileId) {
+  @GetMapping(value = "/{year}/{month}/{day}/{fileId}")
+  public void downloadFileById(
+      @PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
 
-    fileDownloadSvc.downloadFileById(fileId);
+    fileDownloadSvc.downloadFileById(fileId, response);
   }
 }

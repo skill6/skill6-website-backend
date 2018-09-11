@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.fileupload.FileUploadException;
@@ -55,7 +56,7 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
     StringBuffer url = request.getRequestURL();
     String contextUrl =
         url.delete(url.length() - request.getRequestURI().length(), url.length()).toString();
-    String fileUrl = contextUrl + "/" + dateFormat + "/" + fileDownload.getFileId();
+    String fileUrl = contextUrl + "/file/" + dateFormat + "/" + fileDownload.getFileId();
     resultMap.put("file_url", fileUrl);
 
     return new ResponseJson(true, resultMap);
@@ -64,6 +65,12 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
   /* (non-Javadoc)
    * @see cn.skill6.service.basic.FileDownloadSvc#downloadFileById(java.lang.Long)
    */ @Override
-  public void downloadFileById(Long fileId) {
+  public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
+    FileDownload fileDownload = fileDownloadOper.findByFileId(fileId);
+
+    String fileUrl = fileDownload.getFileUrl();
+    String fileName = fileDownload.getFileName();
+
+    fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
   }
 }

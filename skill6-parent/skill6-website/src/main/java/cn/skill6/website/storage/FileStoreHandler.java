@@ -81,10 +81,9 @@ public class FileStoreHandler extends BaseStoreHandler {
     return fileDownload;
   }
 
-  public void fileDownloadHandler(
-      HttpServletResponse response, String storeParentPath, String fileName) throws IOException {
-    response.setContentType("text/html;charset=UTF-8");
+  public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName)
+      throws IOException {
 
-    readFile(response, storeParentPath, fileName);
+    readFile(response, fileUrl, fileName);
   }
 }

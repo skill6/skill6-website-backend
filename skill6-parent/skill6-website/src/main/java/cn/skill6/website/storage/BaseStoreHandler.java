@@ -25,7 +25,7 @@ import cn.skill6.common.sequence.SequenceManager;
  * 文件存储基类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
@@ -42,11 +42,9 @@ public abstract class BaseStoreHandler {
     out.close();
   }
 
-  public void readFile(HttpServletResponse response, String storeParentPath, String fileName)
+  public void readFile(HttpServletResponse response, String fileUrl, String fileName)
       throws IOException {
-    OutputStream outputStream = response.getOutputStream();
-
-    File file = new File(storeParentPath + "/" + fileName);
+    File file = new File(fileUrl);
     if (!file.exists()) {
       throw new FileNotFoundException("文件未找到");
     }
@@ -55,16 +53,17 @@ public abstract class BaseStoreHandler {
     String fileNameShow = URLEncoder.encode(fileName, "UTF-8");
     fileNameShow = StringUtils.replace(fileNameShow, "+", "%20");
 
+    response.setContentType("application/x-msdownload");
+    response.setCharacterEncoding("UTF-8");
     // 设置响应头，控制浏览器下载该文件
     response.setHeader("content-disposition", "attachment;filename=" + fileNameShow);
 
-    String storePath = storeParentPath + "/" + fileName;
-
     // 读取要下载的文件，保存到文件输入流
-    FileInputStream in = new FileInputStream(storePath);
+    FileInputStream in = new FileInputStream(fileUrl);
     // 创建缓冲区
     byte buffer[] = new byte[1024];
     int len = 0;
+    OutputStream outputStream = response.getOutputStream();
     // 循环将输入流中的内容读取到缓冲区当中
     while ((len = in.read(buffer)) > 0) {
       // 输出缓冲区的内容到浏览器，实现文件下载

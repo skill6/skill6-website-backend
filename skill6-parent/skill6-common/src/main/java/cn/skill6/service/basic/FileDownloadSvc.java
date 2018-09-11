@@ -3,6 +3,7 @@ package cn.skill6.service.basic;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
 
@@ -12,7 +13,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 文件存储接口
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月4日 下午9:44:31
  */
 public interface FileDownloadSvc {
@@ -29,7 +30,9 @@ public interface FileDownloadSvc {
 
   /**
    * @param fileId
+   * @param response
    * @return
+   * @throws IOException
    */
-  public void downloadFileById(Long fileId);
+  public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException;
 }
