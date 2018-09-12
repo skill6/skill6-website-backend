@@ -36,6 +36,7 @@ public class HelloController {
         "/talk/*",
         "/developing/*",
         "/topic/*/*",
+        "/blog/editor"
       })
   public String index() {
     return "/index.html";

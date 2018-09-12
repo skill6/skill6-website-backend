@@ -20,6 +20,9 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/project">项目</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/blog/editor">写博客</router-link>
+            </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="./login">登录</a></li>
