@@ -5,7 +5,7 @@
  */
 
 //修改此处上传连接即可
-var serverUrl = '/file';
+var serverUrl = '/file/share';
 var $fileList;
 var $btnUpload;
 var state = 'pending';

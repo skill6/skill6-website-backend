@@ -9,8 +9,8 @@
 			<arg column="file_upload_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="file_download_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
 			<arg column="file_hash_code" javaType="java.lang.String" jdbcType="VARCHAR" />
-			<arg column="file_type" javaType="java.lang.String" jdbcType="VARCHAR" />
 		</constructor>
+		<result column="file_type" property="fileType" jdbcType="VARCHAR" />
 	</resultMap>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from file_download

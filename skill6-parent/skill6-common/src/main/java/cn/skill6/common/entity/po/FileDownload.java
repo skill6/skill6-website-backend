@@ -53,15 +53,13 @@ public class FileDownload {
       String fileUrl,
       Date fileUploadDate,
       Integer fileDownloadCount,
-      String fileHashCode,
-      FileType fileType) {
+      String fileHashCode) {
     this.fileId = fileId;
     this.fileName = fileName;
     this.fileUrl = fileUrl;
     this.fileUploadDate = fileUploadDate;
     this.fileDownloadCount = fileDownloadCount;
     this.fileHashCode = fileHashCode;
-    this.fileType = fileType;
   }
 
   public FileDownload() {
