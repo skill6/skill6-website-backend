@@ -1,17 +1,18 @@
 package cn.skill6.website.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.po.FileDownload;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
@@ -25,7 +26,7 @@ import cn.skill6.website.storage.FileStoreHandler;
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
@@ -41,17 +42,17 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
    * @see cn.skill6.service.basic.FileDownloadSvc#uploadFile(javax.servlet.http.HttpServletRequest)
    */
   @Override
-  public ResponseJson uploadFile(HttpServletRequest request)
+  public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
       throws IOException, FileUploadException {
     String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
     String storeParentPath = Constant.FILE_STORE_ROOT_PATH + dateFormat;
 
     FileDownload fileDownload = fileStoreHandler.fileUploadHandler(request, storeParentPath);
+    fileDownload.setFileType(fileType);
 
     fileDownloadOper.addFileDownload(fileDownload);
 
-    @SuppressWarnings("unchecked")
-    Map<String, String> resultMap = new HashedMap(5);
+    Map<String, String> resultMap = new HashMap<String, String>(5);
     resultMap.put("information", "上传成功");
 
     StringBuffer contextUrl = RequestParser.parseContextIndex(request);

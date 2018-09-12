@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.service.basic.FileDownloadSvc;
 
@@ -21,7 +22,7 @@ import cn.skill6.service.basic.FileDownloadSvc;
  * 文件存储控制器
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.4
  * @since 2018年9月4日 下午9:49:27
  */
 @RestController
@@ -32,11 +33,18 @@ public class FileDownloadController {
   @Qualifier("fileDownloadSvcImpl")
   private FileDownloadSvc fileDownloadSvc;
 
-  @PostMapping
+  @PostMapping(value = "/share")
   public ResponseJson uploadFile(HttpServletRequest request)
       throws IOException, FileUploadException {
 
-    return fileDownloadSvc.uploadFile(request);
+    return fileDownloadSvc.uploadFile(request, FileType.SHARE_FILES);
+  }
+
+  @PostMapping(value = "/attach")
+  public ResponseJson uploadAttachment(HttpServletRequest request)
+      throws IOException, FileUploadException {
+
+    return fileDownloadSvc.uploadFile(request, FileType.ATTACHMENT);
   }
 
   @GetMapping(value = "/{year}/{month}/{day}/{fileId}")

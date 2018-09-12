@@ -17,7 +17,7 @@ import cn.skill6.website.dao.intf.FileDownloadOper;
  * 文件下载操作实现类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月28日 上午12:18:06
  */
 @Repository
@@ -47,7 +47,6 @@ public class FileDownloadImpl implements FileDownloadOper {
 
     fileDownload.setFileUploadDate(new Date());
     fileDownload.setFileDownloadCount(0);
-    fileDownload.setFileType("123");
 
     fileDownloadMapper.insert(fileDownload);
 

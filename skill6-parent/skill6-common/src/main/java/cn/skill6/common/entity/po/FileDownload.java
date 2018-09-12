@@ -2,11 +2,13 @@ package cn.skill6.common.entity.po;
 
 import java.util.Date;
 
+import cn.skill6.common.entity.enums.FileType;
+
 /**
  * 文件下载实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:33:07
  */
 public class FileDownload {
@@ -22,7 +24,7 @@ public class FileDownload {
 
   private String fileHashCode;
 
-  private String fileType;
+  private FileType fileType;
 
   /* (non-Javadoc)
    * @see java.lang.Object#toString()
@@ -52,7 +54,7 @@ public class FileDownload {
       Date fileUploadDate,
       Integer fileDownloadCount,
       String fileHashCode,
-      String fileType) {
+      FileType fileType) {
     this.fileId = fileId;
     this.fileName = fileName;
     this.fileUrl = fileUrl;
@@ -114,11 +116,11 @@ public class FileDownload {
     this.fileHashCode = fileHashCode == null ? null : fileHashCode.trim();
   }
 
-  public String getFileType() {
+  public FileType getFileType() {
     return fileType;
   }
 
-  public void setFileType(String fileType) {
-    this.fileType = fileType == null ? null : fileType.trim();
+  public void setFileType(FileType fileType) {
+    this.fileType = fileType;
   }
 }

@@ -40,5 +40,6 @@
 	<!-- 处理枚举类 -->
 	<typeHandlers>
 		<typeHandler javaType="cn.skill6.common.entity.enums.LoginType" handler="cn.skill6.website.mybatis.GeneralStateFieldHandler" />
+		<typeHandler javaType="cn.skill6.common.entity.enums.FileType" handler="cn.skill6.website.mybatis.GeneralStateFieldHandler" />
 	</typeHandlers>
 </configuration>
