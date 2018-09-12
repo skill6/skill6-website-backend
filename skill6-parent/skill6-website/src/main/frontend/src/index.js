@@ -3,6 +3,7 @@ import BlogList from './component/BlogList'
 import Vue from 'vue'
 import Router from 'vue-router'
 import BlogMain from './component/BlogMain'
+import EditorMain from './component/EditorMain'
 
 Vue.use(Router)
 
@@ -32,7 +33,12 @@ export default new Router({
           component: BlogList
         }
       ]
-    },{
+    },
+    {
+      path: '/blog/editor',
+      component: EditorMain
+    },
+    {
       path: '/*/*/*',
       component: BlogMain
     }]
