@@ -14,20 +14,25 @@
           <span>&nbsp;</span>
         </strong>
       </div>
-      <div class="text-center">©2018 &nbsp;<a href="https://www.skill6.cn" target="_blank">skill6.cn</a> &nbsp;<b>技术流</b>&nbsp; | &nbsp;<a href="http://www.miibeian.gov.cn" target="_blank">渝ICP备16013250号-4</a></div>
+      <div class="text-center">©2018 &nbsp;<a href="https://www.skill6.cn" target="_blank">skill6.cn</a>
+        &nbsp;<b>技术流</b>&nbsp; | &nbsp;<a href="http://www.miibeian.gov.cn" target="_blank">渝ICP备16013250号-4</a></div>
     </div>
     <div style="height: 10px"></div>
   </footer>
 </template>
 
 <script>
-export default {
-  name: "AppFooter"
-};
+  export default {
+    name: "AppFooter"
+  };
 </script>
 
 <style scoped>
-footer {
-  background-color: white;
-}
+  footer {
+    background-color: white;
+  }
+
+  a {
+    color: black;
+  }
 </style>

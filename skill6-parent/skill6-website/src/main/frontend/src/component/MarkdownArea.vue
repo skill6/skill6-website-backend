@@ -38,12 +38,7 @@
       }
     },
     mounted: function () {
-      console.info(jQuery)
       this.toHtml()
-      var script = document.createElement("script")
-      script.src = "/editormd/editormd.min.js";
-      script.type = "text/javascript"
-      $('body').append(script)
     }
   }
 
