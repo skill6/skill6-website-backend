@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import cn.skill6.common.entity.po.FileDownload;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
+import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.FileDownloadSvc;
 import cn.skill6.website.constant.Constant;
 import cn.skill6.website.dao.intf.FileDownloadOper;
@@ -53,10 +54,14 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
     Map<String, String> resultMap = new HashedMap(5);
     resultMap.put("information", "上传成功");
 
-    StringBuffer url = request.getRequestURL();
-    String contextUrl =
-        url.delete(url.length() - request.getRequestURI().length(), url.length()).toString();
-    String fileUrl = contextUrl + "/file/" + dateFormat + "/" + fileDownload.getFileId();
+    StringBuffer contextUrl = RequestParser.parseContextIndex(request);
+    String fileUrl =
+        contextUrl
+            .append("/file/")
+            .append(dateFormat)
+            .append("/")
+            .append(fileDownload.getFileId())
+            .toString();
     resultMap.put("file_url", fileUrl);
 
     return new ResponseJson(true, resultMap);

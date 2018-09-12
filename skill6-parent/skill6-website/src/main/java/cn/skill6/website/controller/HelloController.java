@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+  @SuppressWarnings("unused")
   private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
 
   @ResponseBody
