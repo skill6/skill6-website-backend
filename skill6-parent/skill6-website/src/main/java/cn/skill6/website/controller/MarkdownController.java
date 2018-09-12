@@ -33,6 +33,7 @@ public class MarkdownController {
       return text;
     }
 
+    @SuppressWarnings("unused")
     public void setText(String text) {
       this.text = text;
     }

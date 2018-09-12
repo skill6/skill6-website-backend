@@ -7,34 +7,34 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
 
-import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
 
 /**
- * 文件存储接口
+ * 图片存储接口
  *
  * @author 何明胜
- * @version 1.0.3
- * @since 2018年9月4日 下午9:44:31
+ * @version 1.0.0
+ * @since 2018年9月13日 上午12:46:40
  */
-public interface FileDownloadSvc {
+public interface ImageUploadSvc {
+
   /**
-   * 上传文件
+   * 上传图片
    *
    * @param request
-   * @param attachment
    * @return
    * @throws FileUploadException
    * @throws IOException
    */
-  public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
+  public ResponseJson uploadImage(HttpServletRequest request)
       throws IOException, FileUploadException;
 
   /**
-   * @param fileId
+   * 下载图片
+   *
+   * @param imageId
    * @param response
-   * @return
    * @throws IOException
    */
-  public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException;
+  public void downloadImageById(Long imageId, HttpServletResponse response) throws IOException;
 }
