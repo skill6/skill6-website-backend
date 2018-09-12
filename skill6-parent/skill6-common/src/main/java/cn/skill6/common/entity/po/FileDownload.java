@@ -24,6 +24,27 @@ public class FileDownload {
 
   private String fileType;
 
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */ @Override
+  public String toString() {
+    return "FileDownload [fileId="
+        + fileId
+        + ", fileName="
+        + fileName
+        + ", fileUrl="
+        + fileUrl
+        + ", fileUploadDate="
+        + fileUploadDate
+        + ", fileDownloadCount="
+        + fileDownloadCount
+        + ", fileHashCode="
+        + fileHashCode
+        + ", fileType="
+        + fileType
+        + "]";
+  }
+
   public FileDownload(
       Long fileId,
       String fileName,

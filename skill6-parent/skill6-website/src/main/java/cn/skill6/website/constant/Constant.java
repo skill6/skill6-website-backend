@@ -11,8 +11,8 @@ public final class Constant {
   public static final String GITHUB_MARKDOWN_RENDER_V3_URL = "https://api.github.com/markdown";
 
   /** 文件上传和下载路径 * */
-  public static String FILE_STORE_PATH = "/opt/cn/skill6/files";
+  public static final String FILE_STORE_ROOT_PATH = "/opt/cn/skill6/files/";
 
   /** 图片上传和下载路径 * */
-  public static String IMAGE_STORE_PATH = "/opt/cn/skill6/images";
+  public static final String IMAGE_STORE_ROOT_PATH = "/opt/cn/skill6/images/";
 }

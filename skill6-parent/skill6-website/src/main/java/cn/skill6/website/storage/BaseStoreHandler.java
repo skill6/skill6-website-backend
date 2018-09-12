@@ -7,21 +7,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
-import java.security.MessageDigest;
-import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import cn.skill6.common.constant.Encode;
-import cn.skill6.common.encrypt.Md5Encrypt;
-import cn.skill6.common.exception.Skill6Exception;
+import cn.skill6.common.exception.ParamsException;
 import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.common.sequence.SequenceManager;
 
@@ -29,34 +25,26 @@ import cn.skill6.common.sequence.SequenceManager;
  * 文件存储基类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
-  public String storeFile(InputStream inputStream, String storePath) throws IOException {
+  public void storeFile(InputStream inputStream, String storePath) throws IOException {
     FileOutputStream out = new FileOutputStream(storePath);
     byte buffer[] = new byte[1024];
     int length = 0;
 
-    MessageDigest messageDigest = Md5Encrypt.getMD5Instance();
-
     while ((length = inputStream.read(buffer)) > 0) {
       out.write(buffer, 0, length);
-      messageDigest.update(buffer, 0, length);
     }
 
     inputStream.close();
     out.close();
-
-    // 生成文件的MD5哈希
-    return Md5Encrypt.getHashCode(messageDigest);
   }
 
-  public void readFile(HttpServletResponse response, String storeParentPath, String fileName)
+  public void readFile(HttpServletResponse response, String fileUrl, String fileName)
       throws IOException {
-    OutputStream outputStream = response.getOutputStream();
-
-    File file = new File(storeParentPath + "/" + fileName);
+    File file = new File(fileUrl);
     if (!file.exists()) {
       throw new FileNotFoundException("文件未找到");
     }
@@ -65,16 +53,17 @@ public abstract class BaseStoreHandler {
     String fileNameShow = URLEncoder.encode(fileName, "UTF-8");
     fileNameShow = StringUtils.replace(fileNameShow, "+", "%20");
 
+    response.setContentType("application/x-msdownload");
+    response.setCharacterEncoding("UTF-8");
     // 设置响应头，控制浏览器下载该文件
     response.setHeader("content-disposition", "attachment;filename=" + fileNameShow);
 
-    String storePath = storeParentPath + "/" + fileName;
-
     // 读取要下载的文件，保存到文件输入流
-    FileInputStream in = new FileInputStream(storePath);
+    FileInputStream in = new FileInputStream(fileUrl);
     // 创建缓冲区
     byte buffer[] = new byte[1024];
     int len = 0;
+    OutputStream outputStream = response.getOutputStream();
     // 循环将输入流中的内容读取到缓冲区当中
     while ((len = in.read(buffer)) > 0) {
       // 输出缓冲区的内容到浏览器，实现文件下载
@@ -85,23 +74,19 @@ public abstract class BaseStoreHandler {
     outputStream.close();
   }
 
-  public List<FileItem> parseRequest(HttpServletRequest request) throws FileUploadException {
-    // 使用Apache文件上传组件处理文件上传步骤：
-    // 1、创建一个DiskFileItemFactory工厂
-    DiskFileItemFactory factory = new DiskFileItemFactory();
-    // 2、创建一个文件上传解析器
-    ServletFileUpload servletFileUpload = new ServletFileUpload(factory);
-    // 解决上传文件名的中文乱码
-    servletFileUpload.setHeaderEncoding(Encode.DEFAULT_ENCODE);
-    // 3、判断提交上来的数据是否是上传表单的数据
-    if (!ServletFileUpload.isMultipartContent(request)) {
-      throw new Skill6Exception("数据不包含文件内容");
+  public MultipartHttpServletRequest parseRequest(HttpServletRequest request)
+      throws FileUploadException {
+    // 将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
+    ServletContext servletContext = request.getSession().getServletContext();
+    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(servletContext);
+
+    // 检查form中是否有enctype="multipart/form-data"
+    if (!multipartResolver.isMultipart(request)) {
+      throw new ParamsException("上传中不含有文件！");
     }
 
-    // 4、使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
-    List<FileItem> list = servletFileUpload.parseRequest(request);
-
-    return list;
+    MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+    return multiRequest;
   }
 
   public String isFileExist(String parentFilePath, String suffix) {
@@ -127,7 +112,7 @@ public abstract class BaseStoreHandler {
   public String getFileSuffix(String fileName) {
     // TODO - 后期增加对.tar.gz等的判断
     int index = fileName.lastIndexOf(".");
-    String suffix = fileName.substring(index);
+    String suffix = fileName.substring(index + 1);
 
     return suffix;
   }
