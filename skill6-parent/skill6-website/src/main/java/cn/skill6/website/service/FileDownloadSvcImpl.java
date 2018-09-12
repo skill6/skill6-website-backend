@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.po.FileDownload;
+import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
@@ -26,7 +27,7 @@ import cn.skill6.website.storage.FileStoreHandler;
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
@@ -47,7 +48,13 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
     String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
     String storeParentPath = Constant.FILE_STORE_ROOT_PATH + dateFormat;
 
-    FileDownload fileDownload = fileStoreHandler.fileUploadHandler(request, storeParentPath);
+    FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, storeParentPath);
+    FileDownload fileDownload = new FileDownload();
+
+    fileDownload.setFileId(Long.valueOf(fileAttribute.getId()));
+    fileDownload.setFileName(fileAttribute.getName());
+    fileDownload.setFileUrl(fileAttribute.getUrl());
+    fileDownload.setFileHashCode(fileAttribute.getHashCode());
     fileDownload.setFileType(fileType);
 
     fileDownloadOper.addFileDownload(fileDownload);
