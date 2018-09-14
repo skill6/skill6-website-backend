@@ -5,4 +5,4 @@
  * @version 1.0.0
  * @since 2018年9月2日 下午9:38:29
  */
-package cn.skill6.website.storage;
+package cn.skill6.website.util.storage;

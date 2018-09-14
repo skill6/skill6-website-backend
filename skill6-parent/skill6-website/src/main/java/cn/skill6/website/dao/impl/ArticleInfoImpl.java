@@ -11,15 +11,15 @@ import org.springframework.stereotype.Repository;
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.dao.ArticleInfoMapper;
 import cn.skill6.website.dao.intf.ArticleInfoOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月16日 下午10:29:29
  */
 @Repository

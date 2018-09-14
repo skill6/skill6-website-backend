@@ -20,7 +20,7 @@ import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.ImageUploadSvc;
 import cn.skill6.website.constant.Constant;
 import cn.skill6.website.dao.intf.ImageUploadOper;
-import cn.skill6.website.storage.FileStoreHandler;
+import cn.skill6.website.util.storage.FileStoreHandler;
 
 /**
  * 图片存储服务类

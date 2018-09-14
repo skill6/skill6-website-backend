@@ -48,7 +48,7 @@ mybatis:
     aggressive-lazy-loading: false
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     ## 使用通用处理器转换枚举，枚举使用同一接口。是否能做到通用，待考查
-    default-enum-type-handler: cn.skill6.website.mybatis.GeneralStateFieldHandler
+    default-enum-type-handler: cn.skill6.website.util.mybatis.GeneralStateFieldHandler
 logging:
   level:
     root: INFO

@@ -11,15 +11,15 @@ import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.CategoryInfo;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.dao.CategoryInfoMapper;
 import cn.skill6.website.dao.intf.CategoryInfoOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 目录信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月28日 上午12:17:33
  */
 public class CategoryInfoImpl implements CategoryInfoOper {

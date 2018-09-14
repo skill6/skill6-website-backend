@@ -21,7 +21,7 @@ import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.FileDownloadSvc;
 import cn.skill6.website.constant.Constant;
 import cn.skill6.website.dao.intf.FileDownloadOper;
-import cn.skill6.website.storage.FileStoreHandler;
+import cn.skill6.website.util.storage.FileStoreHandler;
 
 /**
  * 文件存储服务类
