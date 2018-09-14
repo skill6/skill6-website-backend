@@ -23,11 +23,11 @@ public class SequenceManager {
   private static final Logger logger = LoggerFactory.getLogger(SequenceManager.class);
 
   /** 工作区id */
-  @Value("${worker.id}")
+  @Value("${sequence.worker.id}")
   private String workerId;
 
   /** 数据中心Id */
-  @Value("${datacenter.id}")
+  @Value("${sequence.datacenter.id}")
   private String datacenterId;
 
   /** 分布式Id生成序列 */
@@ -46,7 +46,7 @@ public class SequenceManager {
 
     try {
       sequence = new Sequence(Long.valueOf(workerId), Long.valueOf(datacenterId));
-      logger.info("初始化sequence完成. workerId: {}, datacenterId: {}", workerId, datacenterId);
+      logger.info("初始化sequence完成. workerId: {}, datacenterId: {}.", workerId, datacenterId);
     } catch (NumberFormatException e) {
       sequence = new Sequence(0, 0);
       logger.warn(StackTrace2Str.exceptionStackTrace2Str("配置sequence失败，采用默认配置", e));
