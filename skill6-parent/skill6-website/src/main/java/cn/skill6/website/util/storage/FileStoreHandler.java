@@ -1,4 +1,4 @@
-package cn.skill6.website.storage;
+package cn.skill6.website.util.storage;
 
 import java.io.File;
 import java.io.IOException;

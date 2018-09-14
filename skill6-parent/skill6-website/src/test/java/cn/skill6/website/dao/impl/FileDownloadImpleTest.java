@@ -9,17 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import cn.skill6.common.encrypt.Md5Encrypt;
 import cn.skill6.common.entity.po.FileDownload;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.constant.Constant;
 import cn.skill6.website.dao.intf.FileDownloadOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 测试文件信息数据库操作
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月4日 下午11:19:15
  */
 @SpringBootTest

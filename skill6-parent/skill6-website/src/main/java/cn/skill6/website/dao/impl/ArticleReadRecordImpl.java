@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cn.skill6.common.entity.po.ArticleReadRecord;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.dao.ArticleReadRecordMapper;
 import cn.skill6.website.dao.intf.ArticleReadRecordOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文章阅读记录操作实现类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月28日 上午12:17:12
  */
 public class ArticleReadRecordImpl implements ArticleReadRecordOper {

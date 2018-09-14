@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cn.skill6.common.entity.po.ArticleModifyRecord;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.dao.ArticleModifyRecordMapper;
 import cn.skill6.website.dao.intf.ArticleModifyRecordOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文章历史版本操作实现类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月28日 上午1:29:58
  */
 public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
