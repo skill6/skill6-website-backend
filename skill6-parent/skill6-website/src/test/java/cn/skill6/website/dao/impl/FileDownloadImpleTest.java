@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import cn.skill6.common.encrypt.Md5Encrypt;
+import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.po.FileDownload;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
@@ -19,7 +20,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 测试文件信息数据库操作
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月4日 下午11:19:15
  */
 @SpringBootTest
@@ -42,6 +43,7 @@ public class FileDownloadImpleTest extends Skill6WebsiteApplicationTest {
     fileDownload.setFileName(fileName);
     fileDownload.setFileUrl(fileUrl);
     fileDownload.setFileHashCode(fileHashCode);
+    fileDownload.setFileType(FileType.ATTACHMENT);
 
     Long fileIdReturn = fileDownloadOper.addFileDownload(fileDownload);
 
