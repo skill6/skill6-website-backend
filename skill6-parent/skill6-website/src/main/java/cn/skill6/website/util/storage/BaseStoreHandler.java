@@ -1,4 +1,4 @@
-package cn.skill6.website.storage;
+package cn.skill6.website.util.storage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,13 +19,13 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import cn.skill6.common.exception.ParamsException;
 import cn.skill6.common.exception.file.FileNotFoundException;
-import cn.skill6.common.sequence.SequenceManager;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文件存储基类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {

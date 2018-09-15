@@ -1,4 +1,4 @@
-package cn.skill6.website.mybatis;
+package cn.skill6.website.util.mybatis;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 实现Mybatis中状态枚举转换成状态码的通用处理类（数据库字段和Java枚举）
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月16日 上午12:01:07
  */
 @SuppressWarnings("rawtypes")
@@ -45,50 +45,51 @@ public final class GeneralStateFieldHandler<E extends BaseEnum> extends BaseType
   public void setNonNullParameter(PreparedStatement ps, int i, E parameter, JdbcType jdbcType)
       throws SQLException {
     // baseTypeHandler已经帮我们做了parameter的null判断
-    ps.setObject(i, parameter.getStateCode());
+    if (jdbcType == null) {
+      ps.setObject(i, parameter.getStateCode());
+    } else {
+      ps.setObject(i, parameter.getStateCode(), jdbcType.TYPE_CODE);
+    }
   }
 
   @Override
   public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
     // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-    String userState = rs.getString(columnName);
+    String stateCode = rs.getString(columnName);
 
     if (rs.wasNull()) {
       return null;
-    } else {
-      // 根据数据库中的code值，定位EnumStatus子类
-      return locateEnumStatus(userState);
     }
+
+    return locateEnumStatus(stateCode);
   }
 
   @Override
   public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
     // 根据数据库存储类型决定获取类型,本例子中数据库中存放String类型
-    String userState = rs.getString(columnIndex);
+    String stateCode = rs.getString(columnIndex);
 
     if (rs.wasNull()) {
       return null;
-    } else {
-      // 根据数据库中的code值，定位EnumStatus子类
-      return locateEnumStatus(userState);
     }
+
+    return locateEnumStatus(stateCode);
   }
 
   @Override
   public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
     // 根据数据库存储类型决定获取类型，本例子中数据库中存放INT类型
-    String userState = cs.getString(columnIndex);
+    String stateCode = cs.getString(columnIndex);
 
     if (cs.wasNull()) {
       return null;
-    } else {
-      // 根据数据库中的code值,定位EnumStatus子类
-      return locateEnumStatus(userState);
     }
+
+    return locateEnumStatus(stateCode);
   }
 
   /**
-   * 枚举类型转换，由于构造函数获取了枚举的子类enums,让遍历更加高效快捷
+   * 根据数据库中的code值,定位EnumStatus子类
    *
    * @param stateCode 数据库中存储的自定义code属性
    * @return code对应的枚举类

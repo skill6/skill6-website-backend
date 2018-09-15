@@ -22,6 +22,25 @@ public class ImageUpload {
 
   private Integer imageDownloadCount;
 
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */ @Override
+  public String toString() {
+    return "ImageUpload [imageId="
+        + imageId
+        + ", imageName="
+        + imageName
+        + ", imageUrl="
+        + imageUrl
+        + ", imageUploadDate="
+        + imageUploadDate
+        + ", imageType="
+        + imageType
+        + ", imageDownloadCount="
+        + imageDownloadCount
+        + "]";
+  }
+
   public ImageUpload(
       Long imageId,
       String imageName,

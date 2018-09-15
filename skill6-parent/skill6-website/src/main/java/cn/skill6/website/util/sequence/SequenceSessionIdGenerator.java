@@ -1,11 +1,9 @@
-package cn.skill6.common.sequence;
+package cn.skill6.website.util.sequence;
 
 import java.io.Serializable;
 
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
-
-import cn.skill6.common.sequence.SequenceManager;
 
 /**
  * 生成分布式id作为会话id

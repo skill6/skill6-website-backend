@@ -9,15 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.entity.po.ArticleComment;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.dao.ArticleCommentMapper;
 import cn.skill6.website.dao.intf.ArticleCommentOper;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文章评论操作实现类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月27日 下午11:47:52
  */
 public class ArticleCommentImpl implements ArticleCommentOper {

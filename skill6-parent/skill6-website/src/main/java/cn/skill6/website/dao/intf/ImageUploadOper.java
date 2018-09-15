@@ -14,7 +14,7 @@ import cn.skill6.common.entity.po.ImageUpload;
 public interface ImageUploadOper {
   int deleteByImageId(Long imageId);
 
-  int addImageUpload(ImageUpload imageUpload);
+  Long addImageUpload(ImageUpload imageUpload);
 
   ImageUpload findByImageId(Long imageId);
 

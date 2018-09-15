@@ -1,4 +1,4 @@
-package cn.skill6.website.storage;
+package cn.skill6.website.util.storage;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import cn.skill6.common.constant.OsPlatform;
-import cn.skill6.common.entity.po.FileDownload;
+import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.file.FileNotFoundException;
 
@@ -24,21 +24,21 @@ import cn.skill6.common.exception.file.FileNotFoundException;
  * 文件存储处理
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.4
  * @since 2018年9月3日 上午1:34:37
  */
 @Component
 public class FileStoreHandler extends BaseStoreHandler {
   private final Logger logger = LoggerFactory.getLogger(FileStoreHandler.class);
 
-  public FileDownload fileUploadHandler(HttpServletRequest request, String storeParentPath)
+  public FileAttribute fileUploadHandler(HttpServletRequest request, String storeParentPath)
       throws IOException, FileUploadException {
     MultipartHttpServletRequest multiRequest = parseRequest(request);
     if (multiRequest.getFileMap().size() != 1) {
       throw new Skill6Exception("此种方式仅支持单次单文件上传！");
     }
 
-    FileDownload fileDownload = new FileDownload();
+    FileAttribute fileAttribute = new FileAttribute();
 
     File parentFile = new File(storeParentPath);
     if (!parentFile.exists()) {
@@ -73,12 +73,12 @@ public class FileStoreHandler extends BaseStoreHandler {
     long endTime = System.currentTimeMillis();
     logger.info("存储文件耗时：{}ms", endTime - startTime);
 
-    fileDownload.setFileId(Long.valueOf(fileId));
-    fileDownload.setFileName(fileName);
-    fileDownload.setFileUrl(fileUrl);
-    fileDownload.setFileHashCode(fileHashCode);
+    fileAttribute.setId(fileId);
+    fileAttribute.setName(fileName);
+    fileAttribute.setUrl(fileUrl);
+    fileAttribute.setHashCode(fileHashCode);
 
-    return fileDownload;
+    return fileAttribute;
   }
 
   public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName)

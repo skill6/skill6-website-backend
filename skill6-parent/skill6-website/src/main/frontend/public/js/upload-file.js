@@ -5,7 +5,7 @@
  */
 
 //修改此处上传连接即可
-var serverUrl = '/file';
+var serverUrl = '/file/share';
 var $fileList;
 var $btnUpload;
 var state = 'pending';
@@ -89,7 +89,7 @@ function uploadProgress() {
 function callbackFun() {
 	/** 文件上传成功 **/
 	web_uploader.on('uploadSuccess', function (file, response) {
-		$('#' + file.id).find('p.state').text('已上传，文件下载链接为：' + response.message.file_url);
+		$('#' + file.id).find('p.state').html('已上传，文件下载链接为：<a href="' + response.message.file_url + '" target="_blank">' + response.message.file_url + '</a>');
 	});
 
 	/** 文件上传失败 **/

@@ -12,14 +12,14 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.skill6.common.entity.po.UserInfo;
-import cn.skill6.common.sequence.SequenceManager;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 用户信息测试类
  *
  * @author 刘纪春
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年8月21日 下午11:41:17
  */
 @SpringBootTest
