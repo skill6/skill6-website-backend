@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -121,7 +121,7 @@
 					<skipDockerBuild>false</skipDockerBuild>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
@@ -155,7 +155,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 	<url>https://github.com/skill6/skill6</url>
