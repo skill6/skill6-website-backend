@@ -54,3 +54,9 @@ logging:
     root: INFO
     cn.skill6.website.dao: DEBUG
   path: /Users/liujichun/Downloads/elk/log/
+#分布式id的配置
+sequence:
+  worker:
+    id: 1
+  datacenter:
+    id: 1

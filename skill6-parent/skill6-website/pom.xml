@@ -9,6 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>skill6-website</artifactId>
+	<url>https://github.com/skill6/skill6</url>
 
 	<dependencies>
 		<dependency>
@@ -158,5 +159,4 @@
 			</plugin> -->
 		</plugins>
 	</build>
-	<url>https://github.com/skill6/skill6</url>
 </project>
