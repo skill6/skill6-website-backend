@@ -4,17 +4,18 @@
 	<parent>
 		<artifactId>skill6-parent</artifactId>
 		<groupId>cn.skill6</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>skill6-website</artifactId>
+	<url>https://github.com/skill6/skill6</url>
 
 	<dependencies>
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -32,11 +33,11 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 		</dependency>
-    <dependency>
-      <groupId>com.vladsch.flexmark</groupId>
-      <artifactId>flexmark-all</artifactId>
-      <version>0.34.22</version>
-    </dependency>
+		<dependency>
+			<groupId>com.vladsch.flexmark</groupId>
+			<artifactId>flexmark-all</artifactId>
+			<version>0.34.22</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -158,5 +159,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<url>https://github.com/skill6/skill6</url>
 </project>

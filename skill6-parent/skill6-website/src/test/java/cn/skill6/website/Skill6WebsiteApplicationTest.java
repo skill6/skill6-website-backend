@@ -17,6 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.ServletWebRequest;
 
+/**
+ * 测试基类
+ *
+ * @author 刘纪春
+ * @version 1.0.0
+ * @since 2018年9月15日 上午2:05:48
+ */
 @RunWith(SpringRunner.class)
 @Transactional
 @SpringBootTest
