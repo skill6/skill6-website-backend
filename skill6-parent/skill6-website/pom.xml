@@ -108,6 +108,25 @@
 		</dependency>
 	</dependencies>
 
+	<!--考虑到window 和linux环境 npm命令格式的问题，使用maven的profile实现动态指定命令 -->
+	<profiles>
+		<profile>
+			<id>window</id>
+			<properties>
+				<npm>npm.cmd</npm>
+			</properties>
+		</profile>
+		<profile>
+			<id>linux</id>
+			<properties>
+				<npm>npm</npm>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
 	<build>
 		<finalName>skill6-website</finalName>
 		<plugins>
@@ -133,7 +152,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>npm</executable>
+							<executable>${npm}</executable>
 							<arguments>
 								<argument>install</argument>
 							</arguments>
@@ -147,7 +166,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>npm</executable>
+							<executable>${npm}</executable>
 							<arguments>
 								<argument>run</argument>
 								<argument>build</argument>
