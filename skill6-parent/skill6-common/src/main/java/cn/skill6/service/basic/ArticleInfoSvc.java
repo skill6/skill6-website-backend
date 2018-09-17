@@ -1,7 +1,5 @@
 package cn.skill6.service.basic;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
@@ -10,7 +8,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 微服务接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月4日 上午1:00:40
  */
 public interface ArticleInfoSvc {
@@ -45,12 +43,12 @@ public interface ArticleInfoSvc {
    * @return
    * @throws Skill6Exception
    */
-  public ArticleInfo getArticleById(Long articleId);
+  public ResponseJson getArticleById(Long articleId);
 
   /**
    * 获取所有文章
    *
    * @return
    */
-  public List<ArticleInfo> getAllArticles();
+  public ResponseJson getAllArticles();
 }
