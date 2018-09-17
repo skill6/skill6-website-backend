@@ -3,6 +3,7 @@ package cn.skill6.common.transform;
 import java.io.IOException;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 
@@ -16,7 +17,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 public class JacksonUtil {
   // 驼峰和下划线格式自动转换
   private static final ObjectMapper objectMapper =
-      new ObjectMapper().setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE);
+      new ObjectMapper().setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE).setDefaultPropertyInclusion(Include.NON_NULL);
 
   public static ObjectMapper getInstance() {
     return objectMapper;
