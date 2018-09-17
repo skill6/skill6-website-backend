@@ -1,55 +1,95 @@
 package cn.skill6.website.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
 
-import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * Controller测试类
  *
  * @author liujichun
- * @version 1.0.0
+ * @author 何明胜
+ * @version 1.0.2
  */
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) // 指定测试方法按定义的顺序执行
 public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
 
-  @SuppressWarnings("static-access")
-  @Test
-  public void addArticle() throws Exception {
-    this.mockMvc
-        .perform(
-            post("/article", new ArticleInfo())
-                .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-        .andExpect(status().isOk())
-        .andExpect(content().contentType("application/json;charset=UTF-8"))
-        .andExpect(jsonPath("$.success").value(false));
-  }
+  private static String articleId = SequenceManager.getNextIdStr();
 
-  @SuppressWarnings("static-access")
   @Test
-  public void deleteArticleById() throws Exception {
-    this.mockMvc
-        .perform(delete("/article/001").accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+  public void test01AddArticle() throws Exception {
+    LinkedMultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>(10);
+
+    map.add("articleId", articleId);
+    map.add("articleTitle", "Java入门");
+    map.add("articleAuthor", "何明胜");
+    map.add("articleSummary", "Jva入门基础知识");
+    map.add("articleLabel", "Java,入门");
+    map.add("articleCategoryId", "1");
+    map.add("articleHtmlContent", "Html内容");
+    map.add("articleMdContent", "Markdown内容");
+
+    mockMvc
+        .perform(
+            post("/article")
+                .params(map)
+                .accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(jsonPath("$.success").value(true));
   }
 
   @Test
-  public void modifyArticleById() {}
+  public void test02ModifyArticleById() throws Exception {
+    mockMvc
+        .perform(
+            put("/article")
+                .param("articleId", articleId)
+                .accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(jsonPath("$.success").value(true));
+  }
 
   @Test
-  public void getArticleById() {}
+  public void test03GetArticleById() throws Exception {
+    mockMvc
+        .perform(get("/article/" + articleId).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(jsonPath("$.success").value(true));
+  }
 
   @Test
-  public void getAllArticles() {}
+  public void test04GetAllArticles() throws Exception {
+    mockMvc
+        .perform(get("/article/all").accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(jsonPath("$.success").value(true));
+  }
+
+  @Test
+  public void test05DeleteArticleById() throws Exception {
+    mockMvc
+        .perform(delete("/article/" + articleId).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(jsonPath("$.success").value(true));
+  }
 }

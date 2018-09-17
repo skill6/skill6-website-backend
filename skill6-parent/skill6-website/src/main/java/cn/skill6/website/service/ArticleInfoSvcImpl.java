@@ -47,7 +47,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
 
     try {
       articleInfoOper.modifyByArticleId(articleInfo);
-      responseJson = new ResponseJson(false, "修改成功");
+      responseJson = new ResponseJson(true, "修改成功");
     } catch (Exception e) {
       responseJson = new ResponseJson(false, "修改失败");
     }
@@ -55,11 +55,29 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
     return responseJson;
   }
 
-  public ArticleInfo getArticleById(Long articleId) {
-    return articleInfoOper.findByArticleId(articleId);
+  public ResponseJson getArticleById(Long articleId) {
+    ResponseJson responseJson;
+
+    try {
+      ArticleInfo articleInfo = articleInfoOper.findByArticleId(articleId);
+      responseJson = new ResponseJson(true, articleInfo);
+    } catch (Exception e) {
+      responseJson = new ResponseJson(false, "获取id为" + articleId + "的文章信息失败");
+    }
+
+    return responseJson;
   }
 
-  public List<ArticleInfo> getAllArticles() {
-    return articleInfoOper.findAll();
+  public ResponseJson getAllArticles() {
+    ResponseJson responseJson;
+
+    try {
+    	List<ArticleInfo> articleInfos = articleInfoOper.findAll();
+      responseJson = new ResponseJson(true, articleInfos);
+    } catch (Exception e) {
+      responseJson = new ResponseJson(false, "获取id所有文章信息失败");
+    }
+
+    return responseJson;
   }
 }

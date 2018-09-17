@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.common.exception.db.NullPointerException;
 import cn.skill6.website.dao.ArticleInfoMapper;
 import cn.skill6.website.dao.intf.ArticleInfoOper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -44,9 +43,9 @@ public class ArticleInfoImpl implements ArticleInfoOper {
   @Override
   public Long addArticleInfo(ArticleInfo articleInfo) {
     // 设置分布式用户id
-    Long articleId = SequenceManager.getNextId();
+    Long articleId = articleInfo.getArticleId();
     if (articleId == null) {
-      throw new NullPointerException("获取的articleId为空");
+    	articleId = SequenceManager.getNextId();
     }
     articleInfo.setArticleId(articleId);
 
