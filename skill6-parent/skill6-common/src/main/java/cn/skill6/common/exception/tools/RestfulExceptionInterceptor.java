@@ -11,13 +11,13 @@ import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cn.skill6.common.constant.Encode;
-import cn.skill6.common.constant.HttpConstants;
 import cn.skill6.common.constant.HttpStatusCode;
 import cn.skill6.common.entity.vo.ResponseJson;
 
@@ -25,7 +25,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * restful请求异常拦截器
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年5月19日 上午1:13:11
  */
 public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
@@ -66,7 +66,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
    */
   private void handleUnauthenticatedException(HttpServletResponse response) {
     try {
-      response.setContentType(HttpConstants.RESPONSE_JSON);
+      response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
       response.setCharacterEncoding(Encode.DEFAULT_ENCODE);
       PrintWriter writer = response.getWriter();
 
@@ -87,7 +87,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
    */
   private void handleUnauthorizedException(HttpServletResponse response) {
     try {
-      response.setContentType(HttpConstants.RESPONSE_JSON);
+      response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
       response.setCharacterEncoding(Encode.DEFAULT_ENCODE);
       PrintWriter writer = response.getWriter();
 

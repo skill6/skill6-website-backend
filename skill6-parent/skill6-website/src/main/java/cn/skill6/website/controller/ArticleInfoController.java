@@ -1,7 +1,5 @@
 package cn.skill6.website.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +18,7 @@ import cn.skill6.service.basic.ArticleInfoSvc;
  * 文章信息控制器
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月16日 下午11:05:32
  */
 @RestController
@@ -47,12 +45,12 @@ public class ArticleInfoController {
   }
 
   @GetMapping(value = "/{articleId}")
-  public ArticleInfo getArticleById(@PathVariable(name = "articleId") Long articleId) {
+  public ResponseJson getArticleById(@PathVariable(name = "articleId") Long articleId) {
     return articleInfoSvc.getArticleById(articleId);
   }
 
   @GetMapping(value = "/all")
-  public List<ArticleInfo> getAllArticles() {
+  public ResponseJson getAllArticles() {
     return articleInfoSvc.getAllArticles();
   }
 }

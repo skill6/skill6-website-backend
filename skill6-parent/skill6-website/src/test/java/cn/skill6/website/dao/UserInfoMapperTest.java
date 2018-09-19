@@ -23,6 +23,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * @since 2018年8月21日 下午11:41:17
  */
 @SpringBootTest
+@Transactional
 public class UserInfoMapperTest extends Skill6WebsiteApplicationTest {
 
   @Autowired private UserInfoMapper userInfoMapper;

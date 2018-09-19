@@ -15,7 +15,7 @@ import cn.skill6.common.sequence.Sequence;
  * 雪花算法管理类,产生分布式id
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.4
  * @since 2018年4月16日 下午10:07:43
  */
 @Component
@@ -59,7 +59,20 @@ public class SequenceManager {
    * @return
    */
   public static Long getNextId() {
-    return new Long(sequence.nextId());
+    Long id = null;
+
+    for (int i = 1; i < 11; i++) {
+      try {
+        id = sequence.nextId();
+      } catch (Exception e) {
+        logger.warn("第{}次生成id失败", i);
+        continue;
+      }
+
+      break;
+    }
+
+    return id;
   }
 
   /**
@@ -68,6 +81,6 @@ public class SequenceManager {
    * @return
    */
   public static String getNextIdStr() {
-    return String.valueOf(sequence.nextId());
+    return String.valueOf(getNextId());
   }
 }
