@@ -4,18 +4,35 @@
 	<parent>
 		<artifactId>skill6-parent</artifactId>
 		<groupId>cn.skill6</groupId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>skill6-website</artifactId>
 	<url>https://github.com/skill6/skill6</url>
 
+	<properties>
+		<!-- common 工程依赖版本 -->
+		<cn.skill6.skill6-common.version>0.0.3-SNAPSHOT</cn.skill6.skill6-common.version>
+
+		<!--前台依赖版本统一管理 -->
+		<org.webjars.bower.jquery.version>3.3.1</org.webjars.bower.jquery.version>
+		<org.webjars.bootstrap.version>3.3.7</org.webjars.bootstrap.version>
+		<org.webjars.vue.version>2.5.13</org.webjars.vue.version>
+		<org.webjars.bower.vue-router.version>3.0.1</org.webjars.bower.vue-router.version>
+		<org.webjars.npm.codemirror.version>5.34.0</org.webjars.npm.codemirror.version>
+		<org.webjars.momentjs.version>2.21.0</org.webjars.momentjs.version>
+		<org.webjars.bower.fontawesome.version>4.7.0</org.webjars.bower.fontawesome.version>
+		<org.webjars.toastr.version>2.1.2</org.webjars.toastr.version>
+		<org.webjars.jquery-cookie.version>1.4.1-1</org.webjars.jquery-cookie.version>
+		<org.webjars.webjars-locator.version>0.31</org.webjars.webjars-locator.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>${cn.skill6.skill6-common.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -36,75 +53,62 @@
 		<dependency>
 			<groupId>com.vladsch.flexmark</groupId>
 			<artifactId>flexmark-all</artifactId>
-			<version>0.34.22</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring-boot-web-starter</artifactId>
-			<version>1.4.0-RC2</version>
 		</dependency>
 
 		<!--前台依赖 -->
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>jquery</artifactId>
-			<version>3.3.1</version>
+			<version>${org.webjars.bower.jquery.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.7</version>
+			<version>${org.webjars.bootstrap.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>vue</artifactId>
-			<version>2.5.13</version>
+			<version>${org.webjars.vue.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>vue-router</artifactId>
-			<version>3.0.1</version>
+			<version>${org.webjars.bower.vue-router.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>codemirror</artifactId>
-			<version>5.34.0</version>
+			<version>${org.webjars.npm.codemirror.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>momentjs</artifactId>
-			<version>2.21.0</version>
+			<version>${org.webjars.momentjs.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>fontawesome</artifactId>
-			<version>4.7.0</version>
+			<version>${org.webjars.bower.fontawesome.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>toastr</artifactId>
-			<version>2.1.2</version>
+			<version>${org.webjars.toastr.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-cookie</artifactId>
-			<version>1.4.1-1</version>
+			<version>${org.webjars.jquery-cookie.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator</artifactId>
-			<version>0.31</version>
-		</dependency>
-		<!-- 文件上传 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<version>${org.webjars.webjars-locator.version}</version>
 		</dependency>
 	</dependencies>
 

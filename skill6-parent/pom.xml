@@ -11,7 +11,8 @@
 
 	<groupId>cn.skill6</groupId>
 	<artifactId>skill6-parent</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
+
 	<packaging>pom</packaging>
 	<name>skill6-parent</name>
 
@@ -60,12 +61,14 @@
 		<org.apache.xbean.xbean-spring.version>4.6</org.apache.xbean.xbean-spring.version>
 		<org.csource.fastdfs-client-java.version>1.28</org.csource.fastdfs-client-java.version>
 		<com.aliyun.aliyun-java-sdk-core.version>3.5.1</com.aliyun.aliyun-java-sdk-core.version>
+		<org.apache.commons.commons-lang3.version>3.7</org.apache.commons.commons-lang3.version>
 		<biz.paluch.logging.logstash-gelf.version>1.11.2</biz.paluch.logging.logstash-gelf.version>
-		<com.alibaba.druid-spring-boot-starter>1.1.10</com.alibaba.druid-spring-boot-starter>
+		<com.vladsch.flexmark.flexmark-all.version>0.34.22</com.vladsch.flexmark.flexmark-all.version>
 		<com.aliyun.aliyun-java-sdk-dysmsapi.version>1.1.0</com.aliyun.aliyun-java-sdk-dysmsapi.version>
 		<org.eclipse.jetty.jetty-servlet.version>7.6.21.v20160908</org.eclipse.jetty.jetty-servlet.version>
-		<org.apache.commons.commons-lang3.version>3.7</org.apache.commons.commons-lang3.version>
-		<org.mybatis.spring.boot.mybatis-spring-boot-starter>1.3.2</org.mybatis.spring.boot.mybatis-spring-boot-starter>
+		<com.alibaba.druid-spring-boot-starter.version>1.1.10</com.alibaba.druid-spring-boot-starter.version>
+		<org.apache.shiro.shiro-spring-boot-web-starter.version>1.4.0-RC2</org.apache.shiro.shiro-spring-boot-web-starter.version>
+		<org.mybatis.spring.boot.mybatis-spring-boot-starter.version>1.3.2</org.mybatis.spring.boot.mybatis-spring-boot-starter.version>
 
 		<!-- 插件版本管理 -->
 		<org.eclipse.m2e.lifecycle-mapping.version>1.0.0</org.eclipse.m2e.lifecycle-mapping.version>
@@ -320,13 +323,23 @@
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>${com.alibaba.druid-spring-boot-starter}</version>
+				<version>${com.alibaba.druid-spring-boot-starter.version}</version>
 			</dependency>
 			<!--mybatis推荐starter -->
 			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
-				<version>${org.mybatis.spring.boot.mybatis-spring-boot-starter}</version>
+				<version>${org.mybatis.spring.boot.mybatis-spring-boot-starter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vladsch.flexmark</groupId>
+				<artifactId>flexmark-all</artifactId>
+				<version>${com.vladsch.flexmark.flexmark-all.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring-boot-web-starter</artifactId>
+				<version>${org.apache.shiro.shiro-spring-boot-web-starter.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
