@@ -23,13 +23,13 @@ import cn.skill6.website.util.sequence.SequenceManager;
  *
  * @author liujichun
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  */
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // 指定测试方法按定义的顺序执行
 public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
 
-  private static String articleId = SequenceManager.getNextIdStr();
+  private String articleId = SequenceManager.getNextIdStr();
 
   @Test
   public void test01AddArticle() throws Exception {
