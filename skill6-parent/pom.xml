@@ -35,31 +35,17 @@
 
 		<!-- 依赖版本管理 -->
 		<jstl.version>1.2</jstl.version>
-		<junit.version>4.12</junit.version>
-		<quartz.version>2.2.3</quartz.version>
 		<aspectj.version>1.8.13</aspectj.version>
 		<org.jsoup.version>1.11.2</org.jsoup.version>
-		<org.mybatis.version>3.4.5</org.mybatis.version>
 		<com.sun.mail.version>1.6.0</com.sun.mail.version>
 		<org.javassist.version>3.22.0-GA</org.javassist.version>
-		<commons-logging.version>1.1.3</commons-logging.version>
 		<org.apache.shiro.version>1.4.0</org.apache.shiro.version>
 		<com.google.guava.version>24.0-jre</com.google.guava.version>
 		<commons.fileupload.version>1.3.3</commons.fileupload.version>
-		<redis.clients.jedis.version>2.9.0</redis.clients.jedis.version>
-		<commons-collections.version>3.2.1</commons-collections.version>
 		<org.apache.activemq.version>5.15.3</org.apache.activemq.version>
-		<org.slf4j.slf4j-api.version>1.7.25</org.slf4j.slf4j-api.version>
-		<com.google.code.gson.version>2.8.2</com.google.code.gson.version>
 		<com.fasterxml.jackson.version>2.9.4</com.fasterxml.jackson.version>
 		<org.springframework.version>4.3.14.RELEASE</org.springframework.version>
-		<org.apache.logging.log4j.version>2.9.0</org.apache.logging.log4j.version>
 		<javax.servlet.jsp.jsp-api.version>2.3.1</javax.servlet.jsp.jsp-api.version>
-		<javax.servlet.servlet-api.version>3.1.0</javax.servlet.servlet-api.version>
-		<org.mybatis.mybatis-spring.version>1.3.1</org.mybatis.mybatis-spring.version>
-		<mysql.mysql-connector-java.version>5.1.45</mysql.mysql-connector-java.version>
-		<org.apache.xbean.xbean-spring.version>4.6</org.apache.xbean.xbean-spring.version>
-		<org.csource.fastdfs-client-java.version>1.28</org.csource.fastdfs-client-java.version>
 		<com.aliyun.aliyun-java-sdk-core.version>3.5.1</com.aliyun.aliyun-java-sdk-core.version>
 		<org.apache.commons.commons-lang3.version>3.7</org.apache.commons.commons-lang3.version>
 		<biz.paluch.logging.logstash-gelf.version>1.11.2</biz.paluch.logging.logstash-gelf.version>
@@ -71,8 +57,9 @@
 		<org.mybatis.spring.boot.mybatis-spring-boot-starter.version>1.3.2</org.mybatis.spring.boot.mybatis-spring-boot-starter.version>
 
 		<!-- 插件版本管理 -->
+		<org.jacoco.jacoco-maven-plugin.version>0.7.9</org.jacoco.jacoco-maven-plugin.version>
+		<com.spotify.docker-maven-plugin.version>1.1.1</com.spotify.docker-maven-plugin.version>
 		<org.eclipse.m2e.lifecycle-mapping.version>1.0.0</org.eclipse.m2e.lifecycle-mapping.version>
-		<org.apache.maven.plugins.maven-jar-plugin.version>3.0.2</org.apache.maven.plugins.maven-jar-plugin.version>
 		<org.apache.maven.plugins.maven-source-plugin.version>3.0.1</org.apache.maven.plugins.maven-source-plugin.version>
 		<org.apache.maven.plugins.maven-javadoc-plugin.version>2.10.4</org.apache.maven.plugins.maven-javadoc-plugin.version>
 		<org.apache.maven.plugins.maven-compiler-plugin.version>3.5.1</org.apache.maven.plugins.maven-compiler-plugin.version>
@@ -114,12 +101,6 @@
 				<artifactId>logstash-gelf</artifactId>
 				<version>${biz.paluch.logging.logstash-gelf.version}</version>
 			</dependency>
-			<!-- java servlet -->
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${javax.servlet.servlet-api.version}</version>
-			</dependency>
 			<!-- 解析html文件 -->
 			<dependency>
 				<groupId>org.jsoup</groupId>
@@ -132,23 +113,11 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${com.fasterxml.jackson.version}</version>
 			</dependency>
-			<!-- google gson -->
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>${com.google.code.gson.version}</version>
-			</dependency>
 			<!-- java mail -->
 			<dependency>
 				<groupId>com.sun.mail</groupId>
 				<artifactId>javax.mail</artifactId>
 				<version>${com.sun.mail.version}</version>
-			</dependency>
-			<!-- jedis -->
-			<dependency>
-				<groupId>redis.clients</groupId>
-				<artifactId>jedis</artifactId>
-				<version>${redis.clients.jedis.version}</version>
 			</dependency>
 			<!-- file upload -->
 			<dependency>
@@ -161,13 +130,6 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${com.google.guava.version}</version>
-			</dependency>
-			<!-- junit -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<!--使用AspectJ方式注解需要相应的包 -->
 			<dependency>
@@ -186,24 +148,6 @@
 				<artifactId>javassist</artifactId>
 				<version>${org.javassist.version}</version>
 			</dependency>
-			<!-- mybatis -->
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis</artifactId>
-				<version>${org.mybatis.version}</version>
-			</dependency>
-			<!-- mysql -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.mysql-connector-java.version}</version>
-			</dependency>
-			<!-- mybatis-spring -->
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis-spring</artifactId>
-				<version>${org.mybatis.mybatis-spring.version}</version>
-			</dependency>
 			<!-- 阿里短信 -->
 			<dependency>
 				<groupId>com.aliyun</groupId>
@@ -214,12 +158,6 @@
 				<groupId>com.aliyun</groupId>
 				<artifactId>aliyun-java-sdk-core</artifactId>
 				<version>${com.aliyun.aliyun-java-sdk-core.version}</version>
-			</dependency>
-			<!-- slf4j api -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${org.slf4j.slf4j-api.version}</version>
 			</dependency>
 			<!-- jetty -->
 			<dependency>
@@ -247,12 +185,6 @@
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-spring</artifactId>
 				<version>${org.apache.activemq.version}</version>
-			</dependency>
-			<!-- xbean -->
-			<dependency>
-				<groupId>org.apache.xbean</groupId>
-				<artifactId>xbean-spring</artifactId>
-				<version>${org.apache.xbean.xbean-spring.version}</version>
 			</dependency>
 			<!-- shiro相关 -->
 			<dependency>
@@ -302,17 +234,6 @@
 				<artifactId>javax.servlet.jsp-api</artifactId>
 				<version>${javax.servlet.jsp.jsp-api.version}</version>
 			</dependency>
-			<!-- common -->
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>${commons-logging.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-collections</groupId>
-				<artifactId>commons-collections</artifactId>
-				<version>${commons-collections.version}</version>
-			</dependency>
 			<!-- 定时线程池 -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -345,12 +266,48 @@
 	</dependencyManagement>
 
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+
+		<!-- 插件版本管理 -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
-					<version>1.1.1</version>
+					<version>${com.spotify.docker-maven-plugin.version}</version>
 					<configuration>
 						<imageName>${project.name}:${project.version}</imageName>
 						<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
@@ -441,10 +398,10 @@
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-javadoc-plugin.version}</version>
 					<configuration>
-						<encoding>UTF-8</encoding>
+						<encoding>${project.build.sourceEncoding}</encoding>
 						<aggregate>true</aggregate>
-						<charset>UTF-8</charset>
-						<docencoding>UTF-8</docencoding>
+						<charset>${project.build.sourceEncoding}</charset>
+						<docencoding>${project.build.sourceEncoding}</docencoding>
 					</configuration>
 					<executions>
 						<execution>
@@ -475,57 +432,26 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${org.jacoco.jacoco-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.m2e</groupId>
-				<artifactId>lifecycle-mapping</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.9</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 	</build>
 </project>
