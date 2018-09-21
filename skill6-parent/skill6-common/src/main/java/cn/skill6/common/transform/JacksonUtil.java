@@ -11,13 +11,15 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
  * 封装jackson转换为全局方法
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月26日 下午11:36:57
  */
 public class JacksonUtil {
   // 驼峰和下划线格式自动转换
   private static final ObjectMapper objectMapper =
-      new ObjectMapper().setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE).setDefaultPropertyInclusion(Include.NON_NULL);
+      new ObjectMapper()
+          .setPropertyNamingStrategy(SnakeCaseStrategy.SNAKE_CASE)
+          .setDefaultPropertyInclusion(Include.NON_NULL);
 
   public static ObjectMapper getInstance() {
     return objectMapper;
@@ -27,16 +29,49 @@ public class JacksonUtil {
     return objectMapper.writeValueAsString(object);
   }
 
+  /**
+   * entity包含实体类、Map、List等
+   *
+   * @param map
+   * @param clazz
+   * @return
+   * @throws IOException
+   */
   public static <T> T map2Entity(Map<String, String> map, Class<T> clazz) throws IOException {
     return (T) objectMapper.convertValue(map, clazz);
   }
 
   @SuppressWarnings("unchecked")
-  public static <T> Map<String, String> entity2Map(T entity) throws IOException {
+  public static <T, E> Map<String, T> entity2Map(E entity) throws IOException {
     return entity2Entity(entity, Map.class);
   }
 
+  /**
+   * entity包含实体类、Map、List等
+   *
+   * @param entity
+   * @param clazz
+   * @return
+   * @throws IOException
+   */
   public static <T, E> T entity2Entity(E entity, Class<T> clazz) throws IOException {
     return (T) objectMapper.convertValue(entity, clazz);
+  }
+
+  /**
+   * entity包含实体类、Map、List等
+   *
+   * @param jsonStr
+   * @param clazz
+   * @return
+   * @throws IOException
+   */
+  public static <T, E> T jsonStr2Entity(String jsonStr, Class<T> clazz) throws IOException {
+    return (T) objectMapper.readValue(jsonStr, clazz);
+  }
+
+  @SuppressWarnings("unchecked")
+  public static <T> Map<String, T> jsonStr2Map(String jsonStr) throws IOException {
+    return jsonStr2Entity(jsonStr, Map.class);
   }
 }
