@@ -1,15 +1,15 @@
 package cn.skill6.website.util.sequence;
 
-import javax.annotation.PostConstruct;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.sequence.Sequence;
+import cn.skill6.website.config.Skill6Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * 雪花算法管理类,产生分布式id
@@ -22,19 +22,15 @@ import cn.skill6.common.sequence.Sequence;
 public class SequenceManager {
   private static final Logger logger = LoggerFactory.getLogger(SequenceManager.class);
 
-  /** 工作区id */
-  @Value("${sequence.worker.id}")
-  private String workerId;
-
-  /** 数据中心Id */
-  @Value("${sequence.datacenter.id}")
-  private String datacenterId;
+  @Autowired private Skill6Properties skill6Properties;
 
   /** 分布式Id生成序列 */
   private static Sequence sequence = new Sequence(0, 0);
 
   @PostConstruct
   public void init() {
+    String workerId = skill6Properties.getSequence().getWorker().getId();
+    String datacenterId = skill6Properties.getSequence().getDataCenter().getId();
     if (BaseUtils.isEmpty(workerId)) {
       workerId = "0";
       logger.info("workerId is empty, initialize to 0.");

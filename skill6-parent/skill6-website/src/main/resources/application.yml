@@ -4,17 +4,17 @@ server:
     enabled: true
     min-response-size: 1024
     mime-types:
-      - text/html
-      - text/xml
-      - text/plain
-      - text/css
-      - text/javascript
-      - application/javascript
-      - application/json
-      - application/xml
-      - image/png
-      - image/jpeg
-      - image/jpg
+    - text/html
+    - text/xml
+    - text/plain
+    - text/css
+    - text/javascript
+    - application/javascript
+    - application/json
+    - application/xml
+    - image/png
+    - image/jpeg
+    - image/jpg
 spring:
   application:
     name: skill6-website
@@ -55,10 +55,12 @@ logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
-  path: /Users/liujichun/Downloads/elk/log/
-#分布式id的配置
-sequence:
-  worker:
-    id: 1
-  datacenter:
-    id: 1
+#统一配置入口
+skill6:
+  file-path: file/
+  image-path: image/
+  sequence:
+    worker:
+      id: 1
+    data-center:
+      id: 1

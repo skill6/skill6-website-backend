@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.skill6.website.config.Skill6Properties;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,6 +40,8 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
 
   @Autowired private FileStoreHandler fileStoreHandler;
 
+  @Autowired private Skill6Properties skill6Properties;
+
   /* (non-Javadoc)
    * @see cn.skill6.service.basic.FileDownloadSvc#uploadFile(javax.servlet.http.HttpServletRequest)
    */
@@ -46,7 +49,7 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
   public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
       throws IOException, FileUploadException {
     String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
-    String storeParentPath = Constant.FILE_STORE_ROOT_PATH + dateFormat;
+    String storeParentPath = skill6Properties.getFilePath() + dateFormat;
 
     FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, storeParentPath);
     FileDownload fileDownload = new FileDownload();
