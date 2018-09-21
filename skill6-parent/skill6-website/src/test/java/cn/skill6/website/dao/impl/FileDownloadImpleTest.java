@@ -2,6 +2,7 @@ package cn.skill6.website.dao.impl;
 
 import static org.junit.Assert.assertEquals;
 
+import cn.skill6.website.config.Skill6Properties;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,12 +31,14 @@ public class FileDownloadImpleTest extends Skill6WebsiteApplicationTest {
   @Qualifier("fileDownloadImpl")
   private FileDownloadOper fileDownloadOper;
 
+  @Autowired private Skill6Properties skill6Properties;
+
   @Test
   public void TestAddFileDownload() {
     String fileId = SequenceManager.getNextIdStr();
     String fileName = "Java虚拟机";
     String fileUrl =
-        Constant.FILE_STORE_ROOT_PATH + DateFormat.formatDateYMD("yyyy/MM/dd") + "/" + fileId;
+        skill6Properties.getFilePath() + DateFormat.formatDateYMD("yyyy/MM/dd") + "/" + fileId;
     String fileHashCode = Md5Encrypt.getMD5Code("测试");
 
     FileDownload fileDownload = new FileDownload();
