@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.skill6.website.config.Skill6Properties;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +18,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.ImageUploadSvc;
-import cn.skill6.website.constant.Constant;
+import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.ImageUploadOper;
 import cn.skill6.website.util.storage.FileStoreHandler;
 
@@ -27,7 +26,7 @@ import cn.skill6.website.util.storage.FileStoreHandler;
  * 图片存储服务类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月13日 上午12:45:47
  */
 @Service

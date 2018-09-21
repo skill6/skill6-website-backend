@@ -16,7 +16,7 @@ import cn.skill6.common.exception.codec.CodecException;
  * 类型转换
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年3月1日 下午1:01:47
  */
 public class ConvertType {
@@ -114,15 +114,5 @@ public class ConvertType {
    */
   public static String byteArray2String(byte[] byteArray) throws UnsupportedEncodingException {
     return new String(byteArray, Encode.DEFAULT_ENCODE);
-  }
-
-  /**
-   * 判断是否为空
-   *
-   * @param byteArray
-   * @return
-   */
-  public static boolean isEmpty(byte[] byteArray) {
-    return (byteArray == null || byteArray.length == 0);
   }
 }
