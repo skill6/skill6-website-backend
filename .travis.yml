@@ -10,13 +10,14 @@ before_install:
   - sudo service mysql restart
 install:
   - cd skill6-parent
+  - mvn clean package -Dskill6.mysql.password= -Dskill6.mysql.url=jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8 -Dskill6.mysql.username=root -Dskill6.redis.host=localhost -Dskill6.redis.password= -Dskill6.redis.port=6379
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 env:
   global:
-    - \"skill6.mysql.passwrod\"=
-    - \"skill6.mysql.url\"="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8"
-    - \"skill6.mysql.username\"=root
-    - \"skill6.redis.host\"=localhost
-    - \"skill6.redis.password\"=
-    - \"skill6.redis.port\"=6379
+    - SKILL6_MYSQL_PASSWROD=
+    - SKILL6_MYSQL_URL="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8"
+    - SKILL6_MYSQL_USERNAME=root
+    - SKILL6_REDIS_HOST=localhost
+    - SKILL6_REDIS_PASSWORD=
+    - SKILL6_REDIS_PORT=6379
