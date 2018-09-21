@@ -2,7 +2,7 @@ package cn.skill6.common.entity.po;
 
 import java.util.Date;
 
-import cn.skill6.common.entity.po.base.Pagination;
+import cn.skill6.common.entity.po.base.PaginationAndSort;
 
 /**
  * 文章信息实体类
@@ -11,7 +11,7 @@ import cn.skill6.common.entity.po.base.Pagination;
  * @version 1.0.2
  * @since 2018年8月15日 下午11:30:31
  */
-public class ArticleInfo extends Pagination {
+public class ArticleInfo extends PaginationAndSort {
   private Long articleId;
 
   private String articleTitle;
