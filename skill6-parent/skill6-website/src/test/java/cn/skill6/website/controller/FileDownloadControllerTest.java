@@ -1,12 +1,8 @@
 package cn.skill6.website.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Map;
-
+import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.transform.JacksonUtil;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -15,9 +11,12 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MvcResult;
 
-import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.common.transform.JacksonUtil;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import java.util.Map;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * 文件下载测试类
@@ -42,12 +41,7 @@ public class FileDownloadControllerTest extends Skill6WebsiteApplicationTest {
     fileUploadMock("/file/attach");
   }
 
-  /**
-   * 文件上传公共函数
-   *
-   * @param uploadUrl
-   * @throws Exception
-   */
+  /** 文件上传公共函数 */
   @SuppressWarnings("unchecked")
   public void fileUploadMock(String uploadUrl) throws Exception {
     MockMultipartFile firstFile =

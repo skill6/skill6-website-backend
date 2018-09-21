@@ -1,42 +1,34 @@
-{"properties": [
-  {
-    "name": "skill6.mysql.username",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.mysql.username'"
-  },
-  {
-    "name": "skill6.mysql.passwrod",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.mysql.passwrod'"
-  },
-  {
-    "name": "skill6.mysql.url",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.mysql.url'"
-  },
-  {
-    "name": "skill6.redis.host",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.redis.host'"
-  },
-  {
-    "name": "skill6.redis.password",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.redis.password'"
-  },
-  {
-    "name": "skill6.redis.port",
-    "type": "java.lang.String",
-    "description": "A description for 'skill6.redis.port'"
-  },
-  {
-    "name": "sequence.worker.id",
-    "type": "java.lang.String",
-    "description": "A description for 'sequence.worker.id'"
-  },
-  {
-    "name": "sequence.datacenter.id",
-    "type": "java.lang.String",
-    "description": "A description for 'sequence.datacenter.id'"
-  }
-]}
+{
+  "properties": [
+    {
+      "name": "skill6.mysql.username",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.mysql.username'"
+    },
+    {
+      "name": "skill6.mysql.passwrod",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.mysql.passwrod'"
+    },
+    {
+      "name": "skill6.mysql.url",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.mysql.url'"
+    },
+    {
+      "name": "skill6.redis.host",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.redis.host'"
+    },
+    {
+      "name": "skill6.redis.password",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.redis.password'"
+    },
+    {
+      "name": "skill6.redis.port",
+      "type": "java.lang.String",
+      "description": "A description for 'skill6.redis.port'"
+    }
+  ]
+}
