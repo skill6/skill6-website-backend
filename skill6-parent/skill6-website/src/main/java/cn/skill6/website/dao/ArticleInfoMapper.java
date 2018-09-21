@@ -23,4 +23,6 @@ public interface ArticleInfoMapper {
   ArticleInfo selectByPrimaryKey(Long articleId);
 
   List<ArticleInfo> selectAll();
+  
+  List<ArticleInfo> selectByParams(ArticleInfo articleInfo);
 }

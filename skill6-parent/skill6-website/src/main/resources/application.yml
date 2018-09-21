@@ -51,6 +51,12 @@ mybatis:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     ## 使用通用处理器转换枚举，枚举使用同一接口。是否能做到通用，待考查
     default-enum-type-handler: cn.skill6.website.util.mybatis.GeneralStateFieldHandler
+#pagehelper分页配置 第二种和第三种不需要 重点讲的第一种需要
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
 logging:
   level:
     root: INFO
