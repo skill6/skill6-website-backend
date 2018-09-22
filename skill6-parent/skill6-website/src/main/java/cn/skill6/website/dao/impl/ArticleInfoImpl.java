@@ -120,7 +120,7 @@ public class ArticleInfoImpl implements ArticleInfoOper {
    */ @Override
   public List<ArticleInfo> findByParams(ArticleInfo articleInfo) {
     // 设置分页数据
-    Page<ArticleInfo> page = PageHelper.startPage(1, 10);
+    Page<ArticleInfo> page = PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
 
     List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
 

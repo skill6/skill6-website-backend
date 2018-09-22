@@ -43,6 +43,10 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
     // 排序方式
     articleInfo.setSortType(SortType.DESCENDING);
 
+    // 设置分页
+    articleInfo.setPageNum(1);
+    articleInfo.setPageSize(10);
+
     List<ArticleInfo> articleInfos = articleInfoOper.findByParams(articleInfo);
 
     for (ArticleInfo articleInfo2 : articleInfos) {
