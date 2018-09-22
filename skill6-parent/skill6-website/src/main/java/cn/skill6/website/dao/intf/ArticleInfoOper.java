@@ -9,7 +9,7 @@ import cn.skill6.common.entity.po.ArticleInfo;
  *
  * @author 何明胜
  * @created at 2018年8月16日 下午10:28:04
- * @version 1.0.0
+ * @version 1.0.1
  */
 public interface ArticleInfoOper {
 
@@ -22,4 +22,6 @@ public interface ArticleInfoOper {
   List<ArticleInfo> findAll();
 
   void modifyByArticleId(ArticleInfo articleInfo);
+  
+  List<ArticleInfo> findByParams(ArticleInfo articleInfo);
 }

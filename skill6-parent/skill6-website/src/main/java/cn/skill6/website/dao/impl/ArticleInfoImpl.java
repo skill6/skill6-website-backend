@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.website.dao.ArticleInfoMapper;
@@ -18,7 +21,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.4
  * @since 2018年8月16日 下午10:29:29
  */
 @Repository
@@ -45,7 +48,7 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     // 设置分布式用户id
     Long articleId = articleInfo.getArticleId();
     if (articleId == null) {
-    	articleId = SequenceManager.getNextId();
+      articleId = SequenceManager.getNextId();
     }
     articleInfo.setArticleId(articleId);
 
@@ -110,5 +113,19 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     articleInfoMapper.updateByPrimaryKey(articleInfoNew);
 
     logger.info("成功修改id为{}的文章内容", articleInfo.getArticleId());
+  }
+
+  /* (non-Javadoc)
+   * @see cn.skill6.website.dao.intf.ArticleInfoOper#findByParams(cn.skill6.common.entity.po.ArticleInfo)
+   */ @Override
+  public List<ArticleInfo> findByParams(ArticleInfo articleInfo) {
+    // 设置分页数据
+    Page<ArticleInfo> page = PageHelper.startPage(1, 10);
+
+    List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
+
+    logger.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());
+
+    return articleInfos;
   }
 }
