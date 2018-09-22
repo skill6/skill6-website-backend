@@ -45,7 +45,13 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
     if (StringUtils.isNotBlank(agent) && agent.toLowerCase().contains("baiduspider")) {
       response.setContentType(MediaType.TEXT_HTML_VALUE);
       response.setCharacterEncoding("utf-8");
-      response.getWriter().write(getSource(request.getRequestURL().toString()));
+      String source;
+      try {
+        source = getSource(request.getRequestURL().toString());
+      } catch (Exception e) {
+        return true;
+      }
+      response.getWriter().write(source);
       return false;
     }
     return true;
