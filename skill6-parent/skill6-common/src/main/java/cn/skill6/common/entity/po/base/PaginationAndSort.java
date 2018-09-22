@@ -1,26 +1,25 @@
 package cn.skill6.common.entity.po.base;
 
-import cn.skill6.common.entity.enums.SortType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import cn.skill6.common.entity.enums.SortType;
 
 /**
  * 分页和排序作为数据库实体类的父类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月21日 下午10:31:26
  */
 public abstract class PaginationAndSort {
   private int pageNum;
   private int pageSize;
+  
   private String orderBy;
+  @JsonIgnore
   private SortType sortType;
 
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */ @Override
+  @Override
   public String toString() {
     return "Pagination [orderBy=" + orderBy + ", sortType=" + sortType + "]";
   }
@@ -35,20 +34,12 @@ public abstract class PaginationAndSort {
     this.orderBy = orderBy;
   }
 
-  /** @return the sort type code */
-  @JsonIgnore
-  public String getSortTypeCode() {
-    return sortType == null ? null : sortType.getStateCode();
-  }
-
   /** @return the sortType */
-  @JsonSerialize(using = SortType.SortTypeJsonSerializer.class)
-  public String getSortType() {
-    return sortType == null ? null : sortType.getStateCode();
+  public SortType getSortType() {
+    return sortType;
   }
 
   /** @param sortType the sortType to set */
-  @JsonDeserialize(using = SortType.SortTypeJsonDeserializer.class)
   public void setSortType(SortType sortType) {
     this.sortType = sortType;
   }
