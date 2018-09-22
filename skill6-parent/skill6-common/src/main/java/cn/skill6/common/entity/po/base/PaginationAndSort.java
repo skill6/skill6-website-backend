@@ -14,7 +14,9 @@ import cn.skill6.common.entity.enums.SortType;
 public abstract class PaginationAndSort {
   private int pageNum;
   private int pageSize;
+  
   private String orderBy;
+  @JsonIgnore
   private SortType sortType;
 
   @Override
@@ -30,12 +32,6 @@ public abstract class PaginationAndSort {
   /** @param orderBy the orderBy to set */
   public void setOrderBy(String orderBy) {
     this.orderBy = orderBy;
-  }
-
-  /** @return the sort type code */
-  @JsonIgnore
-  public String getSortTypeCode() {
-    return sortType == null ? null : sortType.getStateCode();
   }
 
   /** @return the sortType */
