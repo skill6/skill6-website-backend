@@ -22,9 +22,6 @@ public class ThumbsUpRecordImpl implements ThumbsUpRecordOper {
 
   @Autowired private ThumbsUpRecordMapper thumbsUpRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ThumbsUpRecordOper#deleteByPrimaryKey(java.lang.String, java.lang.String, java.lang.String)
-   */
   @Override
   public int deleteByPrimaryKey(String userId, String articleId, String thumbsUpType) {
     logger.warn("删除用户id为{},文章id为{},类型为{}的点赞记录", userId, articleId);
@@ -32,36 +29,24 @@ public class ThumbsUpRecordImpl implements ThumbsUpRecordOper {
     return thumbsUpRecordMapper.deleteByPrimaryKey(userId, articleId, thumbsUpType);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ThumbsUpRecordOper#addThumbsUpRecord(cn.skill6.common.entity.po.ThumbsUpRecord)
-   */
   @Override
   public int addThumbsUpRecord(ThumbsUpRecord record) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ThumbsUpRecordOper#findByPrimaryKey(java.lang.String, java.lang.String, java.lang.String)
-   */
   @Override
   public ThumbsUpRecord findByPrimaryKey(String userId, String articleId, String thumbsUpType) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ThumbsUpRecordOper#findAll()
-   */
   @Override
   public List<ThumbsUpRecord> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ThumbsUpRecordOper#modifyByPrimaryKey(cn.skill6.common.entity.po.ThumbsUpRecord)
-   */
   @Override
   public int modifyByPrimaryKey(ThumbsUpRecord record) {
     // TODO Auto-generated method stub

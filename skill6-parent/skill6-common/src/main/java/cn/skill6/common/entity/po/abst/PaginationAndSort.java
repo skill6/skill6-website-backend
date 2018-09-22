@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po.base;
+package cn.skill6.common.entity.po.abst;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

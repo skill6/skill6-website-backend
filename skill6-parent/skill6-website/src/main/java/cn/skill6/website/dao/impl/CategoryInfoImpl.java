@@ -27,9 +27,6 @@ public class CategoryInfoImpl implements CategoryInfoOper {
 
   @Autowired private CategoryInfoMapper categoryInfoMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.CategoryInfoOper#deleteByCategoryId(java.lang.Long)
-   */
   @Override
   public int deleteByCategoryId(Long categoryId) {
     logger.warn("删除id为{}的目录", categoryId);
@@ -37,9 +34,6 @@ public class CategoryInfoImpl implements CategoryInfoOper {
     return categoryInfoMapper.deleteByPrimaryKey(categoryId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.CategoryInfoOper#addCategoryInfo(cn.skill6.common.entity.po.CategoryInfo)
-   */
   @Override
   public Long addCategoryInfo(CategoryInfo categoryInfo) {
     Long categoryId = SequenceManager.getNextId();
@@ -63,9 +57,6 @@ public class CategoryInfoImpl implements CategoryInfoOper {
     return categoryId;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.CategoryInfoOper#selectByCategoryId(java.lang.Long)
-   */
   @Override
   public CategoryInfo findByCategoryId(Long categoryId) {
     CategoryInfo categoryInfo = categoryInfoMapper.selectByPrimaryKey(categoryId);
@@ -75,9 +66,6 @@ public class CategoryInfoImpl implements CategoryInfoOper {
     return categoryInfo;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.CategoryInfoOper#findAll()
-   */
   @Override
   public List<CategoryInfo> findAll() {
     List<CategoryInfo> categoryInfos = categoryInfoMapper.selectAll();
@@ -87,9 +75,6 @@ public class CategoryInfoImpl implements CategoryInfoOper {
     return categoryInfos;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.CategoryInfoOper#modifyByCategoryId(cn.skill6.common.entity.po.CategoryInfo)
-   */
   @Override
   public void modifyByCategoryId(CategoryInfo categoryInfo) {
     if (categoryInfo == null || categoryInfo.getCategoryId() == null) {
@@ -98,13 +83,13 @@ public class CategoryInfoImpl implements CategoryInfoOper {
     CategoryInfo categoryInfoNew =
         categoryInfoMapper.selectByPrimaryKey(categoryInfo.getCategoryId());
 
-    if(BaseUtils.isNotEmpty(categoryInfo.getCategoryName())) {
-    	categoryInfoNew.setCategoryName(categoryInfo.getCategoryName());
+    if (BaseUtils.isNotEmpty(categoryInfo.getCategoryName())) {
+      categoryInfoNew.setCategoryName(categoryInfo.getCategoryName());
     }
     categoryInfoNew.setCategoryModifyDate(new Date());
-    
+
     categoryInfoMapper.updateByPrimaryKey(categoryInfoNew);
-    
+
     logger.info("成功修改id为{}的目录内容", categoryInfo.getCategoryId());
   }
 }

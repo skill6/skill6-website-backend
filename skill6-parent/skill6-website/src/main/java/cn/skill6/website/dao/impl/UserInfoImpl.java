@@ -22,9 +22,6 @@ public class UserInfoImpl implements UserInfoOper {
 
   @Autowired private UserInfoMapper userInfoMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserInfoOper#deleteByUserId(java.lang.Long)
-   */
   @Override
   public int deleteByUserId(Long userId) {
     logger.warn("删除id为{}的用户信息", userId);
@@ -32,36 +29,24 @@ public class UserInfoImpl implements UserInfoOper {
     return userInfoMapper.deleteByPrimaryKey(userId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserInfoOper#addUserInfo(cn.skill6.common.entity.po.UserInfo)
-   */
   @Override
   public int addUserInfo(UserInfo userInfo) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserInfoOper#findByUserId(java.lang.Long)
-   */
   @Override
   public UserInfo findByUserId(Long userId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserInfoOper#findAll()
-   */
   @Override
   public List<UserInfo> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserInfoOper#modifyByUserId(cn.skill6.common.entity.po.UserInfo)
-   */
   @Override
   public int modifyByUserId(UserInfo userInfo) {
     // TODO Auto-generated method stub

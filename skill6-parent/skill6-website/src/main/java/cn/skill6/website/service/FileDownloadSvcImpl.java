@@ -41,9 +41,6 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
 
   @Autowired private Skill6Properties skill6Properties;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.basic.FileDownloadSvc#uploadFile(javax.servlet.http.HttpServletRequest)
-   */
   @Override
   public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
       throws IOException, FileUploadException {
@@ -77,9 +74,7 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
     return new ResponseJson(true, resultMap);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.basic.FileDownloadSvc#downloadFileById(java.lang.Long)
-   */ @Override
+  @Override
   public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
     FileDownload fileDownload = fileDownloadOper.findByFileId(fileId);
 

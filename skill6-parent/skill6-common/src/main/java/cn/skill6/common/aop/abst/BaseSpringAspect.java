@@ -172,8 +172,8 @@ public abstract class BaseSpringAspect {
   /**
    * 目标函数抛出异常之后
    *
-   * @param joinPoint
-   * @param e
+   * @param joinPoint 连接
+   * @param e 异常信息
    */
   public abstract void doThrowing(JoinPoint joinPoint, Exception e);
 }

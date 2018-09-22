@@ -22,9 +22,6 @@ public class UserPrivacyInfoImpl implements UserPrivacyInfoOper {
 
   @Autowired private UserPrivacyInfoMapper userPrivacyInfoMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserPrivacyInfoOper#deleteByUserId(java.lang.Long)
-   */
   @Override
   public int deleteByUserId(Long userId) {
     logger.warn("删除id为{}的用户隐私信息", userId);
@@ -32,36 +29,24 @@ public class UserPrivacyInfoImpl implements UserPrivacyInfoOper {
     return userPrivacyInfoMapper.deleteByUserId(userId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserPrivacyInfoOper#addUserPrivacyInfo(cn.skill6.common.entity.po.UserPrivacyInfo)
-   */
   @Override
   public int addUserPrivacyInfo(UserPrivacyInfo userPrivacyInfo) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserPrivacyInfoOper#findByUserId(java.lang.Long)
-   */
   @Override
   public UserPrivacyInfo findByUserId(Long userId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserPrivacyInfoOper#findAll()
-   */
   @Override
   public List<UserPrivacyInfo> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserPrivacyInfoOper#modifyByUserId(cn.skill6.common.entity.po.UserPrivacyInfo)
-   */
   @Override
   public int modifyByUserId(UserPrivacyInfo userPrivacyInfo) {
     // TODO Auto-generated method stub

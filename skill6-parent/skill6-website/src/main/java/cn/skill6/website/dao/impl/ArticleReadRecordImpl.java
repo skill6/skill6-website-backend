@@ -26,9 +26,6 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
 
   @Autowired private ArticleReadRecordMapper articleReadRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleReadRecordOper#deleteByArtilceId(java.lang.String)
-   */
   @Override
   public int deleteByPrimaryKey(Long articleId, Date articleDateDaily) {
     logger.warn("删除id为{},日期为{}的文章阅读记录", articleId, articleDateDaily);
@@ -36,9 +33,6 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
     return articleReadRecordMapper.deleteByPrimaryKey(articleId, articleDateDaily);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleReadRecordOper#addArticleReadRecord(cn.skill6.common.entity.po.ArticleReadRecord)
-   */
   @Override
   public Long addArticleReadRecord(ArticleReadRecord articleReadRecord) {
     Long articleId = SequenceManager.getNextId();
@@ -59,9 +53,6 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
     return articleId;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleReadRecordOper#findByArticleId(java.lang.String)
-   */
   @Override
   public ArticleReadRecord findByPrimaryKey(Long articleId, Date articleDateDaily) {
     ArticleReadRecord articleReadRecord =
@@ -72,9 +63,6 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
     return articleReadRecord;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleReadRecordOper#findAll()
-   */
   @Override
   public List<ArticleReadRecord> findAll() {
     List<ArticleReadRecord> articleReadRecords = articleReadRecordMapper.selectAll();
@@ -84,9 +72,6 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
     return articleReadRecords;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleReadRecordOper#updateByArtilceId(cn.skill6.common.entity.po.ArticleReadRecord)
-   */
   @Override
   public int updateByArtilceId(ArticleReadRecord articleReadRecord) {
     throw new Skill6Exception("暂不支持此操作");

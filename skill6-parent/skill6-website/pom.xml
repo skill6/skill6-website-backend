@@ -60,11 +60,6 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
-		<!-- spring boot pagehelper autoconfigure依赖 版本有兼容性问题 第一种方式依赖的包 -->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
-		</dependency>
 		<!-- spring boot 整合pagehelper依赖 版本有兼容性问题 第一种方式依赖的包 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>

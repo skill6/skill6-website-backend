@@ -26,9 +26,6 @@ public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
 
   @Autowired private ArticleModifyRecordMapper articleModifyRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleModifyRecordOper#deleteByPrimaryKey(java.lang.Long)
-   */
   @Override
   public int deleteByPrimaryKey(Long articleId, Date lastModifyDate) {
     logger.warn("删除id为{}的文章历史记录", articleId);
@@ -36,9 +33,6 @@ public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
     return articleModifyRecordMapper.deleteByPrimaryKey(articleId, lastModifyDate);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleModifyRecordOper#addArticleInfo(cn.skill6.common.entity.po.ArticleModifyRecord)
-   */
   @Override
   public Long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord) {
     Long articleId = SequenceManager.getNextId();
@@ -57,9 +51,6 @@ public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
     return articleId;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleModifyRecordOper#findByArticleId(java.lang.Long)
-   */
   @Override
   public ArticleModifyRecord findByPrimaryKey(Long articleId, Date lastModifyDate) {
     ArticleModifyRecord articleModifyRecord =
@@ -70,9 +61,6 @@ public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
     return articleModifyRecord;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleModifyRecordOper#findAll()
-   */
   @Override
   public List<ArticleModifyRecord> findAll() {
     List<ArticleModifyRecord> articleModifyRecords = articleModifyRecordMapper.selectAll();
@@ -82,9 +70,6 @@ public class ArticleModifyRecordImpl implements ArticleModifyRecordOper {
     return articleModifyRecords;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleModifyRecordOper#modifyByArticleId(cn.skill6.common.entity.po.ArticleModifyRecord)
-   */
   @Override
   public void modifyByPrimaryKey(ArticleModifyRecord articleModifyRecord) {
     // 暂时不支持修改历史文章，历史文章本来就是文章的修改记录

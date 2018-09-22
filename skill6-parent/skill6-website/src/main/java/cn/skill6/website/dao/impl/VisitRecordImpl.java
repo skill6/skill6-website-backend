@@ -22,46 +22,31 @@ public class VisitRecordImpl implements VisitRecordOper {
 
   @Autowired private VisitRecordMapper visitRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitRecordOper#deleteByVisitId(java.lang.Long)
-   */
   @Override
   public int deleteByVisitId(Long visitId) {
-	  logger.warn("删除id为{}的访问记录", visitId);
+    logger.warn("删除id为{}的访问记录", visitId);
 
-	    return visitRecordMapper.deleteByPrimaryKey(visitId);
+    return visitRecordMapper.deleteByPrimaryKey(visitId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitRecordOper#addVisitRecord(cn.skill6.common.entity.po.VisitRecord)
-   */
   @Override
   public int addVisitRecord(VisitRecord visitRecord) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitRecordOper#findByVisitId(java.lang.Long)
-   */
   @Override
   public VisitRecord findByVisitId(Long visitId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitRecordOper#findAll()
-   */
   @Override
   public List<VisitRecord> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitRecordOper#modifyByVisitId(cn.skill6.common.entity.po.VisitRecord)
-   */
   @Override
   public int modifyByVisitId(VisitRecord visitRecord) {
     // TODO Auto-generated method stub

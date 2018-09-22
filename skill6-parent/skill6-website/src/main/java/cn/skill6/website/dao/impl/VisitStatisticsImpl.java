@@ -22,9 +22,6 @@ public class VisitStatisticsImpl implements VisitStatisticsOper {
 
   @Autowired private VisitStatisticsMapper visitStatisticsMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitStatisticsOper#deleteByVisitId(java.lang.Long)
-   */
   @Override
   public int deleteByVisitId(Long visitId) {
     logger.warn("删除id为{}的访问统计", visitId);
@@ -32,36 +29,24 @@ public class VisitStatisticsImpl implements VisitStatisticsOper {
     return visitStatisticsMapper.deleteByPrimaryKey(visitId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitStatisticsOper#addVisitStatistics(cn.skill6.common.entity.po.VisitStatistics)
-   */
   @Override
   public int addVisitStatistics(VisitStatistics visitStatistics) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitStatisticsOper#findByVisitId(java.lang.Long)
-   */
   @Override
   public VisitStatistics findByVisitId(Long visitId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitStatisticsOper#findAll()
-   */
   @Override
   public List<VisitStatistics> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.VisitStatisticsOper#modifyByVisitId(cn.skill6.common.entity.po.VisitStatistics)
-   */
   @Override
   public int modifyByVisitId(VisitStatistics visitStatistics) {
     // TODO Auto-generated method stub

@@ -22,9 +22,6 @@ public class LoginRecordImpl implements LoginRecordOper {
 
   @Autowired private LoginRecordMapper loginRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.LoginRecordOper#deleteByLoginId(java.lang.Long)
-   */
   @Override
   public int deleteByLoginId(Long loginId) {
     logger.warn("删除id为{}的登录记录", loginId);
@@ -32,36 +29,24 @@ public class LoginRecordImpl implements LoginRecordOper {
     return loginRecordMapper.deleteByPrimaryKey(loginId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.LoginRecordOper#addLoginRecord(cn.skill6.common.entity.po.LoginRecord)
-   */
   @Override
   public int addLoginRecord(LoginRecord loginRecord) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.LoginRecordOper#findByLoginId(java.lang.Long)
-   */
   @Override
   public LoginRecord findByLoginId(Long loginId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.LoginRecordOper#findAll()
-   */
   @Override
   public List<LoginRecord> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.LoginRecordOper#modifyByLoginId(cn.skill6.common.entity.po.LoginRecord)
-   */
   @Override
   public int modifyByLoginId(LoginRecord loginRecord) {
     // TODO Auto-generated method stub
