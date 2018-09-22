@@ -1,4 +1,5 @@
-# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)
+# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)   [![Apache License 2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 
 技术流[skill6](https://skill6.cn)网站的架构设计、需求分析、技术选型等
 
