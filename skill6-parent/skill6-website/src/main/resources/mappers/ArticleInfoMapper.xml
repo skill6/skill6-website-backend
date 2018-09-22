@@ -100,6 +100,6 @@
 				article_author = #{articleAuthor,jdbcType=VARCHAR}
 			</if>
 		</where>
-		ORDER BY ${orderBy} ${sortType}
+		ORDER BY ${orderBy} ${sortType.stateCode}
 	</select>
 </mapper>
