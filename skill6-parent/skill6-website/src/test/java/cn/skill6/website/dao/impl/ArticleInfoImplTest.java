@@ -1,19 +1,18 @@
 package cn.skill6.website.dao.impl;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
-import cn.skill6.website.dao.intf.ArticleInfoOper;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * 文章信息实现测试
@@ -23,15 +22,27 @@ import cn.skill6.website.dao.intf.ArticleInfoOper;
  * @since 2018年9月21日 下午11:24:25
  */
 @SpringBootTest
+@Transactional
 public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired
-  @Qualifier("articleInfoImpl")
-  private ArticleInfoOper articleInfoOper;
+  @Autowired private ArticleInfoImpl articleInfoOper;
 
   @Autowired
   @Qualifier("articleInfoTo")
   private ArticleInfoTo articleInfoTo;
+
+  @Test
+  public void test01AddArticleInfo() {
+    ArticleInfo articleInfo = new ArticleInfo();
+    articleInfo.setArticleTitle("001");
+    articleInfo.setArticleAuthor("liujichun");
+    articleInfo.setArticleSummary("nihk");
+    articleInfo.setArticleLabel("sldjfjk");
+    articleInfo.setArticleCategoryId("123");
+    articleInfo.setArticleHtmlContent("halsdfhj");
+    articleInfo.setArticleMdContent("hkjhkj");
+    articleInfoOper.addArticleInfo(articleInfo);
+  }
 
   @Test
   public void testFindByParams() {
@@ -54,5 +65,20 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
     }
 
     assertTrue(articleInfos != null);
+  }
+
+  @Test
+  public void test02ModifyByArticleId() {
+    ArticleInfo articleInfo = new ArticleInfo();
+    articleInfo.setArticleTitle("001");
+    articleInfo.setArticleAuthor("liujichun");
+    articleInfo.setArticleSummary("nihk");
+    articleInfo.setArticleLabel("sldjfjk");
+    articleInfo.setArticleCategoryId("123");
+    articleInfo.setArticleHtmlContent("halsdfhj");
+    articleInfo.setArticleMdContent("hkjhkj");
+    Long id = articleInfoOper.addArticleInfo(articleInfo);
+    articleInfo.setArticleId(id);
+    articleInfoOper.modifyByArticleId(articleInfo);
   }
 }
