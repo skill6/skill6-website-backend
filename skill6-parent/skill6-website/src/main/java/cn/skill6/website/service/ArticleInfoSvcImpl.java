@@ -72,7 +72,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
     ResponseJson responseJson;
 
     try {
-    	List<ArticleInfo> articleInfos = articleInfoOper.findAll();
+      List<ArticleInfo> articleInfos = articleInfoOper.findAll();
       responseJson = new ResponseJson(true, articleInfos);
     } catch (Exception e) {
       responseJson = new ResponseJson(false, "获取id所有文章信息失败");
