@@ -4,15 +4,16 @@ import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * 文章信息实现测试
@@ -51,6 +52,7 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
 
     // 根据哪个字段排序
     articleInfo.setOrderBy(articleInfoTo.getArticleAuthor());
+
     // 排序方式
     articleInfo.setSortType(SortType.DESCENDING);
 
@@ -80,5 +82,17 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
     Long id = articleInfoOper.addArticleInfo(articleInfo);
     articleInfo.setArticleId(id);
     articleInfoOper.modifyByArticleId(articleInfo);
+  }
+
+  @Test
+  public void test01JudgeExist() {
+    boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor");
+    assertTrue(judgeResult);
+  }
+
+  @Test
+  public void test02JudgeExist() {
+    boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor1");
+    assertFalse(judgeResult);
   }
 }
