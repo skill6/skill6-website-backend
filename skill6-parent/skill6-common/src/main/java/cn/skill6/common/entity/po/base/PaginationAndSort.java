@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.SortType;
  * 分页和排序作为数据库实体类的父类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月21日 下午10:31:26
  */
 public abstract class PaginationAndSort {
@@ -35,7 +35,7 @@ public abstract class PaginationAndSort {
 
   /** @return the sortType */
   public String getSortType() {
-    return sortType.getStateCode();
+    return sortType == null ? null : sortType.getStateCode();
   }
 
   /** @param sortType the sortType to set */

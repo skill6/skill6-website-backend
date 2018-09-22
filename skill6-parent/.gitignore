@@ -57,5 +57,9 @@ skill6-website/src/main/resources/generator/generator-mysql.properties
 /**/resources/static/
 .vscode
 
+#store file
+/*/file/
+/*/image/
+
 ## self
 ##.gitignore
