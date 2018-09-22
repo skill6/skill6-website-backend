@@ -43,7 +43,7 @@ public abstract class PaginationAndSort {
 
   /** @return the sortType */
   @JsonSerialize(using = SortType.SortTypeJsonSerializer.class)
-  public SortType getSortType() {
+  public String getSortType() {
     return sortType == null ? null : sortType.getStateCode();
   }
 
