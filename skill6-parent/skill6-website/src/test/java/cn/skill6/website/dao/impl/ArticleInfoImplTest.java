@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.ArticleInfo;
+import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.ArticleInfoOper;
 
@@ -28,12 +29,18 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
   @Qualifier("articleInfoImpl")
   private ArticleInfoOper articleInfoOper;
 
+  @Autowired
+  @Qualifier("articleInfoTo")
+  private ArticleInfoTo articleInfoTo;
+
   @Test
   public void testFindByParams() {
     ArticleInfo articleInfo = new ArticleInfo();
     articleInfo.setArticleAuthor("何明胜");
 
-    articleInfo.setOrderBy("article_id");
+    // 根据哪个字段排序
+    articleInfo.setOrderBy(articleInfoTo.getArticleAuthor());
+    // 排序方式
     articleInfo.setSortType(SortType.DESCENDING);
 
     List<ArticleInfo> articleInfos = articleInfoOper.findByParams(articleInfo);

@@ -1,4 +1,4 @@
-package cn.skill6.common.aop;
+package cn.skill6.common.aop.abst;
 
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
