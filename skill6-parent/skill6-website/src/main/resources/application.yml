@@ -19,17 +19,17 @@ spring:
   application:
     name: skill6-website
   datasource:
-    username: ${skill6.mysql.username}
-    password: ${skill6.mysql.passwrod}
-    url: ${skill6.mysql.url}
+    username: ${SKILL6_MYSQL_USERNAME}
+    password: ${SKILL6_MYSQL_PASSWROD}
+    url: ${SKILL6_MYSQL_URL}
     druid:
       name: skill6-mysql-01
     schema: classpath*:schema/init_db.sql
     initialization-mode: always
   redis:
-    host: ${skill6.redis.host}
-    password: ${skill6.redis.password}
-    port: ${skill6.redis.port}
+    host: ${SKILL6_REDIS_HOST}
+    password: ${SKILL6_REDIS_PASSWORD}
+    port: ${SKILL6_REDIS_PORT}
   jackson:
     property-naming-strategy: SNAKE_CASE
     date-format: yyyy-MM-dd HH:mm:ss

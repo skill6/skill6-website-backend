@@ -1,6 +1,9 @@
 package cn.skill6.common.entity.po.base;
 
 import cn.skill6.common.entity.enums.SortType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 分页和排序作为数据库实体类的父类
@@ -12,7 +15,6 @@ import cn.skill6.common.entity.enums.SortType;
 public abstract class PaginationAndSort {
   private int pageNum;
   private int pageSize;
-
   private String orderBy;
   private SortType sortType;
 
@@ -33,12 +35,20 @@ public abstract class PaginationAndSort {
     this.orderBy = orderBy;
   }
 
+  /** @return the sort type code */
+  @JsonIgnore
+  public String getSortTypeCode() {
+    return sortType == null ? null : sortType.getStateCode();
+  }
+
   /** @return the sortType */
-  public String getSortType() {
-    return sortType.getStateCode();
+  @JsonSerialize(using = SortType.SortTypeJsonSerializer.class)
+  public SortType getSortType() {
+    return sortType;
   }
 
   /** @param sortType the sortType to set */
+  @JsonDeserialize(using = SortType.SortTypeJsonDeserializer.class)
   public void setSortType(SortType sortType) {
     this.sortType = sortType;
   }
