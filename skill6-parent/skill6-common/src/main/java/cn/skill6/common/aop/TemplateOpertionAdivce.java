@@ -1,4 +1,4 @@
-package cn.skill6.common.aop.abst;
+package cn.skill6.common.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -6,6 +6,9 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import com.google.common.base.CaseFormat;
+
+import cn.skill6.common.aop.abst.BaseSpringAspect;
 
 /**
  * 模板操作切面
@@ -19,7 +22,7 @@ import org.springframework.stereotype.Component;
 public class TemplateOpertionAdivce extends BaseSpringAspect {
 
   @Override
-  @Pointcut("cn.skill6.common.entity.to.*")
+  @Pointcut("execution(public * cn.skill6.common.entity.to.*.get*(..))")
   protected void aspectJMethod() {}
 
   @Override
@@ -30,7 +33,11 @@ public class TemplateOpertionAdivce extends BaseSpringAspect {
   public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
     String methodName = getAimMethodName(joinPoint);
 
-    return null;
+    String fieldName = methodName.substring(3);
+    // 驼峰转下划线
+    String fieldNameUnderScore = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, fieldName);
+
+    return fieldNameUnderScore;
   }
 
   @Override
