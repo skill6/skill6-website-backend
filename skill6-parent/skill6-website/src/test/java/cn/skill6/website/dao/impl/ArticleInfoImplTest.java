@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.impl;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
 
     // 根据哪个字段排序
     articleInfo.setOrderBy(articleInfoTo.getArticleAuthor());
+
     // 排序方式
     articleInfo.setSortType(SortType.DESCENDING);
 
@@ -54,5 +56,19 @@ public class ArticleInfoImplTest extends Skill6WebsiteApplicationTest {
     }
 
     assertTrue(articleInfos != null);
+  }
+
+  @Test
+  public void test01JudgeExist() {
+    boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor");
+
+    assertTrue(judgeResult);
+  }
+
+  @Test
+  public void test02JudgeExist() {
+    boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor1");
+
+    assertFalse(judgeResult);
   }
 }

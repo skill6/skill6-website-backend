@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.po.ArticleInfo;
+import cn.skill6.common.entity.to.intf.BaseTemplate;
 /**
  * 增加数据库实体类的字段模板类
  *
@@ -13,7 +14,7 @@ import cn.skill6.common.entity.po.ArticleInfo;
  * @since 2018年9月22日 上午11:55:06
  */
 @Service
-public class ArticleInfoTo extends ArticleInfo {
+public class ArticleInfoTo extends ArticleInfo implements BaseTemplate {
 
   @Override
   public Long getArticleId() {
@@ -93,5 +94,10 @@ public class ArticleInfoTo extends ArticleInfo {
   @Override
   public String getArticleAttachUrl() {
     return super.getArticleAttachUrl();
+  }
+
+  @Override
+  public boolean judgeFieldIsExist(String aimFieldName) {
+    return judgeFieldIsExist(this.getClass(), aimFieldName);
   }
 }
