@@ -1,8 +1,8 @@
 package cn.skill6.common.entity.po;
 
-import cn.skill6.common.entity.po.base.PaginationAndSort;
-
 import java.util.Date;
+
+import cn.skill6.common.entity.po.abst.PaginationAndSort;
 
 /**
  * 文章信息实体类

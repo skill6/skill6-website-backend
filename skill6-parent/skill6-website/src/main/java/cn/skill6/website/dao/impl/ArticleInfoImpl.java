@@ -31,18 +31,12 @@ public class ArticleInfoImpl implements ArticleInfoOper {
 
   @Autowired private ArticleInfoMapper articleInfoMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.ArticleInfo#deleteByPrimaryKey(java.lang.Long)
-   */
   @Override
   public int deleteByPrimaryKey(Long articleId) {
     logger.warn("删除id为{}的用户", articleId);
     return articleInfoMapper.deleteByPrimaryKey(articleId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.ArticleInfo#addArticleInfo(cn.skill6.service.intf.ArticleInfo)
-   */
   @Override
   public Long addArticleInfo(ArticleInfo articleInfo) {
     // 设置分布式用户id
@@ -71,9 +65,6 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     return articleId;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.ArticleInfo#findByPrimaryKey(java.lang.Long)
-   */
   @Override
   public ArticleInfo findByArticleId(Long articleId) {
     ArticleInfo articleInfo = articleInfoMapper.selectByPrimaryKey(articleId);
@@ -83,9 +74,6 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     return articleInfo;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.ArticleInfo#findAll()
-   */
   @Override
   public List<ArticleInfo> findAll() {
     List<ArticleInfo> articleInfos = articleInfoMapper.selectAll();
@@ -95,9 +83,6 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     return articleInfos;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.ArticleInfo#modifyByPrimaryKey(cn.skill6.service.intf.ArticleInfo)
-   */
   @Override
   public void modifyByArticleId(ArticleInfo articleInfo) {
     // TODO 增加修改的校验和继续完善
@@ -115,12 +100,11 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     logger.info("成功修改id为{}的文章内容", articleInfo.getArticleId());
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.website.dao.intf.ArticleInfoOper#findByParams(cn.skill6.common.entity.po.ArticleInfo)
-   */ @Override
+  @Override
   public List<ArticleInfo> findByParams(ArticleInfo articleInfo) {
     // 设置分页数据
-    Page<ArticleInfo> page = PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
+    Page<ArticleInfo> page =
+        PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
 
     List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
 

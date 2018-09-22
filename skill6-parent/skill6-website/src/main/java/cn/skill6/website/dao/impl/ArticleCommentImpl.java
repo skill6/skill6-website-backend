@@ -26,18 +26,12 @@ public class ArticleCommentImpl implements ArticleCommentOper {
 
   @Autowired private ArticleCommentMapper articleCommentMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleCommentOper#deleteByCommentId(java.lang.Long)
-   */
   @Override
   public int deleteByCommentId(Long commentId) {
     logger.warn("删除id为{}的评论", commentId);
     return articleCommentMapper.deleteByPrimaryKey(commentId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleCommentOper#addArticleComment(cn.skill6.common.entity.po.ArticleComment)
-   */
   @Override
   public Long addArticleComment(ArticleComment articleComment) {
     // 设置分布id
@@ -57,9 +51,6 @@ public class ArticleCommentImpl implements ArticleCommentOper {
     return commentId;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleCommentOper#findByCommentId(java.lang.Long)
-   */
   @Override
   public ArticleComment findByCommentId(Long commentId) {
     ArticleComment articleComment = articleCommentMapper.selectByPrimaryKey(commentId);
@@ -69,9 +60,6 @@ public class ArticleCommentImpl implements ArticleCommentOper {
     return articleComment;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleCommentOper#findAll()
-   */
   @Override
   public List<ArticleComment> findAll() {
     List<ArticleComment> articleComments = articleCommentMapper.selectAll();
@@ -81,9 +69,6 @@ public class ArticleCommentImpl implements ArticleCommentOper {
     return articleComments;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.ArticleCommentOper#modifyByCommentId(cn.skill6.common.entity.po.ArticleComment)
-   */
   @Override
   public int modifyByCommentId(ArticleComment articleComment) {
     // TODO 暂不支持修改评论

@@ -22,9 +22,6 @@ public class UserModifyRecordImpl implements UserModifyRecordOper {
 
   @Autowired private UserModifyRecordMapper userModifyRecordMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserModifyRecordOper#deleteByUserId(java.lang.String)
-   */
   @Override
   public int deleteByUserId(String userId) {
     logger.warn("删除id为{}的用户信息修改记录", userId);
@@ -32,36 +29,24 @@ public class UserModifyRecordImpl implements UserModifyRecordOper {
     return userModifyRecordMapper.deleteByPrimaryKey(userId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserModifyRecordOper#addUserModifyRecord(cn.skill6.common.entity.po.UserModifyRecord)
-   */
   @Override
   public int addUserModifyRecord(UserModifyRecord userModifyRecord) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserModifyRecordOper#findByUserId(java.lang.String)
-   */
   @Override
   public UserModifyRecord findByUserId(String userId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserModifyRecordOper#findAll()
-   */
   @Override
   public List<UserModifyRecord> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.UserModifyRecordOper#modifyByUserId(cn.skill6.common.entity.po.UserModifyRecord)
-   */
   @Override
   public int modifyByUserId(UserModifyRecord userModifyRecord) {
     // TODO Auto-generated method stub

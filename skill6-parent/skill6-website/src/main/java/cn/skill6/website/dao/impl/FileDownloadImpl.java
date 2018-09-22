@@ -26,9 +26,6 @@ public class FileDownloadImpl implements FileDownloadOper {
 
   @Autowired private FileDownloadMapper fileDownloadMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.FileDownloadOper#deleteByFileId(java.lang.Long)
-   */
   @Override
   public int deleteByFileId(Long fileId) {
     logger.warn("删除id为{}的文件", fileId);
@@ -36,9 +33,6 @@ public class FileDownloadImpl implements FileDownloadOper {
     return fileDownloadMapper.deleteByPrimaryKey(fileId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.FileDownloadOper#addFileDownload(cn.skill6.common.entity.po.FileDownload)
-   */
   @Override
   public Long addFileDownload(FileDownload fileDownload) {
     if (fileDownload == null || fileDownload.getFileId() == null) {
@@ -55,9 +49,6 @@ public class FileDownloadImpl implements FileDownloadOper {
     return fileDownload.getFileId();
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.FileDownloadOper#findByFileId(java.lang.Long)
-   */
   @Override
   public FileDownload findByFileId(Long fileId) {
     FileDownload fileDownload = fileDownloadMapper.selectByPrimaryKey(fileId);
@@ -67,18 +58,12 @@ public class FileDownloadImpl implements FileDownloadOper {
     return fileDownload;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.FileDownloadOper#findAll()
-   */
   @Override
   public List<FileDownload> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.FileDownloadOper#modifyByFileId(cn.skill6.common.entity.po.FileDownload)
-   */
   @Override
   public int modifyByFileId(FileDownload fileDownload) {
     // TODO Auto-generated method stub

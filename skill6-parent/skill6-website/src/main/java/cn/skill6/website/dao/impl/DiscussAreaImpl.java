@@ -22,9 +22,6 @@ public class DiscussAreaImpl implements DiscussAreaOper {
 
   @Autowired private DiscussAreaMapper discussAreaMapper;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.DiscussAreaOper#deleteByDiscussId(java.lang.Long)
-   */
   @Override
   public int deleteByDiscussId(Long discussId) {
     logger.warn("删除id为{}的讨论区", discussId);
@@ -32,36 +29,24 @@ public class DiscussAreaImpl implements DiscussAreaOper {
     return discussAreaMapper.deleteByPrimaryKey(discussId);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.DiscussAreaOper#addDiscussArea(cn.skill6.common.entity.po.DiscussArea)
-   */
   @Override
   public int addDiscussArea(DiscussArea discussArea) {
     // TODO Auto-generated method stub
     return 0;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.DiscussAreaOper#findByDiscussId(java.lang.Long)
-   */
   @Override
   public DiscussArea findByDiscussId(Long discussId) {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.DiscussAreaOper#findAll()
-   */
   @Override
   public List<DiscussArea> findAll() {
     // TODO Auto-generated method stub
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.intf.basic.DiscussAreaOper#modifyByDiscussId(cn.skill6.common.entity.po.DiscussArea)
-   */
   @Override
   public int modifyByDiscussId(DiscussArea discussArea) {
     // TODO Auto-generated method stub

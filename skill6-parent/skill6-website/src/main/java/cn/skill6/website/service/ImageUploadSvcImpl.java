@@ -40,9 +40,6 @@ public class ImageUploadSvcImpl implements ImageUploadSvc {
 
   @Autowired private Skill6Properties skill6Properties;
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.basic.ImageUploadSvc#uploadImage(javax.servlet.http.HttpServletRequest)
-   */
   @Override
   public ResponseJson uploadImage(HttpServletRequest request)
       throws IOException, FileUploadException {
@@ -73,9 +70,6 @@ public class ImageUploadSvcImpl implements ImageUploadSvc {
     return new ResponseJson(true, resultMap);
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.service.basic.ImageUploadSvc#downloadImageById(java.lang.Long, javax.servlet.http.HttpServletResponse)
-   */
   @Override
   public void downloadImageById(Long imageId, HttpServletResponse response) throws IOException {
     ImageUpload imageUpload = imageUploadOper.findByImageId(imageId);
