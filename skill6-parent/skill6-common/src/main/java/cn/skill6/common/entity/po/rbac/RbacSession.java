@@ -6,10 +6,10 @@ import java.util.Date;
  * RBAC会话存储
  *
  * @author 何明胜
- * @version 1.0.1
- * @since 2018年9月23日 下午5:53:19
+ * @version 1.0.0
+ * @since 2018年9月24日 上午2:44:03
  */
-public class RbacSessions {
+public class RbacSession {
   private Long sessionId;
 
   private Date sessionCreateTime;
@@ -22,7 +22,7 @@ public class RbacSessions {
 
   @Override
   public String toString() {
-    return "RbacSessions [sessionId="
+    return "RbacSession [sessionId="
         + sessionId
         + ", sessionCreateTime="
         + sessionCreateTime
@@ -35,7 +35,7 @@ public class RbacSessions {
         + "]";
   }
 
-  public RbacSessions(
+  public RbacSession(
       Long sessionId,
       Date sessionCreateTime,
       Date sessionLastModifyTime,
@@ -48,7 +48,7 @@ public class RbacSessions {
     this.sessionContent = sessionContent;
   }
 
-  public RbacSessions() {
+  public RbacSession() {
     super();
   }
 

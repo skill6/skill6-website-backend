@@ -12,7 +12,7 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cn.skill6.common.entity.po.rbac.RbacSessions;
+import cn.skill6.common.entity.po.rbac.RbacSession;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.util.sequence.SequenceManager;
 
@@ -26,36 +26,36 @@ import cn.skill6.website.util.sequence.SequenceManager;
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RbacSessionsMapperTest extends Skill6WebsiteApplicationTest {
-  @Autowired private RbacSessionsMapper rbacSessionsMapper;
+  @Autowired private RbacSessionMapper rbacSessionsMapper;
 
   private static Long sessionId = SequenceManager.getNextId();
 
   @Test
   public void test01Insert() {
-    RbacSessions rbacSessions =
-        new RbacSessions(sessionId, new Date(), new Date(), true, "session content");
+    RbacSession rbacSessions =
+        new RbacSession(sessionId, new Date(), new Date(), true, "session content");
 
     rbacSessionsMapper.insert(rbacSessions);
   }
 
   @Test
   public void test02SelectByPrimaryKey() {
-    RbacSessions rbacSessions = rbacSessionsMapper.selectByPrimaryKey(sessionId);
+    RbacSession rbacSessions = rbacSessionsMapper.selectByPrimaryKey(sessionId);
 
     assertEquals("session content", rbacSessions.getSessionContent());
   }
 
   @Test
   public void test03UpdateByPrimaryKey() {
-    RbacSessions rbacSessions =
-        new RbacSessions(sessionId, new Date(), new Date(), true, "session content1");
+    RbacSession rbacSessions =
+        new RbacSession(sessionId, new Date(), new Date(), true, "session content1");
 
     rbacSessionsMapper.updateByPrimaryKey(rbacSessions);
   }
 
   @Test
   public void test04SelectAll() {
-    List<RbacSessions> rbacSessions = rbacSessionsMapper.selectAll();
+    List<RbacSession> rbacSessions = rbacSessionsMapper.selectAll();
 
     assertNotEquals(null, rbacSessions);
   }
