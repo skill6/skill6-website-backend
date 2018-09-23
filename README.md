@@ -64,6 +64,6 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 
 #### QQ群
 
-群号: 628612966
+群号: 628612966 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0fb612b44f55c807d55813ab1dd1dd469954c438890b628bc4fe26cb3aaa2d9d">单击加群</a>
 
-![qqgroup](docs/image/qqgroup.jpeg)
+<img src="docs/image/qqgroup.jpeg" width=30%>
