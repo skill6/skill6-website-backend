@@ -34,9 +34,9 @@ CREATE TABLE `rbac_permission_info` (
 PRIMARY KEY (`permission_id`) 
 );
 
-CREATE TABLE `rbac_sessions` (
-`session_id` int(11) NOT NULL COMMENT '会话ID',
-`session_content` text CHARACTER SET session序列化后的内容 NOT NULL,
+CREATE TABLE `rbac_session` (
+`session_id` bigint(19) NOT NULL COMMENT '会话ID',
+`session_content` text NOT NULL COMMENT 'session序列化后的内容',
 `session_create_time` timestamp(3) NOT NULL,
 `session_last_modify_time` timestamp(3) NOT NULL,
 `session_valid` tinyint(1) NOT NULL,
