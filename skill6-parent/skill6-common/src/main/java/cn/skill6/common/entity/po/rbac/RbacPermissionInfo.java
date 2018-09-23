@@ -6,7 +6,7 @@ import java.util.Date;
  * RBAC权限信息
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月23日 下午5:52:40
  */
 public class RbacPermissionInfo {
@@ -27,6 +27,29 @@ public class RbacPermissionInfo {
   private Date permissionLastModifyTime;
 
   private Boolean permissionValid;
+
+  @Override
+  public String toString() {
+    return "RbacPermissionInfo [permissionId="
+        + permissionId
+        + ", permissionName="
+        + permissionName
+        + ", permissionCode="
+        + permissionCode
+        + ", permissionDesc="
+        + permissionDesc
+        + ", permissionNavi="
+        + permissionNavi
+        + ", permissionUrl="
+        + permissionUrl
+        + ", permissionCreateTime="
+        + permissionCreateTime
+        + ", permissionLastModifyTime="
+        + permissionLastModifyTime
+        + ", permissionValid="
+        + permissionValid
+        + "]";
+  }
 
   public RbacPermissionInfo(
       Long permissionId,

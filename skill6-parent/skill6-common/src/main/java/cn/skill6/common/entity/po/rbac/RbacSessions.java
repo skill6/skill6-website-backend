@@ -6,7 +6,7 @@ import java.util.Date;
  * RBAC会话存储
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月23日 下午5:53:19
  */
 public class RbacSessions {
@@ -19,6 +19,21 @@ public class RbacSessions {
   private Boolean sessionValid;
 
   private String sessionContent;
+
+  @Override
+  public String toString() {
+    return "RbacSessions [sessionId="
+        + sessionId
+        + ", sessionCreateTime="
+        + sessionCreateTime
+        + ", sessionLastModifyTime="
+        + sessionLastModifyTime
+        + ", sessionValid="
+        + sessionValid
+        + ", sessionContent="
+        + sessionContent
+        + "]";
+  }
 
   public RbacSessions(
       Integer sessionId,
