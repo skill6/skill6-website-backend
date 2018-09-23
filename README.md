@@ -59,3 +59,12 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 1. 文章和代码使用不同的表，文章包含文字+代码等，而代码是纯代码，如序列化工具类；
 1. 用户修改信息、用户登录记录、用户访问网站和文章等的记录都详细记载，用于后期数据存储、分析和做推荐等；
 1. 版本信息表用户更新网站版本说明及特性等；
+
+----
+### 4、沟通交流
+
+#### QQ群
+
+群号: 628612966 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0fb612b44f55c807d55813ab1dd1dd469954c438890b628bc4fe26cb3aaa2d9d">单击加群</a>
+
+<img src="docs/image/qqgroup.jpeg" width=30%>
