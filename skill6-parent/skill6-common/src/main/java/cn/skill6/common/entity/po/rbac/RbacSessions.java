@@ -10,7 +10,7 @@ import java.util.Date;
  * @since 2018年9月23日 下午5:53:19
  */
 public class RbacSessions {
-  private Integer sessionId;
+  private Long sessionId;
 
   private Date sessionCreateTime;
 
@@ -36,7 +36,7 @@ public class RbacSessions {
   }
 
   public RbacSessions(
-      Integer sessionId,
+      Long sessionId,
       Date sessionCreateTime,
       Date sessionLastModifyTime,
       Boolean sessionValid,
@@ -52,11 +52,11 @@ public class RbacSessions {
     super();
   }
 
-  public Integer getSessionId() {
+  public Long getSessionId() {
     return sessionId;
   }
 
-  public void setSessionId(Integer sessionId) {
+  public void setSessionId(Long sessionId) {
     this.sessionId = sessionId;
   }
 

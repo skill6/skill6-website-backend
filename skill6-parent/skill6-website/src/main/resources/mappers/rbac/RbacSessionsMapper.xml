@@ -3,14 +3,14 @@
 <mapper namespace="cn.skill6.website.dao.mappers.rbac.RbacSessionsMapper">
 	<resultMap id="BaseResultMap" type="RbacSessions">
 		<constructor>
-			<idArg column="session_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<idArg column="session_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="session_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="session_last_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="session_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
 			<arg column="session_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
 		</constructor>
 	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from rbac_sessions
 		where session_id = #{sessionId,jdbcType=INTEGER}
 	</delete>
@@ -30,7 +30,7 @@
 		session_content = #{sessionContent,jdbcType=LONGVARCHAR}
 		where session_id = #{sessionId,jdbcType=INTEGER}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select session_id, session_create_time, session_last_modify_time, session_valid,
 		session_content
 		from rbac_sessions

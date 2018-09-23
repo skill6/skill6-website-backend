@@ -11,11 +11,11 @@ import java.util.List;
  * @since 2018年9月23日 下午10:26:47
  */
 public interface RbacSessionsMapper {
-  int deleteByPrimaryKey(Integer sessionId);
+  int deleteByPrimaryKey(Long sessionId);
 
   int insert(RbacSessions rbacSessions);
 
-  RbacSessions selectByPrimaryKey(Integer sessionId);
+  RbacSessions selectByPrimaryKey(Long sessionId);
 
   List<RbacSessions> selectAll();
 
