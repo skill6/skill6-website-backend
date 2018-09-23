@@ -22,7 +22,6 @@ public interface FileDownloadSvc {
    * 上传文件
    *
    * @param request
-   * @param attachment
    * @return
    * @throws FileUploadException
    * @throws IOException

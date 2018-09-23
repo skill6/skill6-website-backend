@@ -2,6 +2,7 @@ package cn.skill6.website.service;
 
 import java.util.Arrays;
 
+import cn.skill6.service.complex.MarkdownSvc;
 import org.springframework.stereotype.Service;
 
 import com.vladsch.flexmark.ast.Node;
@@ -18,7 +19,7 @@ import com.vladsch.flexmark.util.options.MutableDataSet;
  * @author liujichun
  */
 @Service
-public class MarkdownFlexmarkSvc implements MarkdownSvc {
+public class MarkdownFlexmarkSvcImpl implements MarkdownSvc {
 
   /** 将md转化为对应的html */
   @Override

@@ -53,18 +53,18 @@ mybatis:
     default-enum-type-handler: cn.skill6.website.util.mybatis.GeneralStateFieldHandler
 #pagehelper分页配置 第二种和第三种不需要 重点讲的第一种需要
 pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
 #统一配置入口
 skill6:
-  file-path: file/
-  image-path: image/
+  file-path: ${user.home}/skill6/file/
+  image-path: ${user.home}/skill6/image/
   sequence:
     worker:
       id: 1
