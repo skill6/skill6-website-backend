@@ -15,12 +15,12 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ArticleCommentMapper {
   int deleteByPrimaryKey(Long commentId);
-  
+
   int insert(ArticleComment articleComment);
 
-  int selectByPrimaryKey(ArticleComment articleComment);
+  ArticleComment selectByPrimaryKey(Long commentId);
 
   List<ArticleComment> selectAll();
 
-  ArticleComment selectByPrimaryKey(Long commentId);
+  int updateByPrimaryKey(ArticleComment articleComment);
 }
