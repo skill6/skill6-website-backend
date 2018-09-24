@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.impl;
+package cn.skill6.website.dao.impl.visit;
 
 import java.util.List;
 
@@ -6,15 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.skill6.common.entity.po.VisitRecord;
-import cn.skill6.website.dao.VisitRecordMapper;
-import cn.skill6.website.dao.intf.VisitRecordOper;
+import cn.skill6.common.entity.po.visit.VisitRecord;
+import cn.skill6.website.dao.intf.visit.VisitRecordOper;
+import cn.skill6.website.dao.mappers.visit.VisitRecordMapper;
 
 /**
  * 访问记录操作实现类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年8月28日 上午12:20:33
  */
 public class VisitRecordImpl implements VisitRecordOper {

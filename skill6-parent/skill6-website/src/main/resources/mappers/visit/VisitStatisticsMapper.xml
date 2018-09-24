@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.skill6.website.dao.VisitStatisticsMapper">
+<mapper namespace="cn.skill6.website.dao.mappers.visit.VisitStatisticsMapper">
 	<resultMap id="BaseResultMap" type="VisitStatistics">
 		<constructor>
 			<idArg column="visit_id" javaType="java.lang.Long" jdbcType="BIGINT" />
@@ -17,21 +17,24 @@
 	<insert id="insert" parameterType="VisitStatistics">
 		insert into visit_statistics (visit_id, visit_date, visit_online_max,
 		visit_current_day, visit_total_count)
-		values (#{visitId,jdbcType=BIGINT}, #{visitDate,jdbcType=TIMESTAMP}, #{visitOnlineMax,jdbcType=INTEGER},
+		values (#{visitId,jdbcType=BIGINT},
+		#{visitDate,jdbcType=TIMESTAMP}, #{visitOnlineMax,jdbcType=INTEGER},
 		#{visitCurrentDay,jdbcType=INTEGER}, #{visitTotalCount,jdbcType=INTEGER})
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="VisitStatistics">
 		update visit_statistics
 		set visit_date = #{visitDate,jdbcType=TIMESTAMP},
 		visit_online_max = #{visitOnlineMax,jdbcType=INTEGER},
-		visit_current_day = #{visitCurrentDay,jdbcType=INTEGER},
+		visit_current_day =
+		#{visitCurrentDay,jdbcType=INTEGER},
 		visit_total_count = #{visitTotalCount,jdbcType=INTEGER}
 		where visit_id = #{visitId,jdbcType=BIGINT}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select visit_id, visit_date, visit_online_max, visit_current_day, visit_total_count
 		from visit_statistics
-		where visit_id = #{visitId,jdbcType=BIGINT}
+		where visit_id
+		= #{visitId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select visit_id, visit_date, visit_online_max, visit_current_day, visit_total_count

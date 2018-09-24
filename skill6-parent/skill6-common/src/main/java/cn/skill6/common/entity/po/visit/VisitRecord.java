@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.visit;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import java.util.Date;
  * 访问记录实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:38:12
  */
 public class VisitRecord {
@@ -21,6 +21,23 @@ public class VisitRecord {
   private Long visitContentId;
 
   private Long visitUserId;
+
+  @Override
+  public String toString() {
+    return "VisitRecord [visitId="
+        + visitId
+        + ", visitStartTime="
+        + visitStartTime
+        + ", visitEndTime="
+        + visitEndTime
+        + ", visitContentType="
+        + visitContentType
+        + ", visitContentId="
+        + visitContentId
+        + ", visitUserId="
+        + visitUserId
+        + "]";
+  }
 
   public VisitRecord(
       Long visitId,

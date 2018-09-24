@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.visit;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import java.util.Date;
  * 访问统计实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:38:22
  */
 public class VisitStatistics {
@@ -19,6 +19,21 @@ public class VisitStatistics {
   private Integer visitCurrentDay;
 
   private Integer visitTotalCount;
+
+  @Override
+  public String toString() {
+    return "VisitStatistics [visitId="
+        + visitId
+        + ", visitDate="
+        + visitDate
+        + ", visitOnlineMax="
+        + visitOnlineMax
+        + ", visitCurrentDay="
+        + visitCurrentDay
+        + ", visitTotalCount="
+        + visitTotalCount
+        + "]";
+  }
 
   public VisitStatistics(
       Long visitId,
