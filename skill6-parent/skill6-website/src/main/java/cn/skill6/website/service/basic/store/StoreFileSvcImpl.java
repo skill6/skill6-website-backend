@@ -20,22 +20,22 @@ import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.store.StoreFileSvc;
 import cn.skill6.website.config.Skill6Properties;
-import cn.skill6.website.dao.intf.store.StoreFileOper;
+import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.util.storage.FileStoreHandler;
 
 /**
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.7
+ * @version 1.0.8
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
 public class StoreFileSvcImpl implements StoreFileSvc {
 
   @Autowired
-  @Qualifier("storeFileImpl")
-  private StoreFileOper storeFileOper;
+  @Qualifier("storeFileDaoOper")
+  private StoreFileDao storeFileDao;
 
   @Autowired private FileStoreHandler fileStoreHandler;
 
@@ -56,7 +56,7 @@ public class StoreFileSvcImpl implements StoreFileSvc {
     storeFile.setFileHashCode(fileAttribute.getHashCode());
     storeFile.setFileType(fileType);
 
-    storeFileOper.addFileDownload(storeFile);
+    storeFileDao.addFileDownload(storeFile);
 
     Map<String, String> resultMap = new HashMap<String, String>(5);
     resultMap.put("information", "上传成功");
@@ -76,7 +76,7 @@ public class StoreFileSvcImpl implements StoreFileSvc {
 
   @Override
   public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
-    StoreFile storeFile = storeFileOper.findByFileId(fileId);
+    StoreFile storeFile = storeFileDao.findByFileId(fileId);
 
     String fileUrl = storeFile.getFileUrl();
     String fileName = storeFile.getFileName();
