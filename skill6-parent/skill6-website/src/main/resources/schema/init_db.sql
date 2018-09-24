@@ -1,12 +1,8 @@
-//用户
+/*用户 */
 CREATE TABLE `user_privacy_info` (
-
 `user_id` bigint(19) NOT NULL COMMENT '分布式ID，长度19',
-
 `user_name` varchar(18) NOT NULL COMMENT '登录账号',
-
 `user_email` varchar(30) NULL COMMENT '邮箱',
-
 `user_phone` varchar(15) NULL COMMENT '手机号',
 
 `user_login_from` varchar(3) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
@@ -97,8 +93,7 @@ COMMENT = '用户信息修改记录';
 
 
 
-//RBAC权限
-
+/*RBAC权限 */
 
 CREATE TABLE IF NOT EXISTS `rbac_role_info` (
 `role_id` bigint(19) NOT NULL COMMENT '角色分布式ID',
@@ -141,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `rbac_session` (
 PRIMARY KEY (`session_id`) 
 );
 
-//文章信息
+/*文章信息 */
 CREATE TABLE `article_info` (
 
 `article_id` bigint(19) NOT NULL,
@@ -318,7 +313,7 @@ ROW_FORMAT = Dynamic;
 
 
 
-//附加特色功能
+/* 附加特色功能 */
 CREATE TABLE `feature_category_info` (
 
 `category_id` bigint(19) NOT NULL,
@@ -418,7 +413,7 @@ COMMENT = '点赞记录';
 
 
 
-//文件存储
+/* 文件存储 */
 CREATE TABLE `store_file` (
 
 `file_id` bigint(19) NOT NULL,
@@ -500,7 +495,7 @@ ROW_FORMAT = Dynamic;
 
 
 
-//访问统计
+/* 访问统计 */
 CREATE TABLE `visit_statistics` (
 
 `visit_id` bigint(19) NOT NULL,
@@ -556,14 +551,10 @@ CREATE TABLE `visit_record` (
 PRIMARY KEY (`visit_id`) 
 
 )
-
 COMMENT = '文章、代码、问答等访问记录';
 
 
-
-
-
-//其他
+/* 其他 */
 CREATE TABLE `version_info` (
 
 `version_id` bigint(19) NOT NULL,
