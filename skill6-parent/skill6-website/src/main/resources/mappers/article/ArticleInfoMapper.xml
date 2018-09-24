@@ -89,7 +89,7 @@
 	</select>
 	<select id="selectByParams" resultMap="BaseResultMap" parameterType="ArticleInfo">
 		select article_id, article_title, article_author, article_summary, article_label,
-		article_read_total, article_create_date, article_last_modify_date,
+		article_read_total, article_create_time, article_last_modify_time,
 		article_category_id,
 		artilce_place_top,
 		article_top_priority, article_attach_file, article_valid, article_html_content,

@@ -26,7 +26,7 @@ import cn.skill6.website.util.storage.FileStoreHandler;
  * 图片存储服务类
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.0.5
  * @since 2018年9月13日 上午12:45:47
  */
 @Service
@@ -52,6 +52,7 @@ public class ImageUploadSvcImpl implements ImageUploadSvc {
     storeImage.setImageId(Long.valueOf(fileAttribute.getId()));
     storeImage.setImageName(fileAttribute.getName());
     storeImage.setImageUrl(fileAttribute.getUrl());
+    storeImage.setImageHashCode(fileAttribute.getHashCode());
 
     storeImageOper.addImageUpload(storeImage);
 
