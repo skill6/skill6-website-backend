@@ -1,6 +1,6 @@
 package cn.skill6.service.basic;
 
-import cn.skill6.common.entity.po.ArticleInfo;
+import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.Skill6Exception;
 
@@ -8,7 +8,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 微服务接口
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月4日 上午1:00:40
  */
 public interface ArticleInfoSvc {

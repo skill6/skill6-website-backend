@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.skill6.website.dao.ArticleCommentMapper">
+<mapper namespace="cn.skill6.website.dao.mappers.article.ArticleCommentMapper">
 	<resultMap id="BaseResultMap" type="ArticleComment">
 		<constructor>
 			<idArg column="comment_id" javaType="java.lang.Long" jdbcType="BIGINT" />
@@ -20,12 +20,20 @@
 		insert into article_comment (comment_id, comment_article_id, comment_user_id,
 		comment_parent_id, comment_date, comment_valid,
 		comment_content)
-		values
-		(#{commentId,jdbcType=BIGINT}, #{commentArticleId,jdbcType=VARCHAR}, #{commentUserId,jdbcType=VARCHAR},
-		#{commentParentId,jdbcType=BIGINT}, #{commentDate,jdbcType=TIMESTAMP},
-		#{commentValid,jdbcType=BIT},
+		values (#{commentId,jdbcType=BIGINT}, #{commentArticleId,jdbcType=VARCHAR}, #{commentUserId,jdbcType=VARCHAR},
+		#{commentParentId,jdbcType=BIGINT}, #{commentDate,jdbcType=TIMESTAMP}, #{commentValid,jdbcType=BIT},
 		#{commentContent,jdbcType=LONGVARCHAR})
 	</insert>
+	<update id="updateByPrimaryKey" parameterType="ArticleComment">
+		update article_comment
+		set comment_article_id = #{commentArticleId,jdbcType=VARCHAR},
+		comment_user_id = #{commentUserId,jdbcType=VARCHAR},
+		comment_parent_id = #{commentParentId,jdbcType=BIGINT},
+		comment_date = #{commentDate,jdbcType=TIMESTAMP},
+		comment_valid = #{commentValid,jdbcType=BIT},
+		comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select comment_id, comment_article_id, comment_user_id, comment_parent_id, comment_date,
 		comment_valid, comment_content
@@ -37,15 +45,4 @@
 		comment_valid, comment_content
 		from article_comment
 	</select>
-	<update id="updateByPrimaryKey" parameterType="ArticleComment">
-		update article_comment
-		set comment_article_id = #{commentArticleId,jdbcType=VARCHAR},
-		comment_user_id = #{commentUserId,jdbcType=VARCHAR},
-		comment_parent_id = #{commentParentId,jdbcType=BIGINT},
-		comment_date = #{commentDate,jdbcType=TIMESTAMP},
-		comment_valid = #{commentValid,jdbcType=BIT},
-		comment_content =
-		#{commentContent,jdbcType=LONGVARCHAR}
-		where comment_id = #{commentId,jdbcType=BIGINT}
-	</update>
 </mapper>

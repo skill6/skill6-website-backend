@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.article;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import java.util.Date;
  * 文章评论实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:29:03
  */
 public class ArticleComment {
@@ -23,6 +23,25 @@ public class ArticleComment {
   private Boolean commentValid;
 
   private String commentContent;
+
+  @Override
+  public String toString() {
+    return "ArticleComment [commentId="
+        + commentId
+        + ", commentArticleId="
+        + commentArticleId
+        + ", commentUserId="
+        + commentUserId
+        + ", commentParentId="
+        + commentParentId
+        + ", commentDate="
+        + commentDate
+        + ", commentValid="
+        + commentValid
+        + ", commentContent="
+        + commentContent
+        + "]";
+  }
 
   public ArticleComment(
       Long commentId,

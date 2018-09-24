@@ -4,13 +4,13 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import cn.skill6.common.entity.po.ArticleInfo;
+import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.intf.BaseTemplate;
 /**
  * 增加数据库实体类的字段模板类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月22日 上午11:55:06
  */
 @Service
@@ -47,13 +47,13 @@ public class ArticleInfoTo extends ArticleInfo implements BaseTemplate {
   }
 
   @Override
-  public Date getArticleCreateDate() {
-    return super.getArticleCreateDate();
+  public Date getArticleCreateTime() {
+    return super.getArticleCreateTime();
   }
 
   @Override
-  public Date getArticleLastModifyDate() {
-    return super.getArticleLastModifyDate();
+  public Date getArticleLastModifyTime() {
+    return super.getArticleLastModifyTime();
   }
 
   @Override

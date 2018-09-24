@@ -12,9 +12,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
 import cn.skill6.common.BaseUtils;
-import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.website.dao.ArticleInfoMapper;
-import cn.skill6.website.dao.intf.ArticleInfoOper;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.website.dao.intf.article.ArticleInfoOper;
+import cn.skill6.website.dao.mappers.article.ArticleInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
@@ -47,8 +47,8 @@ public class ArticleInfoImpl implements ArticleInfoOper {
     articleInfo.setArticleId(articleId);
 
     // 设置创建日期和最后修改日期
-    articleInfo.setArticleCreateDate(new Date());
-    articleInfo.setArticleLastModifyDate(new Date());
+    articleInfo.setArticleCreateTime(new Date());
+    articleInfo.setArticleLastModifyTime(new Date());
     // 默认不置顶、无附件
     articleInfo.setArtilcePlaceTop(false);
     articleInfo.setArticleAttachFile(false);

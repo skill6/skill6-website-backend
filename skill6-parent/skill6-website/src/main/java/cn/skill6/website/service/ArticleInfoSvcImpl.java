@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import cn.skill6.common.entity.po.ArticleInfo;
+import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.service.basic.ArticleInfoSvc;
-import cn.skill6.website.dao.intf.ArticleInfoOper;
+import cn.skill6.website.dao.intf.article.ArticleInfoOper;
 
 /**
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月21日 下午11:07:30
  */
 @Service

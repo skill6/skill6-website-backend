@@ -1,18 +1,18 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.article;
 
 import java.util.Date;
 
+import cn.skill6.common.entity.po.abst.PaginationAndSort;
+
 /**
- * 文章历史版本实体类
+ * 文章信息实体类
  *
  * @author 何明胜
- * @version 1.0.0
- * @since 2018年8月28日 上午1:25:48
+ * @version 1.0.3
+ * @since 2018年8月15日 下午11:30:31
  */
-public class ArticleModifyRecord {
+public class ArticleInfo extends PaginationAndSort {
   private Long articleId;
-
-  private Date articleLastModifyDate;
 
   private String articleTitle;
 
@@ -24,7 +24,9 @@ public class ArticleModifyRecord {
 
   private Integer articleReadTotal;
 
-  private Date articleCreateDate;
+  private Date articleCreateTime;
+
+  private Date articleLastModifyTime;
 
   private String articleCategoryId;
 
@@ -34,20 +36,18 @@ public class ArticleModifyRecord {
 
   private Boolean articleAttachFile;
 
+  private Boolean articleValid;
+
   private String articleHtmlContent;
 
   private String articleMdContent;
 
   private String articleAttachUrl;
 
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */ @Override
+  @Override
   public String toString() {
-    return "ArticleModifyRecord [articleId="
+    return "ArticleInfo [articleId="
         + articleId
-        + ", articleLastModifyDate="
-        + articleLastModifyDate
         + ", articleTitle="
         + articleTitle
         + ", articleAuthor="
@@ -58,8 +58,10 @@ public class ArticleModifyRecord {
         + articleLabel
         + ", articleReadTotal="
         + articleReadTotal
-        + ", articleCreateDate="
-        + articleCreateDate
+        + ", articleCreateTime="
+        + articleCreateTime
+        + ", articleLastModifyTime="
+        + articleLastModifyTime
         + ", articleCategoryId="
         + articleCategoryId
         + ", artilcePlaceTop="
@@ -68,49 +70,55 @@ public class ArticleModifyRecord {
         + articleTopPriority
         + ", articleAttachFile="
         + articleAttachFile
+        + ", articleValid="
+        + articleValid
         + ", articleHtmlContent="
         + articleHtmlContent
         + ", articleMdContent="
         + articleMdContent
         + ", articleAttachUrl="
         + articleAttachUrl
+        + ", toString()="
+        + super.toString()
         + "]";
   }
 
-  public ArticleModifyRecord(
+  public ArticleInfo(
       Long articleId,
-      Date articleLastModifyDate,
       String articleTitle,
       String articleAuthor,
       String articleSummary,
       String articleLabel,
       Integer articleReadTotal,
-      Date articleCreateDate,
+      Date articleCreateTime,
+      Date articleLastModifyTime,
       String articleCategoryId,
       Boolean artilcePlaceTop,
       Integer articleTopPriority,
       Boolean articleAttachFile,
+      Boolean articleValid,
       String articleHtmlContent,
       String articleMdContent,
       String articleAttachUrl) {
     this.articleId = articleId;
-    this.articleLastModifyDate = articleLastModifyDate;
     this.articleTitle = articleTitle;
     this.articleAuthor = articleAuthor;
     this.articleSummary = articleSummary;
     this.articleLabel = articleLabel;
     this.articleReadTotal = articleReadTotal;
-    this.articleCreateDate = articleCreateDate;
+    this.articleCreateTime = articleCreateTime;
+    this.articleLastModifyTime = articleLastModifyTime;
     this.articleCategoryId = articleCategoryId;
     this.artilcePlaceTop = artilcePlaceTop;
     this.articleTopPriority = articleTopPriority;
     this.articleAttachFile = articleAttachFile;
+    this.articleValid = articleValid;
     this.articleHtmlContent = articleHtmlContent;
     this.articleMdContent = articleMdContent;
     this.articleAttachUrl = articleAttachUrl;
   }
 
-  public ArticleModifyRecord() {
+  public ArticleInfo() {
     super();
   }
 
@@ -120,14 +128,6 @@ public class ArticleModifyRecord {
 
   public void setArticleId(Long articleId) {
     this.articleId = articleId;
-  }
-
-  public Date getArticleLastModifyDate() {
-    return articleLastModifyDate;
-  }
-
-  public void setArticleLastModifyDate(Date articleLastModifyDate) {
-    this.articleLastModifyDate = articleLastModifyDate;
   }
 
   public String getArticleTitle() {
@@ -170,12 +170,20 @@ public class ArticleModifyRecord {
     this.articleReadTotal = articleReadTotal;
   }
 
-  public Date getArticleCreateDate() {
-    return articleCreateDate;
+  public Date getArticleCreateTime() {
+    return articleCreateTime;
   }
 
-  public void setArticleCreateDate(Date articleCreateDate) {
-    this.articleCreateDate = articleCreateDate;
+  public void setArticleCreateTime(Date articleCreateTime) {
+    this.articleCreateTime = articleCreateTime;
+  }
+
+  public Date getArticleLastModifyTime() {
+    return articleLastModifyTime;
+  }
+
+  public void setArticleLastModifyTime(Date articleLastModifyTime) {
+    this.articleLastModifyTime = articleLastModifyTime;
   }
 
   public String getArticleCategoryId() {
@@ -208,6 +216,14 @@ public class ArticleModifyRecord {
 
   public void setArticleAttachFile(Boolean articleAttachFile) {
     this.articleAttachFile = articleAttachFile;
+  }
+
+  public Boolean getArticleValid() {
+    return articleValid;
+  }
+
+  public void setArticleValid(Boolean articleValid) {
+    this.articleValid = articleValid;
   }
 
   public String getArticleHtmlContent() {

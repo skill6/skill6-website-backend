@@ -7,18 +7,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.skill6.common.entity.po.ArticleReadRecord;
+import cn.skill6.common.entity.po.article.ArticleReadRecord;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.db.NullPointerException;
-import cn.skill6.website.dao.ArticleReadRecordMapper;
-import cn.skill6.website.dao.intf.ArticleReadRecordOper;
+import cn.skill6.website.dao.intf.article.ArticleReadRecordOper;
+import cn.skill6.website.dao.mappers.article.ArticleReadRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文章阅读记录操作实现类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月28日 上午12:17:12
  */
 public class ArticleReadRecordImpl implements ArticleReadRecordOper {
@@ -39,7 +39,7 @@ public class ArticleReadRecordImpl implements ArticleReadRecordOper {
     if (articleId == null) {
       throw new NullPointerException("获取的articleId为空");
     }
-    articleReadRecord.setArtilceId(articleId);
+    articleReadRecord.setArticleId(articleId);
 
     // 设置当天日期
     articleReadRecord.setArticleDateDaily(new Date());

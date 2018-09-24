@@ -1,9 +1,5 @@
 package cn.skill6.website.dao.impl;
 
-import cn.skill6.common.entity.enums.SortType;
-import cn.skill6.common.entity.po.ArticleInfo;
-import cn.skill6.common.entity.to.ArticleInfoTo;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -15,11 +11,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.skill6.common.entity.enums.SortType;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.to.ArticleInfoTo;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
+
 /**
  * 文章信息实现测试
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月21日 下午11:24:25
  */
 @SpringBootTest
