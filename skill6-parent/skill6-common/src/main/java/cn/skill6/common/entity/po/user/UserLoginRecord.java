@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.user;
 
 import java.util.Date;
 
@@ -6,10 +6,10 @@ import java.util.Date;
  * 登录记录实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:35:52
  */
-public class LoginRecord {
+public class UserLoginRecord {
   private Long loginId;
 
   private String loginIp;
@@ -18,7 +18,7 @@ public class LoginRecord {
 
   private String loginEquipment;
 
-  private Date loginDate;
+  private Date loginTime;
 
   private String loginUserId;
 
@@ -26,12 +26,33 @@ public class LoginRecord {
 
   private String loginFailReason;
 
-  public LoginRecord(
+  @Override
+  public String toString() {
+    return "UserLoginRecord [loginId="
+        + loginId
+        + ", loginIp="
+        + loginIp
+        + ", loginType="
+        + loginType
+        + ", loginEquipment="
+        + loginEquipment
+        + ", loginTime="
+        + loginTime
+        + ", loginUserId="
+        + loginUserId
+        + ", loginSuccess="
+        + loginSuccess
+        + ", loginFailReason="
+        + loginFailReason
+        + "]";
+  }
+
+  public UserLoginRecord(
       Long loginId,
       String loginIp,
       String loginType,
       String loginEquipment,
-      Date loginDate,
+      Date loginTime,
       String loginUserId,
       Boolean loginSuccess,
       String loginFailReason) {
@@ -39,13 +60,13 @@ public class LoginRecord {
     this.loginIp = loginIp;
     this.loginType = loginType;
     this.loginEquipment = loginEquipment;
-    this.loginDate = loginDate;
+    this.loginTime = loginTime;
     this.loginUserId = loginUserId;
     this.loginSuccess = loginSuccess;
     this.loginFailReason = loginFailReason;
   }
 
-  public LoginRecord() {
+  public UserLoginRecord() {
     super();
   }
 
@@ -81,12 +102,12 @@ public class LoginRecord {
     this.loginEquipment = loginEquipment == null ? null : loginEquipment.trim();
   }
 
-  public Date getLoginDate() {
-    return loginDate;
+  public Date getLoginTime() {
+    return loginTime;
   }
 
-  public void setLoginDate(Date loginDate) {
-    this.loginDate = loginDate;
+  public void setLoginTime(Date loginTime) {
+    this.loginTime = loginTime;
   }
 
   public String getLoginUserId() {

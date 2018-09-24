@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.user;
 
 import java.util.Date;
 
@@ -6,15 +6,15 @@ import java.util.Date;
  * 用户信息修改记录实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:37:07
  */
 public class UserModifyRecord {
-  private String userId;
+  private Long userId;
 
   private String userModifyType;
 
-  private Date userModifyDate;
+  private Date userModifyTime;
 
   private String userModifyBefore;
 
@@ -22,16 +22,33 @@ public class UserModifyRecord {
 
   private Boolean userModufySuccess;
 
+  @Override
+  public String toString() {
+    return "UserModifyRecord [userId="
+        + userId
+        + ", userModifyType="
+        + userModifyType
+        + ", userModifyTime="
+        + userModifyTime
+        + ", userModifyBefore="
+        + userModifyBefore
+        + ", userModifyAfter="
+        + userModifyAfter
+        + ", userModufySuccess="
+        + userModufySuccess
+        + "]";
+  }
+
   public UserModifyRecord(
-      String userId,
+      Long userId,
       String userModifyType,
-      Date userModifyDate,
+      Date userModifyTime,
       String userModifyBefore,
       String userModifyAfter,
       Boolean userModufySuccess) {
     this.userId = userId;
     this.userModifyType = userModifyType;
-    this.userModifyDate = userModifyDate;
+    this.userModifyTime = userModifyTime;
     this.userModifyBefore = userModifyBefore;
     this.userModifyAfter = userModifyAfter;
     this.userModufySuccess = userModufySuccess;
@@ -41,12 +58,12 @@ public class UserModifyRecord {
     super();
   }
 
-  public String getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
-    this.userId = userId == null ? null : userId.trim();
+  public void setUserId(Long userId) {
+    this.userId = userId;
   }
 
   public String getUserModifyType() {
@@ -57,12 +74,12 @@ public class UserModifyRecord {
     this.userModifyType = userModifyType == null ? null : userModifyType.trim();
   }
 
-  public Date getUserModifyDate() {
-    return userModifyDate;
+  public Date getUserModifyTime() {
+    return userModifyTime;
   }
 
-  public void setUserModifyDate(Date userModifyDate) {
-    this.userModifyDate = userModifyDate;
+  public void setUserModifyTime(Date userModifyTime) {
+    this.userModifyTime = userModifyTime;
   }
 
   public String getUserModifyBefore() {

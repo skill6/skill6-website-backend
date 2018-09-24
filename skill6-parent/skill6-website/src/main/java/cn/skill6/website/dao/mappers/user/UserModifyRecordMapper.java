@@ -1,21 +1,21 @@
-package cn.skill6.website.dao;
+package cn.skill6.website.dao.mappers.user;
 
-import cn.skill6.common.entity.po.UserModifyRecord;
+import cn.skill6.common.entity.po.user.UserModifyRecord;
 import java.util.List;
 
 /**
  * 用户信息修改记录mapper
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月15日 下午11:41:32
  */
 public interface UserModifyRecordMapper {
-  int deleteByPrimaryKey(String userId);
+  int deleteByPrimaryKey(Long userId);
 
   int insert(UserModifyRecord userModifyRecord);
 
-  UserModifyRecord selectByPrimaryKey(String userId);
+  UserModifyRecord selectByPrimaryKey(Long userId);
 
   List<UserModifyRecord> selectAll();
 

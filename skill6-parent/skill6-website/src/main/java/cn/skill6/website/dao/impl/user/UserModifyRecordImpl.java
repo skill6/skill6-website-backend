@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.impl;
+package cn.skill6.website.dao.impl.user;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.skill6.common.entity.po.UserModifyRecord;
-import cn.skill6.website.dao.UserModifyRecordMapper;
-import cn.skill6.website.dao.intf.UserModifyRecordOper;
+import cn.skill6.common.entity.po.user.UserModifyRecord;
+import cn.skill6.website.dao.intf.user.UserModifyRecordOper;
+import cn.skill6.website.dao.mappers.user.UserModifyRecordMapper;
 
 /**
  * 用户信息修改记录操作实现类
@@ -23,7 +23,7 @@ public class UserModifyRecordImpl implements UserModifyRecordOper {
   @Autowired private UserModifyRecordMapper userModifyRecordMapper;
 
   @Override
-  public int deleteByUserId(String userId) {
+  public int deleteByUserId(Long userId) {
     logger.warn("删除id为{}的用户信息修改记录", userId);
 
     return userModifyRecordMapper.deleteByPrimaryKey(userId);
@@ -36,7 +36,7 @@ public class UserModifyRecordImpl implements UserModifyRecordOper {
   }
 
   @Override
-  public UserModifyRecord findByUserId(String userId) {
+  public UserModifyRecord findByUserId(Long userId) {
     // TODO Auto-generated method stub
     return null;
   }

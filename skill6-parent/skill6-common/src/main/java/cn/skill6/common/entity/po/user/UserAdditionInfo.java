@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.user;
 
 import java.util.Date;
 
@@ -6,10 +6,10 @@ import java.util.Date;
  * 用户信息实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:36:56
  */
-public class UserInfo {
+public class UserAdditionInfo {
   private Long userId;
 
   private String userNickName;
@@ -28,7 +28,30 @@ public class UserInfo {
 
   private Date userLastLoginTime;
 
-  public UserInfo(
+  @Override
+  public String toString() {
+    return "UserAdditionInfo [userId="
+        + userId
+        + ", userNickName="
+        + userNickName
+        + ", userRegisterTime="
+        + userRegisterTime
+        + ", userHeadUrl="
+        + userHeadUrl
+        + ", userSex="
+        + userSex
+        + ", userBirthday="
+        + userBirthday
+        + ", userBirthdayType="
+        + userBirthdayType
+        + ", userDesc="
+        + userDesc
+        + ", userLastLoginTime="
+        + userLastLoginTime
+        + "]";
+  }
+
+  public UserAdditionInfo(
       Long userId,
       String userNickName,
       Date userRegisterTime,
@@ -49,7 +72,7 @@ public class UserInfo {
     this.userLastLoginTime = userLastLoginTime;
   }
 
-  public UserInfo() {
+  public UserAdditionInfo() {
     super();
   }
 
