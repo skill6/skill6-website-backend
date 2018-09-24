@@ -28,7 +28,7 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
  */
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ImageUploadControllerTest extends Skill6WebsiteApplicationTest {
+public class StoreImageControllerTest extends Skill6WebsiteApplicationTest {
 
   private static String urlDownload = null;
 

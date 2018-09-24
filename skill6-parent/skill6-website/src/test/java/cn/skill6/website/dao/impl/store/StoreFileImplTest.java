@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.impl;
+package cn.skill6.website.dao.impl.store;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +24,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * @since 2018年9月4日 下午11:19:15
  */
 @SpringBootTest
-public class FileDownloadImplTest extends Skill6WebsiteApplicationTest {
+public class StoreFileImplTest extends Skill6WebsiteApplicationTest {
 
   @Autowired
   @Qualifier("storeFileImpl")

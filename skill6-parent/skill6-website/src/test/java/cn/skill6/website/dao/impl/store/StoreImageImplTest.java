@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.impl;
+package cn.skill6.website.dao.impl.store;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import cn.skill6.website.dao.intf.store.StoreImageOper;
 import cn.skill6.website.util.sequence.SequenceManager;
 
 @SpringBootTest
-public class ImageUploadImplTest extends Skill6WebsiteApplicationTest {
+public class StoreImageImplTest extends Skill6WebsiteApplicationTest {
 
   @Autowired
   @Qualifier("storeImageImpl")

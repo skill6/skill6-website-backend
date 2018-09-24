@@ -1,4 +1,4 @@
-package cn.skill6.service.basic;
+package cn.skill6.service.basic.store;
 
 import java.io.IOException;
 
@@ -14,10 +14,10 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 文件存储接口
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.4
  * @since 2018年9月4日 下午9:44:31
  */
-public interface FileDownloadSvc {
+public interface StoreFileSvc {
   /**
    * 上传文件
    *

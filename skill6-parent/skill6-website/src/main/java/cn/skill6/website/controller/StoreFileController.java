@@ -16,41 +16,41 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.FileDownloadSvc;
+import cn.skill6.service.basic.store.StoreFileSvc;
 
 /**
  * 文件存储控制器
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.0.5
  * @since 2018年9月4日 下午9:49:27
  */
 @RestController
 @RequestMapping(value = "/file")
-public class FileDownloadController {
+public class StoreFileController {
 
   @Autowired
-  @Qualifier("fileDownloadSvcImpl")
-  private FileDownloadSvc fileDownloadSvc;
+  @Qualifier("storeFileSvcImpl")
+  private StoreFileSvc storeFileSvc;
 
   @PostMapping(value = "/share")
   public ResponseJson uploadFile(HttpServletRequest request)
       throws IOException, FileUploadException {
 
-    return fileDownloadSvc.uploadFile(request, FileType.SHARE_FILES);
+    return storeFileSvc.uploadFile(request, FileType.SHARE_FILES);
   }
 
   @PostMapping(value = "/attach")
   public ResponseJson uploadAttachment(HttpServletRequest request)
       throws IOException, FileUploadException {
 
-    return fileDownloadSvc.uploadFile(request, FileType.ATTACHMENT);
+    return storeFileSvc.uploadFile(request, FileType.ATTACHMENT);
   }
 
   @GetMapping(value = "/{year}/{month}/{day}/{fileId}")
   public void downloadFileById(
       @PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
 
-    fileDownloadSvc.downloadFileById(fileId, response);
+    storeFileSvc.downloadFileById(fileId, response);
   }
 }

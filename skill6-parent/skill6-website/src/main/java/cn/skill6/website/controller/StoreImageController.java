@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.ImageUploadSvc;
+import cn.skill6.service.basic.store.StoreImageSvc;
 
 /**
  * 图片存储控制器
@@ -26,11 +26,11 @@ import cn.skill6.service.basic.ImageUploadSvc;
  */
 @RestController
 @RequestMapping(value = "/image")
-public class ImageUploadController {
+public class StoreImageController {
 
   @Autowired
   @Qualifier("imageUploadSvcImpl")
-  private ImageUploadSvc imageUploadSvc;
+  private StoreImageSvc imageUploadSvc;
 
   @PostMapping
   public ResponseJson uploadImage(HttpServletRequest request)

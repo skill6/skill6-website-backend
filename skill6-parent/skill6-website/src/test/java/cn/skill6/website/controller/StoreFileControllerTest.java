@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class FileDownloadControllerTest extends Skill6WebsiteApplicationTest {
+public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
 
   private static String urlDownload = null;
 

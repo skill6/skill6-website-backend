@@ -1,4 +1,4 @@
-package cn.skill6.service.basic;
+package cn.skill6.service.basic.store;
 
 import java.io.IOException;
 
@@ -13,10 +13,10 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 图片存储接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0.1
  * @since 2018年9月13日 上午12:46:40
  */
-public interface ImageUploadSvc {
+public interface StoreImageSvc {
 
   /**
    * 上传图片

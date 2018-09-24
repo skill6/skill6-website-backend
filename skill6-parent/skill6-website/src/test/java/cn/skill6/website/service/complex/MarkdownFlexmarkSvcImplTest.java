@@ -1,7 +1,9 @@
-package cn.skill6.website.service;
+package cn.skill6.website.service.complex;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import cn.skill6.website.service.complex.MarkdownFlexmarkSvcImpl;
 
 public class MarkdownFlexmarkSvcImplTest {
 
