@@ -1,4 +1,4 @@
-package cn.skill6.website.controller;
+package cn.skill6.website.controller.basic;
 
 import java.io.IOException;
 
@@ -29,14 +29,14 @@ import cn.skill6.service.basic.store.StoreImageSvc;
 public class StoreImageController {
 
   @Autowired
-  @Qualifier("imageUploadSvcImpl")
-  private StoreImageSvc imageUploadSvc;
+  @Qualifier("storeImageSvcImpl")
+  private StoreImageSvc storeImageSvc;
 
   @PostMapping
   public ResponseJson uploadImage(HttpServletRequest request)
       throws IOException, FileUploadException {
 
-    return imageUploadSvc.uploadImage(request);
+    return storeImageSvc.uploadImage(request);
   }
 
   @GetMapping(value = "/{year}/{month}/{day}/{imageId}")
@@ -44,6 +44,6 @@ public class StoreImageController {
       @PathVariable(name = "imageId") Long imageId, HttpServletResponse response)
       throws IOException {
 
-    imageUploadSvc.downloadImageById(imageId, response);
+    storeImageSvc.downloadImageById(imageId, response);
   }
 }

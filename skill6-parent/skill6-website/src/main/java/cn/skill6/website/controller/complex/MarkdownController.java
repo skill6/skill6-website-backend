@@ -1,4 +1,4 @@
-package cn.skill6.website.controller;
+package cn.skill6.website.controller.complex;
 
 import javax.servlet.http.HttpServletResponse;
 

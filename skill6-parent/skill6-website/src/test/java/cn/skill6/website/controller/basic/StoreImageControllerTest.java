@@ -1,4 +1,4 @@
-package cn.skill6.website.controller;
+package cn.skill6.website.controller.basic;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;

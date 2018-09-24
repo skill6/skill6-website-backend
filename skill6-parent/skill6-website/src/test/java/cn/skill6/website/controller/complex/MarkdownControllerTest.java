@@ -1,4 +1,4 @@
-package cn.skill6.website.controller;
+package cn.skill6.website.controller.complex;
 
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.Skill6WebsiteApplicationTest;

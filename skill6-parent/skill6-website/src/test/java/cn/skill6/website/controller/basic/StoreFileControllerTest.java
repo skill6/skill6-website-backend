@@ -1,4 +1,4 @@
-package cn.skill6.website.controller;
+package cn.skill6.website.controller.basic;
 
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.transform.JacksonUtil;
