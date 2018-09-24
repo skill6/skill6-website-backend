@@ -15,6 +15,7 @@ import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.dao.impl.article.ArticleInfoImpl;
 
 /**
  * 文章信息实现测试

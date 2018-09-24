@@ -13,29 +13,29 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.enums.FileType;
-import cn.skill6.common.entity.po.FileDownload;
+import cn.skill6.common.entity.po.store.StoreFile;
 import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
 import cn.skill6.service.basic.FileDownloadSvc;
 import cn.skill6.website.config.Skill6Properties;
-import cn.skill6.website.dao.intf.FileDownloadOper;
+import cn.skill6.website.dao.intf.store.StoreFileOper;
 import cn.skill6.website.util.storage.FileStoreHandler;
 
 /**
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.0.6
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
 public class FileDownloadSvcImpl implements FileDownloadSvc {
 
   @Autowired
-  @Qualifier("fileDownloadImpl")
-  private FileDownloadOper fileDownloadOper;
+  @Qualifier("storeFileImpl")
+  private StoreFileOper storeFileOper;
 
   @Autowired private FileStoreHandler fileStoreHandler;
 
@@ -48,15 +48,15 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
     String storeParentPath = skill6Properties.getFilePath() + dateFormat;
 
     FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, storeParentPath);
-    FileDownload fileDownload = new FileDownload();
+    StoreFile storeFile = new StoreFile();
 
-    fileDownload.setFileId(Long.valueOf(fileAttribute.getId()));
-    fileDownload.setFileName(fileAttribute.getName());
-    fileDownload.setFileUrl(fileAttribute.getUrl());
-    fileDownload.setFileHashCode(fileAttribute.getHashCode());
-    fileDownload.setFileType(fileType);
+    storeFile.setFileId(Long.valueOf(fileAttribute.getId()));
+    storeFile.setFileName(fileAttribute.getName());
+    storeFile.setFileUrl(fileAttribute.getUrl());
+    storeFile.setFileHashCode(fileAttribute.getHashCode());
+    storeFile.setFileType(fileType);
 
-    fileDownloadOper.addFileDownload(fileDownload);
+    storeFileOper.addFileDownload(storeFile);
 
     Map<String, String> resultMap = new HashMap<String, String>(5);
     resultMap.put("information", "上传成功");
@@ -67,7 +67,7 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
             .append("/file/")
             .append(dateFormat)
             .append("/")
-            .append(fileDownload.getFileId())
+            .append(storeFile.getFileId())
             .toString();
     resultMap.put("file_url", fileUrl);
 
@@ -76,10 +76,10 @@ public class FileDownloadSvcImpl implements FileDownloadSvc {
 
   @Override
   public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
-    FileDownload fileDownload = fileDownloadOper.findByFileId(fileId);
+    StoreFile storeFile = storeFileOper.findByFileId(fileId);
 
-    String fileUrl = fileDownload.getFileUrl();
-    String fileName = fileDownload.getFileName();
+    String fileUrl = storeFile.getFileUrl();
+    String fileName = storeFile.getFileName();
 
     fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
   }

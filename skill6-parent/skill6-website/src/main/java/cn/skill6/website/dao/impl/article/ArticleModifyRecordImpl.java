@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.impl;
+package cn.skill6.website.dao.impl.article;
 
 import java.util.Date;
 import java.util.List;

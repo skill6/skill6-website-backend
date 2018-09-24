@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.store;
 
 import java.util.Date;
 
@@ -6,57 +6,61 @@ import java.util.Date;
  * 图片上传实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:35:28
  */
-public class ImageUpload {
+public class StoreImage {
   private Long imageId;
 
   private String imageName;
 
   private String imageUrl;
 
-  private Date imageUploadDate;
+  private Date imageUploadTime;
 
   private String imageType;
 
+  private String imageHashCode;
+
   private Integer imageDownloadCount;
 
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */ @Override
+  @Override
   public String toString() {
-    return "ImageUpload [imageId="
+    return "StoreImage [imageId="
         + imageId
         + ", imageName="
         + imageName
         + ", imageUrl="
         + imageUrl
-        + ", imageUploadDate="
-        + imageUploadDate
+        + ", imageUploadTime="
+        + imageUploadTime
         + ", imageType="
         + imageType
+        + ", imageHashCode="
+        + imageHashCode
         + ", imageDownloadCount="
         + imageDownloadCount
         + "]";
   }
 
-  public ImageUpload(
+  public StoreImage(
       Long imageId,
       String imageName,
       String imageUrl,
-      Date imageUploadDate,
+      Date imageUploadTime,
       String imageType,
+      String imageHashCode,
       Integer imageDownloadCount) {
     this.imageId = imageId;
     this.imageName = imageName;
     this.imageUrl = imageUrl;
-    this.imageUploadDate = imageUploadDate;
+    this.imageUploadTime = imageUploadTime;
     this.imageType = imageType;
+    this.imageHashCode = imageHashCode;
     this.imageDownloadCount = imageDownloadCount;
   }
 
-  public ImageUpload() {
+  public StoreImage() {
     super();
   }
 
@@ -84,12 +88,12 @@ public class ImageUpload {
     this.imageUrl = imageUrl == null ? null : imageUrl.trim();
   }
 
-  public Date getImageUploadDate() {
-    return imageUploadDate;
+  public Date getImageUploadTime() {
+    return imageUploadTime;
   }
 
-  public void setImageUploadDate(Date imageUploadDate) {
-    this.imageUploadDate = imageUploadDate;
+  public void setImageUploadTime(Date imageUploadTime) {
+    this.imageUploadTime = imageUploadTime;
   }
 
   public String getImageType() {
@@ -98,6 +102,14 @@ public class ImageUpload {
 
   public void setImageType(String imageType) {
     this.imageType = imageType == null ? null : imageType.trim();
+  }
+
+  public String getImageHashCode() {
+    return imageHashCode;
+  }
+
+  public void setImageHashCode(String imageHashCode) {
+    this.imageHashCode = imageHashCode == null ? null : imageHashCode.trim();
   }
 
   public Integer getImageDownloadCount() {
