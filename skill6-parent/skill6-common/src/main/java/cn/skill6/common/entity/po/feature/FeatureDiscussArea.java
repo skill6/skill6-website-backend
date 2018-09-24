@@ -1,15 +1,15 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.feature;
 
 import java.util.Date;
 
 /**
- * 主题讨论区实体类
+ * 讨论区实体类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年8月15日 下午11:32:21
  */
-public class DiscussArea {
+public class FeatureDiscussArea {
   private Long discussId;
 
   private Long discussBelongId;
@@ -18,30 +18,49 @@ public class DiscussArea {
 
   private String discussComitterId;
 
-  private Date discussCreateDate;
+  private Date discussCreateTime;
 
   private Boolean discussValid;
 
   private String discussContent;
 
-  public DiscussArea(
+  @Override
+  public String toString() {
+    return "FeatureDiscussArea [discussId="
+        + discussId
+        + ", discussBelongId="
+        + discussBelongId
+        + ", discussParentId="
+        + discussParentId
+        + ", discussComitterId="
+        + discussComitterId
+        + ", discussCreateTime="
+        + discussCreateTime
+        + ", discussValid="
+        + discussValid
+        + ", discussContent="
+        + discussContent
+        + "]";
+  }
+
+  public FeatureDiscussArea(
       Long discussId,
       Long discussBelongId,
       Long discussParentId,
       String discussComitterId,
-      Date discussCreateDate,
+      Date discussCreateTime,
       Boolean discussValid,
       String discussContent) {
     this.discussId = discussId;
     this.discussBelongId = discussBelongId;
     this.discussParentId = discussParentId;
     this.discussComitterId = discussComitterId;
-    this.discussCreateDate = discussCreateDate;
+    this.discussCreateTime = discussCreateTime;
     this.discussValid = discussValid;
     this.discussContent = discussContent;
   }
 
-  public DiscussArea() {
+  public FeatureDiscussArea() {
     super();
   }
 
@@ -77,12 +96,12 @@ public class DiscussArea {
     this.discussComitterId = discussComitterId == null ? null : discussComitterId.trim();
   }
 
-  public Date getDiscussCreateDate() {
-    return discussCreateDate;
+  public Date getDiscussCreateTime() {
+    return discussCreateTime;
   }
 
-  public void setDiscussCreateDate(Date discussCreateDate) {
-    this.discussCreateDate = discussCreateDate;
+  public void setDiscussCreateTime(Date discussCreateTime) {
+    this.discussCreateTime = discussCreateTime;
   }
 
   public Boolean getDiscussValid() {

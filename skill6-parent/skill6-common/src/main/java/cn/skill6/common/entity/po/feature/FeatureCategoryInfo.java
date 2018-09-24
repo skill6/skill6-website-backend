@@ -1,4 +1,4 @@
-package cn.skill6.common.entity.po;
+package cn.skill6.common.entity.po.feature;
 
 import java.util.Date;
 
@@ -8,38 +8,55 @@ import cn.skill6.common.entity.enums.CategoryType;
  * 目录分类实体类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.0.3
  * @since 2018年8月15日 下午11:31:09
  */
-public class CategoryInfo {
+public class FeatureCategoryInfo {
   private Long categoryId;
 
   private String categoryName;
 
   private CategoryType categoryType;
 
-  private Date categoryCreateDate;
+  private Date categoryCreateTime;
 
-  private Date categoryModifyDate;
+  private Date categoryModifyTime;
 
   private Boolean categoryValid;
 
-  public CategoryInfo(
+  @Override
+  public String toString() {
+    return "FeatureCategoryInfo [categoryId="
+        + categoryId
+        + ", categoryName="
+        + categoryName
+        + ", categoryType="
+        + categoryType
+        + ", categoryCreateTime="
+        + categoryCreateTime
+        + ", categoryModifyTime="
+        + categoryModifyTime
+        + ", categoryValid="
+        + categoryValid
+        + "]";
+  }
+
+  public FeatureCategoryInfo(
       Long categoryId,
       String categoryName,
       CategoryType categoryType,
-      Date categoryCreateDate,
-      Date categoryModifyDate,
+      Date categoryCreateTime,
+      Date categoryModifyTime,
       Boolean categoryValid) {
     this.categoryId = categoryId;
     this.categoryName = categoryName;
     this.categoryType = categoryType;
-    this.categoryCreateDate = categoryCreateDate;
-    this.categoryModifyDate = categoryModifyDate;
+    this.categoryCreateTime = categoryCreateTime;
+    this.categoryModifyTime = categoryModifyTime;
     this.categoryValid = categoryValid;
   }
 
-  public CategoryInfo() {
+  public FeatureCategoryInfo() {
     super();
   }
 
@@ -67,20 +84,20 @@ public class CategoryInfo {
     this.categoryType = categoryType;
   }
 
-  public Date getCategoryCreateDate() {
-    return categoryCreateDate;
+  public Date getCategoryCreateTime() {
+    return categoryCreateTime;
   }
 
-  public void setCategoryCreateDate(Date categoryCreateDate) {
-    this.categoryCreateDate = categoryCreateDate;
+  public void setCategoryCreateTime(Date categoryCreateTime) {
+    this.categoryCreateTime = categoryCreateTime;
   }
 
-  public Date getCategoryModifyDate() {
-    return categoryModifyDate;
+  public Date getCategoryModifyTime() {
+    return categoryModifyTime;
   }
 
-  public void setCategoryModifyDate(Date categoryModifyDate) {
-    this.categoryModifyDate = categoryModifyDate;
+  public void setCategoryModifyTime(Date categoryModifyTime) {
+    this.categoryModifyTime = categoryModifyTime;
   }
 
   public Boolean getCategoryValid() {
