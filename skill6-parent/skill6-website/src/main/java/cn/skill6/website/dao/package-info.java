@@ -1,8 +1,8 @@
 /**
- * 这个包放Mybatis映射类，每个类的函数按照 增删改查 依次排列
+ * Data Access Object
  *
  * @author 何明胜
  * @version 1.0.0
- * @since 2018年8月24日 上午1:16:56
+ * @since 2018年9月24日 下午11:00:53
  */
 package cn.skill6.website.dao;

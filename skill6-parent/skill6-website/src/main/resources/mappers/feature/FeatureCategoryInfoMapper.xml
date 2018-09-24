@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.feature.FeatureCategoryInfoMapper">
+	<resultMap id="BaseResultMap" type="FeatureCategoryInfo">
+		<constructor>
+			<idArg column="category_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="category_name" javaType="java.lang.String" jdbcType="CHAR" />
+			<arg column="category_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="category_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="category_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="category_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from feature_category_info
+		where category_id = #{categoryId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="FeatureCategoryInfo">
+		insert into feature_category_info (category_id, category_name, category_type,
+		category_create_time, category_modify_time,
+		category_valid)
+		values (#{categoryId,jdbcType=BIGINT}, #{categoryName,jdbcType=CHAR}, #{categoryType,jdbcType=VARCHAR},
+		#{categoryCreateTime,jdbcType=TIMESTAMP}, #{categoryModifyTime,jdbcType=TIMESTAMP},
+		#{categoryValid,jdbcType=BIT})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="FeatureCategoryInfo">
+		update feature_category_info
+		set category_name = #{categoryName,jdbcType=CHAR},
+		category_type = #{categoryType,jdbcType=VARCHAR},
+		category_create_time = #{categoryCreateTime,jdbcType=TIMESTAMP},
+		category_modify_time = #{categoryModifyTime,jdbcType=TIMESTAMP},
+		category_valid = #{categoryValid,jdbcType=BIT}
+		where category_id = #{categoryId,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select category_id, category_name, category_type, category_create_time, category_modify_time,
+		category_valid
+		from feature_category_info
+		where category_id = #{categoryId,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select category_id, category_name, category_type, category_create_time, category_modify_time,
+		category_valid
+		from feature_category_info
+	</select>
+</mapper>
