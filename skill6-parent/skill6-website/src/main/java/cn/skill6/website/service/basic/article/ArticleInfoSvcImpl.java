@@ -2,8 +2,8 @@ package cn.skill6.website.service.basic.article;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
@@ -15,14 +15,13 @@ import cn.skill6.website.dao.intf.article.ArticleInfoDao;
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.0.5
  * @since 2018年8月21日 下午11:07:30
  */
 @Service
 public class ArticleInfoSvcImpl implements ArticleInfoSvc {
 
-  @Autowired
-  @Qualifier("articleInfoDaoOper")
+  @Resource(name = "articleInfoDaoOper")
   private ArticleInfoDao articleInfoDao;
 
   public ResponseJson addArticle(ArticleInfo articleInfo) {

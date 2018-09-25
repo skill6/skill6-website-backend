@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.impl.store;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,20 +21,19 @@ import cn.skill6.website.util.sequence.SequenceManager;
 @SpringBootTest
 public class StoreImageDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired
-  @Qualifier("storeImageDaoOper")
-  StoreImageDao storeImageOper;
+  @Resource(name = "storeImageDaoOper")
+  StoreImageDao storeImageDao;
 
   @Test
   @Transactional
   public void deleteByImageId() {
-    storeImageOper.deleteByImageId(SequenceManager.getNextId());
+    storeImageDao.deleteByImageId(SequenceManager.getNextId());
   }
 
   @Test(expected = cn.skill6.common.exception.db.NullPointerException.class)
   @Transactional
   public void addImageUpload() {
-    storeImageOper.addImageUpload(new StoreImage());
+    storeImageDao.addImageUpload(new StoreImage());
   }
 
   @Test

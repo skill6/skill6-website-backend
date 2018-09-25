@@ -1,7 +1,6 @@
 package cn.skill6.website.controller.basic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,16 +17,14 @@ import cn.skill6.service.basic.article.ArticleInfoSvc;
  * 文章信息控制器
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.0.5
  * @since 2018年8月16日 下午11:05:32
  */
 @RestController
 @RequestMapping(value = "/article")
 public class ArticleInfoController {
 
-  @Autowired
-  @Qualifier("articleInfoSvcImpl")
-  private ArticleInfoSvc articleInfoSvc;
+  @Autowired private ArticleInfoSvc articleInfoSvc;
 
   @PostMapping
   public ResponseJson addArticle(ArticleInfo articleInfo) {
