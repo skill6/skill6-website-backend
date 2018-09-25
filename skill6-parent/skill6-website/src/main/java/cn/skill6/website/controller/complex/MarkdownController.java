@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.skill6.service.complex.MarkdownSvc;
 
 @Controller
-@RequestMapping(value = "md")
+@RequestMapping(value = "/md")
 public class MarkdownController {
 
   @Autowired MarkdownSvc markdownSvc;

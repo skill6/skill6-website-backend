@@ -5,9 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,24 +16,23 @@ import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
-import cn.skill6.website.dao.impl.article.ArticleInfoDaoOper;
+import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 
 /**
  * 文章信息实现测试
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.0.2
  * @since 2018年9月21日 下午11:24:25
  */
 @SpringBootTest
 @Transactional
 public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired private ArticleInfoDaoOper articleInfoOper;
+  @Resource(name = "articleInfoDaoOper")
+  private ArticleInfoDao articleInfoDao;
 
-  @Autowired
-  @Qualifier("articleInfoTo")
-  private ArticleInfoTo articleInfoTo;
+  @Autowired private ArticleInfoTo articleInfoTo;
 
   @Test
   public void test01AddArticleInfo() {
@@ -44,7 +44,7 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setArticleCategoryId("123");
     articleInfo.setArticleHtmlContent("halsdfhj");
     articleInfo.setArticleMdContent("hkjhkj");
-    articleInfoOper.addArticleInfo(articleInfo);
+    articleInfoDao.addArticleInfo(articleInfo);
   }
 
   @Test
@@ -62,7 +62,7 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setPageNum(1);
     articleInfo.setPageSize(10);
 
-    List<ArticleInfo> articleInfos = articleInfoOper.findByParams(articleInfo);
+    List<ArticleInfo> articleInfos = articleInfoDao.findByParams(articleInfo);
 
     for (ArticleInfo articleInfo2 : articleInfos) {
       System.out.println(articleInfo2.getArticleId());
@@ -81,9 +81,9 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setArticleCategoryId("123");
     articleInfo.setArticleHtmlContent("halsdfhj");
     articleInfo.setArticleMdContent("hkjhkj");
-    Long id = articleInfoOper.addArticleInfo(articleInfo);
+    Long id = articleInfoDao.addArticleInfo(articleInfo);
     articleInfo.setArticleId(id);
-    articleInfoOper.modifyByArticleId(articleInfo);
+    articleInfoDao.modifyByArticleId(articleInfo);
   }
 
   @Test
