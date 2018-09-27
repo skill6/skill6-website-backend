@@ -1,0 +1,72 @@
+server:
+  port: 8081
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+    - text/html
+    - text/xml
+    - text/plain
+    - text/css
+    - text/javascript
+    - application/javascript
+    - application/json
+    - application/xml
+    - image/png
+    - image/jpeg
+    - image/jpg
+spring:
+  application:
+    name: skill6-website
+  datasource:
+    username: ${SKILL6_MYSQL_USERNAME}
+    password: ${SKILL6_MYSQL_PASSWROD}
+    url: ${SKILL6_MYSQL_URL}
+    druid:
+      name: skill6-mysql-01
+    schema: classpath*:schema/init_db.sql
+    initialization-mode: always
+  redis:
+    host: ${SKILL6_REDIS_HOST}
+    password: ${SKILL6_REDIS_PASSWORD}
+    port: ${SKILL6_REDIS_PORT}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+mybatis:
+  mapper-locations: classpath*:mappers/**/*.xml
+  type-aliases-package: cn.skill6.common.entity.po
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    multiple-result-sets-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    ## 使用通用处理器转换枚举，枚举使用同一接口。是否能做到通用，待考查
+    default-enum-type-handler: cn.skill6.website.util.mybatis.GeneralStateFieldHandler
+#pagehelper分页配置 第二种和第三种不需要 重点讲的第一种需要
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+logging:
+  level:
+    root: INFO
+    cn.skill6.website.dao: DEBUG
+#统一配置入口
+skill6:
+  file-path: ${user.home}/skill6/file/
+  image-path: ${user.home}/skill6/image/
+  sequence:
+    worker:
+      id: 1
+    data-center:
+      id: 1
