@@ -49,9 +49,7 @@ mybatis:
     lazy-loading-enabled: true
     aggressive-lazy-loading: false
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-    ## 使用通用处理器转换枚举，枚举使用同一接口。是否能做到通用，待考查
-    default-enum-type-handler: cn.skill6.website.util.mybatis.GeneralStateFieldHandler
-#pagehelper分页配置 第二种和第三种不需要 重点讲的第一种需要
+    default-enum-type-handler: cn.skill6.common.mybatis.GeneralStateFieldHandler
 pagehelper:
   helperDialect: mysql
   reasonable: true
@@ -61,7 +59,6 @@ logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
-#统一配置入口
 skill6:
   file-path: ${user.home}/skill6/file/
   image-path: ${user.home}/skill6/image/
