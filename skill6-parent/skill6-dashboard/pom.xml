@@ -13,8 +13,19 @@
 	<url>https://github.com/skill6/skill6</url>
 
 	<properties>
+		<!-- common 工程依赖版本 -->
+		<cn.skill6.skill6-common.version>0.0.3-SNAPSHOT</cn.skill6.skill6-common.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>cn.skill6</groupId>
+			<artifactId>skill6-common</artifactId>
+			<version>${cn.skill6.skill6-common.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
 	</dependencies>
 </project>
