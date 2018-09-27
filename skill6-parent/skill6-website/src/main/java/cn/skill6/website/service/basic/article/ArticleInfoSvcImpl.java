@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.article.ArticleInfoSvc;
+import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 
 /**

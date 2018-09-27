@@ -10,7 +10,7 @@
 .springBeans
 .sts4-cache
 config.txt
-**/config/application.properties
+**/config/
 
 ### IntelliJ IDEA ###
 .idea

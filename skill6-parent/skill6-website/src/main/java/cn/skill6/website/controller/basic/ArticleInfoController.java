@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.article.ArticleInfoSvc;
+import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 
 /**
  * 文章信息控制器

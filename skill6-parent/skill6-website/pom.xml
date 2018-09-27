@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>skill6-parent</artifactId>
 		<groupId>cn.skill6</groupId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>skill6-website</artifactId>
 	<url>https://github.com/skill6/skill6</url>
-
-	<properties>
-		<!-- common 工程依赖版本 -->
-		<cn.skill6.skill6-common.version>0.0.3-SNAPSHOT</cn.skill6.skill6-common.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>${cn.skill6.skill6-common.version}</version>
+			<version>0.0.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,7 +51,6 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
-		<!-- spring boot 整合pagehelper依赖 版本有兼容性问题 第一种方式依赖的包 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
