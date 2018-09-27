@@ -5,4 +5,4 @@
  * @version 1.0.0
  * @since 2018年8月24日 上午1:09:08
  */
-package cn.skill6.service.complex;
+package cn.skill6.microservice.complex;

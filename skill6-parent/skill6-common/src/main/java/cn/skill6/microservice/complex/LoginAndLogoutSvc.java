@@ -1,4 +1,4 @@
-package cn.skill6.service.complex;
+package cn.skill6.microservice.complex;
 
 /**
  * 登录注销操作

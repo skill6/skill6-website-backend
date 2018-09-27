@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.store.StoreImageSvc;
+import cn.skill6.microservice.basic.store.StoreImageSvc;
 
 /**
  * 图片存储控制器

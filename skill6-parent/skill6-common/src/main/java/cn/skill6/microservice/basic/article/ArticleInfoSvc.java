@@ -1,4 +1,4 @@
-package cn.skill6.service.basic.article;
+package cn.skill6.microservice.basic.article;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;

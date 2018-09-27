@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.store.StoreFileSvc;
+import cn.skill6.microservice.basic.store.StoreFileSvc;
 
 /**
  * 文件存储控制器

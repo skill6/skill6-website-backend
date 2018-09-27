@@ -17,7 +17,7 @@ import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
-import cn.skill6.service.basic.store.StoreImageSvc;
+import cn.skill6.microservice.basic.store.StoreImageSvc;
 import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.util.storage.FileStoreHandler;

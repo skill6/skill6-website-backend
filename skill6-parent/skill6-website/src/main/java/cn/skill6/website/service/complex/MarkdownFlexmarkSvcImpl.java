@@ -2,7 +2,6 @@ package cn.skill6.website.service.complex;
 
 import java.util.Arrays;
 
-import cn.skill6.service.complex.MarkdownSvc;
 import org.springframework.stereotype.Service;
 
 import com.vladsch.flexmark.ast.Node;
@@ -12,6 +11,8 @@ import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.parser.ParserEmulationProfile;
 import com.vladsch.flexmark.util.options.MutableDataSet;
+
+import cn.skill6.microservice.complex.MarkdownSvc;
 
 /**
  * 使用Flexmark方式对Md文本进行处理
