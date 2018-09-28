@@ -1,12 +1,13 @@
 package cn.skill6.dashboard.controller;
 
+import java.io.IOException;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 
 /**
@@ -22,7 +23,7 @@ public class ArticleInfoController {
 
   @RequestMapping(value = "/")
   @ResponseBody
-  public ResponseJson getAll() {
+  public String getAll() throws IOException {
     return articleInfoSvc.getAllArticles();
   }
 }

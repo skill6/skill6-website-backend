@@ -1,5 +1,6 @@
 package cn.skill6.website.service.basic.article;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 
@@ -70,7 +72,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
     return responseJson;
   }
 
-  public ResponseJson getAllArticles() {
+  public String getAllArticles() throws IOException {
     ResponseJson responseJson;
 
     try {
@@ -80,6 +82,6 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       responseJson = new ResponseJson(false, "获取id所有文章信息失败");
     }
 
-    return responseJson;
+    return JacksonUtil.toStr(responseJson);
   }
 }
