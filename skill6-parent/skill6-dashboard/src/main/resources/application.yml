@@ -46,6 +46,8 @@ dubbo:
     address: zookeeper://127.0.0.1:2181   
   scan:
     base-packages: cn.skill6.dashboard
+  consumer:
+    check: false #防止消费者先启动报500 null
 mybatis:
   mapper-locations: classpath*:mappers/**/*.xml
   type-aliases-package: cn.skill6.dashboard.model.po
