@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
   compression:
     enabled: true
     min-response-size: 1024
@@ -17,13 +17,13 @@ server:
     - image/jpg
 spring:
   application:
-    name: skill6-website
+    name: skill6-dashboard
   datasource:
     username: ${SKILL6_MYSQL_USERNAME}
     password: ${SKILL6_MYSQL_PASSWROD}
     url: ${SKILL6_MYSQL_URL}
     druid:
-      name: skill6-mysql-01
+      name: skill6-mysql-02
     schema: classpath*:schema/init_db.sql
     initialization-mode: always
   redis:
@@ -39,6 +39,15 @@ spring:
       enabled: true
       max-file-size: 1024MB
       max-request-size: 1024MB
+dubbo:
+  application:
+    name: user-rbac-consumer
+  registry:
+    address: zookeeper://127.0.0.1:2181   
+  scan:
+    base-packages: cn.skill6.dashboard
+  consumer:
+    check: false #防止消费者先启动报500 null
 mybatis:
   mapper-locations: classpath*:mappers/**/*.xml
   type-aliases-package: cn.skill6.dashboard.model.po
