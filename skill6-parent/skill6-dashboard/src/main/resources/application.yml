@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
   compression:
     enabled: true
     min-response-size: 1024
@@ -17,13 +17,13 @@ server:
     - image/jpg
 spring:
   application:
-    name: skill6-website
+    name: skill6-dashboard
   datasource:
     username: ${SKILL6_MYSQL_USERNAME}
     password: ${SKILL6_MYSQL_PASSWROD}
     url: ${SKILL6_MYSQL_URL}
     druid:
-      name: skill6-mysql-01
+      name: skill6-mysql-02
     schema: classpath*:schema/init_db.sql
     initialization-mode: always
   redis:
