@@ -8,6 +8,10 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
   - sudo mysql_upgrade --force
   - sudo service mysql restart
+  - sudo wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
+  - tar -zxf zookeeper-3.4.13.tar.gz
+  - cp zookeeper-3.4.13/conf/zoo_sample.cfg zookeeper-3.4.13/conf/zoo.cfg
+  - ./zookeeper-3.4.13/bin/zkServer.sh start
 install:
   - cd skill6-parent
 after_success:
@@ -20,3 +24,4 @@ env:
     - SKILL6_REDIS_HOST=localhost
     - SKILL6_REDIS_PASSWORD=
     - SKILL6_REDIS_PORT=6379
+    - DUBBO_APPLICATION_REGISTRY=
