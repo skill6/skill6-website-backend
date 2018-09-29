@@ -43,7 +43,7 @@ dubbo:
   application:
     name: user-rbac-provider
   registry:
-    address: zookeeper://127.0.0.1:2181   
+    address: ${DUBBO_APPLICATION_REGISTRY}
   scan:
     base-packages: cn.skill6.website.service                                       
 mybatis:
