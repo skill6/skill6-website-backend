@@ -4,7 +4,7 @@ package cn.skill6.common.entity.vo;
  * 文件属性
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月13日 上午2:25:58
  */
 public class FileAttribute {
@@ -14,9 +14,7 @@ public class FileAttribute {
   String url;
   String hashCode;
 
-  /* (non-Javadoc)
-   * @see java.lang.Object#toString()
-   */ @Override
+  @Override
   public String toString() {
     return "FileAttribute [id="
         + id

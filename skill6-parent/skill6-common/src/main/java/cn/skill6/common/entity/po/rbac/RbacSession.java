@@ -6,7 +6,7 @@ import java.util.Date;
  * RBAC会话存储
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月24日 上午2:44:03
  */
 public class RbacSession {

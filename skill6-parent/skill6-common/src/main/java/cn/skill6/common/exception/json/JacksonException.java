@@ -6,7 +6,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * Jackson转换异常
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年3月22日 上午11:17:48
  */
 public class JacksonException extends Skill6Exception {

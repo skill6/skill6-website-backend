@@ -8,7 +8,7 @@ import cn.skill6.common.entity.enums.CategoryType;
  * 目录分类实体类
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年8月15日 下午11:31:09
  */
 public class FeatureCategoryInfo {

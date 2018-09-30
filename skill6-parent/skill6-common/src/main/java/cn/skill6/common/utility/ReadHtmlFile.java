@@ -22,7 +22,7 @@ import cn.skill6.common.exception.tools.StackTrace2Str;
  * 读取服务器的html文件
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月28日 下午12:11:39
  */
 public class ReadHtmlFile {
@@ -32,7 +32,6 @@ public class ReadHtmlFile {
    * 读取html文件
    *
    * @param htmlQualifiedName
-   * @return
    */
   public static String readHtmlByName(String htmlQualifiedName) {
     BufferedReader br = null;

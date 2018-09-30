@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
  * 封装jackson转换为全局方法
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年8月26日 下午11:36:57
  */
 public class JacksonUtil {
@@ -34,7 +34,6 @@ public class JacksonUtil {
    *
    * @param map
    * @param clazz
-   * @return
    * @throws IOException
    */
   public static <T> T map2Entity(Map<String, String> map, Class<T> clazz) throws IOException {
@@ -51,7 +50,6 @@ public class JacksonUtil {
    *
    * @param entity
    * @param clazz
-   * @return
    * @throws IOException
    */
   public static <T, E> T entity2Entity(E entity, Class<T> clazz) throws IOException {
@@ -63,7 +61,6 @@ public class JacksonUtil {
    *
    * @param jsonStr
    * @param clazz
-   * @return
    * @throws IOException
    */
   public static <T, E> T jsonStr2Entity(String jsonStr, Class<T> clazz) throws IOException {

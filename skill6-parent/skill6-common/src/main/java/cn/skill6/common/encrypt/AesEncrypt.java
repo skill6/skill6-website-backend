@@ -14,7 +14,7 @@ import cn.skill6.common.exception.tools.StackTrace2Str;
  * AES加密
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年3月17日 下午7:35:14
  */
 public class AesEncrypt {
@@ -34,7 +34,6 @@ public class AesEncrypt {
    * AES加密,使用默认密钥
    *
    * @param dataSource
-   * @return
    * @throws Exception
    */
   public static String encrypt(final String dataSource) throws Exception {
@@ -46,7 +45,6 @@ public class AesEncrypt {
    *
    * @param dataSource
    * @param secretKey
-   * @return
    * @throws Exception
    */
   public static String encrypt(final String dataSource, final String secretKey) throws Exception {
@@ -72,7 +70,6 @@ public class AesEncrypt {
    * AES解密,使用默认密钥
    *
    * @param dataSource
-   * @return
    * @throws Exception
    */
   public static String decrypt(final String dataSource) throws Exception {
@@ -84,7 +81,6 @@ public class AesEncrypt {
    *
    * @param dataSource
    * @param secretKey
-   * @return
    * @throws Exception
    */
   public static String decrypt(final String dataSource, final String secretKey) throws Exception {

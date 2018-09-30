@@ -8,16 +8,15 @@ import cn.skill6.common.entity.enums.SortType;
  * 分页和排序作为数据库实体类的父类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年9月21日 下午10:31:26
  */
 public abstract class PaginationAndSort {
   private int pageNum;
   private int pageSize;
-  
+
   private String orderBy;
-  @JsonIgnore
-  private SortType sortType;
+  @JsonIgnore private SortType sortType;
 
   @Override
   public String toString() {

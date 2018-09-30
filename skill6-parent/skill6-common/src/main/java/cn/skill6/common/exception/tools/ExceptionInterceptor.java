@@ -24,7 +24,7 @@ import cn.skill6.common.exception.db.SqlException;
  * 全局异常拦截器
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.4
  * @since 2018年2月26日 下午11:29:05
  */
 public class ExceptionInterceptor implements HandlerExceptionResolver {

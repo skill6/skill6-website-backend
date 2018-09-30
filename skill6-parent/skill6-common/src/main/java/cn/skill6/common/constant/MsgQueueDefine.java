@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * activemq消息队列名称的定义
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年3月20日 下午4:21:40
  */
 public class MsgQueueDefine {

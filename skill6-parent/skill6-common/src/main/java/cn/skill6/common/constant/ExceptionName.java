@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * 返回json的常量
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月27日 上午10:59:20
  */
 public class ExceptionName {

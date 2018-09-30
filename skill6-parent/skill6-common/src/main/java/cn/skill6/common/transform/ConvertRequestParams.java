@@ -14,7 +14,7 @@ import cn.skill6.common.constant.Encode;
  * json和request请求参数直接相互转化
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年3月13日 下午3:43:05
  */
 public class ConvertRequestParams {
@@ -22,7 +22,7 @@ public class ConvertRequestParams {
    * 请求参数的字符串形式(如name=husen&pwd=123)转化为map
    *
    * @param param request.getQueryString()
-   * @return
+   * @return map
    */
   public static Map<String, String> paramsStr2Map(String param) {
     Map<String, String> map = new HashMap<String, String>(10);
@@ -45,7 +45,7 @@ public class ConvertRequestParams {
    * map转化为请求参数的字符串形式(如name=husen&pwd=123)
    *
    * @param map
-   * @return
+   * @return 字符串
    */
   public static String map2ParamsStr(Map<String, Object> map) {
     if (map == null) {
@@ -70,7 +70,6 @@ public class ConvertRequestParams {
    * map转化为请求参数的字符串形式(如name=husen&pwd=123),并对键值对进行URL编码
    *
    * @param map
-   * @return
    * @throws UnsupportedEncodingException
    */
   public static String map2ParamsEncodeStr(Map<String, String> map)
@@ -101,7 +100,6 @@ public class ConvertRequestParams {
    * 请求参数转化为map
    *
    * @param request
-   * @return
    */
   public static Map<String, String> params2Map(HttpServletRequest request) {
     Map<String, String> map = new HashMap<>(100);

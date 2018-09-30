@@ -21,7 +21,7 @@ import cn.skill6.common.exception.tools.StackTrace2Str;
  * 序列化转换器
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年4月1日 下午10:07:26
  */
 public class Serializer extends BaseUtils {
@@ -100,7 +100,6 @@ public class Serializer extends BaseUtils {
    * 序列化 list 集合
    *
    * @param list
-   * @return
    */
   public static byte[] serializeList(List<Object> list) {
     if (list.isEmpty()) {
@@ -128,8 +127,7 @@ public class Serializer extends BaseUtils {
   /**
    * 反序列化 list 集合
    *
-   * @param
-   * @return
+   * @param bytes
    */
   public static List<Object> unserializeList(byte[] bytes) {
     if (bytes == null) {
@@ -163,7 +161,6 @@ public class Serializer extends BaseUtils {
    * 序列化 set 集合
    *
    * @param list
-   * @return
    */
   public static byte[] serializeSet(Set<Object> set) {
     if (set.isEmpty()) {
@@ -191,8 +188,7 @@ public class Serializer extends BaseUtils {
   /**
    * 反序列化 set 集合
    *
-   * @param lb
-   * @return
+   * @param bytes
    */
   public static Set<Object> unserializeSet(byte[] bytes) {
     if (bytes == null) {

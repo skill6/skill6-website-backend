@@ -14,7 +14,7 @@ import cn.skill6.common.aop.abst.BaseSpringAspect;
  * 模板操作切面
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.1
  * @since 2018年9月22日 下午12:26:59
  */
 @Aspect

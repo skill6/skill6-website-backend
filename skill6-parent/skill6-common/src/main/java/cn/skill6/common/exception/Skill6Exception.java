@@ -4,7 +4,7 @@ package cn.skill6.common.exception;
  * skill6系统异常基类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年2月26日 下午11:58:54
  */
 public class Skill6Exception extends RuntimeException {

@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
  * 工程编码管理
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月5日 上午11:58:38
  */
 public class Encode {
@@ -23,7 +23,6 @@ public class Encode {
    * ISO-8859-1 转 GBK
    *
    * @param originStr
-   * @return
    * @throws UnsupportedEncodingException
    */
   public static String iso2GBK(String originStr) throws UnsupportedEncodingException {
@@ -34,7 +33,6 @@ public class Encode {
    * ISO-8859-1 转 UTF-8
    *
    * @param originStr
-   * @return
    * @throws UnsupportedEncodingException
    */
   public static String iso2UTF8(String originStr) throws UnsupportedEncodingException {

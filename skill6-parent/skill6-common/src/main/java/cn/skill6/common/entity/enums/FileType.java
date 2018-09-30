@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 文件类型枚举，是文章附件还是分享的软件等
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年9月4日 下午11:36:18
  */
 public enum FileType implements BaseEnum<Enum<FileType>, String> {
@@ -25,17 +25,11 @@ public enum FileType implements BaseEnum<Enum<FileType>, String> {
     this.description = description;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getStateCode()
-   */
   @Override
   public String getStateCode() {
     return stateCode;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getDescrition()
-   */
   @Override
   public String getDescrition() {
     return description;

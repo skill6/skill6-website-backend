@@ -6,7 +6,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 数据库操作异常
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月27日 上午10:54:14
  */
 public class NullPointerException extends Skill6Exception {

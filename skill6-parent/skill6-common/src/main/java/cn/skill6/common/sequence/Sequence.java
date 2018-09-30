@@ -21,7 +21,7 @@ package cn.skill6.common.sequence;
  * SnowFlake的优点是,整体上按照时间自增排序,并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分),并且效率较高,经测试,SnowFlake每秒能够产生26万ID左右
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年4月16日 下午9:11:03
  */
 public class Sequence {
@@ -72,11 +72,7 @@ public class Sequence {
     this.datacenterId = datacenterId;
   }
 
-  /**
-   * 获取下一个ID
-   *
-   * @return
-   */
+  /** @return 下一个ID */
   public synchronized long nextId() {
     long timestamp = timeGen();
 
@@ -132,7 +128,6 @@ public class Sequence {
    * 保证返回的毫秒数在参数之后(阻塞到下一个毫秒,直到获得新的时间戳)
    *
    * @param lastTimestamp
-   * @return
    */
   protected long tilNextMillis(long lastTimestamp) {
     long timestamp = timeGen();

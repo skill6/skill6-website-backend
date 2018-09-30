@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  * spring mvc 控制器基类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年3月5日 下午3:42:44
  */
 public class BaseController {
@@ -29,8 +29,5 @@ public class BaseController {
     this.request = request;
     this.response = response;
     this.session = request.getSession();
-
-    // 设置编码
-    // response.setContentType("text/html;charset=UTF-8");
   }
 }

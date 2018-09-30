@@ -10,15 +10,11 @@ import org.springframework.util.DigestUtils;
  * MD5加密工具, 支持加盐和定义加密次数
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月28日 下午12:09:52
  */
 public class Md5Encrypt {
-  /**
-   * 获取md5实例
-   *
-   * @return
-   */
+  /** 获取md5实例 */
   public static MessageDigest getMD5Instance() {
     MessageDigest messageDigest = null;
 
@@ -35,7 +31,7 @@ public class Md5Encrypt {
    * MD5加密, 返回结果为小写字母+数字
    *
    * @param dataSource 待加密的数据
-   * @return
+   * @return 加密后的字符串
    * @throws Exception
    */
   public static String getMD5Code(String dataSource) {
@@ -46,7 +42,7 @@ public class Md5Encrypt {
    * MD5加密, 返回结果为大写字母+数字
    *
    * @param dataSource 待加密的数据
-   * @return
+   * @return 加密后的字符串
    */
   public static String getMD5CodeUpperCase(String dataSource) {
     return getMD5Code(dataSource).toUpperCase();
@@ -57,7 +53,7 @@ public class Md5Encrypt {
    *
    * @param dataSource 待加密的数据
    * @param salt 盐
-   * @return
+   * @return 加密后的字符串
    */
   public static String getMD5Code(String dataSource, String salt) {
     StringBuffer stingBuffer = new StringBuffer();
@@ -83,7 +79,7 @@ public class Md5Encrypt {
    * @param dataSource 待加密的数据
    * @param salt 盐
    * @param iterations 加密次数
-   * @return
+   * @return 加密后的字符串
    */
   public static String getMD5Code(String dataSource, String salt, int iterations) {
     MessageDigest digest = getMD5Instance();

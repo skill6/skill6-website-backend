@@ -15,7 +15,7 @@ import cn.skill6.common.constant.Encode;
  * 读取配置文件工具类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月28日 上午10:10:33
  */
 public class ReadConfigFile {
@@ -23,7 +23,6 @@ public class ReadConfigFile {
    * 读取类路径下的文件（只要在类路径下即可）
    *
    * @param fileRelativePath
-   * @return
    * @throws UnsupportedEncodingException
    * @throws IOException
    */
@@ -45,7 +44,6 @@ public class ReadConfigFile {
    * config为属性文件名,放在包com.test.config下,如果是放在src下,直接用config即可
    *
    * @param fileRelativePath 无后缀的文件名称
-   * @return
    * @throws UnsupportedEncodingException
    * @throws IOException
    */
@@ -60,7 +58,6 @@ public class ReadConfigFile {
    * 读取绝对路径下的文件
    *
    * @param fileAbsolutePath
-   * @return
    * @throws IOException
    */
   public static Properties readByAbsolutePath(String fileAbsolutePath) throws IOException {

@@ -19,7 +19,7 @@ import javassist.bytecode.MethodInfo;
  * 与Spring 切面相关的工具
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.2
  * @since 2018年3月4日 下午9:53:11
  */
 public abstract class BaseSpringAspect {
@@ -27,10 +27,10 @@ public abstract class BaseSpringAspect {
   protected abstract void aspectJMethod();
 
   /**
-   * 获取Spring 切面目标函数的参数名称和值(返回格式化String)
+   * 获取Spring 切面目标函数的参数名称和值
    *
    * @param joinPoint 连接点
-   * @return
+   * @return 格式化String
    * @throws Exception 异常
    */
   protected String getFieldsNameValueString(JoinPoint joinPoint) throws Exception {
@@ -76,10 +76,10 @@ public abstract class BaseSpringAspect {
   }
 
   /**
-   * 获取Spring 切面目标函数的参数名称和值(返回Map)
+   * 获取Spring 切面目标函数的参数名称和值
    *
    * @param joinPoint 连接点
-   * @return
+   * @return Map
    * @throws Exception 异常
    */
   protected Map<String, Object> getFieldsNameValueMap(JoinPoint joinPoint) throws Exception {
@@ -116,7 +116,7 @@ public abstract class BaseSpringAspect {
    * 得到目标函数的名称
    *
    * @param joinPoint 连接点
-   * @return
+   * @return 函数名称
    */
   protected String getAimMethodName(JoinPoint joinPoint) {
     return joinPoint.getSignature().getName();
@@ -126,7 +126,7 @@ public abstract class BaseSpringAspect {
    * 得到目标函数的参数值
    *
    * @param joinPoint 连接点
-   * @return
+   * @return 函数参数值
    */
   protected Object[] getArgs(JoinPoint joinPoint) {
     Object[] result = joinPoint.getArgs();
@@ -149,7 +149,6 @@ public abstract class BaseSpringAspect {
    * 目标函数操作的环绕通知
    *
    * @param joinPoint 连接点
-   * @return
    * @throws Throwable 抛出异常
    */
   public abstract Object doAround(ProceedingJoinPoint joinPoint) throws Throwable;
