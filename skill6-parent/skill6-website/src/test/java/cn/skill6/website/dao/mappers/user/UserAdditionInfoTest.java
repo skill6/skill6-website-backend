@@ -19,7 +19,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 用户信息测试类
  *
  * @author 刘纪春
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年8月21日 下午11:41:17
  */
 @SpringBootTest

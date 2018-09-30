@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * 系统用户-角色关联操作接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月27日 下午11:19:23
  */
 public interface SysUserRoleRelMapper {

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * 用户-角色关联mapper
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月23日 下午10:27:16
  */
 public interface RbacUserRoleRelMapper {

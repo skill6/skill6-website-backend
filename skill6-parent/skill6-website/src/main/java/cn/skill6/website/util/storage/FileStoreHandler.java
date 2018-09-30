@@ -19,6 +19,7 @@ import cn.skill6.common.constant.OsPlatform;
 import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.file.FileNotFoundException;
+import cn.skill6.website.util.storage.abst.BaseStoreHandler;
 
 /**
  * 文件存储处理

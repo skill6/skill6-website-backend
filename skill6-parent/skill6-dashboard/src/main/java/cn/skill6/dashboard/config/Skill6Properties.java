@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
  * 整合Spring Boot与Skill配置
  *
  * @author liujichun
+ * @version 1.0
+ * @since 2018年9月30日 下午9:55:03
  */
 @ConfigurationProperties(prefix = "skill6")
 @Configuration

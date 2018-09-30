@@ -6,7 +6,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 编码解码异常
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年3月22日 下午4:21:35
  */
 public class CodecException extends Skill6Exception {

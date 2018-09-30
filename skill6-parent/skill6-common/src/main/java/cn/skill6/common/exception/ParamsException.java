@@ -4,7 +4,7 @@ package cn.skill6.common.exception;
  * 参数异常
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年4月2日 上午10:51:22
  */
 public class ParamsException extends Skill6Exception {

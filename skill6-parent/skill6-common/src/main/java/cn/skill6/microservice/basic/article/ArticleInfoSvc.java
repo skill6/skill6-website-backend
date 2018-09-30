@@ -10,7 +10,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 微服务接口
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年9月4日 上午1:00:40
  */
 public interface ArticleInfoSvc {
@@ -18,7 +18,6 @@ public interface ArticleInfoSvc {
    * 添加新文章
    *
    * @param articleInfo
-   * @return
    */
   public ResponseJson addArticle(ArticleInfo articleInfo);
 
@@ -26,7 +25,6 @@ public interface ArticleInfoSvc {
    * 根据id删除文章
    *
    * @param articleId
-   * @return
    */
   public ResponseJson deleteArticleById(Long articleId);
 
@@ -34,7 +32,6 @@ public interface ArticleInfoSvc {
    * 根据id修改文章
    *
    * @param articleInfo
-   * @return
    */
   public ResponseJson modifyArticleById(ArticleInfo articleInfo);
 
@@ -42,7 +39,6 @@ public interface ArticleInfoSvc {
    * 根据id获取文章
    *
    * @param articleId
-   * @return
    * @throws Skill6Exception
    */
   public ResponseJson getArticleById(Long articleId);
@@ -50,7 +46,6 @@ public interface ArticleInfoSvc {
   /**
    * 获取所有文章
    *
-   * @return
    * @throws IOException
    */
   public String getAllArticles() throws IOException;

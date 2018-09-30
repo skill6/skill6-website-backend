@@ -17,7 +17,7 @@ import java.io.IOException;
  * 用于配置SEO的拦截器，当请求用户为百度爬虫时启用Chrome Headless方式获取相应的结果并返回
  *
  * @author liujichun
- * @version 1.0.1
+ * @version 1.1
  */
 @Configuration
 public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {

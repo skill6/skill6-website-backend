@@ -6,7 +6,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * mybatis redis缓存异常
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年4月1日 下午11:22:50
  */
 public class MybatisRedisCacheException extends Skill6Exception {

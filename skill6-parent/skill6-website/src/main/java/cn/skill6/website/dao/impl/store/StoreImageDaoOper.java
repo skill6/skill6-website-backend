@@ -17,7 +17,7 @@ import cn.skill6.website.dao.mappers.store.StoreImageMapper;
  * 图片上传信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年8月28日 上午12:18:22
  */
 @Repository

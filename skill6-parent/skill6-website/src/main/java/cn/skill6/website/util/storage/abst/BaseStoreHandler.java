@@ -1,4 +1,4 @@
-package cn.skill6.website.util.storage;
+package cn.skill6.website.util.storage.abst;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文件存储基类
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
@@ -105,9 +105,7 @@ public abstract class BaseStoreHandler {
   }
 
   /**
-   * 获取文件后缀
-   *
-   * @return
+   * @return 文件后缀
    */
   public String getFileSuffix(String fileName) {
     // TODO - 后期增加对.tar.gz等的判断

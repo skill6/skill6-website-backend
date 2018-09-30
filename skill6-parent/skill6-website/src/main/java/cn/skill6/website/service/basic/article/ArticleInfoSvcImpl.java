@@ -19,7 +19,7 @@ import cn.skill6.website.dao.intf.article.ArticleInfoDao;
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @version 1.0.6
+ * @version 1.6
  * @since 2018年8月21日 下午11:07:30
  */
 @Service

@@ -44,8 +44,6 @@ dubbo:
     name: user-rbac-consumer
   registry:
     address: zookeeper://localhost:2181
-  scan:
-    base-packages: cn.skill6.dashboard
   consumer:
     check: false
 mybatis:

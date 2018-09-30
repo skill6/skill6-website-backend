@@ -4,7 +4,7 @@ package cn.skill6.dashboard.model.po;
  * 系统用户-角色关联实体类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月27日 下午11:20:55
  */
 public class SysUserRoleRel {

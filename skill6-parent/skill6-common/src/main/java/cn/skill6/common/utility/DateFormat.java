@@ -8,15 +8,11 @@ import java.util.Date;
  * 时间格式化助手
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年2月28日 上午11:23:56
  */
 public class DateFormat {
-  /**
-   * 获取当前格式化时间
-   *
-   * @return
-   */
+  /** 获取当前格式化时间 */
   public static String formatNowDate() {
     String dateFormat = "yyyy-MM-dd HH:mm:ss";
 
@@ -27,23 +23,16 @@ public class DateFormat {
    * 根据格式获取时间( yyyy MM dd HH mm ss 等顺序可变 )
    *
    * @param dateFormat
-   * @return
    */
   public static String formatNowDate(String dateFormat) {
     SimpleDateFormat dateFormater = new SimpleDateFormat(dateFormat);
     Date date = new Date();
     String formatDate = dateFormater.format(date);
 
-    // dateFormater.parse(formatDate) String解析为时间
-
     return formatDate;
   }
 
-  /**
-   * 获取 yyyy-MM-dd 格式的时间
-   *
-   * @return
-   */
+  /** 获取 yyyy-MM-dd 格式的时间 */
   public static String formatDateYMD() {
     String dateFormat = "yyyy-MM-dd";
 
@@ -54,7 +43,6 @@ public class DateFormat {
    * 获取只含年月日格式的时间( yyyy MM dd 等顺序可变 )
    *
    * @param dateFormat
-   * @return
    */
   public static String formatDateYMD(String dateFormat) {
     Date currentTime = new Date();
@@ -66,11 +54,7 @@ public class DateFormat {
     return dateString;
   }
 
-  /**
-   * 从当日0时0分0秒到当前时间的毫秒数
-   *
-   * @return
-   */
+  /** 从当日0时0分0秒到当前时间的毫秒数 */
   public static Long secondsTodayTotal() {
     Calendar calendar = Calendar.getInstance();
 

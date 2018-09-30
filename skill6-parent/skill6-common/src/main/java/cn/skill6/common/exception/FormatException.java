@@ -4,7 +4,7 @@ package cn.skill6.common.exception;
  * 格式异常，如目录含有非法字符
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月4日 上午1:43:09
  */
 public class FormatException extends Skill6Exception {

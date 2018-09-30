@@ -20,7 +20,7 @@ import cn.skill6.microservice.basic.store.StoreImageSvc;
  * 图片存储控制器
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月13日 上午12:43:33
  */
 @RestController

@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @author liujichun
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  */
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // 指定测试方法按定义的顺序执行

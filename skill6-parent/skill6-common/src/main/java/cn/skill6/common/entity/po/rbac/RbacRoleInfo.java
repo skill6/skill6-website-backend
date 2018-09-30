@@ -6,7 +6,7 @@ import java.util.Date;
  * RBAC角色信息
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月23日 下午5:52:52
  */
 public class RbacRoleInfo {

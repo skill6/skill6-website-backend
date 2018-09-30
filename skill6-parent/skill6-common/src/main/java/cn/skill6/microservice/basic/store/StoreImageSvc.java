@@ -13,7 +13,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * 图片存储接口
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月13日 上午12:46:40
  */
 public interface StoreImageSvc {
@@ -22,7 +22,6 @@ public interface StoreImageSvc {
    * 上传图片
    *
    * @param request
-   * @return
    * @throws FileUploadException
    * @throws IOException
    */

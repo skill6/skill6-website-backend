@@ -10,7 +10,7 @@ import cn.skill6.common.entity.po.user.UserPrivacyInfo;
  * 用户隐私信息mapper
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年8月15日 下午11:41:46
  */
 @Mapper

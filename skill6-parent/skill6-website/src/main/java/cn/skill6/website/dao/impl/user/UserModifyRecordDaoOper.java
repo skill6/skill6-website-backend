@@ -14,7 +14,7 @@ import cn.skill6.website.dao.mappers.user.UserModifyRecordMapper;
  * 用户信息修改记录操作实现类
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年8月28日 上午12:19:34
  */
 public class UserModifyRecordDaoOper implements UserModifyRecordDao {

@@ -4,15 +4,13 @@ package cn.skill6.common.utility;
  * 获取指定长度的验证码
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年2月28日 下午12:11:20
  */
 public class RandomCode {
   /**
-   * 返回int类型的验证码
-   *
    * @param length
-   * @return
+   * @return int类型的验证码
    */
   public static int producedRandomCode(double length) {
     int randomCode = (int) (Math.random() * Math.pow(10, length));
@@ -28,21 +26,14 @@ public class RandomCode {
   }
 
   /**
-   * 返回String类型的验证码
-   *
    * @param length
-   * @return
+   * @return String类型的验证码
    */
   public static String producedRandomCodeStr(double length) {
     return String.valueOf(producedRandomCode(length));
   }
 
-  /**
-   * 返回长度为6的字符串验证码
-   *
-   * @param length
-   * @return
-   */
+  /** @return 长度为6的字符串验证码 */
   public static String producedRandomCodeStr6() {
     return String.valueOf(producedRandomCode(6));
   }

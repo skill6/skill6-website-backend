@@ -14,7 +14,7 @@ import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
  * 测试启动类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年8月21日 下午11:40:08
  */
 @SpringBootApplication

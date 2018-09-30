@@ -17,7 +17,7 @@ import cn.skill6.website.dao.mappers.store.StoreFileMapper;
  * 文件存储操作实现类
  *
  * @author 何明胜
- * @version 1.0.5
+ * @version 1.5
  * @since 2018年8月28日 上午12:18:06
  */
 @Repository

@@ -13,7 +13,7 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
  * redis测试
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月24日 上午12:15:11
  */
 @SpringBootTest

@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 目录类型枚举，如文章、下载等
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月2日 下午7:20:58
  */
 public enum CategoryType implements BaseEnum<Enum<CategoryType>, String> {
@@ -26,17 +26,11 @@ public enum CategoryType implements BaseEnum<Enum<CategoryType>, String> {
     this.description = description;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getStateCode()
-   */
   @Override
   public String getStateCode() {
     return stateCode;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getDescrition()
-   */
   @Override
   public String getDescrition() {
     return description;
