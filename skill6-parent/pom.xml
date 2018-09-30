@@ -68,7 +68,6 @@
 		<org.apache.maven.plugins.maven-source-plugin.version>3.0.1</org.apache.maven.plugins.maven-source-plugin.version>
 		<org.apache.maven.plugins.maven-javadoc-plugin.version>2.10.4</org.apache.maven.plugins.maven-javadoc-plugin.version>
 		<org.apache.maven.plugins.maven-compiler-plugin.version>3.5.1</org.apache.maven.plugins.maven-compiler-plugin.version>
-		<org.apache.maven.plugins.maven-surefire-plugin.version>2.20.1</org.apache.maven.plugins.maven-surefire-plugin.version>
 		<org.apache.maven.plugins.maven-dependency-plugin.version>3.0.2</org.apache.maven.plugins.maven-dependency-plugin.version>
 	</properties>
 
@@ -316,10 +315,6 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 			<plugin>
@@ -403,17 +398,6 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
-				<!-- 解决maven test命令时console出现中文乱码乱码 -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
-					<configuration>
-						<forkMode>once</forkMode>
-						<argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
-						<skipTests>false</skipTests>
-					</configuration>
 				</plugin>
 				<!-- 编译 -->
 				<plugin>
