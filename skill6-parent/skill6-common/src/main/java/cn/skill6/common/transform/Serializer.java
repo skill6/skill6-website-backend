@@ -160,7 +160,7 @@ public class Serializer extends BaseUtils {
   /**
    * 序列化 set 集合
    *
-   * @param list
+   * @param set
    */
   public static byte[] serializeSet(Set<Object> set) {
     if (set.isEmpty()) {

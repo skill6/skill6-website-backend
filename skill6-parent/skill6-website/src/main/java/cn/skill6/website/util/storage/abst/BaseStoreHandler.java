@@ -105,9 +105,7 @@ public abstract class BaseStoreHandler {
   }
 
   /**
-   * 获取文件后缀
-   *
-   * @return
+   * @return 文件后缀
    */
   public String getFileSuffix(String fileName) {
     // TODO - 后期增加对.tar.gz等的判断

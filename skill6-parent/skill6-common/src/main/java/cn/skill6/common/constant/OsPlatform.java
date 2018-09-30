@@ -28,11 +28,7 @@ public enum OsPlatform {
     this.osName = osName;
   }
 
-  /**
-   * 获取当前操作系统
-   *
-   * @return
-   */
+  /** @return 当前操作系统 */
   public static OsPlatform getCurrentOs() {
     String currOsName = System.getProperty("os.name");
     if (currOsName.indexOf(OsPlatform.WINDOWS.getOsName()) != -1) {

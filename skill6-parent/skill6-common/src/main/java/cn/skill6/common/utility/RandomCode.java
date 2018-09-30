@@ -33,10 +33,7 @@ public class RandomCode {
     return String.valueOf(producedRandomCode(length));
   }
 
-  /**
-   * @param length
-   * @return 长度为6的字符串验证码
-   */
+  /** @return 长度为6的字符串验证码 */
   public static String producedRandomCodeStr6() {
     return String.valueOf(producedRandomCode(6));
   }

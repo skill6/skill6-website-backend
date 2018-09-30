@@ -43,7 +43,7 @@ public class ReadConfigFile {
    * 这是国际化的类,所以要加zh_CN类似的. <br>
    * config为属性文件名,放在包com.test.config下,如果是放在src下,直接用config即可
    *
-   * @param fileRelativePath 无后缀的文件名称
+   * @param fileClassPath 无后缀的文件名称
    * @throws UnsupportedEncodingException
    * @throws IOException
    */

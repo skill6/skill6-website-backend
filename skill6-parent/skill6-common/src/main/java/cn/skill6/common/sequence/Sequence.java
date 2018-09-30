@@ -56,7 +56,7 @@ public class Sequence {
    * <p>注：sequence
    *
    * @param workerId 工作机器ID,数据范围为0~31
-   * @param dataCenterId 数据中心ID,数据范围为0~31
+   * @param datacenterId 数据中心ID,数据范围为0~31
    */
   public Sequence(long workerId, long datacenterId) {
     if (workerId > maxWorkerId || workerId < 0) {

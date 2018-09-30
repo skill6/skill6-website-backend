@@ -90,7 +90,6 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
    * 判断是否是ajax请求
    *
    * @param request
-   * @return
    */
   public static boolean isAjax(ServletRequest request) {
     String header = ((HttpServletRequest) request).getHeader("X-Requested-With");
