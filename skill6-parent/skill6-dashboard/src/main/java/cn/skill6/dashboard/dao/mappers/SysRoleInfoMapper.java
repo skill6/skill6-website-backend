@@ -7,7 +7,7 @@ import java.util.List;
  * 系统角色信息操作接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月27日 下午11:18:13
  */
 public interface SysRoleInfoMapper {

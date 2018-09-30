@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
  * 雪花算法管理类,产生分布式id
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.4
  * @since 2018年4月16日 下午10:07:43
  */
 @Component
@@ -49,11 +49,7 @@ public class SequenceManager {
     }
   }
 
-  /**
-   * 返回Long类型的id
-   *
-   * @return
-   */
+  /** @return Long类型的id */
   public static Long getNextId() {
     Long id = null;
 
@@ -71,11 +67,7 @@ public class SequenceManager {
     return id;
   }
 
-  /**
-   * 返回字符串类型的id
-   *
-   * @return
-   */
+  /** @return 字符串类型的id */
   public static String getNextIdStr() {
     return String.valueOf(getNextId());
   }

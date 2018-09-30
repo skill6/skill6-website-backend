@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 生成分布式id作为会话id
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年4月20日 上午9:34:32
  */
 public class SequenceSessionIdGenerator implements SessionIdGenerator {

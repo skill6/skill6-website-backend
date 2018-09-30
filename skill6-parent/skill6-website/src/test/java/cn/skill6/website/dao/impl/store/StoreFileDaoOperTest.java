@@ -21,7 +21,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 测试文件信息数据库操作
  *
  * @author 何明胜
- * @version 1.0.7
+ * @version 1.7
  * @since 2018年9月4日 下午11:19:15
  */
 @SpringBootTest

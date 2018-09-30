@@ -21,7 +21,7 @@ import cn.skill6.microservice.basic.store.StoreFileSvc;
  * 文件存储控制器
  *
  * @author 何明胜
- * @version 1.0.5
+ * @version 1.5
  * @since 2018年9月4日 下午9:49:27
  */
 @RestController

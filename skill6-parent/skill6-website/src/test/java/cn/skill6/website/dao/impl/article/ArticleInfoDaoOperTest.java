@@ -22,7 +22,7 @@ import cn.skill6.website.dao.intf.article.ArticleInfoDao;
  * 文章信息实现测试
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年9月21日 下午11:24:25
  */
 @SpringBootTest

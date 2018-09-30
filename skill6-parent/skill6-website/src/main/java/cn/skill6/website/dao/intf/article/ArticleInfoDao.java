@@ -9,7 +9,7 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
  *
  * @author 何明胜
  * @created at 2018年8月16日 下午10:28:04
- * @version 1.0.2
+ * @version 1.2
  */
 public interface ArticleInfoDao {
 

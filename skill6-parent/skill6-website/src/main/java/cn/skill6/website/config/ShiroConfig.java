@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * 用于进行Shiro配置
  *
  * @author liujichun
- * @version 1.0.1
+ * @version 1.1
  */
 @Configuration
 public class ShiroConfig {

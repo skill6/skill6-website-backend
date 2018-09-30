@@ -21,7 +21,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.6
+ * @version 1.6
  * @since 2018年8月16日 下午10:29:29
  */
 @Repository

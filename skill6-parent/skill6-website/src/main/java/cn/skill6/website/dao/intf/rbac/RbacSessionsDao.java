@@ -8,7 +8,7 @@ import cn.skill6.common.entity.po.rbac.RbacSession;
  * 会话操作接口
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月23日 下午10:48:43
  */
 public interface RbacSessionsDao {
