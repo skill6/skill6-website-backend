@@ -64,6 +64,10 @@
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!--考虑到window 和linux环境 npm命令格式的问题，使用maven的profile实现动态指定命令 -->
