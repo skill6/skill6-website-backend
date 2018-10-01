@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 文件下载测试类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月19日 下午6:51:45
  */
 @SpringBootTest

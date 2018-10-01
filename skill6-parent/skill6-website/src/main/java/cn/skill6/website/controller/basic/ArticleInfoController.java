@@ -1,7 +1,8 @@
 package cn.skill6.website.controller.basic;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,22 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.article.ArticleInfoSvc;
+import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 
 /**
  * 文章信息控制器
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.6
  * @since 2018年8月16日 下午11:05:32
  */
 @RestController
 @RequestMapping(value = "/article")
 public class ArticleInfoController {
 
-  @Autowired
-  @Qualifier("articleInfoSvcImpl")
-  private ArticleInfoSvc articleInfoSvc;
+  @Autowired private ArticleInfoSvc articleInfoSvc;
 
   @PostMapping
   public ResponseJson addArticle(ArticleInfo articleInfo) {
@@ -50,7 +49,7 @@ public class ArticleInfoController {
   }
 
   @GetMapping(value = "/all")
-  public ResponseJson getAllArticles() {
+  public String getAllArticles() throws IOException {
     return articleInfoSvc.getAllArticles();
   }
 }

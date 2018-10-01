@@ -9,7 +9,7 @@ import java.util.List;
  * 通过反射获取实体类的属性、方法等
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月22日 下午11:09:01
  */
 public class ReflectEnity {
@@ -49,7 +49,7 @@ public class ReflectEnity {
   /**
    * 通过反射判断一个字符串是否是某个实体类的属性，目前主要针对String类型，与数据库对应
    *
-   * @param <T> 泛型参数
+   * @param aimFieldName 泛型参数
    * @return 判断结果
    */
   public static boolean judgeFieldIsExist(Class<?> clazz, String aimFieldName) {

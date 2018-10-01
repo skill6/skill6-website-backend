@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * 操作系统平台
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月2日 下午11:51:33
  */
 public enum OsPlatform {
@@ -28,11 +28,7 @@ public enum OsPlatform {
     this.osName = osName;
   }
 
-  /**
-   * 获取当前操作系统
-   *
-   * @return
-   */
+  /** @return 当前操作系统 */
   public static OsPlatform getCurrentOs() {
     String currOsName = System.getProperty("os.name");
     if (currOsName.indexOf(OsPlatform.WINDOWS.getOsName()) != -1) {

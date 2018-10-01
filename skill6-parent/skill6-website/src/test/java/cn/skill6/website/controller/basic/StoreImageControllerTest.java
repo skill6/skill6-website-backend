@@ -23,7 +23,7 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
  * 图片上传测试类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月21日 上午12:19:12
  */
 @SpringBootTest

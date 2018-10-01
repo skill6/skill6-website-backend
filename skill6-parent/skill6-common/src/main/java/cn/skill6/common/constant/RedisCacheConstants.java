@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * redis缓存的相关常量
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年3月30日 下午1:12:46
  */
 public class RedisCacheConstants {

@@ -11,7 +11,7 @@ import javax.crypto.spec.DESedeKeySpec;
  * 3DES加密
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年3月17日 下午5:45:02
  */
 public class TripleDesEncrypt {
@@ -27,7 +27,7 @@ public class TripleDesEncrypt {
    * 3DES加密,使用默认密钥
    *
    * @param dataSource
-   * @return
+   * @return 加密后的字符串
    * @throws Exception
    */
   public static String encrypt(final String dataSource) throws Exception {
@@ -60,7 +60,7 @@ public class TripleDesEncrypt {
    * 3DES解密,使用默认密钥
    *
    * @param dataSource
-   * @return
+   * @return 解密后的字符串
    * @throws Exception
    */
   public static String decrypt(final String dataSource) throws Exception {

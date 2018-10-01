@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 登录方式枚举
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年5月14日 下午5:06:55
  */
 public enum LoginType implements BaseEnum<Enum<LoginType>, String> {

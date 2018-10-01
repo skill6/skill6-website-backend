@@ -25,7 +25,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
  * restful请求异常拦截器
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.3
  * @since 2018年5月19日 上午1:13:11
  */
 public class RestfulExceptionInterceptor implements HandlerExceptionResolver {

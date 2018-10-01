@@ -16,7 +16,7 @@ import cn.skill6.common.exception.codec.CodecException;
  * 类型转换
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年3月1日 下午1:01:47
  */
 public class ConvertType {
@@ -26,7 +26,6 @@ public class ConvertType {
    * 字节数组转输入流
    *
    * @param byteArray
-   * @return
    */
   public static InputStream byteArray2InStream(byte[] byteArray) {
     return new ByteArrayInputStream(byteArray);
@@ -36,7 +35,6 @@ public class ConvertType {
    * 输入流转字节数组
    *
    * @param inStream
-   * @return
    * @throws IOException
    */
   public static byte[] inStream2ByteArray(InputStream inStream) throws IOException {
@@ -60,7 +58,6 @@ public class ConvertType {
    * 字符串转字节数组, 使用工程默认编码
    *
    * @param source
-   * @return
    * @throws CodecException
    */
   public static byte[] str2ByteArray(String source) throws CodecException {
@@ -72,7 +69,6 @@ public class ConvertType {
    *
    * @param source
    * @param encoding
-   * @return
    * @throws CodecException
    */
   public static byte[] str2ByteArray(String source, String encoding) throws CodecException {
@@ -94,7 +90,6 @@ public class ConvertType {
    * 字符串数组转String
    *
    * @param strArray
-   * @return
    */
   public static String strArray2String(String[] strArray) {
     StringBuffer stringBuffer = new StringBuffer();
@@ -109,7 +104,6 @@ public class ConvertType {
    * 字节数组转String
    *
    * @param byteArray
-   * @return
    * @throws UnsupportedEncodingException
    */
   public static String byteArray2String(byte[] byteArray) throws UnsupportedEncodingException {

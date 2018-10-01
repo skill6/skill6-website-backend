@@ -6,7 +6,7 @@ import java.util.Date;
  * 文章评论实体类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年8月15日 下午11:29:03
  */
 public class ArticleComment {

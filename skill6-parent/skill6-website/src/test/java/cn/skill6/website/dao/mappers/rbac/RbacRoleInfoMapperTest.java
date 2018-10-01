@@ -20,7 +20,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 角色信息测试类
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月23日 下午11:27:14
  */
 @SpringBootTest

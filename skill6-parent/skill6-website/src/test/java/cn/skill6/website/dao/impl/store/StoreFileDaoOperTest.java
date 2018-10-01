@@ -2,9 +2,10 @@ package cn.skill6.website.dao.impl.store;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.annotation.Resource;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import cn.skill6.common.encrypt.Md5Encrypt;
@@ -20,14 +21,13 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 测试文件信息数据库操作
  *
  * @author 何明胜
- * @version 1.0.6
+ * @version 1.7
  * @since 2018年9月4日 下午11:19:15
  */
 @SpringBootTest
 public class StoreFileDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired
-  @Qualifier("storeFileDaoOper")
+  @Resource(name = "storeFileDaoOper")
   private StoreFileDao storeFileDao;
 
   @Autowired private Skill6Properties skill6Properties;

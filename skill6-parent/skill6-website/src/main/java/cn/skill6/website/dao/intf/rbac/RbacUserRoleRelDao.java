@@ -10,7 +10,7 @@ import cn.skill6.common.entity.po.rbac.RbacUserRoleRel;
  * 用户-角色关联操作接口
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年9月23日 下午10:49:11
  */
 public interface RbacUserRoleRelDao {

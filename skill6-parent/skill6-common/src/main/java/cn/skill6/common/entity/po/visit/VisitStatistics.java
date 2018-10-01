@@ -6,7 +6,7 @@ import java.util.Date;
  * 访问统计实体类
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年8月15日 下午11:38:22
  */
 public class VisitStatistics {

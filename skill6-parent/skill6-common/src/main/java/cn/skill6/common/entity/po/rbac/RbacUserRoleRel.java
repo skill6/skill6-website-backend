@@ -4,7 +4,7 @@ package cn.skill6.common.entity.po.rbac;
  * RBAC用户角色关联
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月23日 下午5:53:33
  */
 public class RbacUserRoleRel {

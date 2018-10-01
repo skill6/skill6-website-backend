@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.enums.FileType;
@@ -18,7 +18,7 @@ import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
-import cn.skill6.service.basic.store.StoreFileSvc;
+import cn.skill6.microservice.basic.store.StoreFileSvc;
 import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.util.storage.FileStoreHandler;
@@ -27,14 +27,13 @@ import cn.skill6.website.util.storage.FileStoreHandler;
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.0.8
+ * @version 1.9
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
 public class StoreFileSvcImpl implements StoreFileSvc {
 
-  @Autowired
-  @Qualifier("storeFileDaoOper")
+  @Resource(name = "storeFileDaoOper")
   private StoreFileDao storeFileDao;
 
   @Autowired private FileStoreHandler fileStoreHandler;

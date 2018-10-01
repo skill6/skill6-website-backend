@@ -4,7 +4,7 @@ package cn.skill6.common.constant;
  * 常用的http状态码
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.0
  * @since 2018年3月22日 下午2:36:45
  */
 public class HttpStatusCode {

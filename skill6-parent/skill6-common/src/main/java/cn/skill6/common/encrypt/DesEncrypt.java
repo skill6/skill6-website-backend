@@ -22,7 +22,7 @@ import cn.skill6.common.exception.tools.StackTrace2Str;
  * DES加密工具
  *
  * @author 何明胜
- * @version 1.0.0
+ * @version 1.1
  * @since 2018年3月19日 上午9:15:27
  */
 public class DesEncrypt {
@@ -37,7 +37,7 @@ public class DesEncrypt {
    * DES加密,使用默认密钥
    *
    * @param dataSource
-   * @return
+   * @return 加密后的字符串
    * @throws Exception
    */
   public static String encrypt(final String dataSource) throws Exception {
@@ -90,7 +90,7 @@ public class DesEncrypt {
    * DES解密,使用默认密钥
    *
    * @param dataSource
-   * @return
+   * @return 解密后的字符串
    * @throws Exception
    */
   public static String decrypt(final String dataSource) throws Exception {
@@ -147,7 +147,6 @@ public class DesEncrypt {
    * 获得秘密密钥
    *
    * @param secretKey
-   * @return
    * @throws NoSuchAlgorithmException
    * @throws InvalidKeySpecException
    * @throws InvalidKeyException

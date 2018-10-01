@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * 点赞记录mapper
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.4
  * @since 2018年8月15日 下午11:41:09
  */
 public interface FeatureThumbsUpRecordMapper {

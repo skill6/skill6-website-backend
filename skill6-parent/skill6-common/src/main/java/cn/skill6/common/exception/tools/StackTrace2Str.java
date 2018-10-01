@@ -7,16 +7,11 @@ import java.io.StringWriter;
  * 返回程序调用的堆栈轨迹
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月3日 下午4:59:14
  */
 public class StackTrace2Str {
-  /**
-   * 返回 e.printStackTrace()的内容
-   *
-   * @param e
-   * @return
-   */
+  /** @return e.printStackTrace()的内容 */
   public static String exceptionStackTrace2Str(Exception e) {
     StringWriter sw = new StringWriter();
     PrintWriter pw = new PrintWriter(sw);
@@ -33,7 +28,6 @@ public class StackTrace2Str {
    *
    * @param errorMsg
    * @param e
-   * @return
    */
   public static String exceptionStackTrace2Str(String errorMsg, Exception e) {
     StringWriter sw = new StringWriter();

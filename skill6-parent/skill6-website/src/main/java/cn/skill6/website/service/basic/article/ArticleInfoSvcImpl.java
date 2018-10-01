@@ -1,28 +1,32 @@
 package cn.skill6.website.service.basic.article;
 
+import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+
+import com.alibaba.dubbo.config.annotation.Service;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.service.basic.article.ArticleInfoSvc;
+import cn.skill6.common.transform.JacksonUtil;
+import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 
 /**
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @version 1.0.3
+ * @version 1.6
  * @since 2018年8月21日 下午11:07:30
  */
 @Service
+@Component
 public class ArticleInfoSvcImpl implements ArticleInfoSvc {
 
-  @Autowired
-  @Qualifier("articleInfoDaoOper")
+  @Resource(name = "articleInfoDaoOper")
   private ArticleInfoDao articleInfoDao;
 
   public ResponseJson addArticle(ArticleInfo articleInfo) {
@@ -68,7 +72,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
     return responseJson;
   }
 
-  public ResponseJson getAllArticles() {
+  public String getAllArticles() throws IOException {
     ResponseJson responseJson;
 
     try {
@@ -78,6 +82,6 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       responseJson = new ResponseJson(false, "获取id所有文章信息失败");
     }
 
-    return responseJson;
+    return JacksonUtil.toStr(responseJson);
   }
 }

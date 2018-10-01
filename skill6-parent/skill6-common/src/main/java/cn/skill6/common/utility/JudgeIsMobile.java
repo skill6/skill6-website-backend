@@ -4,7 +4,7 @@ package cn.skill6.common.utility;
  * 判断是否是手机
  *
  * @author 何明胜
- * @version 1.0.2
+ * @version 1.2
  * @since 2018年2月28日 下午12:09:16
  */
 public class JudgeIsMobile {

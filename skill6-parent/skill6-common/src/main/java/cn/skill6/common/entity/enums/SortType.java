@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 排序枚举
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年9月21日 下午10:34:15
  */
 public enum SortType implements BaseEnum<Enum<SortType>, String> {
@@ -25,17 +25,11 @@ public enum SortType implements BaseEnum<Enum<SortType>, String> {
     this.description = description;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getStateCode()
-   */
   @Override
   public String getStateCode() {
     return stateCode;
   }
 
-  /* (non-Javadoc)
-   * @see cn.skill6.common.entity.enums.intf.BaseEnum#getDescrition()
-   */
   @Override
   public String getDescrition() {
     return description;

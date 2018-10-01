@@ -19,7 +19,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 目录信息操作实现类
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.4
  * @since 2018年8月28日 上午12:17:33
  */
 public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {

@@ -28,7 +28,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
  * <p>100万：50,10,5.0%
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年4月16日 下午9:48:21
  */
 public class SystemClock {

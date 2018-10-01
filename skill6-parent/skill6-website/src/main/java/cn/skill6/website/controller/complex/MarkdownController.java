@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.skill6.service.complex.MarkdownSvc;
+import cn.skill6.microservice.complex.MarkdownSvc;
 
 @Controller
-@RequestMapping(value = "md")
+@RequestMapping(value = "/md")
 public class MarkdownController {
 
   @Autowired MarkdownSvc markdownSvc;

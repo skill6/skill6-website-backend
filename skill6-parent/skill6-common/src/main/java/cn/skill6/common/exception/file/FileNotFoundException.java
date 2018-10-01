@@ -6,7 +6,7 @@ import cn.skill6.common.exception.Skill6Exception;
  * 文件未找到
  *
  * @author 何明胜
- * @version 1.0.1
+ * @version 1.1
  * @since 2018年2月28日 下午1:46:16
  */
 public class FileNotFoundException extends Skill6Exception {
