@@ -10,7 +10,7 @@ set -ev
 	mvn vautoadd:vadd
 	git add .
 	git commit -m "Updated Version By One By Travis"
-	git push -u "https://${GH_TOKEN}@github.com:skill6/skill6.git" master
+	git push -u "https://12d96a4d5a7aadc74ccbdb7350e9091893526d78@github.com/skill6/skill6.git" master
 #fi
 
 mvn test -B
