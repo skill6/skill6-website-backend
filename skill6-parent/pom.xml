@@ -335,6 +335,15 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>cn.skill6.plugin</groupId>
+				<artifactId>vautoadd-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<currentVersion>${project.version}</currentVersion>
+					<projectDirectory>${basedir}</projectDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 
 		<!-- 插件版本管理 -->
