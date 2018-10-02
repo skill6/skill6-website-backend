@@ -5,15 +5,20 @@ services:
   - mysql
   - redis-server
 before_install:
+  #mysql
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
   - sudo mysql_upgrade --force
   - sudo service mysql restart
+  #zookeeper
   - sudo wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz
   - tar -zxf zookeeper-3.4.13.tar.gz
   - cp zookeeper-3.4.13/conf/zoo_sample.cfg zookeeper-3.4.13/conf/zoo.cfg
   - ./zookeeper-3.4.13/bin/zkServer.sh start
 install:
   - cd skill6-parent
+before_script:
+ - chmod ugo+x ../scripts/version-auto-add.sh
+script: ../scripts/version-auto-add.sh
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 env:
