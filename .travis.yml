@@ -16,7 +16,7 @@ before_install:
   - ./zookeeper-3.4.13/bin/zkServer.sh start
 install:
   - cd skill6-parent
-  - mvn versions:set -DnewVersion=1.0.8
+  - mvn clean -e -U
 before_script:
  - chmod ugo+x ../scripts/version-auto-add.sh
 script: ../scripts/version-auto-add.sh
