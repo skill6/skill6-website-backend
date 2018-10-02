@@ -17,7 +17,7 @@ before_install:
 install:
   - cd skill6-parent
   - mvn clean -e -U
-  - git remote -
+  - git remote -v
 before_script:
  - chmod ugo+x ../scripts/version-auto-add.sh
 script: ../scripts/version-auto-add.sh
