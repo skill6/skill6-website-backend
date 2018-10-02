@@ -17,7 +17,6 @@ before_install:
   #push to remote
   - cd skill6-parent
   - mvn vautoadd:vadd
-  - mvn versions:update-child-modules
   - git add .
   - git commit -m "Updated Version By One By Travis"
   - git push -u origin master
