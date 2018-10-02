@@ -7,6 +7,9 @@ set -ev
 	git config --global user.name "Travis Bot"
 	git config --global user.email "husen@hemingsheng.cn"
 	ssh-keygen -t rsa -C "husen@hemingsheng.cn"
+	send "\r"
+	send "\r"
+	send "\r"
 	cd .ssh
 	cat id_rsa.pub
 	ssh -T git@github.com
