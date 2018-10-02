@@ -14,6 +14,8 @@ before_install:
   - tar -zxf zookeeper-3.4.13.tar.gz
   - cp zookeeper-3.4.13/conf/zoo_sample.cfg zookeeper-3.4.13/conf/zoo.cfg
   - ./zookeeper-3.4.13/bin/zkServer.sh start
+install:
+  - cd skill6-parent
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 env:
