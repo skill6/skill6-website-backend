@@ -5,7 +5,7 @@ services:
   - mysql
   - redis-server
 before_script:
- - chmod ugo+x scripts/version-auto-add.sh
+ - chmod ugo+x ../scripts/version-auto-add.sh
 script: ./scripts/version-auto-add.sh
 before_install:
   #mysql
