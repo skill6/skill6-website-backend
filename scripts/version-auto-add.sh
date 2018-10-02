@@ -6,8 +6,8 @@ set -ev
 	#global setting
 	git config --global user.name "Travis Bot"
 	git config --global user.email "husen@hemingsheng.cn"
-	ssh-keygen -t rsa -f /home/travis/.ssh/id_rsa -q -N ""
-	cat /home/travis/.ssh/id_rsa.pub
+	#ssh-keygen -t rsa -f /home/travis/.ssh/id_rsa -q -N ""
+	#cat /home/travis/.ssh/id_rsa.pub
 	ssh -T git@github.com
 	#push to remote
 	mvn vautoadd:vadd
