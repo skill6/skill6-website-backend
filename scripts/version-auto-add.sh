@@ -8,6 +8,8 @@ set -ev
 	git config --global user.email "husen@hemingsheng.cn"
 	#push to remote
 	mvn vautoadd:vadd
+	mvn vautoadd:vadd
+	mvn vautoadd:vadd
 	git add .
 	git commit -m "Updated Version By One By Travis"
 	git push -u origin master
