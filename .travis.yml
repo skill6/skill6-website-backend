@@ -4,6 +4,9 @@ jdk:
 services:
   - mysql
   - redis-server
+before_script:
+ - chmod ugo+x scripts/version-auto-add.sh
+script: ./scripts/version-auto-add.sh
 before_install:
   #mysql
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test DEFAULT CHARSET utf8 COLLATE utf8_general_ci;'
