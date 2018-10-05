@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
@@ -21,6 +22,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * @version 1.4
  * @since 2018年8月28日 上午12:17:33
  */
+@Repository
 public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
   private static final Logger logger = LoggerFactory.getLogger(FeatureCategoryInfoDaoOper.class);
 
