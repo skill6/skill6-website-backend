@@ -19,9 +19,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import cn.skill6.common.BaseUtils;
-import cn.skill6.common.exception.ParamsException;
-import cn.skill6.common.exception.db.NullPointerException;
 import cn.skill6.common.exception.file.FileNotFoundException;
+import cn.skill6.common.exception.general.NullPointerException;
+import cn.skill6.common.exception.general.ParamsException;
 import cn.skill6.website.util.sequence.SequenceManager;
 
 /**

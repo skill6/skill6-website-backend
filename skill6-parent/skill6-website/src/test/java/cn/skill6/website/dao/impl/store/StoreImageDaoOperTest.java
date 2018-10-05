@@ -30,7 +30,7 @@ public class StoreImageDaoOperTest extends Skill6WebsiteApplicationTest {
     storeImageDao.deleteByImageId(SequenceManager.getNextId());
   }
 
-  @Test(expected = cn.skill6.common.exception.db.NullPointerException.class)
+  @Test(expected = cn.skill6.common.exception.general.NullPointerException.class)
   @Transactional
   public void addImageUpload() {
     storeImageDao.addImageUpload(new StoreImage());

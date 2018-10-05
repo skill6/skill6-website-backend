@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
 import cn.skill6.website.dao.mappers.article.ArticleCommentMapper;
 import cn.skill6.website.util.sequence.SequenceManager;

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.store.StoreFile;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.dao.mappers.store.StoreFileMapper;
 

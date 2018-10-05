@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
 import cn.skill6.website.dao.mappers.feature.FeatureCategoryInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;

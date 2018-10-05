@@ -9,7 +9,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.common.exception.FormatException;
+import cn.skill6.common.exception.general.FormatException;
 import cn.skill6.microservice.basic.feature.FeatureCategoryInfoSvc;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
 

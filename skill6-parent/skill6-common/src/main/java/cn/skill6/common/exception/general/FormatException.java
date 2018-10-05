@@ -1,4 +1,6 @@
-package cn.skill6.common.exception;
+package cn.skill6.common.exception.general;
+
+import cn.skill6.common.exception.Skill6Exception;
 
 /**
  * 格式异常，如目录含有非法字符
