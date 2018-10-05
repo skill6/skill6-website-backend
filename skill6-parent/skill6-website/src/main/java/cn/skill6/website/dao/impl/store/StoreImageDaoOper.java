@@ -61,13 +61,19 @@ public class StoreImageDaoOper implements StoreImageDao {
 
   @Override
   public List<StoreImage> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+    List<StoreImage> storeImages = storeImageMapper.selectAll();
+    logger.info("找到所有图片存储记录,{}", storeImages);
+
+    return storeImages;
   }
 
   @Override
-  public int modifyByImageId(StoreImage storeImage) {
-    // TODO Auto-generated method stub
-    return 0;
+  public void modifyByImageId(StoreImage storeImage) {
+    if (storeImage.getImageId() == null) {
+      throw new NullPointerException("图片存储id不能为null");
+    }
+
+    storeImageMapper.updateByPrimaryKey(storeImage);
+    logger.info("成功修改id为{}的图片存储记录,{}", storeImage.getImageId(), storeImage);
   }
 }

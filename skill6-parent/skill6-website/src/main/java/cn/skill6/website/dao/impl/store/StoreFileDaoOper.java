@@ -17,7 +17,7 @@ import cn.skill6.website.dao.mappers.store.StoreFileMapper;
  * 文件存储操作实现类
  *
  * @author 何明胜
- * @version 1.5
+ * @version 1.6
  * @since 2018年8月28日 上午12:18:06
  */
 @Repository
@@ -29,7 +29,6 @@ public class StoreFileDaoOper implements StoreFileDao {
   @Override
   public int deleteByFileId(Long fileId) {
     logger.warn("删除id为{}的文件", fileId);
-
     return storeFileMapper.deleteByPrimaryKey(fileId);
   }
 
@@ -43,7 +42,6 @@ public class StoreFileDaoOper implements StoreFileDao {
     storeFile.setFileDownloadCount(0);
 
     storeFileMapper.insert(storeFile);
-
     logger.info("增加文件信息成功,{}", storeFile);
 
     return storeFile.getFileId();
@@ -52,7 +50,6 @@ public class StoreFileDaoOper implements StoreFileDao {
   @Override
   public StoreFile findByFileId(Long fileId) {
     StoreFile storeFile = storeFileMapper.selectByPrimaryKey(fileId);
-
     logger.info("找到id为{}的文件下载信息,{}", fileId, storeFile);
 
     return storeFile;
@@ -60,13 +57,19 @@ public class StoreFileDaoOper implements StoreFileDao {
 
   @Override
   public List<StoreFile> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+    List<StoreFile> storeFiles = storeFileMapper.selectAll();
+    logger.info("找到所有文件存储记录,{}", storeFiles);
+
+    return storeFiles;
   }
 
   @Override
-  public int modifyByFileId(StoreFile storeFile) {
-    // TODO Auto-generated method stub
-    return 0;
+  public void modifyByFileId(StoreFile storeFile) {
+    if (storeFile.getFileId() == null) {
+      throw new NullPointerException("文件存储id不能为null");
+    }
+
+    storeFileMapper.updateByPrimaryKey(storeFile);
+    logger.info("成功修改id为{}的文件存储记录,{}", storeFile.getFileId(), storeFile);
   }
 }
