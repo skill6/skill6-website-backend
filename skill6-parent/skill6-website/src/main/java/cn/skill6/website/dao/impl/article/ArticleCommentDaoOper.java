@@ -71,7 +71,7 @@ public class ArticleCommentDaoOper implements ArticleCommentDao {
 
   @Override
   public int modifyByCommentId(ArticleComment articleComment) {
-    // TODO 暂不支持修改评论
+    // 暂不支持修改评论
     return 0;
   }
 }

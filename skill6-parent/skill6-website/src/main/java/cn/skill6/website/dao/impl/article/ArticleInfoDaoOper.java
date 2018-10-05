@@ -57,7 +57,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
     // 默认文章有效
     articleInfo.setArticleValid(true);
 
-    // TODO 增加其他字段的校验
+    // 增加其他字段的校验
     articleInfoMapper.insert(articleInfo);
 
     logger.info("增加文章成功,{}", articleInfo);

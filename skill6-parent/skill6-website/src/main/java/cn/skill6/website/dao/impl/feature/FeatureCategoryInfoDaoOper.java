@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.BaseUtils;
-import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
 import cn.skill6.common.exception.db.NullPointerException;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
@@ -42,9 +41,6 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
       throw new NullPointerException();
     }
     featureCategoryInfo.setCategoryId(categoryId);
-
-    // TODO - 后续放在spring mvc中URL判断类型并设置
-    featureCategoryInfo.setCategoryType(CategoryType.ARTICLE);
 
     featureCategoryInfo.setCategoryCreateTime(new Date());
     featureCategoryInfo.setCategoryModifyTime(new Date());
