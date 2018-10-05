@@ -21,7 +21,7 @@ public interface FeatureThumbsUpRecordMapper {
 
   FeatureThumbsUpRecord selectByPrimaryKey(
       @Param("userId") Long userId,
-      @Param("articleId") String articleId,
+      @Param("articleId") Long articleId,
       @Param("thumbsUpType") String thumbsUpType);
 
   List<FeatureThumbsUpRecord> selectAll();

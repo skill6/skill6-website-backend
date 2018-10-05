@@ -6,11 +6,11 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.BaseUtils;
-import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
 import cn.skill6.website.dao.mappers.feature.FeatureCategoryInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -19,9 +19,10 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 目录信息操作实现类
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年8月28日 上午12:17:33
  */
+@Repository
 public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
   private static final Logger logger = LoggerFactory.getLogger(FeatureCategoryInfoDaoOper.class);
 
@@ -37,21 +38,13 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
   @Override
   public Long addCategoryInfo(FeatureCategoryInfo featureCategoryInfo) {
     Long categoryId = SequenceManager.getNextId();
-
-    if (categoryId == null) {
-      throw new NullPointerException();
-    }
     featureCategoryInfo.setCategoryId(categoryId);
-
-    // TODO - 后续放在spring mvc中URL判断类型并设置
-    featureCategoryInfo.setCategoryType(CategoryType.ARTICLE);
 
     featureCategoryInfo.setCategoryCreateTime(new Date());
     featureCategoryInfo.setCategoryModifyTime(new Date());
     featureCategoryInfo.setCategoryValid(true);
 
     featureCategoryInfoMapper.insert(featureCategoryInfo);
-
     logger.info("增加目录分类成功,{}", featureCategoryInfo);
 
     return categoryId;
@@ -60,8 +53,7 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
   @Override
   public FeatureCategoryInfo findByCategoryId(Long categoryId) {
     FeatureCategoryInfo categoryInfo = featureCategoryInfoMapper.selectByPrimaryKey(categoryId);
-
-    logger.info("找到id为{}的目录，{}", categoryId, categoryInfo);
+    logger.info("找到id为{}的目录,{}", categoryId, categoryInfo);
 
     return categoryInfo;
   }
@@ -69,7 +61,6 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
   @Override
   public List<FeatureCategoryInfo> findAll() {
     List<FeatureCategoryInfo> categoryInfos = featureCategoryInfoMapper.selectAll();
-
     logger.info("找到所有目录,{}", categoryInfos);
 
     return categoryInfos;
@@ -89,7 +80,6 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
     categoryInfoNew.setCategoryModifyTime(new Date());
 
     featureCategoryInfoMapper.updateByPrimaryKey(categoryInfoNew);
-
     logger.info("成功修改id为{}的目录内容", featureCategoryInfo.getCategoryId());
   }
 }

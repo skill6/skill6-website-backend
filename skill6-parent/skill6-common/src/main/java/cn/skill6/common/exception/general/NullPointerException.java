@@ -1,4 +1,4 @@
-package cn.skill6.common.exception.db;
+package cn.skill6.common.exception.general;
 
 import cn.skill6.common.exception.Skill6Exception;
 

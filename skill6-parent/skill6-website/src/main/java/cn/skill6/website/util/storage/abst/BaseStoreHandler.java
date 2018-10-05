@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +18,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import cn.skill6.common.exception.ParamsException;
+import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.file.FileNotFoundException;
+import cn.skill6.common.exception.general.NullPointerException;
+import cn.skill6.common.exception.general.ParamsException;
 import cn.skill6.website.util.sequence.SequenceManager;
 
 /**
  * 文件存储基类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
@@ -104,11 +107,23 @@ public abstract class BaseStoreHandler {
     }
   }
 
-  /**
-   * @return 文件后缀
-   */
+  /** @return 文件后缀 */
   public String getFileSuffix(String fileName) {
-    // TODO - 后期增加对.tar.gz等的判断
+    if (BaseUtils.isEmpty(fileName)) {
+      throw new NullPointerException("文件名称为null");
+    }
+
+    // 增加对.tar.gz等的判断
+    ArrayList<String> specialSuffix = new ArrayList<>(1);
+    specialSuffix.add("tar.gz");
+    specialSuffix.add("tar.bz2");
+
+    for (String sSuffix : specialSuffix) {
+      if (fileName.indexOf(sSuffix) != -1) {
+        return sSuffix;
+      }
+    }
+
     int index = fileName.lastIndexOf(".");
     String suffix = fileName.substring(index + 1);
 
