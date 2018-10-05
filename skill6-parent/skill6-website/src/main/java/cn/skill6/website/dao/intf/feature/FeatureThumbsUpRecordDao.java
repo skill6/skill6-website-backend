@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.feature.FeatureThumbsUpRecord;
 public interface FeatureThumbsUpRecordDao {
   int deleteByPrimaryKey(Long userId, Long articleId, String thumbsUpType);
 
-  int addThumbsUpRecord(FeatureThumbsUpRecord featureThumbsUpRecord);
+  void addThumbsUpRecord(FeatureThumbsUpRecord featureThumbsUpRecord);
 
   FeatureThumbsUpRecord findByPrimaryKey(Long userId, Long articleId, String thumbsUpType);
 
   List<FeatureThumbsUpRecord> findAll();
 
-  int modifyByPrimaryKey(FeatureThumbsUpRecord featureThumbsUpRecord);
+  void modifyByPrimaryKey(FeatureThumbsUpRecord featureThumbsUpRecord);
 }

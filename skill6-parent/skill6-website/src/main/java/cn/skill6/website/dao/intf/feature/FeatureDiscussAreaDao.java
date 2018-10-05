@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.feature.FeatureDiscussArea;
 public interface FeatureDiscussAreaDao {
   int deleteByDiscussId(Long discussId);
 
-  int addDiscussArea(FeatureDiscussArea featureDiscussArea);
+  Long addDiscussArea(FeatureDiscussArea featureDiscussArea);
 
   FeatureDiscussArea findByDiscussId(Long discussId);
 
   List<FeatureDiscussArea> findAll();
 
-  int modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
+  void modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
 }

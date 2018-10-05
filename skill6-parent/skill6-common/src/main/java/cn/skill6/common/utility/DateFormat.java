@@ -8,7 +8,7 @@ import java.util.Date;
  * 时间格式化助手
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年2月28日 上午11:23:56
  */
 public class DateFormat {
@@ -48,8 +48,6 @@ public class DateFormat {
     Date currentTime = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
     String dateString = formatter.format(currentTime);
-
-    // formatter.parse(dateString, new ParsePosition(0)); 解析为时间
 
     return dateString;
   }

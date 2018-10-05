@@ -8,7 +8,7 @@ import cn.skill6.common.entity.po.store.StoreFile;
  * 文件下载操作接口
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月24日 上午12:28:30
  */
 public interface StoreFileDao {
@@ -20,5 +20,5 @@ public interface StoreFileDao {
 
   List<StoreFile> findAll();
 
-  int modifyByFileId(StoreFile storeFile);
+  void modifyByFileId(StoreFile storeFile);
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.store.StoreImage;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.dao.mappers.store.StoreImageMapper;
 
@@ -61,13 +61,19 @@ public class StoreImageDaoOper implements StoreImageDao {
 
   @Override
   public List<StoreImage> findAll() {
-    // TODO Auto-generated method stub
-    return null;
+    List<StoreImage> storeImages = storeImageMapper.selectAll();
+    logger.info("找到所有图片存储记录,{}", storeImages);
+
+    return storeImages;
   }
 
   @Override
-  public int modifyByImageId(StoreImage storeImage) {
-    // TODO Auto-generated method stub
-    return 0;
+  public void modifyByImageId(StoreImage storeImage) {
+    if (storeImage.getImageId() == null) {
+      throw new NullPointerException("图片存储id不能为null");
+    }
+
+    storeImageMapper.updateByPrimaryKey(storeImage);
+    logger.info("成功修改id为{}的图片存储记录,{}", storeImage.getImageId(), storeImage);
   }
 }

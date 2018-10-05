@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.entity.po.article.ArticleReadRecord;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleReadRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleReadRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;

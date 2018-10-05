@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.user.UserAdditionInfo;
 public interface UserAdditionInfoDao {
   int deleteByUserId(Long userId);
 
-  int addUserInfo(UserAdditionInfo userAdditionInfo);
+  void addUserAdditionInfo(UserAdditionInfo userAdditionInfo);
 
   UserAdditionInfo findByUserId(Long userId);
 
   List<UserAdditionInfo> findAll();
 
-  int modifyByUserId(UserAdditionInfo userAdditionInfo);
+  void modifyByUserId(UserAdditionInfo userAdditionInfo);
 }

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
 import cn.skill6.website.dao.mappers.article.ArticleCommentMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -71,7 +71,7 @@ public class ArticleCommentDaoOper implements ArticleCommentDao {
 
   @Override
   public int modifyByCommentId(ArticleComment articleComment) {
-    // TODO 暂不支持修改评论
+    // 暂不支持修改评论
     return 0;
   }
 }

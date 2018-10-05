@@ -20,5 +20,5 @@ public interface StoreImageDao {
 
   List<StoreImage> findAll();
 
-  int modifyByImageId(StoreImage storeImage);
+  void modifyByImageId(StoreImage storeImage);
 }

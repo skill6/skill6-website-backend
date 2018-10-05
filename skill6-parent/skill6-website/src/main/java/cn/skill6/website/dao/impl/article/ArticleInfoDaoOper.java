@@ -57,7 +57,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
     // 默认文章有效
     articleInfo.setArticleValid(true);
 
-    // TODO 增加其他字段的校验
+    // 增加其他字段的校验
     articleInfoMapper.insert(articleInfo);
 
     logger.info("增加文章成功,{}", articleInfo);
@@ -85,14 +85,35 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
 
   @Override
   public void modifyByArticleId(ArticleInfo articleInfo) {
-    // TODO 增加修改的校验和继续完善
     ArticleInfo articleInfoNew = findByArticleId(articleInfo.getArticleId());
 
     if (BaseUtils.isNotEmpty(articleInfo.getArticleTitle())) {
       articleInfoNew.setArticleTitle(articleInfo.getArticleTitle());
     }
+    if (BaseUtils.isNotEmpty(articleInfo.getArticleSummary())) {
+      articleInfoNew.setArticleSummary(articleInfo.getArticleSummary());
+    }
+    if (BaseUtils.isNotEmpty(articleInfo.getArticleLabel())) {
+      articleInfoNew.setArticleLabel(articleInfo.getArticleLabel());
+    }
     if (BaseUtils.isNotEmpty(articleInfo.getArticleHtmlContent())) {
       articleInfoNew.setArticleHtmlContent(articleInfo.getArticleHtmlContent());
+    }
+    if (BaseUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
+      articleInfoNew.setArticleMdContent(articleInfo.getArticleMdContent());
+    }
+    if (BaseUtils.isNotEmpty(articleInfo.getArticleCategoryId())) {
+      articleInfoNew.setArticleCategoryId(articleInfo.getArticleCategoryId());
+    }
+    Boolean artilcePlaceTop = articleInfo.getArtilcePlaceTop();
+    if (artilcePlaceTop != null && artilcePlaceTop == true) {
+      articleInfoNew.setArtilcePlaceTop(true);
+      articleInfoNew.setArticleTopPriority(articleInfo.getArticleTopPriority());
+    }
+    Boolean articleAttachFile = articleInfo.getArticleAttachFile();
+    if (articleAttachFile != null && articleAttachFile == true) {
+      articleInfoNew.setArticleAttachFile(true);
+      articleInfoNew.setArticleAttachUrl(articleInfo.getArticleAttachUrl());
     }
 
     articleInfoMapper.updateByPrimaryKey(articleInfoNew);

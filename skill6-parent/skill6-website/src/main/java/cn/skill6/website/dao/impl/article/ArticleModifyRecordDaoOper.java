@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.skill6.common.entity.po.article.ArticleModifyRecord;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.common.exception.db.NullPointerException;
+import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleModifyRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleModifyRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
