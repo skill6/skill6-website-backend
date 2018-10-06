@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 public interface UserPrivacyInfoDao {
   int deleteByUserId(Long userId);
 
-  int addUserPrivacyInfo(UserPrivacyInfo userPrivacyInfo);
+  void addUserPrivacyInfo(UserPrivacyInfo userPrivacyInfo);
 
   UserPrivacyInfo findByUserId(Long userId);
 
   List<UserPrivacyInfo> findAll();
 
-  int modifyByUserId(UserPrivacyInfo userPrivacyInfo);
+  void modifyByUserId(UserPrivacyInfo userPrivacyInfo);
 }

@@ -17,7 +17,7 @@ import cn.skill6.website.dao.mappers.user.UserAdditionInfoMapper;
  * 用户信息操作实现类
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月28日 上午12:19:19
  */
 public class UserAdditionInfoDaoOper implements UserAdditionInfoDao {
@@ -46,6 +46,10 @@ public class UserAdditionInfoDaoOper implements UserAdditionInfoDao {
 
   @Override
   public UserAdditionInfo findByUserId(Long userId) {
+    if (userId == null) {
+      throw new NullPointerException("用户id不能为空");
+    }
+
     UserAdditionInfo userAdditionInfo = userAdditionInfoMapper.selectByPrimaryKey(userId);
     logger.info("找到id为{}的用户其他信息,{}", userId, userAdditionInfo);
 
