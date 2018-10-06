@@ -3,13 +3,16 @@ package cn.skill6.website.config;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,9 +32,22 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
     registry.addInterceptor(new SEOInterceptor()).addPathPatterns("/**");
   }
 
-  @Autowired private WebDriver webDriver;
+  @Bean
+  public WebDriver webDriver() {
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments(
+        "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
+    return new ChromeDriver(chromeOptions);
+  }
+
+  @PreDestroy
+  public void destory() {
+    WebDriver webDriver = webDriver();
+    if (webDriver != null) webDriver.quit();
+  }
 
   private String getSource(String uri) {
+    WebDriver webDriver = webDriver();
     webDriver.get(uri);
     return webDriver.getPageSource();
   }
