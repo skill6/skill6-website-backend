@@ -95,6 +95,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!-- 依赖管理（实际没有导入，只是控制版本） -->
@@ -345,7 +349,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>${com.spotify.docker-maven-plugin.version}</version>
 					<configuration>
-						<imageName>${project.name}:${project.version}</imageName>
+						<imageName>${project.name}:latest</imageName>
 						<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
 						<skipDockerBuild>true</skipDockerBuild>
 						<resources>

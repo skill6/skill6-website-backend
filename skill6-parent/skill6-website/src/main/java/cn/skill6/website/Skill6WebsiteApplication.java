@@ -1,6 +1,9 @@
 package cn.skill6.website;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +12,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
+
+import javax.annotation.PreDestroy;
 
 /**
  * 测试启动类
@@ -31,5 +36,19 @@ public class Skill6WebsiteApplication {
   @Bean
   public RestTemplate restTemplate() {
     return new RestTemplate();
+  }
+
+  @Bean
+  public WebDriver webDriver() {
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments(
+        "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
+    return new ChromeDriver(chromeOptions);
+  }
+
+  @PreDestroy
+  public void destory() {
+    WebDriver webDriver = webDriver();
+    if (webDriver != null) webDriver.quit();
   }
 }

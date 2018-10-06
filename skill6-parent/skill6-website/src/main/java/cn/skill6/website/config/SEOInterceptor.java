@@ -1,8 +1,9 @@
 package cn.skill6.website.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,8 +18,9 @@ import java.io.IOException;
  * 用于配置SEO的拦截器，当请求用户为百度爬虫时启用Chrome Headless方式获取相应的结果并返回
  *
  * @author liujichun
- * @version 1.1
+ * @version 1.2
  */
+@Slf4j
 @Configuration
 public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
 
@@ -27,15 +29,11 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
     registry.addInterceptor(new SEOInterceptor()).addPathPatterns("/**");
   }
 
+  @Autowired private WebDriver webDriver;
+
   private String getSource(String uri) {
-    WebDriver driver = null;
-    try {
-      driver = new ChromeDriver();
-      driver.get(uri);
-      return driver.getPageSource();
-    } finally {
-      if (driver != null) driver.quit();
-    }
+    webDriver.get(uri);
+    return webDriver.getPageSource();
   }
 
   @Override
@@ -48,7 +46,9 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
       String source;
       try {
         source = getSource(request.getRequestURL().toString());
+        log.debug("chromedriver get {} -> {}", request.getRequestURL().toString(), source);
       } catch (Exception e) {
+        e.printStackTrace();
         return true;
       }
       response.getWriter().write(source);
