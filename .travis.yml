@@ -1,6 +1,11 @@
 language: java
 jdk:
   - oraclejdk8
+addons:
+  chrome: stable
+cache:
+  directories:
+  - "$HOME/.m2"
 services:
   - mysql
   - redis-server
@@ -12,6 +17,12 @@ before_install:
   - tar -zxf zookeeper-3.4.13.tar.gz
   - cp zookeeper-3.4.13/conf/zoo_sample.cfg zookeeper-3.4.13/conf/zoo.cfg
   - ./zookeeper-3.4.13/bin/zkServer.sh start
+  - wget -N https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - chmod +x chromedriver
+  - sudo mv -f chromedriver /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 install:
   - cd skill6-parent
 after_success:
