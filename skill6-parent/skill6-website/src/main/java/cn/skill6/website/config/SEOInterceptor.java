@@ -3,7 +3,8 @@ package cn.skill6.website.config;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -29,9 +30,18 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
     registry.addInterceptor(this).addPathPatterns("/**");
   }
 
-  @Autowired private WebDriver webDriver;
+  /** 添加Chrome的驱动 */
+  public WebDriver webDriver() {
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments(
+        "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
+    log.debug("chrome driver start with options {}", chromeOptions.asMap());
+    ChromeDriver driver = new ChromeDriver(chromeOptions);
+    return driver;
+  }
 
   private String getSource(String uri) {
+    WebDriver webDriver = webDriver();
     try {
       webDriver.get(uri);
       return webDriver.getPageSource();
@@ -39,7 +49,7 @@ public class SEOInterceptor implements HandlerInterceptor, WebMvcConfigurer {
       e.printStackTrace();
       throw e;
     } finally {
-      webDriver.close();
+      if (webDriver != null) webDriver.quit();
     }
   }
 
