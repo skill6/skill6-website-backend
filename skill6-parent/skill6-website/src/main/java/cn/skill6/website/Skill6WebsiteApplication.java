@@ -3,9 +3,6 @@ package cn.skill6.website;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -38,13 +35,5 @@ public class Skill6WebsiteApplication {
     return new RestTemplate();
   }
 
-  /** 添加Chrome的驱动 */
-  @Bean
-  public WebDriver webDriver() {
-    ChromeOptions chromeOptions = new ChromeOptions();
-    chromeOptions.addArguments(
-        "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
-    log.debug("chrome driver start with options {}", chromeOptions.asMap());
-    return new ChromeDriver(chromeOptions);
-  }
+
 }
