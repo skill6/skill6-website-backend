@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.visit.VisitRecord;
 public interface VisitRecordDao {
   int deleteByVisitId(Long visitId);
 
-  int addVisitRecord(VisitRecord visitRecord);
+  void addVisitRecord(VisitRecord visitRecord);
 
   VisitRecord findByVisitId(Long visitId);
 
   List<VisitRecord> findAll();
 
-  int modifyByVisitId(VisitRecord visitRecord);
+  void modifyByVisitId(VisitRecord visitRecord);
 }

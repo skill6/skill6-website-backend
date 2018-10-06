@@ -14,11 +14,11 @@ import cn.skill6.common.entity.po.visit.VisitStatistics;
 public interface VisitStatisticsDao {
   int deleteByVisitId(Long visitId);
 
-  int addVisitStatistics(VisitStatistics visitStatistics);
+  void addVisitStatistics(VisitStatistics visitStatistics);
 
   VisitStatistics findByVisitId(Long visitId);
 
   List<VisitStatistics> findAll();
 
-  int modifyByVisitId(VisitStatistics visitStatistics);
+  void modifyByVisitId(VisitStatistics visitStatistics);
 }
