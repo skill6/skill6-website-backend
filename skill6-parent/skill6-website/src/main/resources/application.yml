@@ -64,6 +64,7 @@ logging:
   level:
     root: INFO
     cn.skill6.website.dao: DEBUG
+    cn.skill6.website.config.SEOInterceptor: DEBUG
 skill6:
   file-path: ${user.home}/skill6/file/
   image-path: ${user.home}/skill6/image/
