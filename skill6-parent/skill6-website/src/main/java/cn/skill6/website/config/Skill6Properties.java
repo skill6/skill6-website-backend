@@ -21,6 +21,16 @@ public class Skill6Properties {
   /** 分布式id相关配置 */
   private Sequence sequence;
 
+  private Recaptcha recaptcha;
+
+  public Recaptcha getRecaptcha() {
+    return recaptcha;
+  }
+
+  public void setRecaptcha(Recaptcha recaptcha) {
+    this.recaptcha = recaptcha;
+  }
+
   public String getFilePath() {
     return filePath;
   }
@@ -43,6 +53,30 @@ public class Skill6Properties {
 
   public void setSequence(Sequence sequence) {
     this.sequence = sequence;
+  }
+
+  public static class Recaptcha {
+    /** Google reCaptcha私钥 */
+    private String secretKey;
+
+    /** Google reCaptcha验证URL */
+    private String verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+
+    public String getVerifyUrl() {
+      return verifyUrl;
+    }
+
+    public void setVerifyUrl(String verifyUrl) {
+      this.verifyUrl = verifyUrl;
+    }
+
+    public String getSecretKey() {
+      return secretKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+      this.secretKey = secretKey;
+    }
   }
 
   public static class Sequence {
