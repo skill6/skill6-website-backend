@@ -1,5 +1,4 @@
-# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)   [![Apache License 2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-
+# skill6   [![building status](https://travis-ci.com/skill6/skill6.svg?branch=master)](https://travis-ci.com/skill6/skill6)  [![codecov](https://codecov.io/gh/skill6/skill6/branch/master/graph/badge.svg)](https://codecov.io/gh/skill6/skill6)   [![Apache License 2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)  [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/skill6/skill6.svg)](http://isitmaintained.com/project/skill6/skill6 "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/skill6/skill6.svg)](http://isitmaintained.com/project/skill6/skill6 "Percentage of issues still open")
 
 技术流[skill6](https://skill6.cn)网站的架构设计、需求分析、技术选型等
 
