@@ -1,6 +1,7 @@
 package cn.skill6.website.service.complex;
 
 import cn.skill6.website.config.Skill6Properties;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import javax.annotation.PostConstruct;
  * Google 验证码人机结果校验器
  *
  * @author liujichun
- * @version 1.0.0
+ * @version 1.0.1
  */
 @Service
 @Slf4j
@@ -53,33 +54,10 @@ public class RecaptchaValidator {
     return validate0(remoteIp, respose);
   }
 
+  @Data
   public static class Req {
     private String secret;
     private String response;
     private String remoteip;
-
-    public String getSecret() {
-      return secret;
-    }
-
-    public void setSecret(String secret) {
-      this.secret = secret;
-    }
-
-    public String getResponse() {
-      return response;
-    }
-
-    public void setResponse(String response) {
-      this.response = response;
-    }
-
-    public String getRemoteip() {
-      return remoteip;
-    }
-
-    public void setRemoteip(String remoteip) {
-      this.remoteip = remoteip;
-    }
   }
 }
