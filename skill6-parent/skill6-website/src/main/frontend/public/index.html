@@ -29,5 +29,16 @@
 <script src="https://cdn.bootcss.com/codemirror/5.38.0/codemirror.min.js"></script>
 <script src="https://cdn.bootcss.com/codemirror/5.38.0/mode/javascript/javascript.min.js"></script>
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+<script>
+    var initGoogleLoginBtn = function () {
+        let script = document.createElement("script");
+        script.src = "https://apis.google.com/js/platform.js";
+        document.body.appendChild(script);
+        script.onload = function () {
+            $('#google-login-btn').show();
+        }
+    }
+    window.onload = initGoogleLoginBtn;
+</script>
 </body>
 </html>

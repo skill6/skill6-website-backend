@@ -19,7 +19,9 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="/login">登录</a></li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/login">登录</router-link>
+                        </li>
                     </ul>
                 </div>
             </nav>

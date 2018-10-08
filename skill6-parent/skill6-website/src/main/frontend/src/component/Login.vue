@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-6" v-if="google_login_button">
+            <div id="google-login-btn" class="col-md-6" v-show="google_login_button">
                 <div class="loginAbcRioButton loginAbcRioButtonLightBlue" style="margin-bottom: 10px">
                     <div class="loginAbcRioButtonContentWrapper">
                         <div class="loginAbcRioButtonIcon" style="padding:13px">
@@ -47,18 +47,31 @@
         </div>
         <red-hr></red-hr>
         <form method="get" action="javascript:exit(0)">
-            <div class="form-group">
-                <label for="exampleInputEmail1">邮箱/用户名</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="请输入邮箱/用户名">
-                <small id="emailHelp" class="form-text text-muted">十分重要
-                </small>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>邮箱/用户名</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp"
+                               placeholder="请输入邮箱/用户名">
+                        <small id="emailHelp" class="form-text text-muted">十分重要</small>
+                    </div>
+                    <div class="form-group">
+                        <label>密码
+                            <small>(忘记密码)</small>
+                        </label>
+                        <input type="password" class="form-control" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>点击认证
+                            <small>(<a target="_blank" href="https://en.wikipedia.org/wiki/ReCAPTCHA">这是什么？</a>)</small>
+                        </label>
+                        <div class="g-recaptcha"
+                             data-sitekey="6LcQzHMUAAAAAJ_v7fN7cnvhnPqypGPGZ_XA6AQ7"></div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">密码</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
-            </div>
-            <div class="g-recaptcha" data-sitekey="6LcQzHMUAAAAAJ_v7fN7cnvhnPqypGPGZ_XA6AQ7"></div>
             <div style="height: 10px"></div>
             <button type="submit" class="btn btn-primary">登录</button>
         </form>
@@ -78,12 +91,8 @@
         },
         methods: {
             initGoogleLoginButton: function () {
-                let script = document.createElement("script");
-                let that = this;
-                script.src = "https://apis.google.com/js/platform.js";
-                document.body.appendChild(script);
-                script.onload = function () {
-                    that.google_login_button = true;
+                if (typeof gapi != 'undefined') {
+                    this.google_login_button = true;
                 }
             }
         },
