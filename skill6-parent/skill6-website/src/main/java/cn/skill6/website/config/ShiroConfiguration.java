@@ -12,6 +12,7 @@ import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.web.config.IniFilterChainResolverFactory;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,21 +27,10 @@ import lombok.Data;
  * @author 何明胜
  * @version 1.2
  */
-/**
- * TODO
- *
- * @author 何明胜
- * @version 1.0
- * @since 2018年10月22日 上午12:30:10
- */
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "shiro")
 public class ShiroConfiguration {
-
-  private String loginUrl;
-  private String successUrl;
-  private String unauthorizedUrl;
 
   /** shiro配置文件位置 */
   private String configPath = "classpath:config/shiro-urls.ini";
@@ -48,6 +38,23 @@ public class ShiroConfiguration {
   @Bean
   public Realm realm() {
     return new SimpleAccountRealm();
+  }
+
+  /** 权限管理，配置主要是Realm的管理认证 */
+  @Bean
+  public DefaultWebSecurityManager securityManager(Realm realm) {
+    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+
+    securityManager.setRealm(realm);
+    // TODO - 完善
+    // 自定义缓存实现 使用redis
+    // securityManager.setCacheManager(cacheManager());
+    // 自定义session管理
+    // securityManager.setSessionManager(sessionManager());
+    // 注入记住我管理器;
+    // securityManager.setRememberMeManager(rememberMeManager());
+
+    return securityManager;
   }
 
   @Bean
