@@ -8,11 +8,10 @@ import org.apache.shiro.config.Ini;
 import org.apache.shiro.io.ResourceUtils;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.SimpleAccountRealm;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.web.config.IniFilterChainResolverFactory;
-import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +25,13 @@ import lombok.Data;
  * @author liujichun
  * @author 何明胜
  * @version 1.2
+ */
+/**
+ * TODO
+ *
+ * @author 何明胜
+ * @version 1.0
+ * @since 2018年10月22日 上午12:30:10
  */
 @Data
 @Configuration
@@ -44,58 +50,18 @@ public class ShiroConfiguration {
     return new SimpleAccountRealm();
   }
 
-  // 权限管理，配置主要是Realm的管理认证
   @Bean
-  public org.apache.shiro.mgt.SecurityManager securityManager() {
-    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+  public ShiroFilterChainDefinition shiroFilterChainDefinition() {
+    DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
 
-    // TODO - 完善
-    // 设置realm.
-    // securityManager.setRealm(myShiroRealm());
-    // 自定义缓存实现 使用redis
-    // securityManager.setCacheManager(cacheManager());
-    // 自定义session管理 使用redis
-    // securityManager.setSessionManager(sessionManager());
-    // 注入记住我管理器;
-    // securityManager.setRememberMeManager(rememberMeManager());
+    setFilterChainDefinitionsLocation(chainDefinition);
 
-    return securityManager;
-  }
-
-  /**
-   * 过滤器
-   *
-   * @return 过滤链定义
-   */
-  @Bean
-  public ShiroFilterFactoryBean shiroFilterFactoryBean(
-      org.apache.shiro.mgt.SecurityManager securityManager) {
-    ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-    shiroFilterFactoryBean.setSecurityManager(securityManager);
-
-    // 首页
-    shiroFilterFactoryBean.setSuccessUrl(successUrl);
-    // 登录
-    shiroFilterFactoryBean.setLoginUrl(loginUrl);
-    // 错误页面，认证不通过跳转
-    shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
-
-    return shiroFilterFactoryBean;
-  }
-
-  // 加入注解的使用，不加入这个注解不生效
-  @Bean
-  public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(
-      org.apache.shiro.mgt.SecurityManager securityManager) {
-    AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor =
-        new AuthorizationAttributeSourceAdvisor();
-    authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
-    return authorizationAttributeSourceAdvisor;
+    return chainDefinition;
   }
 
   /** 设置自定义的URL配置文件 */
-  @Bean
-  public void setFilterChainDefinitionsLocation(ShiroFilterFactoryBean shiroFilterFactoryBean) {
+  public void setFilterChainDefinitionsLocation(
+      DefaultShiroFilterChainDefinition shiroFilterChainDefinition) {
     String filterChainDefinitionsLocation = configPath;
 
     if (!StringUtils.hasText(filterChainDefinitionsLocation)) {
@@ -123,6 +89,6 @@ public class ShiroConfiguration {
     }
 
     // 设置URL到过滤链
-    shiroFilterFactoryBean.setFilterChainDefinitionMap(section);
+    shiroFilterChainDefinition.addPathDefinitions(section);
   }
 }
