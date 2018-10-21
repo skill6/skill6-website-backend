@@ -76,5 +76,8 @@ skill6:
   recaptcha:
     secret-key: ${SKILL6_RECAPTCHA_SECRET_KEY}
     verify-url: https://www.recaptcha.net/recaptcha/api/siteverify
-  shiro:
-    config-path: classpath:config/shiro-urls.ini
+shiro:
+  loginUrl: /login
+  successUrl: /index
+  unauthorizedUrl: /unauthorized
+  config-path: classpath:config/shiro-urls.ini
