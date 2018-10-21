@@ -24,7 +24,8 @@ public class IndexController {
         "/talk/*",
         "/developing/*",
         "/topic/*/*",
-        "/blog/editor"
+        "/blog/editor",
+        "/login"
       })
   public String index() {
     return "/index.html";

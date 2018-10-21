@@ -1,5 +1,6 @@
 package cn.skill6.website.config;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @ConfigurationProperties(prefix = "skill6")
 @Configuration
+@Data
 public class Skill6Properties {
 
   /** 图片存储路径 */
@@ -21,78 +23,36 @@ public class Skill6Properties {
   /** 分布式id相关配置 */
   private Sequence sequence;
 
-  public String getFilePath() {
-    return filePath;
+  private Recaptcha recaptcha;
+
+  @Data
+  public static class Recaptcha {
+    /** Google reCaptcha私钥 */
+    private String secretKey;
+
+    /** Google reCaptcha验证URL */
+    private String verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
   }
 
-  public void setFilePath(String filePath) {
-    this.filePath = filePath;
-  }
-
-  public String getImagePath() {
-    return imagePath;
-  }
-
-  public void setImagePath(String imagePath) {
-    this.imagePath = imagePath;
-  }
-
-  public Sequence getSequence() {
-    return sequence;
-  }
-
-  public void setSequence(Sequence sequence) {
-    this.sequence = sequence;
-  }
-
+  @Data
   public static class Sequence {
 
     private Worker worker;
 
     private DataCenter dataCenter;
 
-    public Worker getWorker() {
-      return worker;
-    }
-
-    public void setWorker(Worker worker) {
-      this.worker = worker;
-    }
-
-    public DataCenter getDataCenter() {
-      return dataCenter;
-    }
-
-    public void setDataCenter(DataCenter dataCenter) {
-      this.dataCenter = dataCenter;
-    }
-
+    @Data
     public static class Worker {
 
       /** 工作节点id */
       private String id = "0";
-
-      public String getId() {
-        return id;
-      }
-
-      public void setId(String id) {
-        this.id = id;
-      }
     }
 
+    @Data
     public static class DataCenter {
 
       /** 数据中心节点id */
       private String id = "0";
-
-      public String getId() {
-        return id;
-      }
-
-      public void setId(String id) {
-        this.id = id;
-      }
     }
   }
 }

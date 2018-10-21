@@ -1,45 +1,46 @@
-import AppContent from './component/AppContent'
 import BlogList from './component/BlogList'
 import Vue from 'vue'
 import Router from 'vue-router'
-import BlogMain from './component/BlogMain'
-import EditorMain from './component/EditorMain'
+import AppBody from './component/AppBody'
+import Login from './component/Login'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      //默认跳转到推荐，实现默认页面
-      redirect: '/topic',
-      name: 'topic',
-      component: AppContent
-    },
-    {
-      path: '/topic',
-      //默认跳转到推荐，实现默认页面
-      redirect: '/topic/java',
-      name: 'Topic',
-      component: AppContent,
-      children: [
+    mode: 'history',
+    routes: [
+        /*{
+            path: '/',
+            //默认跳转到推荐，实现默认页面
+            redirect: '/topic',
+            name: 'topic',
+            component: AppContent
+        },*/
         {
-          path: '/topic/java',
-          component: BlogList
-        },
+            path: '/',
+            name: 'APP',
+            component: AppBody,
+            children: [
+                {
+                    path: "/",
+                    component: BlogList
+                },
+                {
+                    path: "/login",
+                    component: Login
+                }
+            ]
+        }/*,
         {
-          path: '/topic/spring',
-          component: BlogList
+            path: '/blog/editor',
+            component:
+            EditorMain
         }
-      ]
-    },
-    {
-      path: '/blog/editor',
-      component: EditorMain
-    },
-    {
-      path: '/*/*/*',
-      component: BlogMain
-    }]
+        ,
+        {
+            path: '/!*!/!*!/!*',
+            component:
+            BlogMain
+        }*/
+    ]
 })
