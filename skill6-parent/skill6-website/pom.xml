@@ -69,11 +69,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring-boot-starter</artifactId>
-			<version>1.4.0-RC2</version>
-		</dependency>
 	</dependencies>
 
 	<!--考虑到window 和linux环境 npm命令格式的问题，使用maven的profile实现动态指定命令 -->
