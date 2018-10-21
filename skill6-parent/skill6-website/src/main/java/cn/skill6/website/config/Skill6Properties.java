@@ -25,6 +25,14 @@ public class Skill6Properties {
 
   private Recaptcha recaptcha;
 
+  /** shiro配置文件位置 */
+  private Shiro shiro;
+
+  @Data
+  public static class Shiro {
+    private String configPath = "classpath:config/shiro-urls.ini";
+  }
+
   @Data
   public static class Recaptcha {
     /** Google reCaptcha私钥 */
