@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>skill6-技术流</title>
-    <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
     <meta name="description" content="技术流,Java全栈开发,技术分享交流"/>
     <meta name="keywords" content="技术流,Java,全栈"/>
     <meta name="author" content="刘纪春,何明胜">
@@ -23,6 +22,9 @@
         continue.</strong>
 </noscript>
 <div id="app"></div>
+<div id="recaptcha" data-sitekey="6LcQzHMUAAAAAJ_v7fN7cnvhnPqypGPGZ_XA6AQ7" style="display: none"
+     class="g-recaptcha"></div>
+<script src="https://www.recaptcha.net/recaptcha/api.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -32,7 +34,7 @@
 <script>
     var initGoogleLoginBtn = function () {
         let script = document.createElement("script");
-        script.src = "https://apis.google.com/js/platform.js";
+        script.src = "https://apis.google.com/js/platform.js?" + (new Date().getMinutes());
         document.body.appendChild(script);
         script.onload = function () {
             $('#google-login-btn').show();

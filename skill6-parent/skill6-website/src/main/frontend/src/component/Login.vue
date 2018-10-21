@@ -67,8 +67,7 @@
                         <label>点击认证
                             <small>(<a target="_blank" href="https://en.wikipedia.org/wiki/ReCAPTCHA">这是什么？</a>)</small>
                         </label>
-                        <div class="g-recaptcha"
-                             data-sitekey="6LcQzHMUAAAAAJ_v7fN7cnvhnPqypGPGZ_XA6AQ7"></div>
+                        <recaptcha-widget></recaptcha-widget>
                     </div>
                 </div>
             </div>
@@ -80,10 +79,11 @@
 
 <script>
     import RedHr from "./RedHr";
+    import RecaptchaWidget from "./RecaptchaWidget";
 
     export default {
         name: "Login",
-        components: {RedHr},
+        components: {RecaptchaWidget, RedHr},
         data: function () {
             return {
                 google_login_button: false
