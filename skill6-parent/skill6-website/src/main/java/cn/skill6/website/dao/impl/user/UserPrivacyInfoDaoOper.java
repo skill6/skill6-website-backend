@@ -5,7 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import cn.skill6.common.entity.enums.UserState;
+import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
 import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
@@ -18,6 +21,7 @@ import cn.skill6.website.dao.mappers.user.UserPrivacyInfoMapper;
  * @version 1.3
  * @since 2018年8月28日 上午12:19:56
  */
+@Repository
 public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
   private static final Logger logger = LoggerFactory.getLogger(UserPrivacyInfoDaoOper.class);
 
@@ -53,8 +57,7 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
     if (userId == null) {
       throw new NullPointerException("用户id不能为空");
     }
-    // TODO - 增加用户状态枚举
-    userPrivacyInfo.setUserState("100");
+    userPrivacyInfo.setUserState(UserState.VALID);
   }
 
   @Override
@@ -102,5 +105,38 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
 
     userPrivacyInfoMapper.updateByPrimaryKey(userPrivacyInfo);
     logger.info("成功修改id为{}的用户隐私信息");
+  }
+
+  @Override
+  public List<RbacRoleInfo> findRolesByUserName(
+      String userName) { // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<RbacRoleInfo> findRolesByUserPhone(
+      String userPhone) { // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<RbacRoleInfo> findRolesByUserEmail(
+      String userEmail) { // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public UserPrivacyInfo findUserByUserName(String userName) { // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public UserPrivacyInfo findUserByUserPhone(String userPhone) { // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public UserPrivacyInfo findUserByUserEmail(String userEmail) { // TODO Auto-generated method stub
+    return null;
   }
 }
