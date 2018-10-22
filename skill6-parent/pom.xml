@@ -50,7 +50,7 @@
 		<org.springframework.version>4.3.14.RELEASE</org.springframework.version>
 		<javax.servlet.jsp.jsp-api.version>2.3.1</javax.servlet.jsp.jsp-api.version>
 		<com.aliyun.aliyun-java-sdk-core.version>3.5.1</com.aliyun.aliyun-java-sdk-core.version>
-		<org.apache.commons.commons-lang3.version>3.7</org.apache.commons.commons-lang3.version>
+		<org.apache.commons.commons-lang3.version>3.8.1</org.apache.commons.commons-lang3.version>
 		<biz.paluch.logging.logstash-gelf.version>1.11.2</biz.paluch.logging.logstash-gelf.version>
 		<com.vladsch.flexmark.flexmark-all.version>0.34.22</com.vladsch.flexmark.flexmark-all.version>
 		<com.aliyun.aliyun-java-sdk-dysmsapi.version>1.1.0</com.aliyun.aliyun-java-sdk-dysmsapi.version>
@@ -96,6 +96,10 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -220,7 +224,7 @@
 				<artifactId>javax.servlet.jsp-api</artifactId>
 				<version>${javax.servlet.jsp.jsp-api.version}</version>
 			</dependency>
-			<!-- 定时线程池 -->
+			<!-- apache工具 -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>

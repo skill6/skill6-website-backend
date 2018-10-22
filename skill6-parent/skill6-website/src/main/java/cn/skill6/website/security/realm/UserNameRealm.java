@@ -16,6 +16,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.SimpleByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.enums.UserState;
@@ -35,6 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2018年10月23日 上午12:06:27
  */
 @Slf4j
+@Repository
 public class UserNameRealm extends AuthorizingRealm {
 
   @Autowired private UserPrivacyInfoDao userPrivacyInfoDao;
