@@ -2,6 +2,7 @@ package cn.skill6.website.util.sequence;
 
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
@@ -12,11 +13,12 @@ import java.io.Serializable;
  * @version 1.2
  * @since 2018年4月20日 上午9:34:32
  */
+@Component
 public class SequenceSessionIdGenerator implements SessionIdGenerator {
   @Override
   public Serializable generateId(Session session) {
-    Long userId = SequenceManager.getNextId();
+    String sequenceId = SequenceManager.getNextIdStr();
 
-    return String.valueOf(userId);
+    return sequenceId;
   }
 }

@@ -10,12 +10,10 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * @since 2018年5月14日 下午5:06:55
  */
 public enum LoginType implements BaseEnum<Enum<LoginType>, String> {
-  /** 使用用户名登录 */
-  USERNAME("100", "用户名登录", "/app/v1/login/username"),
-  /** 使用有效登录 */
-  EMAIL("200", "邮箱登录", "/app/v1/login/email"),
-  /** 使用手机号登录 */
-  PHONE("300", "手机登录", "/app/v1/login/phone");
+  USERNAME("100", "用户名登录", "login/username"),
+  EMAIL("200", "邮箱登录", "login/email"),
+  PHONE("300", "手机登录", "login/phone"),
+  GITHUB("400", "github登录", "login/github");
 
   private String stateCode;
   private String description;

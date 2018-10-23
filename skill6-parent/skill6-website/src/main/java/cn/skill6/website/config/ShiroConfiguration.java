@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.config.ConfigurationException;
@@ -24,15 +24,16 @@ import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
-import cn.skill6.website.cache.ShiroRedisCacheManager;
+import cn.skill6.website.security.credentials.RetryLimitCredentialsMatcher;
 import cn.skill6.website.security.realm.UserNameRealm;
-import cn.skill6.website.util.sequence.SequenceSessionIdGenerator;
-import lombok.Data;
+import cn.skill6.website.security.realm.oauth.GitHubRealm;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用于进行Shiro配置
@@ -41,7 +42,7 @@ import lombok.Data;
  * @author 何明胜
  * @version 1.2
  */
-@Data
+@Slf4j
 @Configuration
 @ConfigurationProperties(prefix = "shiro")
 public class ShiroConfiguration {
@@ -54,20 +55,17 @@ public class ShiroConfiguration {
   private String configPath = "classpath:config/shiro-urls.ini";
 
   /** session id生成器 */
-  @Bean
-  public SessionIdGenerator sessionIdGenerator() {
-    return new SequenceSessionIdGenerator();
-  }
+  @Autowired SessionIdGenerator sessionIdGenerator;
 
-  @Bean
-  public CacheManager cacheManager() {
-    return new ShiroRedisCacheManager();
-  }
+  @Autowired CacheManager cacheManager;
+
+  @Autowired GitHubRealm gitHubRealm;
 
   /** 密码匹配器 */
   @Bean
-  public HashedCredentialsMatcher hashedCredentialsMatcher() {
-    HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+  public CredentialsMatcher hashedCredentialsMatcher() {
+    RetryLimitCredentialsMatcher credentialsMatcher =
+        new RetryLimitCredentialsMatcher(cacheManager);
 
     credentialsMatcher.setHashAlgorithmName("md5");
     credentialsMatcher.setHashIterations(2);
@@ -124,8 +122,7 @@ public class ShiroConfiguration {
   @Bean
   public SessionDAO sessionDAO() {
     EnterpriseCacheSessionDAO sessionDAO = new EnterpriseCacheSessionDAO();
-
-    sessionDAO.setSessionIdGenerator(sessionIdGenerator());
+    sessionDAO.setSessionIdGenerator(sessionIdGenerator);
 
     return sessionDAO;
   }
@@ -147,11 +144,12 @@ public class ShiroConfiguration {
   public DefaultWebSecurityManager securityManager() {
     DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
-    List<Realm> realms = Arrays.asList(userNameRealm());
+    // 添加所有的realm
+    List<Realm> realms = Arrays.asList(userNameRealm(), gitHubRealm);
     securityManager.setRealms(realms);
 
     // 自定义缓存实现 使用redis
-    securityManager.setCacheManager(cacheManager());
+    securityManager.setCacheManager(cacheManager);
     // 自定义session管理
     securityManager.setSessionManager(sessionManager());
     // 注入记住我管理器;
@@ -163,7 +161,6 @@ public class ShiroConfiguration {
   @Bean
   public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-
     shiroFilterFactoryBean.setSecurityManager(securityManager);
 
     shiroFilterFactoryBean.setLoginUrl(loginUrl);
@@ -177,6 +174,7 @@ public class ShiroConfiguration {
 
   /** 设置自定义的URL配置文件 */
   private void setFilterChainDefinitionsLocation(ShiroFilterFactoryBean shiroFilterFactoryBean) {
+    log.debug("start to load url config file...");
     String filterChainDefinitionsLocation = configPath;
 
     if (!StringUtils.hasText(filterChainDefinitionsLocation)) {
@@ -200,10 +198,12 @@ public class ShiroConfiguration {
 
     Ini.Section section = ini.getSection(IniFilterChainResolverFactory.URLS);
     if (CollectionUtils.isEmpty(section)) {
+      log.debug("url config file's url section is empty");
       section = ini.getSection(Ini.DEFAULT_SECTION_NAME);
     }
 
     // 设置URL到过滤链
     shiroFilterFactoryBean.setFilterChainDefinitionMap(section);
+    log.debug("load url config file finished!");
   }
 }
