@@ -13,17 +13,17 @@ import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * github登录域
+ * google授权登录
  *
  * @author 何明胜
  * @version 1.0
- * @since 2018年10月24日 上午12:24:25
+ * @since 2018年10月28日 下午11:49:11
  */
 @Slf4j
 @Repository
-public class GitHubRealm extends AuthorizingRealm {
+public class GoogleRealm extends AuthorizingRealm {
 
-  /** 仅支持github方式登录 */
+  /** 仅支持google方式登录 */
   @Override
   public boolean supports(AuthenticationToken token) {
     log.debug("access UserNameRealm.supports()");
