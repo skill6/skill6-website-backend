@@ -1,4 +1,4 @@
-package cn.skill6.website.security.realm;
+package cn.skill6.website.security.realm.auth;
 
 import java.util.List;
 import java.util.Set;
@@ -12,10 +12,10 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.SimpleByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.enums.UserState;
@@ -24,6 +24,7 @@ import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
 import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import cn.skill6.website.dao.intf.rbac.RbacRoleInfoDao;
 import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
+import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,11 +32,12 @@ import lombok.extern.slf4j.Slf4j;
  * 用户名+密码登录
  *
  * @author 何明胜
- * @version 1.0
+ * @version 1.1
  * @since 2018年10月23日 上午12:06:27
  */
 @Slf4j
-public class UserNameRealm extends AuthorizingRealm {
+@Repository
+public class UserNameRealm extends Skill6Realm {
 
   @Autowired private UserPrivacyInfoDao userPrivacyInfoDao;
 

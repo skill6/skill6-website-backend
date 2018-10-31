@@ -13,23 +13,23 @@ import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * github登录域
+ * 微信登录域
  *
  * @author 何明胜
- * @version 1.1
- * @since 2018年10月24日 上午12:24:25
+ * @version 1.0
+ * @since 2018年11月1日 上午1:10:49
  */
 @Slf4j
 @Repository
-public class GitHubRealm extends Skill6Realm {
+public class WeChatRealm extends Skill6Realm {
 
-  /** 仅支持github方式登录 */
+  /** 仅支持微信方式登录 */
   @Override
   public boolean supports(AuthenticationToken token) {
     log.debug("access UserNameRealm.supports()");
     AccountPasswordTypeToken typeToken = (AccountPasswordTypeToken) token;
 
-    return LoginType.GITHUB == typeToken.getLoginType();
+    return LoginType.WECHAT == typeToken.getLoginType();
   }
 
   /**
@@ -53,7 +53,6 @@ public class GitHubRealm extends Skill6Realm {
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
       throws AuthenticationException {
-    // TODO - 根据授权的code发送请求获取access_token，然后获取用户信息并进行比对
     return null;
   }
 }

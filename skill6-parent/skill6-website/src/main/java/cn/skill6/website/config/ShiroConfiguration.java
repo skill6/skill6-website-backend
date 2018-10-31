@@ -31,8 +31,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 import cn.skill6.website.security.credentials.RetryLimitCredentialsMatcher;
-import cn.skill6.website.security.realm.UserNameRealm;
+import cn.skill6.website.security.realm.auth.EmailRealm;
+import cn.skill6.website.security.realm.auth.PhoneRealm;
+import cn.skill6.website.security.realm.auth.UserNameRealm;
 import cn.skill6.website.security.realm.oauth.GitHubRealm;
+import cn.skill6.website.security.realm.oauth.GoogleRealm;
+import cn.skill6.website.security.realm.oauth.QQRealm;
+import cn.skill6.website.security.realm.oauth.WeChatRealm;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -40,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author liujichun
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  */
 @Slf4j
 @Configuration
@@ -59,7 +64,14 @@ public class ShiroConfiguration {
 
   @Autowired CacheManager cacheManager;
 
+  @Autowired PhoneRealm phoneRealm;
+  @Autowired EmailRealm emailRealm;
+  @Autowired UserNameRealm userNameRealm;
+
+  @Autowired QQRealm qqRealm;
   @Autowired GitHubRealm gitHubRealm;
+  @Autowired GoogleRealm googleRealm;
+  @Autowired WeChatRealm weChatRealm;
 
   /** 密码匹配器 */
   @Bean
@@ -72,20 +84,6 @@ public class ShiroConfiguration {
     credentialsMatcher.setStoredCredentialsHexEncoded(true);
 
     return credentialsMatcher;
-  }
-
-  @Bean
-  public Realm userNameRealm() {
-    UserNameRealm userNameRealm = new UserNameRealm();
-
-    userNameRealm.setCredentialsMatcher(hashedCredentialsMatcher());
-    userNameRealm.setCachingEnabled(true);
-    userNameRealm.setAuthenticationCachingEnabled(true);
-    userNameRealm.setAuthenticationCacheName("authenticationCache");
-    userNameRealm.setAuthorizationCachingEnabled(true);
-    userNameRealm.setAuthorizationCacheName("authorizationCache");
-
-    return userNameRealm;
   }
 
   @Bean
@@ -145,7 +143,9 @@ public class ShiroConfiguration {
     DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
     // 添加所有的realm
-    List<Realm> realms = Arrays.asList(userNameRealm(), gitHubRealm);
+    List<Realm> realms =
+        Arrays.asList(
+            userNameRealm, phoneRealm, emailRealm, gitHubRealm, googleRealm, qqRealm, weChatRealm);
     securityManager.setRealms(realms);
 
     // 自定义缓存实现 使用redis

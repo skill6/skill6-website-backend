@@ -6,7 +6,7 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * 登录方式枚举
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年5月14日 下午5:06:55
  */
 public enum LoginType implements BaseEnum<Enum<LoginType>, String> {
@@ -14,7 +14,9 @@ public enum LoginType implements BaseEnum<Enum<LoginType>, String> {
   EMAIL("email", "邮箱登录", "login/email"),
   PHONE("phone", "手机登录", "login/phone"),
   GITHUB("github", "github登录", "login/github"),
-  GOOGLE("google", "google登录", "login/google");
+  GOOGLE("google", "google登录", "login/google"),
+  QQ("qq", "qq登录", "login/qq"),
+  WECHAT("wechat", "微信登录", "login/wechat");
 
   /** 登录类型的小写，设置长度不超过8 */
   private String stateCode;

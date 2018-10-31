@@ -1,4 +1,4 @@
-package cn.skill6.website.security.realm.oauth;
+package cn.skill6.website.security.realm.auth;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -13,47 +13,35 @@ import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * github登录域
+ * 邮箱登录
  *
  * @author 何明胜
- * @version 1.1
- * @since 2018年10月24日 上午12:24:25
+ * @version 1.0
+ * @since 2018年11月1日 上午1:14:57
  */
 @Slf4j
 @Repository
-public class GitHubRealm extends Skill6Realm {
+public class EmailRealm extends Skill6Realm {
 
-  /** 仅支持github方式登录 */
+  /** 仅支持邮箱验证码方式登录 */
   @Override
   public boolean supports(AuthenticationToken token) {
     log.debug("access UserNameRealm.supports()");
     AccountPasswordTypeToken typeToken = (AccountPasswordTypeToken) token;
 
-    return LoginType.GITHUB == typeToken.getLoginType();
-  }
-
-  /**
-   * 第三方登录直接return表示通过,不参与后续doCredentialsMatch匹配
-   *
-   * @param authcToken 用户输入的token
-   * @param info 数据库用户信息
-   */
-  @Override
-  protected void assertCredentialsMatch(AuthenticationToken authcToken, AuthenticationInfo info)
-      throws AuthenticationException {
-
-    return;
+    return LoginType.EMAIL == typeToken.getLoginType();
   }
 
   @Override
   protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+    // TODO - 完善
     return null;
   }
 
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
       throws AuthenticationException {
-    // TODO - 根据授权的code发送请求获取access_token，然后获取用户信息并进行比对
+    // TODO - 完善
     return null;
   }
 }

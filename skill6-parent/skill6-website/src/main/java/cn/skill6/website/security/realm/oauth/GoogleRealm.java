@@ -4,11 +4,11 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.enums.LoginType;
+import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,12 +16,12 @@ import lombok.extern.slf4j.Slf4j;
  * google授权登录
  *
  * @author 何明胜
- * @version 1.0
+ * @version 1.1
  * @since 2018年10月28日 下午11:49:11
  */
 @Slf4j
 @Repository
-public class GoogleRealm extends AuthorizingRealm {
+public class GoogleRealm extends Skill6Realm {
 
   /** 仅支持google方式登录 */
   @Override
