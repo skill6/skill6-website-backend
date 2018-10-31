@@ -59,7 +59,7 @@ public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
             .andReturn();
 
     String response = mvcResult.getResponse().getContentAsString();
-    Object message = JacksonUtil.jsonStr2Entity(response, ResponseJson.class).getMessage();
+    Object message = JacksonUtil.str2Entity(response, ResponseJson.class).getMessage();
     urlDownload = ((Map<String, String>) message).get("file_url");
   }
 
