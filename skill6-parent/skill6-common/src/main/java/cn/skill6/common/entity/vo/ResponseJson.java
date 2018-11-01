@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * RESTful 返回json
@@ -17,7 +16,6 @@ import lombok.NoArgsConstructor;
  * @since 2018年3月21日 下午3:52:46
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class ResponseJson implements Serializable {
@@ -27,6 +25,8 @@ public class ResponseJson implements Serializable {
   private Boolean success;
 
   private Object message;
+
+  public ResponseJson() {}
 
   /**
    * 只有结果
