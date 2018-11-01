@@ -29,7 +29,7 @@ CREATE TABLE `sys_role_info` (
 `role_code` varchar(16) NOT NULL COMMENT '角色代码。用于匹配角色',
 `role_desc` varchar(128) NULL COMMENT '角色描述',
 `role_create_time` timestamp(3) NOT NULL,
-`role_last_modify_time` timestamp(3) NOT NULL,
+`role_update_time` timestamp(3) NOT NULL,
 `role_valid` tinyint(1) NOT NULL COMMENT '是否可用，0为假，1为真',
 PRIMARY KEY (`role_id`) 
 );
@@ -42,7 +42,7 @@ CREATE TABLE `sys_permission_info` (
 `permission_navi` tinyint(1) NOT NULL COMMENT '是否为菜单栏导航节点，0为假，1为真',
 `permission_url` varchar(128) NULL COMMENT '如果为菜单导航节点，对应节点的URL',
 `permission_create_time` timestamp(3) NOT NULL,
-`permission_last_modify_time` timestamp(3) NOT NULL,
+`permission_update_time` timestamp(3) NOT NULL,
 `permission_valid` tinyint(1) NOT NULL,
 PRIMARY KEY (`permission_id`) 
 );

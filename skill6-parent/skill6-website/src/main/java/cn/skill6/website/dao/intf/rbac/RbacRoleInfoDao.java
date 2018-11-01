@@ -2,6 +2,7 @@ package cn.skill6.website.dao.intf.rbac;
 
 import java.util.List;
 
+import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
 
 /**
@@ -21,4 +22,7 @@ public interface RbacRoleInfoDao {
   List<RbacRoleInfo> findAll();
 
   int modifyByRoleId(RbacRoleInfo rbacRoleInfo);
+
+  /** 根据角色id查找对应权限 */
+  List<RbacPermissionInfo> findPermissionByRoleIds(List<Long> roleIds);
 }

@@ -10,7 +10,6 @@
 .springBeans
 .sts4-cache
 config.txt
-**/config/
 
 ### IntelliJ IDEA ###
 .idea
@@ -50,7 +49,8 @@ result.conf
 pom.xml.versionsBackup
 
 #secret file
-skill6-website/src/main/resources/config/
+skill6-website/src/main/resources/config/application.properties
+skill6-dashboard/src/main/resources/config/application.properties
 skill6-website/src/main/resources/generator/generator-mysql.properties
 
 #build file
