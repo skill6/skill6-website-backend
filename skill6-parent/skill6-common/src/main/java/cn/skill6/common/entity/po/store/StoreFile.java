@@ -32,4 +32,19 @@ public class StoreFile {
   private String fileHashCode;
 
   private Integer fileDownloadCount;
+
+  public StoreFile(
+      Long fileId,
+      String fileName,
+      String fileUrl,
+      Date fileUploadTime,
+      String fileHashCode,
+      Integer fileDownloadCount) {
+    this.fileId = fileId;
+    this.fileName = fileName;
+    this.fileUrl = fileUrl;
+    this.fileUploadTime = fileUploadTime;
+    this.fileHashCode = fileHashCode;
+    this.fileDownloadCount = fileDownloadCount;
+  }
 }
