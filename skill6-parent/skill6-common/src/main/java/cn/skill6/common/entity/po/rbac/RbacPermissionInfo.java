@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * RBAC权限信息
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年9月23日 下午5:52:40
  */
 @Data
@@ -32,7 +32,7 @@ public class RbacPermissionInfo {
 
   private Date permissionCreateTime;
 
-  private Date permissionLastModifyTime;
+  private Date permissionUpdateTime;
 
   private Boolean permissionValid;
 }

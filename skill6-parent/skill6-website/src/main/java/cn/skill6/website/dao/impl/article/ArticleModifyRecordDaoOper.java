@@ -18,7 +18,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文章历史版本操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午1:29:58
  */
 public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
@@ -42,7 +42,7 @@ public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
     }
     // 设置主键
     articleModifyRecord.setArticleId(articleId);
-    articleModifyRecord.setArticleLastModifyTime(new Date());
+    articleModifyRecord.setArticleUpdateTime(new Date());
 
     articleModifyRecordMapper.insert(articleModifyRecord);
 

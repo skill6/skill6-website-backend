@@ -21,7 +21,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.6
+ * @version 1.7
  * @since 2018年8月16日 下午10:29:29
  */
 @Repository
@@ -48,7 +48,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
 
     // 设置创建日期和最后修改日期
     articleInfo.setArticleCreateTime(new Date());
-    articleInfo.setArticleLastModifyTime(new Date());
+    articleInfo.setArticleUpdateTime(new Date());
     // 默认不置顶、无附件
     articleInfo.setArtilcePlaceTop(false);
     articleInfo.setArticleAttachFile(false);
@@ -102,8 +102,8 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
     if (BaseUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
       articleInfoNew.setArticleMdContent(articleInfo.getArticleMdContent());
     }
-    if (BaseUtils.isNotEmpty(articleInfo.getArticleCategoryId())) {
-      articleInfoNew.setArticleCategoryId(articleInfo.getArticleCategoryId());
+    if (articleInfo.getCategoryId() != null) {
+      articleInfoNew.setCategoryId(articleInfo.getCategoryId());
     }
     Boolean artilcePlaceTop = articleInfo.getArtilcePlaceTop();
     if (artilcePlaceTop != null && artilcePlaceTop == true) {

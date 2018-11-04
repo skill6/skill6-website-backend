@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * RBAC角色信息
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年9月23日 下午5:52:52
  */
 @Data
@@ -28,7 +28,7 @@ public class RbacRoleInfo {
 
   private Date roleCreateTime;
 
-  private Date roleLastModifyTime;
+  private Date roleUpdateTime;
 
   private Boolean roleValid;
 }

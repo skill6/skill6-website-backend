@@ -41,7 +41,7 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
     featureCategoryInfo.setCategoryId(categoryId);
 
     featureCategoryInfo.setCategoryCreateTime(new Date());
-    featureCategoryInfo.setCategoryModifyTime(new Date());
+    featureCategoryInfo.setCategoryUpdateTime(new Date());
     featureCategoryInfo.setCategoryValid(true);
 
     featureCategoryInfoMapper.insert(featureCategoryInfo);
@@ -77,7 +77,7 @@ public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
     if (BaseUtils.isNotEmpty(featureCategoryInfo.getCategoryName())) {
       categoryInfoNew.setCategoryName(featureCategoryInfo.getCategoryName());
     }
-    categoryInfoNew.setCategoryModifyTime(new Date());
+    categoryInfoNew.setCategoryUpdateTime(new Date());
 
     featureCategoryInfoMapper.updateByPrimaryKey(categoryInfoNew);
     logger.info("成功修改id为{}的目录内容", featureCategoryInfo.getCategoryId());

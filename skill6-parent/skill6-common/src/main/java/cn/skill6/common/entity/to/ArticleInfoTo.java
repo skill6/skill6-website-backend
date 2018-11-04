@@ -18,6 +18,16 @@ public class ArticleInfoTo extends ArticleInfo implements BaseTemplate {
   private static final long serialVersionUID = -6311863292986724660L;
 
   @Override
+  public Date getArticleUpdateTime() {
+    return super.getArticleUpdateTime();
+  }
+
+  @Override
+  public Long getCategoryId() {
+    return super.getCategoryId();
+  }
+
+  @Override
   public Long getArticleId() {
     return super.getArticleId();
   }
@@ -50,16 +60,6 @@ public class ArticleInfoTo extends ArticleInfo implements BaseTemplate {
   @Override
   public Date getArticleCreateTime() {
     return super.getArticleCreateTime();
-  }
-
-  @Override
-  public Date getArticleLastModifyTime() {
-    return super.getArticleLastModifyTime();
-  }
-
-  @Override
-  public String getArticleCategoryId() {
-    return super.getArticleCategoryId();
   }
 
   @Override

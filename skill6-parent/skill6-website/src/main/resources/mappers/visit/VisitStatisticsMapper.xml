@@ -3,41 +3,44 @@
 <mapper namespace="cn.skill6.website.dao.mappers.visit.VisitStatisticsMapper">
 	<resultMap id="BaseResultMap" type="VisitStatistics">
 		<constructor>
-			<idArg column="visit_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<arg column="visit_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="visit_online_max" javaType="java.lang.Integer" jdbcType="INTEGER" />
-			<arg column="visit_current_day" javaType="java.lang.Integer" jdbcType="INTEGER" />
-			<arg column="visit_total_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<idArg column="statistics_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="statistics_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="statistics_online_max" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="statistics_current_day" javaType="java.lang.Integer" jdbcType="INTEGER" />
+			<arg column="statistics_total_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
 		</constructor>
 	</resultMap>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from visit_statistics
-		where visit_id = #{visitId,jdbcType=BIGINT}
+		where statistics_id = #{statisticsId,jdbcType=BIGINT}
 	</delete>
 	<insert id="insert" parameterType="VisitStatistics">
-		insert into visit_statistics (visit_id, visit_date, visit_online_max,
-		visit_current_day, visit_total_count)
-		values (#{visitId,jdbcType=BIGINT},
-		#{visitDate,jdbcType=TIMESTAMP}, #{visitOnlineMax,jdbcType=INTEGER},
-		#{visitCurrentDay,jdbcType=INTEGER}, #{visitTotalCount,jdbcType=INTEGER})
+		insert into visit_statistics (statistics_id, statistics_date, statistics_online_max,
+		statistics_current_day, statistics_total_count
+		)
+		values
+		(#{statisticsId,jdbcType=BIGINT}, #{statisticsDate,jdbcType=TIMESTAMP}, #{statisticsOnlineMax,jdbcType=INTEGER},
+		#{statisticsCurrentDay,jdbcType=INTEGER}, #{statisticsTotalCount,jdbcType=INTEGER}
+		)
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="VisitStatistics">
 		update visit_statistics
-		set visit_date = #{visitDate,jdbcType=TIMESTAMP},
-		visit_online_max = #{visitOnlineMax,jdbcType=INTEGER},
-		visit_current_day =
-		#{visitCurrentDay,jdbcType=INTEGER},
-		visit_total_count = #{visitTotalCount,jdbcType=INTEGER}
-		where visit_id = #{visitId,jdbcType=BIGINT}
+		set statistics_date = #{statisticsDate,jdbcType=TIMESTAMP},
+		statistics_online_max = #{statisticsOnlineMax,jdbcType=INTEGER},
+		statistics_current_day = #{statisticsCurrentDay,jdbcType=INTEGER},
+		statistics_total_count = #{statisticsTotalCount,jdbcType=INTEGER}
+		where statistics_id = #{statisticsId,jdbcType=BIGINT}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select visit_id, visit_date, visit_online_max, visit_current_day, visit_total_count
-		from visit_statistics
-		where visit_id
-		= #{visitId,jdbcType=BIGINT}
+		select statistics_id, statistics_date, statistics_online_max, statistics_current_day,
+		statistics_total_count
+		from
+		visit_statistics
+		where statistics_id = #{statisticsId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
-		select visit_id, visit_date, visit_online_max, visit_current_day, visit_total_count
+		select statistics_id, statistics_date, statistics_online_max, statistics_current_day,
+		statistics_total_count
 		from visit_statistics
 	</select>
 </mapper>

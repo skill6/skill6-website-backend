@@ -31,11 +31,11 @@ public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
     LinkedMultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>(10);
 
     map.add("articleId", articleId);
+    map.add("categoryId", "1");
     map.add("articleTitle", "Java入门");
     map.add("articleAuthor", "何明胜");
     map.add("articleSummary", "Jva入门基础知识");
     map.add("articleLabel", "Java,入门");
-    map.add("articleCategoryId", "1");
     map.add("articleHtmlContent", "Html内容");
     map.add("articleMdContent", "Markdown内容");
 

@@ -4,14 +4,14 @@
 	<resultMap id="BaseResultMap" type="ArticleModifyRecord">
 		<constructor>
 			<idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<idArg column="article_last_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<idArg column="article_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="category_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 			<arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="article_author" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="article_label" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="article_read_total" javaType="java.lang.Integer" jdbcType="INTEGER" />
 			<arg column="article_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="article_category_id" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="artilce_place_top" javaType="java.lang.Boolean" jdbcType="BIT" />
 			<arg column="article_top_priority" javaType="java.lang.Integer" jdbcType="INTEGER" />
 			<arg column="article_attach_file" javaType="java.lang.Boolean" jdbcType="BIT" />
@@ -23,54 +23,61 @@
 	<delete id="deleteByPrimaryKey" parameterType="map">
 		delete from article_modify_record
 		where article_id = #{articleId,jdbcType=BIGINT}
-		and article_last_modify_time = #{articleLastModifyTime,jdbcType=TIMESTAMP}
+		and article_update_time = #{articleUpdateTime,jdbcType=TIMESTAMP}
 	</delete>
 	<insert id="insert" parameterType="ArticleModifyRecord">
-		insert into article_modify_record (article_id, article_last_modify_time,
+		insert into article_modify_record (article_id, article_update_time, category_id,
 		article_title, article_author, article_summary,
-		article_label, article_read_total, article_create_time,
-		article_category_id, artilce_place_top, article_top_priority,
-		article_attach_file, article_html_content,
-		article_md_content, article_attach_url
-		)
-		values (#{articleId,jdbcType=BIGINT}, #{articleLastModifyTime,jdbcType=TIMESTAMP},
+		article_label,
+		article_read_total, article_create_time,
+		artilce_place_top, article_top_priority, article_attach_file,
+		article_html_content, article_md_content,
+		article_attach_url)
+		values (#{articleId,jdbcType=BIGINT},
+		#{articleUpdateTime,jdbcType=TIMESTAMP}, #{categoryId,jdbcType=BIGINT},
 		#{articleTitle,jdbcType=VARCHAR}, #{articleAuthor,jdbcType=VARCHAR}, #{articleSummary,jdbcType=VARCHAR},
 		#{articleLabel,jdbcType=VARCHAR}, #{articleReadTotal,jdbcType=INTEGER}, #{articleCreateTime,jdbcType=TIMESTAMP},
-		#{articleCategoryId,jdbcType=VARCHAR}, #{artilcePlaceTop,jdbcType=BIT}, #{articleTopPriority,jdbcType=INTEGER},
-		#{articleAttachFile,jdbcType=BIT}, #{articleHtmlContent,jdbcType=LONGVARCHAR},
-		#{articleMdContent,jdbcType=LONGVARCHAR}, #{articleAttachUrl,jdbcType=LONGVARCHAR}
-		)
+		#{artilcePlaceTop,jdbcType=BIT}, #{articleTopPriority,jdbcType=INTEGER},
+		#{articleAttachFile,jdbcType=BIT},
+		#{articleHtmlContent,jdbcType=LONGVARCHAR}, #{articleMdContent,jdbcType=LONGVARCHAR},
+		#{articleAttachUrl,jdbcType=LONGVARCHAR})
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="ArticleModifyRecord">
 		update article_modify_record
-		set article_title = #{articleTitle,jdbcType=VARCHAR},
-		article_author = #{articleAuthor,jdbcType=VARCHAR},
+		set category_id = #{categoryId,jdbcType=BIGINT},
+		article_title = #{articleTitle,jdbcType=VARCHAR},
+		article_author =
+		#{articleAuthor,jdbcType=VARCHAR},
 		article_summary = #{articleSummary,jdbcType=VARCHAR},
 		article_label = #{articleLabel,jdbcType=VARCHAR},
 		article_read_total = #{articleReadTotal,jdbcType=INTEGER},
 		article_create_time = #{articleCreateTime,jdbcType=TIMESTAMP},
-		article_category_id = #{articleCategoryId,jdbcType=VARCHAR},
 		artilce_place_top = #{artilcePlaceTop,jdbcType=BIT},
 		article_top_priority = #{articleTopPriority,jdbcType=INTEGER},
-		article_attach_file = #{articleAttachFile,jdbcType=BIT},
+		article_attach_file =
+		#{articleAttachFile,jdbcType=BIT},
 		article_html_content = #{articleHtmlContent,jdbcType=LONGVARCHAR},
 		article_md_content = #{articleMdContent,jdbcType=LONGVARCHAR},
-		article_attach_url = #{articleAttachUrl,jdbcType=LONGVARCHAR}
+		article_attach_url =
+		#{articleAttachUrl,jdbcType=LONGVARCHAR}
 		where article_id = #{articleId,jdbcType=BIGINT}
-		and article_last_modify_time = #{articleLastModifyTime,jdbcType=TIMESTAMP}
+		and article_update_time = #{articleUpdateTime,jdbcType=TIMESTAMP}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
-		select article_id, article_last_modify_time, article_title, article_author, article_summary,
-		article_label, article_read_total, article_create_time, article_category_id, artilce_place_top,
+		select article_id, article_update_time, category_id, article_title, article_author,
+		article_summary, article_label,
+		article_read_total, article_create_time, artilce_place_top,
 		article_top_priority, article_attach_file, article_html_content, article_md_content,
 		article_attach_url
 		from article_modify_record
-		where article_id = #{articleId,jdbcType=BIGINT}
-		and article_last_modify_time = #{articleLastModifyTime,jdbcType=TIMESTAMP}
+		where
+		article_id = #{articleId,jdbcType=BIGINT}
+		and article_update_time = #{articleUpdateTime,jdbcType=TIMESTAMP}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
-		select article_id, article_last_modify_time, article_title, article_author, article_summary,
-		article_label, article_read_total, article_create_time, article_category_id, artilce_place_top,
+		select article_id, article_update_time, category_id, article_title, article_author,
+		article_summary, article_label, article_read_total, article_create_time,
+		artilce_place_top,
 		article_top_priority, article_attach_file, article_html_content, article_md_content,
 		article_attach_url
 		from article_modify_record

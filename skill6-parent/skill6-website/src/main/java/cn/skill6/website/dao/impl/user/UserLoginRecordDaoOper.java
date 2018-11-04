@@ -18,7 +18,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 登录记录操作实现类
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月28日 上午12:18:47
  */
 public class UserLoginRecordDaoOper implements UserLoginRecordDao {
@@ -35,10 +35,10 @@ public class UserLoginRecordDaoOper implements UserLoginRecordDao {
 
   @Override
   public void addLoginRecord(UserLoginRecord userLoginRecord) {
-    if (userLoginRecord.getLoginUserId() == null) {
+    if (userLoginRecord.getUserId() == null) {
       throw new NullPointerException("登录用户id不能为null");
     }
-    if (userLoginRecord.getLoginSuccess() == null) {
+    if (userLoginRecord.getLoginResult() == null) {
       throw new NullPointerException("登录结果不能为null");
     }
 

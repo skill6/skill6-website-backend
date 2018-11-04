@@ -41,7 +41,7 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setArticleAuthor("liujichun");
     articleInfo.setArticleSummary("nihk");
     articleInfo.setArticleLabel("sldjfjk");
-    articleInfo.setArticleCategoryId("123");
+    articleInfo.setCategoryId(123L);
     articleInfo.setArticleHtmlContent("halsdfhj");
     articleInfo.setArticleMdContent("hkjhkj");
     articleInfoDao.addArticleInfo(articleInfo);
@@ -78,9 +78,11 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setArticleAuthor("liujichun");
     articleInfo.setArticleSummary("nihk");
     articleInfo.setArticleLabel("sldjfjk");
-    articleInfo.setArticleCategoryId("123");
+    articleInfo.setArticleId(123L);
     articleInfo.setArticleHtmlContent("halsdfhj");
     articleInfo.setArticleMdContent("hkjhkj");
+    articleInfo.setCategoryId(123L);
+    
     Long id = articleInfoDao.addArticleInfo(articleInfo);
     articleInfo.setArticleId(id);
     articleInfoDao.modifyByArticleId(articleInfo);

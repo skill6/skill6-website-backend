@@ -8,7 +8,7 @@
 			<arg column="role_code" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="role_desc" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="role_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="role_last_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="role_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="role_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
 		</constructor>
 	</resultMap>
@@ -18,11 +18,11 @@
 	</delete>
 	<insert id="insert" parameterType="SysRoleInfo">
 		insert into sys_role_info (role_id, role_name, role_code,
-		role_desc, role_create_time, role_last_modify_time,
+		role_desc, role_create_time, role_update_time,
 		role_valid)
 		values (#{roleId,jdbcType=BIGINT},
 		#{roleName,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR},
-		#{roleDesc,jdbcType=VARCHAR}, #{roleCreateTime,jdbcType=TIMESTAMP}, #{roleLastModifyTime,jdbcType=TIMESTAMP},
+		#{roleDesc,jdbcType=VARCHAR}, #{roleCreateTime,jdbcType=TIMESTAMP}, #{roleUpdateTime,jdbcType=TIMESTAMP},
 		#{roleValid,jdbcType=BIT})
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="SysRoleInfo">
@@ -32,19 +32,20 @@
 		role_desc =
 		#{roleDesc,jdbcType=VARCHAR},
 		role_create_time = #{roleCreateTime,jdbcType=TIMESTAMP},
-		role_last_modify_time = #{roleLastModifyTime,jdbcType=TIMESTAMP},
+		role_update_time = #{roleUpdateTime,jdbcType=TIMESTAMP},
 		role_valid = #{roleValid,jdbcType=BIT}
-		where
-		role_id = #{roleId,jdbcType=BIGINT}
+		where role_id =
+		#{roleId,jdbcType=BIGINT}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select role_id, role_name, role_code, role_desc, role_create_time, role_last_modify_time,
+		select role_id, role_name, role_code, role_desc, role_create_time, role_update_time,
 		role_valid
 		from sys_role_info
-		where role_id = #{roleId,jdbcType=BIGINT}
+		where
+		role_id = #{roleId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
-		select role_id, role_name, role_code, role_desc, role_create_time, role_last_modify_time,
+		select role_id, role_name, role_code, role_desc, role_create_time, role_update_time,
 		role_valid
 		from sys_role_info
 	</select>

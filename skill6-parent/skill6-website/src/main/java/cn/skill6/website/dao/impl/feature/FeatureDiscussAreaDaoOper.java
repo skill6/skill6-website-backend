@@ -17,7 +17,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 讨论区操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:17:53
  */
 public class FeatureDiscussAreaDaoOper implements FeatureDiscussAreaDao {
@@ -40,7 +40,7 @@ public class FeatureDiscussAreaDaoOper implements FeatureDiscussAreaDao {
     if (featureDiscussArea.getDiscussParentId() == null) {
       throw new NullPointerException("讨论所属父主题不能为null");
     }
-    if (featureDiscussArea.getDiscussComitterId() == null) {
+    if (featureDiscussArea.getUserId() == null) {
       throw new NullPointerException("提交者id不能为空");
     }
 

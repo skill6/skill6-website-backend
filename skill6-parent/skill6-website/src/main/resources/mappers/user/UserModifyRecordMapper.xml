@@ -8,7 +8,7 @@
 			<arg column="user_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="user_modify_before" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="user_modify_after" javaType="java.lang.String" jdbcType="VARCHAR" />
-			<arg column="user_modufy_success" javaType="java.lang.Boolean" jdbcType="BIT" />
+			<arg column="user_modufy_result" javaType="java.lang.Boolean" jdbcType="BIT" />
 		</constructor>
 	</resultMap>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -17,10 +17,12 @@
 	</delete>
 	<insert id="insert" parameterType="UserModifyRecord">
 		insert into user_modify_record (user_id, user_modify_type, user_modify_time,
-		user_modify_before, user_modify_after, user_modufy_success
+		user_modify_before, user_modify_after, user_modufy_result
 		)
-		values (#{userId,jdbcType=BIGINT}, #{userModifyType,jdbcType=VARCHAR}, #{userModifyTime,jdbcType=TIMESTAMP},
-		#{userModifyBefore,jdbcType=VARCHAR}, #{userModifyAfter,jdbcType=VARCHAR}, #{userModufySuccess,jdbcType=BIT}
+		values
+		(#{userId,jdbcType=BIGINT}, #{userModifyType,jdbcType=VARCHAR}, #{userModifyTime,jdbcType=TIMESTAMP},
+		#{userModifyBefore,jdbcType=VARCHAR}, #{userModifyAfter,jdbcType=VARCHAR},
+		#{userModufyResult,jdbcType=BIT}
 		)
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="UserModifyRecord">
@@ -29,18 +31,20 @@
 		user_modify_time = #{userModifyTime,jdbcType=TIMESTAMP},
 		user_modify_before = #{userModifyBefore,jdbcType=VARCHAR},
 		user_modify_after = #{userModifyAfter,jdbcType=VARCHAR},
-		user_modufy_success = #{userModufySuccess,jdbcType=BIT}
-		where user_id = #{userId,jdbcType=BIGINT}
+		user_modufy_result = #{userModufyResult,jdbcType=BIT}
+		where user_id =
+		#{userId,jdbcType=BIGINT}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select user_id, user_modify_type, user_modify_time, user_modify_before, user_modify_after,
-		user_modufy_success
-		from user_modify_record
+		user_modufy_result
+		from
+		user_modify_record
 		where user_id = #{userId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select user_id, user_modify_type, user_modify_time, user_modify_before, user_modify_after,
-		user_modufy_success
+		user_modufy_result
 		from user_modify_record
 	</select>
 </mapper>

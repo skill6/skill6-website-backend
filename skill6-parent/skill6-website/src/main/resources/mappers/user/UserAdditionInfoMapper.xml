@@ -21,10 +21,12 @@
 	<insert id="insert" parameterType="UserAdditionInfo">
 		insert into user_addition_info (user_id, user_nick_name, user_register_time,
 		user_head_url, user_sex, user_birthday,
-		user_birthday_type, user_desc, user_last_login_time
+		user_birthday_type, user_desc,
+		user_last_login_time
 		)
 		values (#{userId,jdbcType=BIGINT}, #{userNickName,jdbcType=VARCHAR}, #{userRegisterTime,jdbcType=TIMESTAMP},
-		#{userHeadUrl,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT}, #{userBirthday,jdbcType=VARCHAR},
+		#{userHeadUrl,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT},
+		#{userBirthday,jdbcType=VARCHAR},
 		#{userBirthdayType,jdbcType=BIT}, #{userDesc,jdbcType=VARCHAR}, #{userLastLoginTime,jdbcType=TIMESTAMP}
 		)
 	</insert>
@@ -36,19 +38,22 @@
 		user_sex = #{userSex,jdbcType=BIT},
 		user_birthday = #{userBirthday,jdbcType=VARCHAR},
 		user_birthday_type = #{userBirthdayType,jdbcType=BIT},
-		user_desc = #{userDesc,jdbcType=VARCHAR},
+		user_desc =
+		#{userDesc,jdbcType=VARCHAR},
 		user_last_login_time = #{userLastLoginTime,jdbcType=TIMESTAMP}
 		where user_id = #{userId,jdbcType=BIGINT}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select user_id, user_nick_name, user_register_time, user_head_url, user_sex, user_birthday,
-		user_birthday_type, user_desc, user_last_login_time
+		user_birthday_type,
+		user_desc, user_last_login_time
 		from user_addition_info
 		where user_id = #{userId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select user_id, user_nick_name, user_register_time, user_head_url, user_sex, user_birthday,
 		user_birthday_type, user_desc, user_last_login_time
-		from user_addition_info
+		from
+		user_addition_info
 	</select>
 </mapper>

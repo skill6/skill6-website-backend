@@ -11,9 +11,11 @@ import com.alibaba.dubbo.config.annotation.Service;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.microservice.basic.article.ArticleInfoSvc;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
@@ -22,6 +24,7 @@ import cn.skill6.website.dao.intf.article.ArticleInfoDao;
  * @version 1.6
  * @since 2018年8月21日 下午11:07:30
  */
+@Slf4j
 @Service
 @Component
 public class ArticleInfoSvcImpl implements ArticleInfoSvc {
@@ -35,6 +38,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       Long articleId = articleInfoDao.addArticleInfo(articleInfo);
       responseJson = new ResponseJson(true, String.valueOf(articleId));
     } catch (Exception e) {
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
       responseJson = new ResponseJson(false, "注册失败");
     }
 
@@ -53,6 +57,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       articleInfoDao.modifyByArticleId(articleInfo);
       responseJson = new ResponseJson(true, "修改成功");
     } catch (Exception e) {
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
       responseJson = new ResponseJson(false, "修改失败");
     }
 
@@ -66,6 +71,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       ArticleInfo articleInfo = articleInfoDao.findByArticleId(articleId);
       responseJson = new ResponseJson(true, articleInfo);
     } catch (Exception e) {
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
       responseJson = new ResponseJson(false, "获取id为" + articleId + "的文章信息失败");
     }
 
@@ -79,6 +85,7 @@ public class ArticleInfoSvcImpl implements ArticleInfoSvc {
       List<ArticleInfo> articleInfos = articleInfoDao.findAll();
       responseJson = new ResponseJson(true, articleInfos);
     } catch (Exception e) {
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
       responseJson = new ResponseJson(false, "获取id所有文章信息失败");
     }
 

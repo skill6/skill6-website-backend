@@ -20,6 +20,8 @@ public class UserLoginRecord {
 
   private Long loginId;
 
+  private Long userId;
+
   private String loginIp;
 
   private String loginType;
@@ -28,9 +30,7 @@ public class UserLoginRecord {
 
   private Date loginTime;
 
-  private String loginUserId;
-
-  private Boolean loginSuccess;
+  private Boolean loginResult;
 
   private String loginFailReason;
 }

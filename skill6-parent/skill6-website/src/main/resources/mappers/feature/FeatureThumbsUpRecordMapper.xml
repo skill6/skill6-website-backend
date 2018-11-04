@@ -12,14 +12,14 @@
 	<delete id="deleteByPrimaryKey" parameterType="map">
 		delete from feature_thumbs_up_record
 		where user_id = #{userId,jdbcType=BIGINT}
-		and article_id = #{articleId,jdbcType=VARCHAR}
+		and article_id = #{articleId,jdbcType=BIGINT}
 		and thumbs_up_type =
 		#{thumbsUpType,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="FeatureThumbsUpRecord">
 		insert into feature_thumbs_up_record (user_id, article_id, thumbs_up_type,
 		thumbs_up_time)
-		values (#{userId,jdbcType=BIGINT}, #{articleId,jdbcType=VARCHAR},
+		values (#{userId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT},
 		#{thumbsUpType,jdbcType=VARCHAR},
 		#{thumbsUpTime,jdbcType=TIMESTAMP})
 	</insert>
@@ -28,14 +28,14 @@
 		set thumbs_up_time = #{thumbsUpTime,jdbcType=TIMESTAMP}
 		where user_id = #{userId,jdbcType=BIGINT}
 		and article_id =
-		#{articleId,jdbcType=VARCHAR}
+		#{articleId,jdbcType=BIGINT}
 		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
 	</update>
 	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
 		select user_id, article_id, thumbs_up_type, thumbs_up_time
 		from feature_thumbs_up_record
 		where user_id = #{userId,jdbcType=BIGINT}
-		and article_id = #{articleId,jdbcType=VARCHAR}
+		and article_id = #{articleId,jdbcType=BIGINT}
 		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
