@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * RBAC会话存储
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年9月24日 上午2:44:03
  */
 @Data
@@ -22,7 +22,7 @@ public class RbacSession {
 
   private Date sessionCreateTime;
 
-  private Date sessionLastModifyTime;
+  private Date sessionUpdateTime;
 
   private Boolean sessionValid;
 

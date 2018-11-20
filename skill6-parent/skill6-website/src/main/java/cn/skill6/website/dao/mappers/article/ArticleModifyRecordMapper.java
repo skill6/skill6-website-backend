@@ -16,14 +16,12 @@ import cn.skill6.common.entity.po.article.ArticleModifyRecord;
  */
 public interface ArticleModifyRecordMapper {
   int deleteByPrimaryKey(
-      @Param("articleId") Long articleId,
-      @Param("articleLastModifyTime") Date articleLastModifyTime);
+      @Param("articleId") Long articleId, @Param("articleUpdateTime") Date articleUpdateTime);
 
   int insert(ArticleModifyRecord articleModifyRecord);
 
   ArticleModifyRecord selectByPrimaryKey(
-      @Param("articleId") Long articleId,
-      @Param("articleLastModifyTime") Date articleLastModifyTime);
+      @Param("articleId") Long articleId, @Param("articleUpdateTime") Date articleUpdateTime);
 
   List<ArticleModifyRecord> selectAll();
 

@@ -10,7 +10,7 @@
 			<arg column="permission_navi" javaType="java.lang.Boolean" jdbcType="BIT" />
 			<arg column="permission_url" javaType="java.lang.String" jdbcType="VARCHAR" />
 			<arg column="permission_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="permission_last_modify_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="permission_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
 			<arg column="permission_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
 		</constructor>
 	</resultMap>
@@ -22,12 +22,12 @@
 		insert into sys_permission_info (permission_id, permission_name, permission_code,
 		permission_desc, permission_navi, permission_url,
 		permission_create_time,
-		permission_last_modify_time,
+		permission_update_time,
 		permission_valid)
 		values (#{permissionId,jdbcType=BIGINT}, #{permissionName,jdbcType=VARCHAR}, #{permissionCode,jdbcType=VARCHAR},
 		#{permissionDesc,jdbcType=VARCHAR},
 		#{permissionNavi,jdbcType=BIT}, #{permissionUrl,jdbcType=VARCHAR},
-		#{permissionCreateTime,jdbcType=TIMESTAMP}, #{permissionLastModifyTime,jdbcType=TIMESTAMP},
+		#{permissionCreateTime,jdbcType=TIMESTAMP}, #{permissionUpdateTime,jdbcType=TIMESTAMP},
 		#{permissionValid,jdbcType=BIT})
 	</insert>
 	<update id="updateByPrimaryKey" parameterType="SysPermissionInfo">
@@ -39,7 +39,7 @@
 		permission_url = #{permissionUrl,jdbcType=VARCHAR},
 		permission_create_time =
 		#{permissionCreateTime,jdbcType=TIMESTAMP},
-		permission_last_modify_time = #{permissionLastModifyTime,jdbcType=TIMESTAMP},
+		permission_update_time = #{permissionUpdateTime,jdbcType=TIMESTAMP},
 		permission_valid = #{permissionValid,jdbcType=BIT}
 		where permission_id =
 		#{permissionId,jdbcType=BIGINT}
@@ -47,13 +47,13 @@
 	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select permission_id, permission_name, permission_code, permission_desc, permission_navi,
 		permission_url,
-		permission_create_time, permission_last_modify_time, permission_valid
+		permission_create_time, permission_update_time, permission_valid
 		from sys_permission_info
 		where permission_id = #{permissionId,jdbcType=BIGINT}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select permission_id, permission_name, permission_code, permission_desc, permission_navi,
-		permission_url, permission_create_time, permission_last_modify_time,
+		permission_url, permission_create_time, permission_update_time,
 		permission_valid
 		from sys_permission_info
 	</select>

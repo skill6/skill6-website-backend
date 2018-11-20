@@ -16,7 +16,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 访问统计操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:20:49
  */
 public class VisitStatisticsDaoOper implements VisitStatisticsDao {
@@ -33,7 +33,7 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
 
   @Override
   public void addVisitStatistics(VisitStatistics visitStatistics) {
-    Long visitId = visitStatistics.getVisitId();
+    Long visitId = visitStatistics.getStatisticsId();
     if (visitId == null) {
       visitId = SequenceManager.getNextId();
     }
@@ -41,14 +41,14 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
     // 当日有人在线在插入新记录，默认该在线用户计数为1
 
     // 初始化当日最大在线人数为1
-    visitStatistics.setVisitOnlineMax(new Integer(1));
+    visitStatistics.setStatisticsOnlineMax(new Integer(1));
     // 初始化当日访问量为1
-    visitStatistics.setVisitCurrentDay(new Integer(1));
+    visitStatistics.setStatisticsCurrentDay(new Integer(1));
 
     // 初始化访问总量为 以往访问总量+1
     // TODO - 根据最大id或者日期查询昨天统计的访问总量
     int currVisitTotalCount = 1;
-    visitStatistics.setVisitTotalCount(currVisitTotalCount + 1);
+    visitStatistics.setStatisticsTotalCount(currVisitTotalCount + 1);
 
     visitStatisticsMapper.insert(visitStatistics);
     logger.info("成功插入id为{}的访问记录统计,{}", visitId, visitStatistics);
@@ -76,16 +76,16 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
 
   @Override
   public void modifyByVisitId(VisitStatistics visitStatistics) {
-    if (visitStatistics.getVisitId() == null) {
+    if (visitStatistics.getStatisticsId() == null) {
       throw new NullPointerException("访问记录id不能为null");
     }
-    if (visitStatistics.getVisitOnlineMax() == null) {
+    if (visitStatistics.getStatisticsOnlineMax() == null) {
       throw new NullPointerException("访问最大在线人数不能为null");
     }
-    if (visitStatistics.getVisitCurrentDay() == null) {
+    if (visitStatistics.getStatisticsCurrentDay() == null) {
       throw new NullPointerException("当日访问总量不能为null");
     }
-    if (visitStatistics.getVisitTotalCount() == null) {
+    if (visitStatistics.getStatisticsTotalCount() == null) {
       throw new NullPointerException("所有访问总量不能为null");
     }
 

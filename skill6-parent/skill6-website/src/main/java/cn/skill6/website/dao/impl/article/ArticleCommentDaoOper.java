@@ -17,7 +17,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 文章评论操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月27日 下午11:47:52
  */
 public class ArticleCommentDaoOper implements ArticleCommentDao {
@@ -41,7 +41,7 @@ public class ArticleCommentDaoOper implements ArticleCommentDao {
     }
     articleComment.setCommentId(commentId);
 
-    articleComment.setCommentDate(new Date());
+    articleComment.setCommentTime(new Date());
     articleComment.setCommentValid(true);
 
     articleCommentMapper.insert(articleComment);

@@ -17,7 +17,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 访问记录操作实现类
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月28日 上午12:20:33
  */
 public class VisitRecordDaoOper implements VisitRecordDao {
@@ -38,7 +38,7 @@ public class VisitRecordDaoOper implements VisitRecordDao {
       throw new NullPointerException("访问类型不能为null");
     }
     // TODO - 未登录用户是否需要id?
-    if (visitRecord.getVisitUserId() == null) {
+    if (visitRecord.getUserId() == null) {
       throw new NullPointerException("访问用户id不能为空");
     }
 
@@ -80,7 +80,7 @@ public class VisitRecordDaoOper implements VisitRecordDao {
       throw new NullPointerException("访问类型不能为null");
     }
     // TODO - 未登录用户是否需要id?
-    if (visitRecord.getVisitUserId() == null) {
+    if (visitRecord.getUserId() == null) {
       throw new NullPointerException("访问用户id不能为空");
     }
     if (visitRecord.getVisitId() == null) {

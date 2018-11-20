@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * 文章历史版本实体类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午1:25:48
  */
 @Data
@@ -20,7 +20,9 @@ public class ArticleModifyRecord {
 
   private Long articleId;
 
-  private Date articleLastModifyTime;
+  private Date articleUpdateTime;
+
+  private Long categoryId;
 
   private String articleTitle;
 
@@ -33,8 +35,6 @@ public class ArticleModifyRecord {
   private Integer articleReadTotal;
 
   private Date articleCreateTime;
-
-  private String articleCategoryId;
 
   private Boolean artilcePlaceTop;
 

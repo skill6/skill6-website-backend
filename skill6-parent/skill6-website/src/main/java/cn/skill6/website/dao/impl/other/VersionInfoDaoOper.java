@@ -17,7 +17,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 版本信息操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:20:18
  */
 public class VersionInfoDaoOper implements VersionInfoDao {
@@ -34,7 +34,7 @@ public class VersionInfoDaoOper implements VersionInfoDao {
 
   @Override
   public void addVersionInfo(VersionInfo versionInfo) {
-    if (versionInfo.getVersionUserId() == null) {
+    if (versionInfo.getUserId() == null) {
       throw new NullPointerException("版本发布用户id不能为null");
     }
     if (versionInfo.getVersionNumber() == null) {
@@ -80,7 +80,7 @@ public class VersionInfoDaoOper implements VersionInfoDao {
       throw new NullPointerException("版本id不能为null");
     }
 
-    if (versionInfo.getVersionUserId() == null) {
+    if (versionInfo.getUserId() == null) {
       throw new NullPointerException("版本发布用户id不能为null");
     }
     if (versionInfo.getVersionNumber() == null) {
@@ -91,6 +91,6 @@ public class VersionInfoDaoOper implements VersionInfoDao {
     }
 
     versionInfoMapper.updateByPrimaryKey(versionInfo);
-    logger.info("成功修改版本信息为{}",versionInfo);
+    logger.info("成功修改版本信息为{}", versionInfo);
   }
 }

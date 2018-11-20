@@ -10,20 +10,21 @@ import lombok.NoArgsConstructor;
  * 访问统计实体类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月15日 下午11:38:22
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class VisitStatistics {
-  private Long visitId;
 
-  private Date visitDate;
+  private Long statisticsId;
 
-  private Integer visitOnlineMax;
+  private Date statisticsDate;
 
-  private Integer visitCurrentDay;
+  private Integer statisticsOnlineMax;
 
-  private Integer visitTotalCount;
+  private Integer statisticsCurrentDay;
+
+  private Integer statisticsTotalCount;
 }

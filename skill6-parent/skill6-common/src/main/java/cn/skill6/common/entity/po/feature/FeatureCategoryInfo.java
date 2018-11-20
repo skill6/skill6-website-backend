@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
  * 目录分类实体类
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年8月15日 下午11:31:09
  */
 @Data
@@ -27,7 +27,7 @@ public class FeatureCategoryInfo {
 
   private Date categoryCreateTime;
 
-  private Date categoryModifyTime;
+  private Date categoryUpdateTime;
 
   private Boolean categoryValid;
 }

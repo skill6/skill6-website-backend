@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * 系统角色信息实体类
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年9月27日 下午11:20:13
  */
 @Data
@@ -28,7 +28,7 @@ public class SysRoleInfo {
 
   private Date roleCreateTime;
 
-  private Date roleLastModifyTime;
+  private Date roleUpdateTime;
 
   private Boolean roleValid;
 }

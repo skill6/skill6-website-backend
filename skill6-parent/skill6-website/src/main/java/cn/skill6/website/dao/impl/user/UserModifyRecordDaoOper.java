@@ -18,7 +18,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * 用户信息修改记录操作实现类
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月28日 上午12:19:34
  */
 public class UserModifyRecordDaoOper implements UserModifyRecordDao {
@@ -38,7 +38,7 @@ public class UserModifyRecordDaoOper implements UserModifyRecordDao {
     if (userModifyRecord.getUserModifyType() == null) {
       throw new NullPointerException("用户修改记录类型不能为null");
     }
-    if (userModifyRecord.getUserModufySuccess() == null) {
+    if (userModifyRecord.getUserModufyResult() == null) {
       throw new NullPointerException("用户修改记录结果不能为null");
     }
 
