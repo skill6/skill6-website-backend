@@ -17,6 +17,9 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/blog/editor">写博客</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/blog/editor">下载</router-link>
+                        </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
