@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +41,17 @@ public class StoreFileSvcImpl implements StoreFileSvc {
 
   @Autowired private Skill6Properties skill6Properties;
 
+  private String userHomeDir = System.getProperty("user.home");
+
   @Override
   public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
       throws IOException, FileUploadException {
     String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
-    String storeParentPath = skill6Properties.getFilePath() + dateFormat;
 
-    FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, storeParentPath);
+    String storeParentPath = StringUtils.join(skill6Properties.getFilePath(), dateFormat);
+
+    FileAttribute fileAttribute =
+        fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
     StoreFile storeFile = new StoreFile();
 
     storeFile.setFileId(Long.valueOf(fileAttribute.getId()));
@@ -78,6 +83,7 @@ public class StoreFileSvcImpl implements StoreFileSvc {
     StoreFile storeFile = storeFileDao.findByFileId(fileId);
 
     String fileUrl = storeFile.getFileUrl();
+    fileUrl = StringUtils.join(userHomeDir, fileUrl);
     String fileName = storeFile.getFileName();
 
     fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
