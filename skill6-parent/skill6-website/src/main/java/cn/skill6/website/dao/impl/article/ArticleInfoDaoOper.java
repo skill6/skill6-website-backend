@@ -128,7 +128,6 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
         PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
 
     List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
-
     logger.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());
 
     return articleInfos;

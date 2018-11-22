@@ -8,10 +8,13 @@ import org.springframework.context.annotation.Configuration;
  * 整合Spring Boot与Skill配置
  *
  * @author liujichun
+ * @author 何明胜
+ * @version 1.0
+ * @since 2018年11月21日 下午9:58:13
  */
-@ConfigurationProperties(prefix = "skill6")
-@Configuration
 @Data
+@Configuration
+@ConfigurationProperties(prefix = "skill6")
 public class Skill6Properties {
 
   /** 图片存储路径 */
@@ -24,6 +27,12 @@ public class Skill6Properties {
   private Sequence sequence;
 
   private Recaptcha recaptcha;
+
+  /** github授权配置 */
+  private Github github;
+
+  /** QQ授权配置 */
+  private QQ qq;
 
   @Data
   public static class Recaptcha {
@@ -54,5 +63,20 @@ public class Skill6Properties {
       /** 数据中心节点id */
       private String id = "0";
     }
+  }
+
+  @Data
+  public static class Github {
+    private String clientId;
+    private String clientSecret;
+  }
+
+  @Data
+  public static class QQ {
+    private String clientId;
+    private String clientSecret;
+    private String redirectUri;
+    private String scope;
+    private String state;
   }
 }
