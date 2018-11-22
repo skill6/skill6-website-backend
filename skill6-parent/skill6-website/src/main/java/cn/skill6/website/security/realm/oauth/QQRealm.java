@@ -103,11 +103,11 @@ public class QQRealm extends Skill6Realm {
     params.clear();
     params.put(UrlRequest.PARAM_ACCESS_TOKEN, accessToken);
     response = HttpsClient.doGet(UrlRequest.QQ_GET_TOKEN, params);
-    // callback( {"client_id":"101514663","openid":"7B53C2D262A7E05FFAFFD897C6DD8246"} );
     response = matchParentheses(matchParentheses(response));
     if (StringUtils.isEmpty(response)) {
       return null;
     }
+
     try {
       map = JacksonUtil.str2Map(response);
     } catch (IOException e) {
