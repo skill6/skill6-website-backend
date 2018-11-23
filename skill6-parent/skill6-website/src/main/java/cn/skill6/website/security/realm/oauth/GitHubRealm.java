@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
  * github登录域
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年10月24日 上午12:24:25
  */
 @Slf4j
@@ -81,12 +81,12 @@ public class GitHubRealm extends Skill6Realm {
     // 1.根据code获取access_token
     AccountPasswordTypeToken typeToken = (AccountPasswordTypeToken) token;
     String authCode = typeToken.getAuthCode();
-    Skill6Properties.Github github = skill6Properties.getGithub();
+    Skill6Properties.GitHub gitHub = skill6Properties.getGitHub();
 
     Map<String, String> params = new HashMap<String, String>(3);
 
-    params.put(UrlRequest.PARAM_CLIENT_ID, github.getClientId());
-    params.put(UrlRequest.PARAM_CLIENT_SECRET, github.getClientSecret());
+    params.put(UrlRequest.PARAM_CLIENT_ID, gitHub.getClientId());
+    params.put(UrlRequest.PARAM_CLIENT_SECRET, gitHub.getClientSecret());
     params.put(UrlRequest.PARAM_CODE, authCode);
 
     String response = HttpsClient.doPost(UrlRequest.GITHUB_GET_TOKEN, params);

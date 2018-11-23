@@ -10,7 +10,7 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
  * spring boot测试
  *
  * @author 何明胜
- * @version 1.0
+ * @version 1.1
  * @since 2018年11月21日 下午10:04:51
  */
 @SpringBootTest
@@ -20,8 +20,8 @@ public class Skill6PropertiesTest extends Skill6WebsiteApplicationTest {
 
   @Test
   public void testProperties() {
-    System.out.println(skill6Properties.getGithub().getClientId());
-    System.out.println(skill6Properties.getGithub().getClientSecret());
+    System.out.println(skill6Properties.getGitHub().getClientId());
+    System.out.println(skill6Properties.getGitHub().getClientSecret());
 
     System.out.println(skill6Properties.getQq().getClientId());
     System.out.println(skill6Properties.getQq().getRedirectUri());

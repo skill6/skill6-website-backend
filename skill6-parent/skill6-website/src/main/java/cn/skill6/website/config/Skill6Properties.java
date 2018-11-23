@@ -29,7 +29,7 @@ public class Skill6Properties {
   private Recaptcha recaptcha;
 
   /** github授权配置 */
-  private Github github;
+  private GitHub gitHub;
 
   /** QQ授权配置 */
   private QQ qq;
@@ -66,7 +66,7 @@ public class Skill6Properties {
   }
 
   @Data
-  public static class Github {
+  public static class GitHub {
     private String clientId;
     private String clientSecret;
   }

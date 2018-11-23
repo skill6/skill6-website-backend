@@ -33,6 +33,4 @@ public class Skill6WebsiteApplication {
   public RestTemplate restTemplate() {
     return new RestTemplate();
   }
-
-
 }

@@ -12,7 +12,7 @@ import lombok.ToString;
  * 自定义token:账户+密码+登录类型+授权码(可选)
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年10月23日 上午12:13:54
  */
 @ToString(callSuper = true)
@@ -25,6 +25,12 @@ public class AccountPasswordTypeToken extends UsernamePasswordToken {
 
   /** 第三方授权的授权码 */
   @Setter @Getter private String authCode;
+
+  public AccountPasswordTypeToken(String authCode, LoginType loginType) {
+    super();
+    this.authCode = authCode;
+    this.loginType = loginType;
+  }
 
   public AccountPasswordTypeToken(String account, String password, LoginType loginType) {
     super(account, password);
