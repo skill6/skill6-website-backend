@@ -57,7 +57,7 @@ public class ThirdpartyAuthDaoOper implements ThirdpartyAuthDao {
 
   @Override
   public void updateByThirdpartyId(ThirdpartyAuth thirdpartyAuth) {
-    log.info("跟新第三方授权数据, {}", thirdpartyAuth);
+    log.info("更新第三方授权数据, {}", thirdpartyAuth);
 
     thirdpartyAuthMapper.updateByPrimaryKey(thirdpartyAuth);
   }

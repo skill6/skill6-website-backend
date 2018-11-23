@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
 import cn.skill6.common.exception.general.NullPointerException;
@@ -17,9 +18,10 @@ import cn.skill6.website.dao.mappers.user.UserAdditionInfoMapper;
  * 用户信息操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:19:19
  */
+@Repository
 public class UserAdditionInfoDaoOper implements UserAdditionInfoDao {
   private static final Logger logger = LoggerFactory.getLogger(UserAdditionInfoDaoOper.class);
 
@@ -35,6 +37,7 @@ public class UserAdditionInfoDaoOper implements UserAdditionInfoDao {
   @Override
   public void addUserAdditionInfo(UserAdditionInfo userAdditionInfo) {
     if (userAdditionInfo.getUserId() == null) {
+    	//TODO - 打印日志
       throw new NullPointerException("用户id不能为null");
     }
 
@@ -42,6 +45,8 @@ public class UserAdditionInfoDaoOper implements UserAdditionInfoDao {
       userAdditionInfo.setUserNickName("用户" + RandomCode.producedRandomCodeStr6());
     }
     userAdditionInfo.setUserRegisterTime(new Date());
+    
+    userAdditionInfoMapper.insert(userAdditionInfo);
   }
 
   @Override

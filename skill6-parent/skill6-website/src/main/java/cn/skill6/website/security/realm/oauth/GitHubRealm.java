@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -20,6 +22,7 @@ import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import cn.skill6.common.exception.tools.StackTrace2Str;
+import cn.skill6.common.transform.ConvertRequestParams;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.common.utility.HttpsClient;
 import cn.skill6.microservice.basic.uesr.UserSvc;
@@ -44,7 +47,8 @@ public class GitHubRealm extends Skill6Realm {
 
   @Autowired Skill6Properties skill6Properties;
 
-  @Autowired private ThirdpartyAuthDao thirdpartyAuthDao;
+  @Resource(name = "thirdpartyAuthDaoOper")
+  private ThirdpartyAuthDao thirdpartyAuthDao;
 
   @Autowired private UserSvc userSvc;
 
@@ -90,26 +94,21 @@ public class GitHubRealm extends Skill6Realm {
     params.put(UrlRequest.PARAM_CODE, authCode);
 
     String response = HttpsClient.doPost(UrlRequest.GITHUB_GET_TOKEN, params);
+    log.info("get access_token finished, response: {}", response);
 
     String accessToken = null;
     if (StringUtils.isNotEmpty(response)) {
-      Map<String, Object> map = null;
-      try {
-        map = JacksonUtil.str2Map(response);
-
-        accessToken = (String) map.get(UrlRequest.PARAM_ACCESS_TOKEN);
-      } catch (IOException e) {
-        log.warn(StackTrace2Str.exceptionStackTrace2Str("解析json失败", e));
-        return null;
-      }
+      Map<String, String> map = ConvertRequestParams.paramsStr2Map(response);
+      accessToken = map.get(UrlRequest.PARAM_ACCESS_TOKEN);
     }
 
     // 2.根据token获取用户信息
     params.clear();
     params.put(UrlRequest.PARAM_ACCESS_TOKEN, accessToken);
     response = HttpsClient.doGet(UrlRequest.GITHUB_GET_USER_INFO, params);
+    log.info("get user_info finished, response: {}", response);
 
-    Map<String, String> responseMap;
+    Map<String, Object> responseMap;
     try {
       responseMap = JacksonUtil.str2Map(response);
     } catch (IOException e) {
@@ -118,7 +117,8 @@ public class GitHubRealm extends Skill6Realm {
     }
 
     // 3.查询账户是否绑定
-    String githubId = responseMap.get(UrlRequest.PRIMARY_KEY_GITHUB);
+    Object githubIdObj = responseMap.get(UrlRequest.PRIMARY_KEY_GITHUB);
+    String githubId = String.valueOf(githubIdObj);
     ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
     thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
     thirdpartyAuth.setThirdpartyValid(true);
@@ -126,6 +126,7 @@ public class GitHubRealm extends Skill6Realm {
     List<ThirdpartyAuth> thirdpartyAuths = thirdpartyAuthDao.findByParams(thirdpartyAuth);
     // 3.1 如果不为空，数量为肯定为1,设置当前为无效，并重新绑定
     if (CollectionUtils.isNotEmpty(thirdpartyAuths)) {
+      log.info("unbind last all github auth record");
       thirdpartyAuth = thirdpartyAuths.get(0);
       thirdpartyAuth.setThirdpartyValid(false);
       thirdpartyAuthDao.updateByThirdpartyId(thirdpartyAuth);

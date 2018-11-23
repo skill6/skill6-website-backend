@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -47,7 +49,8 @@ public class QQRealm extends Skill6Realm {
 
   @Autowired private Skill6Properties skill6Properties;
 
-  @Autowired private ThirdpartyAuthDao thirdpartyAuthDao;
+  @Resource(name = "thirdpartyAuthDaoOper")
+  private ThirdpartyAuthDao thirdpartyAuthDao;
 
   @Autowired private UserSvc userSvc;
 
@@ -95,14 +98,17 @@ public class QQRealm extends Skill6Realm {
     params.put(UrlRequest.PARAM_REDIRECT_URI, qq.getRedirectUri());
 
     String response = HttpsClient.doGet(UrlRequest.QQ_GET_TOKEN, params);
+    log.info("get access_token finished, response: {}", response);
 
     Map<String, String> map = ConvertRequestParams.paramsStr2Map(response);
     String accessToken = map.get(UrlRequest.PARAM_ACCESS_TOKEN);
 
-    // 2.根据access_toekn获取
+    // 2.根据access_toekn获取openid
     params.clear();
     params.put(UrlRequest.PARAM_ACCESS_TOKEN, accessToken);
     response = HttpsClient.doGet(UrlRequest.QQ_GET_TOKEN, params);
+    log.info("get openid finished, response: {}", response);
+
     response = matchParentheses(matchParentheses(response));
     if (StringUtils.isEmpty(response)) {
       return null;
@@ -123,6 +129,7 @@ public class QQRealm extends Skill6Realm {
     params.put(UrlRequest.PARAM_OPENID, openid);
 
     response = HttpsClient.doGet(UrlRequest.QQ_GET_USER_INFO, params);
+    log.info("get user_info finished, response: {}", response);
 
     // 4.查询是否绑定
     ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();

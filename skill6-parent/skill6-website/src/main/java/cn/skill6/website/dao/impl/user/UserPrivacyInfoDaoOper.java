@@ -58,6 +58,8 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
       throw new NullPointerException("用户id不能为空");
     }
     userPrivacyInfo.setUserState(UserState.VALID);
+    
+    userPrivacyInfoMapper.insert(userPrivacyInfo);
   }
 
   @Override
