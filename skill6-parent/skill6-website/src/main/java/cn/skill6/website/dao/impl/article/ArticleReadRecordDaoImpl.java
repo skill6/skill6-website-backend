@@ -3,9 +3,8 @@ package cn.skill6.website.dao.impl.article;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.article.ArticleReadRecord;
 import cn.skill6.common.exception.Skill6Exception;
@@ -13,22 +12,24 @@ import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleReadRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleReadRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文章阅读记录操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:17:12
  */
-public class ArticleReadRecordDaoOper implements ArticleReadRecordDao {
-  private static final Logger logger = LoggerFactory.getLogger(ArticleReadRecordDaoOper.class);
+@Slf4j
+@Repository
+public class ArticleReadRecordDaoImpl implements ArticleReadRecordDao {
 
   @Autowired private ArticleReadRecordMapper articleReadRecordMapper;
 
   @Override
   public int deleteByPrimaryKey(Long articleId, Date articleDateDaily) {
-    logger.warn("删除id为{},日期为{}的文章阅读记录", articleId, articleDateDaily);
+    log.warn("删除id为{},日期为{}的文章阅读记录", articleId, articleDateDaily);
 
     return articleReadRecordMapper.deleteByPrimaryKey(articleId, articleDateDaily);
   }
@@ -48,7 +49,7 @@ public class ArticleReadRecordDaoOper implements ArticleReadRecordDao {
 
     articleReadRecordMapper.insert(articleReadRecord);
 
-    logger.info("增加文章阅读记录成功,{}", articleReadRecord);
+    log.info("增加文章阅读记录成功,{}", articleReadRecord);
 
     return articleId;
   }
@@ -58,7 +59,7 @@ public class ArticleReadRecordDaoOper implements ArticleReadRecordDao {
     ArticleReadRecord articleReadRecord =
         articleReadRecordMapper.selectByPrimaryKey(articleId, articleDateDaily);
 
-    logger.info("找到id为{}, 日期为{}的文章阅读记录,{}", articleId, articleDateDaily, articleReadRecord);
+    log.info("找到id为{}, 日期为{}的文章阅读记录,{}", articleId, articleDateDaily, articleReadRecord);
 
     return articleReadRecord;
   }
@@ -67,7 +68,7 @@ public class ArticleReadRecordDaoOper implements ArticleReadRecordDao {
   public List<ArticleReadRecord> findAll() {
     List<ArticleReadRecord> articleReadRecords = articleReadRecordMapper.selectAll();
 
-    logger.info("找到所有阅读记录,{}", articleReadRecords);
+    log.info("找到所有阅读记录,{}", articleReadRecords);
 
     return articleReadRecords;
   }

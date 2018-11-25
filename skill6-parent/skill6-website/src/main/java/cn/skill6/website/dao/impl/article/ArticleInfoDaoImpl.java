@@ -3,8 +3,6 @@ package cn.skill6.website.dao.impl.article;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,24 +14,24 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 import cn.skill6.website.dao.mappers.article.ArticleInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文章信息操作实现类
  *
  * @author 何明胜
- * @version 1.7
+ * @version 1.8
  * @since 2018年8月16日 下午10:29:29
  */
+@Slf4j
 @Repository
-public class ArticleInfoDaoOper implements ArticleInfoDao {
-
-  private static final Logger logger = LoggerFactory.getLogger(ArticleInfoDaoOper.class);
+public class ArticleInfoDaoImpl implements ArticleInfoDao {
 
   @Autowired private ArticleInfoMapper articleInfoMapper;
 
   @Override
   public int deleteByPrimaryKey(Long articleId) {
-    logger.warn("删除id为{}的用户", articleId);
+    log.warn("删除id为{}的用户", articleId);
     return articleInfoMapper.deleteByPrimaryKey(articleId);
   }
 
@@ -43,8 +41,8 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
     Long articleId = articleInfo.getArticleId();
     if (articleId == null) {
       articleId = SequenceManager.getNextId();
+      articleInfo.setArticleId(articleId);
     }
-    articleInfo.setArticleId(articleId);
 
     // 设置创建日期和最后修改日期
     articleInfo.setArticleCreateTime(new Date());
@@ -60,7 +58,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
     // 增加其他字段的校验
     articleInfoMapper.insert(articleInfo);
 
-    logger.info("增加文章成功,{}", articleInfo);
+    log.info("增加文章成功,{}", articleInfo);
 
     return articleId;
   }
@@ -69,7 +67,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
   public ArticleInfo findByArticleId(Long articleId) {
     ArticleInfo articleInfo = articleInfoMapper.selectByPrimaryKey(articleId);
 
-    logger.info("找到id为{}的文章,{}", articleId, articleInfo);
+    log.info("找到id为{}的文章,{}", articleId, articleInfo);
 
     return articleInfo;
   }
@@ -78,7 +76,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
   public List<ArticleInfo> findAll() {
     List<ArticleInfo> articleInfos = articleInfoMapper.selectAll();
 
-    logger.info("找到所有文章, {}", articleInfos);
+    log.info("找到所有文章, {}", articleInfos);
 
     return articleInfos;
   }
@@ -118,7 +116,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
 
     articleInfoMapper.updateByPrimaryKey(articleInfoNew);
 
-    logger.info("成功修改id为{}的文章内容", articleInfo.getArticleId());
+    log.info("成功修改id为{}的文章内容", articleInfo.getArticleId());
   }
 
   @Override
@@ -128,8 +126,7 @@ public class ArticleInfoDaoOper implements ArticleInfoDao {
         PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
 
     List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
-
-    logger.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());
+    log.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());
 
     return articleInfos;
   }

@@ -19,9 +19,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public abstract class PaginationAndSort {
 
-  private int pageNum;
-  private int pageSize;
+  /** 从1开始 */
+  private int pageNum = 1;
+
+  private int pageSize = 10;
 
   private String orderBy;
-  @JsonIgnore private SortType sortType;
+  @JsonIgnore private SortType sortType = SortType.ASCENDING;
 }

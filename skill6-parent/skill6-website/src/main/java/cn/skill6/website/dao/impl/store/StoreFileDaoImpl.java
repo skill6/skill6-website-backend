@@ -3,8 +3,6 @@ package cn.skill6.website.dao.impl.store;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,23 +10,24 @@ import cn.skill6.common.entity.po.store.StoreFile;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.dao.mappers.store.StoreFileMapper;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文件存储操作实现类
  *
  * @author 何明胜
- * @version 1.6
+ * @version 1.7
  * @since 2018年8月28日 上午12:18:06
  */
+@Slf4j
 @Repository
-public class StoreFileDaoOper implements StoreFileDao {
-  private static final Logger logger = LoggerFactory.getLogger(StoreFileDaoOper.class);
+public class StoreFileDaoImpl implements StoreFileDao {
 
   @Autowired private StoreFileMapper storeFileMapper;
 
   @Override
   public int deleteByFileId(Long fileId) {
-    logger.warn("删除id为{}的文件", fileId);
+    log.warn("删除id为{}的文件", fileId);
     return storeFileMapper.deleteByPrimaryKey(fileId);
   }
 
@@ -42,7 +41,7 @@ public class StoreFileDaoOper implements StoreFileDao {
     storeFile.setFileDownloadCount(0);
 
     storeFileMapper.insert(storeFile);
-    logger.info("增加文件信息成功,{}", storeFile);
+    log.info("增加文件信息成功,{}", storeFile);
 
     return storeFile.getFileId();
   }
@@ -50,7 +49,7 @@ public class StoreFileDaoOper implements StoreFileDao {
   @Override
   public StoreFile findByFileId(Long fileId) {
     StoreFile storeFile = storeFileMapper.selectByPrimaryKey(fileId);
-    logger.info("找到id为{}的文件下载信息,{}", fileId, storeFile);
+    log.info("找到id为{}的文件下载信息,{}", fileId, storeFile);
 
     return storeFile;
   }
@@ -58,7 +57,7 @@ public class StoreFileDaoOper implements StoreFileDao {
   @Override
   public List<StoreFile> findAll() {
     List<StoreFile> storeFiles = storeFileMapper.selectAll();
-    logger.info("找到所有文件存储记录,{}", storeFiles);
+    log.info("找到所有文件存储记录,{}", storeFiles);
 
     return storeFiles;
   }
@@ -70,6 +69,6 @@ public class StoreFileDaoOper implements StoreFileDao {
     }
 
     storeFileMapper.updateByPrimaryKey(storeFile);
-    logger.info("成功修改id为{}的文件存储记录,{}", storeFile.getFileId(), storeFile);
+    log.info("成功修改id为{}的文件存储记录,{}", storeFile.getFileId(), storeFile);
   }
 }

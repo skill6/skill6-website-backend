@@ -5,20 +5,18 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cn.skill6.common.exception.tools.StackTrace2Str;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * AES加密
  *
  * @author 何明胜
- * @version 1.0
+ * @version 1.1
  * @since 2018年3月17日 下午7:35:14
  */
+@Slf4j
 public class AesEncrypt {
-  private static final Logger logger = LogManager.getLogger(AesEncrypt.class.getName());
 
   /** 加密算法 */
   private static final String AES_ALGORITHM = "AES";
@@ -106,12 +104,12 @@ public class AesEncrypt {
         String originalString = new String(original, "utf-8");
         return originalString;
       } catch (Exception e) {
-        logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+        log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
         return null;
       }
     } catch (Exception ex) {
-      logger.info(StackTrace2Str.exceptionStackTrace2Str(ex));
+      log.info(StackTrace2Str.exceptionStackTrace2Str(ex));
 
       return null;
     }

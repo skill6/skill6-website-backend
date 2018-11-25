@@ -9,8 +9,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,16 +17,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cn.skill6.common.constant.ExceptionName;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.db.SqlException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 全局异常拦截器
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年2月26日 下午11:29:05
  */
+@Slf4j
 public class ExceptionInterceptor implements HandlerExceptionResolver {
-  private static final Logger logger = LogManager.getLogger(ExceptionInterceptor.class.getName());
   private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
@@ -37,7 +36,7 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
       HttpServletResponse response,
       Object object,
       Exception exception) {
-    logger.fatal(StackTrace2Str.exceptionStackTrace2Str(exception));
+    log.error(StackTrace2Str.exceptionStackTrace2Str(exception));
     ResponseJson responseJson = new ResponseJson(false);
 
     // 判断是否ajax请求
@@ -47,10 +46,10 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
         response.setStatus(400);
 
         responseJson.setMessage(ExceptionName.SQL_EXCEPTION);
-        logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获SQL异常", exception));
+        log.error(StackTrace2Str.exceptionStackTrace2Str("捕获SQL异常", exception));
       } else {
         responseJson.setMessage(ExceptionName.SYS_EXCEPTION);
-        logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获系统异常", exception));
+        log.error(StackTrace2Str.exceptionStackTrace2Str("捕获系统异常", exception));
       }
 
       // 对于非ajax请求,我们都统一跳转到error.jsp页面
@@ -66,10 +65,10 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
         // 为安全起见,只有业务异常我们对前端可见,否则统一归为系统异常
         if (exception instanceof SqlException) {
           responseJson.setMessage(ExceptionName.SQL_EXCEPTION);
-          logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获SQL异常", exception));
+          log.error(StackTrace2Str.exceptionStackTrace2Str("捕获SQL异常", exception));
         } else {
           responseJson.setMessage(ExceptionName.SYS_EXCEPTION);
-          logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获系统异常", exception));
+          log.error(StackTrace2Str.exceptionStackTrace2Str("捕获系统异常", exception));
         }
 
         writer.write(objectMapper.writeValueAsString(responseJson));
@@ -78,7 +77,7 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
 
         return null;
       } catch (IOException e) {
-        logger.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
+        log.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
 
         // 异常中的异常返回到错误页面
         return new ModelAndView("redirect:/error.jsp", responseJson2Map(responseJson));
@@ -111,7 +110,7 @@ public class ExceptionInterceptor implements HandlerExceptionResolver {
 
       map = objectMapper.readValue(jsonStr, Map.class);
     } catch (IOException e) {
-      logger.fatal(StackTrace2Str.exceptionStackTrace2Str("jackson转换异常", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("jackson转换异常", e));
     }
 
     return (Map<String, ?>) map;

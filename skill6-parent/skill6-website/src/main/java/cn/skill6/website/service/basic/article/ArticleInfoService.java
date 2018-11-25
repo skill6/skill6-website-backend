@@ -3,8 +3,7 @@ package cn.skill6.website.service.basic.article;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -27,10 +26,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 @Component
-public class ArticleInfoSvcImpl implements ArticleInfoSvc {
+public class ArticleInfoService implements ArticleInfoSvc {
 
-  @Resource(name = "articleInfoDaoOper")
-  private ArticleInfoDao articleInfoDao;
+  @Autowired private ArticleInfoDao articleInfoDao;
 
   public ResponseJson addArticle(ArticleInfo articleInfo) {
     ResponseJson responseJson;

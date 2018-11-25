@@ -2,31 +2,32 @@ package cn.skill6.website.dao.impl.visit;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.visit.VisitStatistics;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.visit.VisitStatisticsDao;
 import cn.skill6.website.dao.mappers.visit.VisitStatisticsMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 访问统计操作实现类
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年8月28日 上午12:20:49
  */
-public class VisitStatisticsDaoOper implements VisitStatisticsDao {
-  private static final Logger logger = LoggerFactory.getLogger(VisitStatisticsDaoOper.class);
+@Slf4j
+@Repository
+public class VisitStatisticsDaoImpl implements VisitStatisticsDao {
 
   @Autowired private VisitStatisticsMapper visitStatisticsMapper;
 
   @Override
   public int deleteByVisitId(Long visitId) {
-    logger.warn("删除id为{}的访问统计", visitId);
+    log.warn("删除id为{}的访问统计", visitId);
 
     return visitStatisticsMapper.deleteByPrimaryKey(visitId);
   }
@@ -51,7 +52,7 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
     visitStatistics.setStatisticsTotalCount(currVisitTotalCount + 1);
 
     visitStatisticsMapper.insert(visitStatistics);
-    logger.info("成功插入id为{}的访问记录统计,{}", visitId, visitStatistics);
+    log.info("成功插入id为{}的访问记录统计,{}", visitId, visitStatistics);
   }
 
   @Override
@@ -61,7 +62,7 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
     }
 
     VisitStatistics visitStatistics = visitStatisticsMapper.selectByPrimaryKey(visitId);
-    logger.info("找到id为{}的访问统计{}", visitId, visitStatistics);
+    log.info("找到id为{}的访问统计{}", visitId, visitStatistics);
 
     return visitStatistics;
   }
@@ -69,7 +70,7 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
   @Override
   public List<VisitStatistics> findAll() {
     List<VisitStatistics> visitStatistics = visitStatisticsMapper.selectAll();
-    logger.info("找到所有访问统计,{}", visitStatistics);
+    log.info("找到所有访问统计,{}", visitStatistics);
 
     return visitStatistics;
   }
@@ -90,6 +91,6 @@ public class VisitStatisticsDaoOper implements VisitStatisticsDao {
     }
 
     visitStatisticsMapper.updateByPrimaryKey(visitStatistics);
-    logger.info("成功修改当日访问记录,{}", visitStatistics);
+    log.info("成功修改当日访问记录,{}", visitStatistics);
   }
 }

@@ -3,9 +3,8 @@ package cn.skill6.website.dao.impl.user;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.user.UserLoginRecord;
 import cn.skill6.common.exception.Skill6Exception;
@@ -13,6 +12,7 @@ import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.user.UserLoginRecordDao;
 import cn.skill6.website.dao.mappers.user.UserLoginRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 登录记录操作实现类
@@ -21,14 +21,15 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * @version 1.3
  * @since 2018年8月28日 上午12:18:47
  */
-public class UserLoginRecordDaoOper implements UserLoginRecordDao {
-  private static final Logger logger = LoggerFactory.getLogger(UserLoginRecordDaoOper.class);
+@Slf4j
+@Repository
+public class UserLoginRecordDaoImpl implements UserLoginRecordDao {
 
   @Autowired private UserLoginRecordMapper userLoginRecordMapper;
 
   @Override
   public int deleteByLoginId(Long loginId) {
-    logger.warn("删除id为{}的登录记录", loginId);
+    log.warn("删除id为{}的登录记录", loginId);
 
     return userLoginRecordMapper.deleteByPrimaryKey(loginId);
   }
@@ -49,7 +50,7 @@ public class UserLoginRecordDaoOper implements UserLoginRecordDao {
 
     userLoginRecord.setLoginTime(new Date());
     userLoginRecordMapper.insert(userLoginRecord);
-    logger.info("成功插入新的用户登录记录,{}", userLoginRecord);
+    log.info("成功插入新的用户登录记录,{}", userLoginRecord);
   }
 
   @Override
@@ -59,7 +60,7 @@ public class UserLoginRecordDaoOper implements UserLoginRecordDao {
     }
 
     UserLoginRecord userLoginRecord = userLoginRecordMapper.selectByPrimaryKey(loginId);
-    logger.info("找到id为{}的用户登录记录,{}", loginId, userLoginRecord);
+    log.info("找到id为{}的用户登录记录,{}", loginId, userLoginRecord);
 
     return userLoginRecord;
   }
@@ -67,7 +68,7 @@ public class UserLoginRecordDaoOper implements UserLoginRecordDao {
   @Override
   public List<UserLoginRecord> findAll() {
     List<UserLoginRecord> userLoginRecords = userLoginRecordMapper.selectAll();
-    logger.info("找到所有用户登录记录,{}", userLoginRecords);
+    log.info("找到所有用户登录记录,{}", userLoginRecords);
 
     return userLoginRecords;
   }

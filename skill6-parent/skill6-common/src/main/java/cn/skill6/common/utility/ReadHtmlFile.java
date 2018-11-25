@@ -10,23 +10,22 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import cn.skill6.common.exception.tools.StackTrace2Str;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 读取服务器的html文件
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年2月28日 下午12:11:39
  */
+@Slf4j
 public class ReadHtmlFile {
-  private static final Logger logger = LogManager.getLogger(ReadHtmlFile.class);
 
   /**
    * 读取html文件
@@ -44,9 +43,9 @@ public class ReadHtmlFile {
         sb.append("\n");
       }
     } catch (FileNotFoundException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     } catch (IOException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     }
     return sb.toString();
   }
@@ -75,7 +74,7 @@ public class ReadHtmlFile {
       outStream.close();
       // 关闭输入流,释放系统资源
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     }
   }
 
@@ -97,7 +96,7 @@ public class ReadHtmlFile {
     try {
       doc = Jsoup.parse(file, "UTF-8");
     } catch (IOException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     }
 
     Element keywordsElement = doc.select("meta[name=keywords]").first();

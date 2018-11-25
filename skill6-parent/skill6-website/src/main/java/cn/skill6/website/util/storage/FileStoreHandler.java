@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,19 +19,31 @@ import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.website.util.storage.abst.BaseStoreHandler;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文件存储处理
  *
  * @author 何明胜
- * @version 1.0.4
+ * @version 1.5
  * @since 2018年9月3日 上午1:34:37
  */
+@Slf4j
 @Component
 public class FileStoreHandler extends BaseStoreHandler {
-  private final Logger logger = LoggerFactory.getLogger(FileStoreHandler.class);
 
-  public FileAttribute fileUploadHandler(HttpServletRequest request, String storeParentPath)
+  /**
+   * 文件存储处理
+   *
+   * @param request
+   * @param rootDirPath 绝对根路径
+   * @param relativePath 相对路径(不包含文件名)
+   * @return
+   * @throws IOException
+   * @throws FileUploadException
+   */
+  public FileAttribute fileUploadHandler(
+      HttpServletRequest request, String rootDirPath, String relativeDirPath)
       throws IOException, FileUploadException {
     MultipartHttpServletRequest multiRequest = parseRequest(request);
     if (multiRequest.getFileMap().size() != 1) {
@@ -41,10 +52,11 @@ public class FileStoreHandler extends BaseStoreHandler {
 
     FileAttribute fileAttribute = new FileAttribute();
 
-    File parentFile = new File(storeParentPath);
+    String fileDirPath = StringUtils.join(rootDirPath, relativeDirPath);
+    File parentFile = new File(fileDirPath);
     if (!parentFile.exists()) {
       parentFile.mkdirs();
-      logger.info("目录：{}不存在，已经创建", storeParentPath);
+      log.info("目录：{}不存在，已经创建", fileDirPath);
     }
 
     Iterator<String> iter = multiRequest.getFileNames();
@@ -59,8 +71,19 @@ public class FileStoreHandler extends BaseStoreHandler {
     // 处理获取到的上传文件的文件名的路径部分，只保留文件名部分
     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
     String fileSuffix = getFileSuffix(fileName);
-    String fileId = isFileExist(storeParentPath, fileSuffix);
-    String fileUrl = storeParentPath + "/" + fileId + "." + fileSuffix;
+    String fileId = isFileExist(fileDirPath, fileSuffix);
+
+    // 先取得相对路径，再与根路径相加
+    String relativePath =
+        new StringBuilder()
+            .append(relativeDirPath)
+            .append("/")
+            .append(fileId)
+            .append(".")
+            .append(fileSuffix)
+            .toString();
+    String fileUrl = StringUtils.join(rootDirPath, relativePath);
+
     String fileHashCode = DigestUtils.md5DigestAsHex(multipartFile.getInputStream()).toUpperCase();
 
     // 上传,分为1、windows 2、linux 和 mac
@@ -72,11 +95,11 @@ public class FileStoreHandler extends BaseStoreHandler {
       multipartFile.transferTo(new File(fileUrl));
     }
     long endTime = System.currentTimeMillis();
-    logger.info("存储文件耗时：{}ms", endTime - startTime);
+    log.info("存储文件耗时：{}ms", endTime - startTime);
 
     fileAttribute.setId(fileId);
     fileAttribute.setName(fileName);
-    fileAttribute.setUrl(fileUrl);
+    fileAttribute.setUrl(relativePath);
     fileAttribute.setHashCode(fileHashCode);
 
     return fileAttribute;

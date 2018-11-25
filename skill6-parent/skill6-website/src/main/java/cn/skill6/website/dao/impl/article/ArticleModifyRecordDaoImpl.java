@@ -3,9 +3,8 @@ package cn.skill6.website.dao.impl.article;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.article.ArticleModifyRecord;
 import cn.skill6.common.exception.Skill6Exception;
@@ -13,22 +12,24 @@ import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleModifyRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleModifyRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文章历史版本操作实现类
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年8月28日 上午1:29:58
  */
-public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
-  private static final Logger logger = LoggerFactory.getLogger(ArticleModifyRecordDaoOper.class);
+@Slf4j
+@Repository
+public class ArticleModifyRecordDaoImpl implements ArticleModifyRecordDao {
 
   @Autowired private ArticleModifyRecordMapper articleModifyRecordMapper;
 
   @Override
   public int deleteByPrimaryKey(Long articleId, Date lastModifyDate) {
-    logger.warn("删除id为{}的文章历史记录", articleId);
+    log.warn("删除id为{}的文章历史记录", articleId);
 
     return articleModifyRecordMapper.deleteByPrimaryKey(articleId, lastModifyDate);
   }
@@ -46,7 +47,7 @@ public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
 
     articleModifyRecordMapper.insert(articleModifyRecord);
 
-    logger.info("增加文章历史版本成功,{}", articleModifyRecord);
+    log.info("增加文章历史版本成功,{}", articleModifyRecord);
 
     return articleId;
   }
@@ -56,7 +57,7 @@ public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
     ArticleModifyRecord articleModifyRecord =
         articleModifyRecordMapper.selectByPrimaryKey(articleId, lastModifyDate);
 
-    logger.info("找到id为{}，最后修改日期为{}的文章历史版本，{}", articleId, lastModifyDate, articleModifyRecord);
+    log.info("找到id为{}，最后修改日期为{}的文章历史版本，{}", articleId, lastModifyDate, articleModifyRecord);
 
     return articleModifyRecord;
   }
@@ -65,7 +66,7 @@ public class ArticleModifyRecordDaoOper implements ArticleModifyRecordDao {
   public List<ArticleModifyRecord> findAll() {
     List<ArticleModifyRecord> articleModifyRecords = articleModifyRecordMapper.selectAll();
 
-    logger.info("找到所有历史文章，{}", articleModifyRecords);
+    log.info("找到所有历史文章，{}", articleModifyRecords);
 
     return articleModifyRecords;
   }

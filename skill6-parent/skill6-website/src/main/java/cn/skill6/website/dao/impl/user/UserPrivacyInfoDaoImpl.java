@@ -2,8 +2,6 @@ package cn.skill6.website.dao.impl.user;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,23 +11,24 @@ import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
 import cn.skill6.website.dao.mappers.user.UserPrivacyInfoMapper;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用户隐私信息操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:19:56
  */
+@Slf4j
 @Repository
-public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
-  private static final Logger logger = LoggerFactory.getLogger(UserPrivacyInfoDaoOper.class);
+public class UserPrivacyInfoDaoImpl implements UserPrivacyInfoDao {
 
   @Autowired private UserPrivacyInfoMapper userPrivacyInfoMapper;
 
   @Override
   public int deleteByUserId(Long userId) {
-    logger.warn("删除id为{}的用户隐私信息", userId);
+    log.warn("删除id为{}的用户隐私信息", userId);
 
     return userPrivacyInfoMapper.deleteByPrimaryKey(userId);
   }
@@ -58,6 +57,8 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
       throw new NullPointerException("用户id不能为空");
     }
     userPrivacyInfo.setUserState(UserState.VALID);
+
+    userPrivacyInfoMapper.insert(userPrivacyInfo);
   }
 
   @Override
@@ -67,7 +68,7 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
     }
 
     UserPrivacyInfo userPrivacyInfo = userPrivacyInfoMapper.selectByPrimaryKey(userId);
-    logger.info("找到id为{}的用户主要信息,{}", userId, userPrivacyInfo);
+    log.info("找到id为{}的用户主要信息,{}", userId, userPrivacyInfo);
 
     return userPrivacyInfo;
   }
@@ -75,7 +76,7 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
   @Override
   public List<UserPrivacyInfo> findAll() {
     List<UserPrivacyInfo> userPrivacyInfos = userPrivacyInfoMapper.selectAll();
-    logger.info("找到所有用户隐私信息");
+    log.info("找到所有用户隐私信息");
 
     return userPrivacyInfos;
   }
@@ -104,7 +105,7 @@ public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
     }
 
     userPrivacyInfoMapper.updateByPrimaryKey(userPrivacyInfo);
-    logger.info("成功修改id为{}的用户隐私信息");
+    log.info("成功修改id为{}的用户隐私信息");
   }
 
   @Override

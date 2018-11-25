@@ -3,31 +3,32 @@ package cn.skill6.website.dao.impl.visit;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.visit.VisitRecord;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.visit.VisitRecordDao;
 import cn.skill6.website.dao.mappers.visit.VisitRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 访问记录操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:20:33
  */
-public class VisitRecordDaoOper implements VisitRecordDao {
-  private static final Logger logger = LoggerFactory.getLogger(VisitRecordDaoOper.class);
+@Slf4j
+@Repository
+public class VisitRecordDaoImpl implements VisitRecordDao {
 
   @Autowired private VisitRecordMapper visitRecordMapper;
 
   @Override
   public int deleteByVisitId(Long visitId) {
-    logger.warn("删除id为{}的访问记录", visitId);
+    log.warn("删除id为{}的访问记录", visitId);
 
     return visitRecordMapper.deleteByPrimaryKey(visitId);
   }
@@ -51,7 +52,7 @@ public class VisitRecordDaoOper implements VisitRecordDao {
     visitRecord.setVisitEndTime(new Date());
 
     visitRecordMapper.insert(visitRecord);
-    logger.info("成功插入id为{}的访问记录{}", visitId, visitRecord);
+    log.info("成功插入id为{}的访问记录{}", visitId, visitRecord);
   }
 
   @Override
@@ -61,7 +62,7 @@ public class VisitRecordDaoOper implements VisitRecordDao {
     }
 
     VisitRecord visitRecord = visitRecordMapper.selectByPrimaryKey(visitId);
-    logger.info("找到id为{}的访问记录{}", visitId, visitRecord);
+    log.info("找到id为{}的访问记录{}", visitId, visitRecord);
 
     return visitRecord;
   }
@@ -69,7 +70,7 @@ public class VisitRecordDaoOper implements VisitRecordDao {
   @Override
   public List<VisitRecord> findAll() {
     List<VisitRecord> visitRecords = visitRecordMapper.selectAll();
-    logger.info("找到所有访问记录{}", visitRecords);
+    log.info("找到所有访问记录{}", visitRecords);
 
     return visitRecords;
   }
@@ -89,6 +90,6 @@ public class VisitRecordDaoOper implements VisitRecordDao {
 
     visitRecord.setVisitEndTime(new Date());
     visitRecordMapper.updateByPrimaryKey(visitRecord);
-    logger.info("成功更新访问记录,{}", visitRecord);
+    log.info("成功更新访问记录,{}", visitRecord);
   }
 }

@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,23 +30,26 @@ import cn.skill6.website.util.storage.FileStoreHandler;
  * @since 2018年9月13日 上午12:45:47
  */
 @Service
-public class StoreImageSvcImpl implements StoreImageSvc {
+public class StoreImageService implements StoreImageSvc {
 
-  @Resource(name = "storeImageDaoOper")
-  private StoreImageDao storeImageDao;
+  @Autowired private StoreImageDao storeImageDao;
 
   @Autowired private FileStoreHandler fileStoreHandler;
 
   @Autowired private Skill6Properties skill6Properties;
 
+  private String userHomeDir = System.getProperty("user.home");
+
   @Override
   public ResponseJson uploadImage(HttpServletRequest request)
       throws IOException, FileUploadException {
     String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
-    String storeParentPath = skill6Properties.getImagePath() + dateFormat;
+    String userHomeDir = System.getProperty("user.home");
+    String storeParentPath = StringUtils.join(skill6Properties.getImagePath(), dateFormat);
 
     StoreImage storeImage = new StoreImage();
-    FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, storeParentPath);
+    FileAttribute fileAttribute =
+        fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
 
     storeImage.setImageId(Long.valueOf(fileAttribute.getId()));
     storeImage.setImageName(fileAttribute.getName());
@@ -76,6 +79,7 @@ public class StoreImageSvcImpl implements StoreImageSvc {
     StoreImage storeImage = storeImageDao.findByImageId(imageId);
 
     String imageUrl = storeImage.getImageUrl();
+    imageUrl = StringUtils.join(userHomeDir, imageUrl);
     String imageName = storeImage.getImageName();
 
     fileStoreHandler.fileDownloadHandler(response, imageUrl, imageName);
