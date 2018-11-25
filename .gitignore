@@ -4,3 +4,4 @@
 *.jks
 **/cert/**/*.txt
 *.pfx
+package-lock.json
