@@ -12,6 +12,7 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
 import cn.skill6.website.dao.mappers.thirdparty.ThirdpartyAuthMapper;
+import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -29,6 +30,13 @@ public class ThirdpartyAuthDaoOper implements ThirdpartyAuthDao {
 
   @Override
   public void addThirdpartyAuth(ThirdpartyAuth thirdpartyAuth) {
+    // 设置分布式用户id
+    Long thirdpartyId = thirdpartyAuth.getThirdpartyId();
+    if (thirdpartyId == null) {
+      thirdpartyId = SequenceManager.getNextId();
+      thirdpartyAuth.setThirdpartyId(thirdpartyId);
+    }
+
     log.info("插入新的第三方授权数据, {}", thirdpartyAuth);
 
     thirdpartyAuthMapper.insert(thirdpartyAuth);

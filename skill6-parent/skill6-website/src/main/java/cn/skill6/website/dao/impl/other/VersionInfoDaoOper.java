@@ -3,31 +3,32 @@ package cn.skill6.website.dao.impl.other;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.other.VersionInfo;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.other.VersionInfoDao;
 import cn.skill6.website.dao.mappers.other.VersionInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 版本信息操作实现类
  *
  * @author 何明胜
- * @version 1.4
+ * @version 1.5
  * @since 2018年8月28日 上午12:20:18
  */
+@Slf4j
+@Repository
 public class VersionInfoDaoOper implements VersionInfoDao {
-  private static final Logger logger = LoggerFactory.getLogger(VersionInfoDaoOper.class);
 
   @Autowired private VersionInfoMapper versionInfoMapper;
 
   @Override
   public int deleteByVersionId(Long versionId) {
-    logger.warn("删除id为{}的版本信息", versionId);
+    log.warn("删除id为{}的版本信息", versionId);
 
     return versionInfoMapper.deleteByPrimaryKey(versionId);
   }
@@ -51,7 +52,7 @@ public class VersionInfoDaoOper implements VersionInfoDao {
 
     versionInfo.setVersionReleaseTime(new Date());
     versionInfoMapper.insert(versionInfo);
-    logger.info("成功添加id为{}的版本信息,{}", versionId, versionInfo);
+    log.info("成功添加id为{}的版本信息,{}", versionId, versionInfo);
   }
 
   @Override
@@ -61,7 +62,7 @@ public class VersionInfoDaoOper implements VersionInfoDao {
     }
 
     VersionInfo versionInfo = versionInfoMapper.selectByPrimaryKey(versionId);
-    logger.info("成功找到id为{}的版本信息,{}", versionId, versionInfo);
+    log.info("成功找到id为{}的版本信息,{}", versionId, versionInfo);
 
     return versionInfo;
   }
@@ -69,7 +70,7 @@ public class VersionInfoDaoOper implements VersionInfoDao {
   @Override
   public List<VersionInfo> findAll() {
     List<VersionInfo> versionInfos = versionInfoMapper.selectAll();
-    logger.info("找到所有版本信息,{}", versionInfos);
+    log.info("找到所有版本信息,{}", versionInfos);
 
     return versionInfos;
   }
@@ -91,6 +92,6 @@ public class VersionInfoDaoOper implements VersionInfoDao {
     }
 
     versionInfoMapper.updateByPrimaryKey(versionInfo);
-    logger.info("成功修改版本信息为{}", versionInfo);
+    log.info("成功修改版本信息为{}", versionInfo);
   }
 }

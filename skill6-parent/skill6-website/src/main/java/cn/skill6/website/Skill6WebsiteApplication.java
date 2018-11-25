@@ -20,7 +20,7 @@ import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
  */
 @SpringBootApplication
 @ComponentScan("cn.skill6")
-@MapperScan(basePackages = {"cn.skill6.website.dao"})
+@MapperScan(basePackages = {"cn.skill6.website.dao.mappers"})
 @EnableScheduling
 @EnableDubbo
 public class Skill6WebsiteApplication {

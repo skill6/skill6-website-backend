@@ -13,20 +13,18 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cn.skill6.common.exception.tools.StackTrace2Str;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * DES加密工具
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年3月19日 上午9:15:27
  */
+@Slf4j
 public class DesEncrypt {
-  private static final Logger logger = LogManager.getLogger(DesEncrypt.class.getName());
 
   /** 加密算法 */
   private static final String DES_ALGORITHM = "DES";
@@ -60,11 +58,11 @@ public class DesEncrypt {
       cipher.init(Cipher.ENCRYPT_MODE, generateKey(secretKey));
 
     } catch (NoSuchAlgorithmException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     } catch (NoSuchPaddingException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     } catch (InvalidKeyException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
     }
 
     try {
@@ -76,11 +74,11 @@ public class DesEncrypt {
       return Base64.getEncoder().encodeToString(buf);
 
     } catch (IllegalBlockSizeException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("IllegalBlockSizeException", e);
     } catch (BadPaddingException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("BadPaddingException", e);
     }
@@ -113,15 +111,15 @@ public class DesEncrypt {
       cipher.init(Cipher.DECRYPT_MODE, generateKey(secretKey));
 
     } catch (NoSuchAlgorithmException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("NoSuchAlgorithmException", e);
     } catch (NoSuchPaddingException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("NoSuchPaddingException", e);
     } catch (InvalidKeyException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("InvalidKeyException", e);
     }
@@ -133,11 +131,11 @@ public class DesEncrypt {
       return new String(buf);
 
     } catch (IllegalBlockSizeException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("IllegalBlockSizeException", e);
     } catch (BadPaddingException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str(e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str(e));
 
       throw new Exception("BadPaddingException", e);
     }

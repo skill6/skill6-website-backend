@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -20,16 +18,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cn.skill6.common.constant.Encode;
 import cn.skill6.common.constant.HttpStatusCode;
 import cn.skill6.common.entity.vo.ResponseJson;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * restful请求异常拦截器
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年5月19日 上午1:13:11
  */
+@Slf4j
 public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
-  private final Logger logger = LogManager.getLogger(RestfulExceptionInterceptor.class.getName());
 
   @Override
   public ModelAndView resolveException(
@@ -41,7 +40,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
     if (exception instanceof UnauthenticatedException) {
       response.setStatus(HttpStatusCode.UNAUTHORIZED);
 
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获未登录异常", exception));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("捕获未登录异常", exception));
       handleUnauthenticatedException(response);
 
       return null;
@@ -50,7 +49,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
     if (exception instanceof UnauthorizedException || exception instanceof AuthorizationException) {
       response.setStatus(HttpStatusCode.UNAUTHORIZED);
 
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("捕获无权限异常", exception));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("捕获无权限异常", exception));
       handleUnauthorizedException(response);
 
       return null;
@@ -76,7 +75,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
       writer.flush();
       writer.close();
     } catch (IOException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
     }
   }
 
@@ -97,7 +96,7 @@ public class RestfulExceptionInterceptor implements HandlerExceptionResolver {
       writer.flush();
       writer.close();
     } catch (IOException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("异常系统捕获处理时再次异常", e));
     }
   }
 }

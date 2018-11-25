@@ -3,9 +3,8 @@ package cn.skill6.website.dao.impl.user;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cn.skill6.common.entity.po.user.UserModifyRecord;
 import cn.skill6.common.exception.Skill6Exception;
@@ -13,22 +12,24 @@ import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.user.UserModifyRecordDao;
 import cn.skill6.website.dao.mappers.user.UserModifyRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用户信息修改记录操作实现类
  *
  * @author 何明胜
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月28日 上午12:19:34
  */
+@Slf4j
+@Repository
 public class UserModifyRecordDaoOper implements UserModifyRecordDao {
-  private static final Logger logger = LoggerFactory.getLogger(UserModifyRecordDaoOper.class);
 
   @Autowired private UserModifyRecordMapper userModifyRecordMapper;
 
   @Override
   public int deleteByUserId(Long userId) {
-    logger.warn("删除id为{}的用户信息修改记录", userId);
+    log.warn("删除id为{}的用户信息修改记录", userId);
 
     return userModifyRecordMapper.deleteByPrimaryKey(userId);
   }
@@ -49,7 +50,7 @@ public class UserModifyRecordDaoOper implements UserModifyRecordDao {
     userModifyRecord.setUserModifyTime(new Date());
 
     userModifyRecordMapper.insert(userModifyRecord);
-    logger.info("成功添加id为{}的用户修改记录,{}", userId, userModifyRecord);
+    log.info("成功添加id为{}的用户修改记录,{}", userId, userModifyRecord);
   }
 
   @Override
@@ -59,7 +60,7 @@ public class UserModifyRecordDaoOper implements UserModifyRecordDao {
     }
 
     UserModifyRecord userModifyRecord = userModifyRecordMapper.selectByPrimaryKey(userId);
-    logger.info("找到id为{}的用户修改记录,{}", userId, userModifyRecord);
+    log.info("找到id为{}的用户修改记录,{}", userId, userModifyRecord);
 
     return userModifyRecord;
   }
@@ -67,7 +68,7 @@ public class UserModifyRecordDaoOper implements UserModifyRecordDao {
   @Override
   public List<UserModifyRecord> findAll() {
     List<UserModifyRecord> userModifyRecords = userModifyRecordMapper.selectAll();
-    logger.info("找到所有用户修改记录,{}", userModifyRecords);
+    log.info("找到所有用户修改记录,{}", userModifyRecords);
 
     return userModifyRecords;
   }

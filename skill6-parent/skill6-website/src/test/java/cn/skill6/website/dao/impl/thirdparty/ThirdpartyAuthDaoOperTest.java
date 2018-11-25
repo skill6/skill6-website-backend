@@ -28,7 +28,6 @@ public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
   public void insert() {
     ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
     String githubId = "21255916";
-    thirdpartyAuth.setThirdpartyId(1234412541L);
     thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
     thirdpartyAuth.setThirdpartyValid(true);
 

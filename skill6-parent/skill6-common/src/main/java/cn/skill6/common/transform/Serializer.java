@@ -11,21 +11,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.tools.StackTrace2Str;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 序列化转换器
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年4月1日 下午10:07:26
  */
+@Slf4j
 public class Serializer extends BaseUtils {
-  private static final Logger logger = LogManager.getLogger(Serializer.class.getName());
 
   /**
    * 序列化对象
@@ -57,11 +55,11 @@ public class Serializer extends BaseUtils {
       objectOutputStream.flush();
       byte[] byteArray = byteArrayOutputStream.toByteArray();
 
-      logger.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
+      log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
 
       return byteArray;
     } catch (IOException e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
     }
 
     return null;
@@ -86,11 +84,11 @@ public class Serializer extends BaseUtils {
       objectInputStream = new ObjectInputStream(byteArrayInputStream);
       Object object = objectInputStream.readObject();
 
-      logger.trace("反序列化成功, 结果为：{}", object.toString());
+      log.trace("反序列化成功, 结果为：{}", object.toString());
 
       return object;
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("反序列化失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化失败", e));
     }
 
     return null;
@@ -116,10 +114,10 @@ public class Serializer extends BaseUtils {
       }
       byteArray = baos.toByteArray();
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
     }
 
-    logger.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
+    log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
 
     return byteArray;
   }
@@ -149,10 +147,10 @@ public class Serializer extends BaseUtils {
         list.add(obj);
       }
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("反序列化List<Object>失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化List<Object>失败", e));
     }
 
-    logger.trace("反序列化成功, 结果为：{}", list.toString());
+    log.trace("反序列化成功, 结果为：{}", list.toString());
 
     return list;
   }
@@ -177,10 +175,10 @@ public class Serializer extends BaseUtils {
       }
       byteArray = baos.toByteArray();
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("序列化失败", e));
     }
 
-    logger.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
+    log.trace("序列化成功, 结果字节数组长度={}", byteArray.length);
 
     return byteArray;
   }
@@ -210,10 +208,10 @@ public class Serializer extends BaseUtils {
         set.add(obj);
       }
     } catch (Exception e) {
-      logger.error(StackTrace2Str.exceptionStackTrace2Str("反序列化Set<Object>失败", e));
+      log.error(StackTrace2Str.exceptionStackTrace2Str("反序列化Set<Object>失败", e));
     }
 
-    logger.trace("反序列化成功, 结果为：{}", set.toString());
+    log.trace("反序列化成功, 结果为：{}", set.toString());
 
     return set;
   }

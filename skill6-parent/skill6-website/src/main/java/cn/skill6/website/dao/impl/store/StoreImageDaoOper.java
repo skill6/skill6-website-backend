@@ -3,8 +3,6 @@ package cn.skill6.website.dao.impl.store;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,23 +10,24 @@ import cn.skill6.common.entity.po.store.StoreImage;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.dao.mappers.store.StoreImageMapper;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 图片上传信息操作实现类
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年8月28日 上午12:18:22
  */
+@Slf4j
 @Repository
 public class StoreImageDaoOper implements StoreImageDao {
-  private static final Logger logger = LoggerFactory.getLogger(StoreImageDaoOper.class);
 
   @Autowired private StoreImageMapper storeImageMapper;
 
   @Override
   public int deleteByImageId(Long imageId) {
-    logger.warn("删除id为{}的图片信息", imageId);
+    log.warn("删除id为{}的图片信息", imageId);
 
     return storeImageMapper.deleteByPrimaryKey(imageId);
   }
@@ -45,7 +44,7 @@ public class StoreImageDaoOper implements StoreImageDao {
 
     storeImageMapper.insert(storeImage);
 
-    logger.info("增加图片信息成功,{}", storeImage);
+    log.info("增加图片信息成功,{}", storeImage);
 
     return storeImage.getImageId();
   }
@@ -54,7 +53,7 @@ public class StoreImageDaoOper implements StoreImageDao {
   public StoreImage findByImageId(Long imageId) {
     StoreImage imageUpload = storeImageMapper.selectByPrimaryKey(imageId);
 
-    logger.info("找到id为{}的图片信息,{}", imageId, imageUpload);
+    log.info("找到id为{}的图片信息,{}", imageId, imageUpload);
 
     return imageUpload;
   }
@@ -62,7 +61,7 @@ public class StoreImageDaoOper implements StoreImageDao {
   @Override
   public List<StoreImage> findAll() {
     List<StoreImage> storeImages = storeImageMapper.selectAll();
-    logger.info("找到所有图片存储记录,{}", storeImages);
+    log.info("找到所有图片存储记录,{}", storeImages);
 
     return storeImages;
   }
@@ -74,6 +73,6 @@ public class StoreImageDaoOper implements StoreImageDao {
     }
 
     storeImageMapper.updateByPrimaryKey(storeImage);
-    logger.info("成功修改id为{}的图片存储记录,{}", storeImage.getImageId(), storeImage);
+    log.info("成功修改id为{}的图片存储记录,{}", storeImage.getImageId(), storeImage);
   }
 }

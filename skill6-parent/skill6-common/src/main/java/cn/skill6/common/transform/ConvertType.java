@@ -6,21 +6,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cn.skill6.common.constant.Encode;
 import cn.skill6.common.exception.codec.CodecException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 类型转换
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年3月1日 下午1:01:47
  */
+@Slf4j
 public class ConvertType {
-  private static final Logger logger = LogManager.getLogger(ConvertType.class.getName());
 
   /**
    * 字节数组转输入流
@@ -38,14 +36,13 @@ public class ConvertType {
    * @throws IOException
    */
   public static byte[] inStream2ByteArray(InputStream inStream) throws IOException {
-    logger.trace(inStream.available());
     byte[] buffer = new byte[256 * 1024];
     ByteArrayOutputStream bOutputStream = new ByteArrayOutputStream();
 
     int length = 0;
 
     while ((length = inStream.read(buffer)) != -1) {
-      logger.trace(length);
+      log.trace(String.valueOf(length));
       bOutputStream.write(buffer, 0, length);
     }
 
