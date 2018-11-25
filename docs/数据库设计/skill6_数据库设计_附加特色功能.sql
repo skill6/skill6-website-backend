@@ -1,7 +1,7 @@
 CREATE TABLE `feature_category_info` (
 `category_id` bigint(19) NOT NULL,
 `category_name` char(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-`category_type` varchar(3) NOT NULL COMMENT '分类类型，属于哪种文章。如文章分类、代码分类',
+`category_type` varchar(16) NOT NULL COMMENT '分类类型，属于哪种文章。如文章分类、代码分类',
 `category_create_time` timestamp(3) NOT NULL,
 `category_update_time` timestamp(3) NOT NULL,
 `category_valid` tinyint(1) NOT NULL,

@@ -21,7 +21,7 @@ CREATE TABLE `visit_record` (
 `visit_id` bigint(19) NOT NULL,
 `user_id` bigint(19) NOT NULL COMMENT '访问用户id',
 `visit_content_id` bigint(19) NOT NULL COMMENT '访问内容对应id',
-`visit_content_type` varchar(3) NOT NULL COMMENT '访问内容类型',
+`visit_content_type` varchar(16) NOT NULL COMMENT '访问内容类型',
 `visit_start_time` timestamp(3) NOT NULL COMMENT '开始时间',
 `visit_end_time` timestamp(3) NOT NULL COMMENT '结果时间',
 PRIMARY KEY (`visit_id`) 

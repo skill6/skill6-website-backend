@@ -3,11 +3,11 @@ CREATE TABLE `user_privacy_info` (
 `user_name` varchar(18) NOT NULL COMMENT '登录账号',
 `user_email` varchar(30) NULL COMMENT '邮箱',
 `user_phone` varchar(15) NULL COMMENT '手机号',
-`user_login_from` varchar(3) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
+`user_login_from` varchar(16) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
 `user_password` varchar(32) NOT NULL COMMENT 'MD5加盐加密密码',
 `user_pwd_salt` varchar(32) NOT NULL COMMENT '密码加密盐值',
-`user_type` varchar(3) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
-`user_state` varchar(3) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
+`user_type` varchar(16) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
+`user_state` varchar(16) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
 PRIMARY KEY (`user_id`) 
 )
 COMMENT = '用户主要信息';
@@ -30,7 +30,7 @@ CREATE TABLE `user_login_record` (
 `login_id` bigint(19) NOT NULL COMMENT '分布式id',
 `user_id` bigint(19) NOT NULL,
 `login_ip` varchar(15) NULL COMMENT '登录ip',
-`login_type` varchar(255) NULL COMMENT '是注册登录还是第三方登录',
+`login_type` varchar(16) NULL COMMENT '是注册登录还是第三方登录',
 `login_equipment` varchar(30) NULL COMMENT '登录设备',
 `login_time` timestamp(3) NOT NULL COMMENT '登录时间',
 `login_result` tinyint(1) NOT NULL COMMENT '登录结果',
