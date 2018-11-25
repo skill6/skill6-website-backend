@@ -2,8 +2,6 @@ package cn.skill6.website.dao.impl.store;
 
 import static org.junit.Assert.assertEquals;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,8 +25,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
 @SpringBootTest
 public class StoreFileDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Resource(name = "storeFileDaoOper")
-  private StoreFileDao storeFileDao;
+  @Autowired private StoreFileDao storeFileDao;
 
   @Autowired private Skill6Properties skill6Properties;
 

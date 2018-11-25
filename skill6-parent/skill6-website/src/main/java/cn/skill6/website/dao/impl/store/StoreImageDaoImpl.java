@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class StoreImageDaoOper implements StoreImageDao {
+public class StoreImageDaoImpl implements StoreImageDao {
 
   @Autowired private StoreImageMapper storeImageMapper;
 

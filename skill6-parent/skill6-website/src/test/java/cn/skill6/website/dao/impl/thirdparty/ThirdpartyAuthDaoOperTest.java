@@ -1,8 +1,7 @@
 package cn.skill6.website.dao.impl.thirdparty;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
@@ -19,8 +18,7 @@ import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
 @SpringBootTest
 public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Resource(name = "thirdpartyAuthDaoOper")
-  ThirdpartyAuthDao thirdpartyAuthDao;
+  @Autowired ThirdpartyAuthDao thirdpartyAuthDao;
 
   public void deleteByPrimaryKey() {};
 

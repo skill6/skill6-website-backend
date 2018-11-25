@@ -20,7 +20,7 @@ import cn.skill6.microservice.complex.MarkdownSvc;
  * @author liujichun
  */
 @Service
-public class MarkdownFlexmarkSvcImpl implements MarkdownSvc {
+public class MarkdownFlexmarkService implements MarkdownSvc {
 
   /** 将md转化为对应的html */
   @Override

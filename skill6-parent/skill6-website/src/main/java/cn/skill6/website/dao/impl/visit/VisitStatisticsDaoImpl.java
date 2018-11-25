@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class VisitStatisticsDaoOper implements VisitStatisticsDao {
+public class VisitStatisticsDaoImpl implements VisitStatisticsDao {
 
   @Autowired private VisitStatisticsMapper visitStatisticsMapper;
 

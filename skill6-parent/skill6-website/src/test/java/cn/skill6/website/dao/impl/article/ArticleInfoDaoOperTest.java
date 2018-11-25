@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,8 +27,7 @@ import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 @Transactional
 public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Resource(name = "articleInfoDaoOper")
-  private ArticleInfoDao articleInfoDao;
+  @Autowired private ArticleInfoDao articleInfoDao;
 
   @Autowired private ArticleInfoTo articleInfoTo;
 
@@ -82,7 +79,7 @@ public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
     articleInfo.setArticleHtmlContent("halsdfhj");
     articleInfo.setArticleMdContent("hkjhkj");
     articleInfo.setCategoryId(123L);
-    
+
     Long id = articleInfoDao.addArticleInfo(articleInfo);
     articleInfo.setArticleId(id);
     articleInfoDao.modifyByArticleId(articleInfo);

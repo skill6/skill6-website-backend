@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class ArticleCommentDaoOper implements ArticleCommentDao {
+public class ArticleCommentDaoImpl implements ArticleCommentDao {
 
   @Autowired private ArticleCommentMapper articleCommentMapper;
 

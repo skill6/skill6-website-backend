@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class FeatureDiscussAreaDaoOper implements FeatureDiscussAreaDao {
+public class FeatureDiscussAreaDaoImpl implements FeatureDiscussAreaDao {
 
   @Autowired private FeatureDiscussAreaMapper featureDiscussAreaMapper;
 

@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class SignInSvcImpl implements SignInSvc {
+public class SignInService implements SignInSvc {
 
   @Override
   public void loginByGitHub(String authCode) {

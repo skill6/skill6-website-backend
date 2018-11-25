@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class FeatureCategoryInfoDaoOper implements FeatureCategoryInfoDao {
+public class FeatureCategoryInfoDaoImpl implements FeatureCategoryInfoDao {
 
   @Autowired private FeatureCategoryInfoMapper featureCategoryInfoMapper;
 

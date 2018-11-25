@@ -1,7 +1,6 @@
 package cn.skill6.website.service.basic.feature;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -22,10 +21,9 @@ import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
  */
 @Service
 @Component
-public class FeatureCategoryInfoSvcImpl implements FeatureCategoryInfoSvc {
+public class FeatureCategoryInfoService implements FeatureCategoryInfoSvc {
 
-  @Resource(name = "featureCategoryInfoDaoOper")
-  private FeatureCategoryInfoDao featureCategoryInfoDao;
+  @Autowired private FeatureCategoryInfoDao featureCategoryInfoDao;
 
   @Override
   public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo) {

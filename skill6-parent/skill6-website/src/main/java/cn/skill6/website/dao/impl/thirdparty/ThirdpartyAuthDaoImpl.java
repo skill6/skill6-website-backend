@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class ThirdpartyAuthDaoOper implements ThirdpartyAuthDao {
+public class ThirdpartyAuthDaoImpl implements ThirdpartyAuthDao {
 
   @Autowired private ThirdpartyAuthMapper thirdpartyAuthMapper;
 

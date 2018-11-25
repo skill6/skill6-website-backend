@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class ArticleReadRecordDaoOper implements ArticleReadRecordDao {
+public class ArticleReadRecordDaoImpl implements ArticleReadRecordDao {
 
   @Autowired private ArticleReadRecordMapper articleReadRecordMapper;
 

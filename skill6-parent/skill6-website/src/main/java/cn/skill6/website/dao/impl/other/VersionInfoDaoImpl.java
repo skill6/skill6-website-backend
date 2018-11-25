@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class VersionInfoDaoOper implements VersionInfoDao {
+public class VersionInfoDaoImpl implements VersionInfoDao {
 
   @Autowired private VersionInfoMapper versionInfoMapper;
 

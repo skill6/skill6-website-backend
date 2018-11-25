@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -49,8 +47,7 @@ public class QQRealm extends Skill6Realm {
 
   @Autowired private Skill6Properties skill6Properties;
 
-  @Resource(name = "thirdpartyAuthDaoOper")
-  private ThirdpartyAuthDao thirdpartyAuthDao;
+  @Autowired private ThirdpartyAuthDao thirdpartyAuthDao;
 
   @Autowired private UserSvc userSvc;
 

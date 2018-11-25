@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class UserPrivacyInfoDaoOper implements UserPrivacyInfoDao {
+public class UserPrivacyInfoDaoImpl implements UserPrivacyInfoDao {
 
   @Autowired private UserPrivacyInfoMapper userPrivacyInfoMapper;
 

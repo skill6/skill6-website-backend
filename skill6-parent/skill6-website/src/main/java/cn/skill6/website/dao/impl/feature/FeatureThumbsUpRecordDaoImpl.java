@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class FeatureThumbsUpRecordDaoOper implements FeatureThumbsUpRecordDao {
+public class FeatureThumbsUpRecordDaoImpl implements FeatureThumbsUpRecordDao {
 
   @Autowired private FeatureThumbsUpRecordMapper featureThumbsUpRecordMapper;
 

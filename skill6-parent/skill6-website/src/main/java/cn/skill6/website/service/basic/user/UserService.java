@@ -2,9 +2,8 @@ package cn.skill6.website.service.basic.user;
 
 import java.util.Date;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
@@ -25,13 +24,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
-public class UserSvcImpl implements UserSvc {
+public class UserService implements UserSvc {
 
-  @Resource(name = "userPrivacyInfoDaoOper")
-  private UserPrivacyInfoDao userPrivacyInfoDao;
+  @Autowired private UserPrivacyInfoDao userPrivacyInfoDao;
 
-  @Resource(name = "userAdditionInfoDaoOper")
-  private UserAdditionInfoDao userAdditionInfoDao;
+  @Autowired private UserAdditionInfoDao userAdditionInfoDao;
 
   @Override
   public Long quickCreateUser(UserPrivacyInfo userPrivacyInfo) {

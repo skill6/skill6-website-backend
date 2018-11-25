@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Repository
-public class VisitRecordDaoOper implements VisitRecordDao {
+public class VisitRecordDaoImpl implements VisitRecordDao {
 
   @Autowired private VisitRecordMapper visitRecordMapper;
 

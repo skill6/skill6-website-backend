@@ -1,8 +1,7 @@
 package cn.skill6.website.dao.impl.store;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +20,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
 @SpringBootTest
 public class StoreImageDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Resource(name = "storeImageDaoOper")
-  StoreImageDao storeImageDao;
+  @Autowired StoreImageDao storeImageDao;
 
   @Test
   @Transactional
