@@ -106,11 +106,12 @@ public class QQRealm extends Skill6Realm {
     // 2.根据access_toekn获取openid
     params.clear();
     params.put(UrlRequest.PARAM_ACCESS_TOKEN, accessToken);
-    response = HttpsClient.doGet(UrlRequest.QQ_GET_TOKEN, params);
+    response = HttpsClient.doGet(UrlRequest.QQ_GET_OPENID, params);
     log.info("get openid finished, response: {}", response);
 
-    response = matchParentheses(matchParentheses(response));
+    response = matchParentheses(response);
     if (StringUtils.isEmpty(response)) {
+      log.error("match parentheses fail");
       return null;
     }
 
@@ -163,6 +164,12 @@ public class QQRealm extends Skill6Realm {
     return null;
   }
 
+  /**
+   * 正则匹配返回字符串括号里的json
+   *
+   * @param aimStr
+   * @return
+   */
   private String matchParentheses(String aimStr) {
     Pattern pattern = Pattern.compile("(?<=\\()[^\\)]+");
     Matcher matcher = pattern.matcher(aimStr);
