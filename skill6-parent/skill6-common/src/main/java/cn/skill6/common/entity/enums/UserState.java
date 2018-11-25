@@ -11,13 +11,15 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  */
 public enum UserState implements BaseEnum<Enum<UserState>, String> {
   /** 用户有效状态 */
-  VALID("100", "有效状态"),
+  VALID("valid", "有效状态"),
   /** 用户锁定状态 */
-  LOCKED("200", "锁定"),
+  LOCKED("locked", "锁定"),
   /** 用户注销状态 */
-  INVALID("300", "注销");
+  INVALID("invalid", "注销");
 
+  /** 长度不超过16 */
   private String stateCode;
+
   private String description;
 
   private UserState(String stateCode, String description) {

@@ -10,11 +10,13 @@ import cn.skill6.common.entity.enums.intf.BaseEnum;
  * @since 2018年9月2日 下午7:20:58
  */
 public enum CategoryType implements BaseEnum<Enum<CategoryType>, String> {
-  ARTICLE("100", "目录类型为文章"),
-  DISCUSS_AREA("200", "讨论区"),
-  FILE_DOWNLOAD("300", "文章下载");
+  ARTICLE("article", "目录类型为文章"),
+  DISCUSS_AREA("discuss_area", "讨论区"),
+  FILE_DOWNLOAD("file_download", "文章下载");
 
+  /** 长度不超过16 */
   private String stateCode;
+
   private String description;
 
   /**

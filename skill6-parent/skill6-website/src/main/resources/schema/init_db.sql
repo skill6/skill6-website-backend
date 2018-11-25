@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS `user_privacy_info` (
 `user_name` varchar(18) NOT NULL COMMENT '登录账号',
 `user_email` varchar(30) NULL COMMENT '邮箱',
 `user_phone` varchar(15) NULL COMMENT '手机号',
-`user_login_from` varchar(3) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
+`user_login_from` varchar(16) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
 `user_password` varchar(32) NOT NULL COMMENT 'MD5加盐加密密码',
 `user_pwd_salt` varchar(32) NOT NULL COMMENT '密码加密盐值',
-`user_type` varchar(3) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
-`user_state` varchar(3) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
+`user_type` varchar(16) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
+`user_state` varchar(16) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
 PRIMARY KEY (`user_id`) 
 )
 COMMENT = '用户主要信息';
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `user_login_record` (
 `login_id` bigint(19) NOT NULL COMMENT '分布式id',
 `user_id` bigint(19) NOT NULL,
 `login_ip` varchar(15) NULL COMMENT '登录ip',
-`login_type` varchar(255) NULL COMMENT '是注册登录还是第三方登录',
+`login_type` varchar(16) NULL COMMENT '是注册登录还是第三方登录',
 `login_equipment` varchar(30) NULL COMMENT '登录设备',
 `login_time` timestamp(3) NOT NULL COMMENT '登录时间',
 `login_result` tinyint(1) NOT NULL COMMENT '登录结果',
@@ -199,7 +199,7 @@ ROW_FORMAT = Dynamic;
 CREATE TABLE IF NOT EXISTS `feature_category_info` (
 `category_id` bigint(19) NOT NULL,
 `category_name` char(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-`category_type` varchar(3) NOT NULL COMMENT '分类类型，属于哪种文章。如文章分类、代码分类',
+`category_type` varchar(16) NOT NULL COMMENT '分类类型，属于哪种文章。如文章分类、代码分类',
 `category_create_time` timestamp(3) NOT NULL,
 `category_update_time` timestamp(3) NOT NULL,
 `category_valid` tinyint(1) NOT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `store_file` (
 `file_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 `file_url` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 `file_upload_time` timestamp(3) NOT NULL,
-`file_type` varchar(3) NOT NULL COMMENT '文件类型，doc、zip等',
+`file_type` varchar(16) NOT NULL COMMENT '文件类型，doc、zip等',
 `file_hash_code` varchar(64) NOT NULL COMMENT '哈希值，用作校验',
 `file_download_count` int(32) NOT NULL,
 PRIMARY KEY (`file_id`) 
@@ -273,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `store_image` (
 `image_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 `image_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 `image_upload_time` timestamp(3) NOT NULL,
-`image_type` varchar(3) NOT NULL COMMENT '图片类型，jpg、png等',
+`image_type` varchar(16) NOT NULL COMMENT '图片类型，jpg、png等',
 `image_hash_code` varchar(64) NOT NULL,
 `image_download_count` int(32) NOT NULL,
 PRIMARY KEY (`image_id`) 
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `visit_record` (
 `visit_id` bigint(19) NOT NULL,
 `user_id` bigint(19) NOT NULL COMMENT '访问用户id',
 `visit_content_id` bigint(19) NOT NULL COMMENT '访问内容对应id',
-`visit_content_type` varchar(3) NOT NULL COMMENT '访问内容类型',
+`visit_content_type` varchar(16) NOT NULL COMMENT '访问内容类型',
 `visit_start_time` timestamp(3) NOT NULL COMMENT '开始时间',
 `visit_end_time` timestamp(3) NOT NULL COMMENT '结果时间',
 PRIMARY KEY (`visit_id`) 

@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS `sys_user_info` (
 `user_login_from` varchar(3) NOT NULL COMMENT '首次登陆方式，是注册还是第三方',
 `user_password` varchar(32) NOT NULL COMMENT 'MD5加盐加密密码',
 `user_pwd_salt` varchar(32) NOT NULL COMMENT '密码加密盐值',
-`user_type` varchar(3) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
-`user_state` varchar(3) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
+`user_type` varchar(16) NOT NULL COMMENT '用户类型，普通用户还是管理用户',
+`user_state` varchar(16) NOT NULL COMMENT '用户状态：100正常, 200锁定, 300无效',
 PRIMARY KEY (`user_id`) 
 );
 
