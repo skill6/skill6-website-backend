@@ -30,15 +30,15 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
 
   @Override
   public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
-    String username = (String) token.getPrincipal();
-    AtomicInteger retryCount = passwordRetryCache.get(getCacheKey(username));
+    String userName = (String) token.getPrincipal();
+    AtomicInteger retryCount = passwordRetryCache.get(getCacheKey(userName));
     log.info("current retry count: " + retryCount);
 
     if (retryCount == null) {
       log.debug("retryCount 为Null, 初始化为0");
 
       retryCount = new AtomicInteger(0);
-      passwordRetryCache.put(getCacheKey(username), retryCount);
+      passwordRetryCache.put(getCacheKey(userName), retryCount);
     }
 
     // if retry count > 5 throw
@@ -50,7 +50,7 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
     boolean matches = super.doCredentialsMatch(token, info);
     if (matches) {
       // if matches, clear retry count
-      passwordRetryCache.remove(getCacheKey(username));
+      passwordRetryCache.remove(getCacheKey(userName));
     }
 
     return matches;

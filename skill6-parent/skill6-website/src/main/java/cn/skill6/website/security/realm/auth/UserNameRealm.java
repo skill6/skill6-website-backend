@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -32,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
  * 用户名+密码登录
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年10月23日 上午12:06:27
  */
 @Slf4j
@@ -64,7 +65,6 @@ public class UserNameRealm extends Skill6Realm {
     Set<String> roleNames =
         roleInfos.stream().map(RbacRoleInfo::getRoleName).collect(Collectors.toSet());
     authorizationInfo.setRoles(roleNames);
-
     log.info("获取当前所有角色：" + authorizationInfo.getRoles());
 
     // 根据用户名查询当前用户权限
@@ -90,7 +90,6 @@ public class UserNameRealm extends Skill6Realm {
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
       throws AuthenticationException {
     String userName = (String) token.getPrincipal();
-
     UserPrivacyInfo user = userPrivacyInfoDao.findUserByUserName(userName);
 
     // 没找到帐号
@@ -103,14 +102,14 @@ public class UserNameRealm extends Skill6Realm {
       throw new LockedAccountException();
     }
 
-    // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现
-    // 用户名, 密码, salt=username+salt, realm name
+    // salt=salt@username
+    SimpleByteSource saltByteSource =
+        new SimpleByteSource(StringUtils.join(user.getUserPwdSalt(), "@", user.getUserName()));
+
+    // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配. 用户名, 密码, salt, realm name
     SimpleAuthenticationInfo authenticationInfo =
         new SimpleAuthenticationInfo(
-            user.getUserName(),
-            user.getUserPassword(),
-            new SimpleByteSource(user.getUserName() + user.getUserPwdSalt()),
-            getName());
+            user.getUserName(), user.getUserPassword(), saltByteSource, getName());
 
     return authenticationInfo;
   }
