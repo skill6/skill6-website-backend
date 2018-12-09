@@ -9,14 +9,14 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 
-import cn.skill6.common.constant.RedisCacheConstants;
+import cn.skill6.common.constant.RedisCachePrefix;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 密码验证服务,带失败重试次数限制
  *
  * @author 何明胜
- * @version 1.0
+ * @version 1.1
  * @since 2018年10月24日 上午12:41:00
  */
 @Slf4j
@@ -42,7 +42,7 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
     }
 
     // if retry count > 5 throw
-    if (retryCount.incrementAndGet() > RedisCacheConstants.SHIRO_LOGIN_FAIL_MAX_COUNT) {
+    if (retryCount.incrementAndGet() > RedisCachePrefix.SHIRO_LOGIN_FAIL_MAX_COUNT) {
       log.warn("retryCount 大于5,登录失败超过5次");
       throw new ExcessiveAttemptsException();
     }
@@ -57,6 +57,6 @@ public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
   }
 
   private String getCacheKey(String key) {
-    return RedisCacheConstants.SHIRO_LOGIN_FAIL_COUNT_APP + key;
+    return RedisCachePrefix.SHIRO_LOGIN_FAIL_COUNT + key;
   }
 }

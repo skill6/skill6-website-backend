@@ -1,8 +1,9 @@
 package cn.skill6.website.cache;
 
+import org.apache.shiro.cache.AbstractCacheManager;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
-import org.apache.shiro.cache.CacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,10 +14,12 @@ import org.springframework.stereotype.Service;
  * @since 2018年10月23日 上午2:18:40
  */
 @Service
-public class ShiroRedisCacheManager implements CacheManager {
+public class ShiroRedisCacheManager extends AbstractCacheManager {
+
+  @Autowired ShiroRedisCache<?, ?> cache;
 
   @Override
-  public <K, V> Cache<K, V> getCache(String arg0) throws CacheException {
-    return null;
+  protected Cache<?, ?> createCache(String paramString) throws CacheException {
+    return cache;
   }
 }
