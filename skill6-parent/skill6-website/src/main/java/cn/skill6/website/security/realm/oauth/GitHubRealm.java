@@ -145,6 +145,6 @@ public class GitHubRealm extends Skill6Realm {
 
     thirdpartyAuthDao.addThirdpartyAuth(thirdpartyAuth);
 
-    return null;
+    return buildAuthenticationInfo(thirdpartyAuth.getUserId(), getName());
   }
 }

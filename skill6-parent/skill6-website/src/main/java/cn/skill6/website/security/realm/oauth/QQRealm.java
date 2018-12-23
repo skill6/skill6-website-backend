@@ -38,7 +38,7 @@ import lombok.extern.slf4j.Slf4j;
  * QQ登录域
  *
  * @author 何明胜
- * @version 1.1
+ * @version 1.2
  * @since 2018年11月1日 上午1:11:11
  */
 @Slf4j
@@ -158,7 +158,7 @@ public class QQRealm extends Skill6Realm {
 
     thirdpartyAuthDao.addThirdpartyAuth(thirdpartyAuth);
 
-    return null;
+    return buildAuthenticationInfo(thirdpartyAuth.getUserId(), getName());
   }
 
   /**

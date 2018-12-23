@@ -15,14 +15,14 @@ import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
  *
  * @author 何明胜
  * @author liujichun
- * @version 1.3
+ * @version 1.4
  * @since 2018年8月21日 下午11:40:08
  */
+@EnableDubbo
+@EnableScheduling
 @SpringBootApplication
 @ComponentScan("cn.skill6")
 @MapperScan(basePackages = {"cn.skill6.website.dao.mappers"})
-@EnableScheduling
-@EnableDubbo
 public class Skill6WebsiteApplication {
 
   public static void main(String[] args) {
