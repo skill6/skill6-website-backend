@@ -36,10 +36,6 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
   @Autowired ValueOperations<String, Object> operations;
 
   public String buildKey(K paramK) {
-    if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
-      throw new CacheException("paramK can't be empty");
-    }
-
     if (StringUtils.contains((CharSequence) paramK, "shiro@")) {
       return (String) paramK;
     }
@@ -49,6 +45,10 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
 
   @Override
   public V get(K paramK) throws CacheException {
+    if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
+      log.debug("paramK is empty");
+      return null;
+    }
     log.debug("redis get, paramK:{}", paramK);
 
     return (V) operations.get(this.buildKey(paramK));
@@ -56,6 +56,10 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
 
   @Override
   public V put(K paramK, V paramV) throws CacheException {
+    if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
+      log.debug("paramK is empty");
+      return null;
+    }
     log.debug("redis get, paramK:{}", paramK);
     operations.set(this.buildKey(paramK), paramV);
 
@@ -64,6 +68,10 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
 
   @Override
   public V remove(K paramK) throws CacheException {
+    if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
+      log.debug("paramK is empty");
+      return null;
+    }
     log.debug("redis get, paramK:{}", paramK);
 
     return (V) redisTemplate.delete(this.buildKey(paramK));
