@@ -20,5 +20,5 @@ public interface SignInSvc {
    *
    * @param authCode
    */
-  void loginByGitQq(String authCode);
+  void loginByQq(String authCode);
 }

@@ -27,7 +27,7 @@ public class SignInService implements SignInSvc {
   }
 
   @Override
-  public void loginByGitQq(String authCode) {
+  public void loginByQq(String authCode) {
     AccountPasswordTypeToken token = new AccountPasswordTypeToken(authCode, LoginType.QQ);
     SecurityUtils.getSubject().login(token);
     log.info("login by {} success", LoginType.QQ.getStateCode());
