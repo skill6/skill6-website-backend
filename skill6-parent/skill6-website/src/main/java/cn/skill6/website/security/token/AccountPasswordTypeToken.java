@@ -143,4 +143,11 @@ public class AccountPasswordTypeToken extends UsernamePasswordToken {
     this.loginType = loginType;
     this.authCode = authCode;
   }
+
+  public AccountPasswordTypeToken(
+      boolean rememberMe, String host, LoginType loginType, String authCode) {
+    super(null, new String(), rememberMe, host);
+    this.loginType = loginType;
+    this.authCode = authCode;
+  }
 }
