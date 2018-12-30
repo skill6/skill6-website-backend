@@ -74,6 +74,13 @@
             <div style="height: 10px"></div>
             <button type="submit" class="btn btn-primary">登录</button>
         </form>
+         <div class="row">
+         	 <div class="col-md-6" style="margin-left: 100px;">
+         		<a href="/connect/qq"><img src="../images/thirdauth/qq_login.png"></a>
+				&emsp;
+				<a href="/connect/github"><img src="../images/thirdauth/github_login.png"></a>
+			</div>
+         </div>
     </div>
 </template>
 
