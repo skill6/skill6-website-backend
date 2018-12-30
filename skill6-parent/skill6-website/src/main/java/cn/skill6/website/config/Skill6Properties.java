@@ -69,6 +69,7 @@ public class Skill6Properties {
   public static class GitHub {
     private String clientId;
     private String clientSecret;
+    private String redirectUri;
   }
 
   @Data

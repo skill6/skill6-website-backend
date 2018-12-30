@@ -79,14 +79,15 @@ skill6:
   github:
     client_id: gsasga241124
     client_secret: 1325dfd235dfs
+    redirect_uri: https://127.0.0.1:8081/login/github
   qq:
     client_id: 123
     client_secret: 123
-    redirect_uri: http://127.0.0.1/login/qq
-    scope: get_user_info
-    status: 124125
+    redirect_uri: http://127.0.0.1:8081/login/qq
+    scope: get_user_info,do_like
+    state: skill-qq-login-test
 shiro:
-  loginUrl: /login
-  successUrl: /index
+  loginUrl: /login/**
+  successUrl: /
   unauthorizedUrl: /unauthorized
   config-path: classpath:config/shiro-urls.ini
