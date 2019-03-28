@@ -3,7 +3,11 @@ package cn.skill6.website.config;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.Filter;
 
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
@@ -25,12 +29,14 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 import cn.skill6.website.security.credentials.RetryLimitCredentialsMatcher;
+import cn.skill6.website.security.filter.Skill6AuthenticationFilter;
 import cn.skill6.website.security.realm.auth.EmailRealm;
 import cn.skill6.website.security.realm.auth.PhoneRealm;
 import cn.skill6.website.security.realm.auth.UserNameRealm;
@@ -38,6 +44,7 @@ import cn.skill6.website.security.realm.oauth.GitHubRealm;
 import cn.skill6.website.security.realm.oauth.GoogleRealm;
 import cn.skill6.website.security.realm.oauth.QQRealm;
 import cn.skill6.website.security.realm.oauth.WeChatRealm;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -52,9 +59,9 @@ import lombok.extern.slf4j.Slf4j;
 @ConfigurationProperties(prefix = "shiro")
 public class ShiroConfiguration {
 
-  private String loginUrl;
-  private String successUrl;
-  private String unauthorizedUrl;
+  @Setter private String loginUrl;
+  @Setter private String successUrl;
+  @Setter private String unauthorizedUrl;
 
   /** shiro配置文件位置 */
   private String configPath = "classpath:config/shiro-urls.ini";
@@ -72,6 +79,8 @@ public class ShiroConfiguration {
   @Autowired GitHubRealm gitHubRealm;
   @Autowired GoogleRealm googleRealm;
   @Autowired WeChatRealm weChatRealm;
+
+  @Autowired Skill6AuthenticationFilter skill6AuthenticationFilter;
 
   /** 密码匹配器 */
   @Bean
@@ -158,6 +167,20 @@ public class ShiroConfiguration {
     return securityManager;
   }
 
+  /**
+   * 注入安全管理
+   *
+   * @param securityManager 安全管理器
+   */
+  @Bean
+  public MethodInvokingFactoryBean methodInvokingFactoryBean(SecurityManager securityManager) {
+    MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();
+    methodInvokingFactoryBean.setStaticMethod("org.apache.shiro.SecurityUtils.setSecurityManager");
+    methodInvokingFactoryBean.setArguments(securityManager);
+
+    return methodInvokingFactoryBean;
+  }
+
   @Bean
   public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -166,6 +189,13 @@ public class ShiroConfiguration {
     shiroFilterFactoryBean.setLoginUrl(loginUrl);
     shiroFilterFactoryBean.setSuccessUrl(successUrl);
     shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
+
+    // 设置过滤器
+    Map<String, Filter> filters = new HashMap<String, Filter>(3);
+    filters.put("authc", skill6AuthenticationFilter);
+    // filters.put("perms", value);
+    // .put("logout", logoutUrl);
+    shiroFilterFactoryBean.setFilters(filters);
 
     setFilterChainDefinitionsLocation(shiroFilterFactoryBean);
 

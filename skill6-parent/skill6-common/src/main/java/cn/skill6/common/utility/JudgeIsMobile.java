@@ -4,12 +4,11 @@ package cn.skill6.common.utility;
  * 判断是否是手机
  *
  * @author 何明胜
- * @version 1.2
+ * @version 1.3
  * @since 2018年2月28日 下午12:09:16
  */
 public class JudgeIsMobile {
   public static boolean isMobile(String userAgent) {
-    boolean isMoblie = false;
     String[] mobileAgents = {
       "iphone",
       "android",
@@ -165,15 +164,16 @@ public class JudgeIsMobile {
       "Googlebot-Mobile"
     };
 
-    if (userAgent != null) {
-      for (String mobileAgent : mobileAgents) {
-        if (userAgent.toLowerCase().indexOf(mobileAgent) >= 0) {
-          isMoblie = true;
-          break;
-        }
+    if (userAgent == null) {
+      return false;
+    }
+
+    for (String mobileAgent : mobileAgents) {
+      if (userAgent.toLowerCase().indexOf(mobileAgent) >= 0) {
+        return true;
       }
     }
 
-    return isMoblie;
+    return false;
   }
 }
