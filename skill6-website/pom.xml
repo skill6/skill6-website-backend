@@ -10,12 +10,13 @@
 	</parent>
 
 	<artifactId>skill6-website</artifactId>
+	<name>skill6-website</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
