@@ -64,4 +64,4 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 
 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=99c42a4588c5a2b014532eece12401a69e83961da32b6ce24d333a5fe486250b">点击加入QQ群</a>
 
-<img src="docs/images/skill-qq.png" width=30%>
+![image](https://github.com/skill6/skill6-parent/blob/master/docs/images/skill-qq.png)
