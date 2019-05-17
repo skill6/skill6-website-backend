@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.visit.VisitRecordMapper">
+	<resultMap id="BaseResultMap" type="VisitRecord">
+		<constructor>
+			<idArg column="visit_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="visit_content_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="visit_content_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<arg column="visit_start_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="visit_end_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from visit_record
+		where visit_id = #{visitId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="VisitRecord">
+		insert into visit_record (visit_id, user_id, visit_content_id,
+		visit_content_type, visit_start_time, visit_end_time
+		)
+		values (#{visitId,jdbcType=BIGINT},
+		#{userId,jdbcType=BIGINT}, #{visitContentId,jdbcType=BIGINT},
+		#{visitContentType,jdbcType=VARCHAR}, #{visitStartTime,jdbcType=TIMESTAMP}, #{visitEndTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="VisitRecord">
+		update visit_record
+		set user_id = #{userId,jdbcType=BIGINT},
+		visit_content_id = #{visitContentId,jdbcType=BIGINT},
+		visit_content_type =
+		#{visitContentType,jdbcType=VARCHAR},
+		visit_start_time = #{visitStartTime,jdbcType=TIMESTAMP},
+		visit_end_time = #{visitEndTime,jdbcType=TIMESTAMP}
+		where visit_id = #{visitId,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select visit_id, user_id, visit_content_id, visit_content_type, visit_start_time,
+		visit_end_time
+		from visit_record
+		where
+		visit_id = #{visitId,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select visit_id, user_id, visit_content_id, visit_content_type, visit_start_time,
+		visit_end_time
+		from visit_record
+	</select>
+</mapper>

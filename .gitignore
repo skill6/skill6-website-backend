@@ -1,0 +1,65 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+config.txt
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# build files
+build
+target
+
+# jrebel
+rebel.xml
+
+# project files
+.settings
+.project
+.classpath
+.factorypath
+.springBeans
+
+# log file
+logs
+
+# test file
+result.conf
+
+#backup file
+pom.xml.versionsBackup
+
+#secret file
+skill6-website/src/main/resources/config/application.properties
+skill6-dashboard/src/main/resources/config/application.properties
+skill6-website/src/main/resources/generator/generator-mysql.properties
+
+#build file
+/**/resources/static/
+.vscode
+
+#store file
+/*/file/
+/*/image/
+
+## self
+##.gitignore

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.article.ArticleCommentMapper">
+	<resultMap id="BaseResultMap" type="ArticleComment">
+		<constructor>
+			<idArg column="comment_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="comment_parent_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+			<arg column="comment_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+			<arg column="comment_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
+			<arg column="comment_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+		</constructor>
+	</resultMap>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from article_comment
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="ArticleComment">
+		insert into article_comment (comment_id, article_id, user_id,
+		comment_parent_id, comment_time, comment_valid,
+		comment_content)
+		values
+		(#{commentId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+		#{commentParentId,jdbcType=BIGINT}, #{commentTime,jdbcType=TIMESTAMP}, #{commentValid,jdbcType=BIT},
+		#{commentContent,jdbcType=LONGVARCHAR})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="ArticleComment">
+		update article_comment
+		set article_id = #{articleId,jdbcType=BIGINT},
+		user_id = #{userId,jdbcType=BIGINT},
+		comment_parent_id =
+		#{commentParentId,jdbcType=BIGINT},
+		comment_time = #{commentTime,jdbcType=TIMESTAMP},
+		comment_valid = #{commentValid,jdbcType=BIT},
+		comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+		where
+		comment_id = #{commentId,jdbcType=BIGINT}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select comment_id, article_id, user_id, comment_parent_id, comment_time, comment_valid,
+		comment_content
+		from
+		article_comment
+		where comment_id = #{commentId,jdbcType=BIGINT}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select comment_id, article_id, user_id, comment_parent_id, comment_time, comment_valid,
+		comment_content
+		from article_comment
+	</select>
+</mapper>
