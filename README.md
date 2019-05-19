@@ -6,7 +6,7 @@
 
 ### 1、架构设计
 
-![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
+![image](https://github.com/skill6/skill6-parent/blob/master/docs/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/skill6%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
 
 ------------
 
@@ -45,7 +45,7 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 
 ### 3、数据库设计
 
-![image](https://github.com/CrazyHusen/skill6/blob/master/docs/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%9B%BE.jpg)
+![image](https://github.com/skill6/skill6-parent/blob/master/docs/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E5%9B%BE.jpg)
 
 **补充说明**
 1. 目前已设计上述15个表，其中category_info表数据量较小，所以设计包含文章分类、代码分类等所有分类，通过type字段区别；
@@ -62,8 +62,6 @@ Nginx | 负载均衡  | [http://nginx.org/](http://nginx.org/)
 ----
 ### 4、沟通交流
 
-#### QQ群
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=99c42a4588c5a2b014532eece12401a69e83961da32b6ce24d333a5fe486250b">点击加入QQ群</a>
 
-群号: 628612966 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0fb612b44f55c807d55813ab1dd1dd469954c438890b628bc4fe26cb3aaa2d9d">单击加群</a>
-
-<img src="docs/image/qqgroup.jpeg" width=30%>
+![image](https://github.com/skill6/skill6-parent/blob/master/docs/images/skill-qq.png)
