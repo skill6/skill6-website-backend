@@ -60,7 +60,7 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
       log.debug("paramK is empty");
       return null;
     }
-    log.debug("redis get, paramK:{}", paramK);
+    log.debug("redis put, paramK:{}", paramK);
     operations.set(this.buildKey(paramK), paramV);
 
     return paramV;
@@ -72,7 +72,7 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
       log.debug("paramK is empty");
       return null;
     }
-    log.debug("redis get, paramK:{}", paramK);
+    log.debug("redis remove, paramK:{}", paramK);
 
     return (V) redisTemplate.delete(this.buildKey(paramK));
   }
