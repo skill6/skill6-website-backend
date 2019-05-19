@@ -19,7 +19,7 @@ public class RedisConfiguration {
   /**
    * redisTemplate 序列化使用的jdkSerializeable, 存储二进制字节码, 自定义序列化类使用jackson
    *
-   * @param redisConnectionFactory factory
+   * @param factory factory
    * @return redisTemplate
    */
   @Bean

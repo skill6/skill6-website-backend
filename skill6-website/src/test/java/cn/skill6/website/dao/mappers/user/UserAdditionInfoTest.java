@@ -42,6 +42,7 @@ public class UserAdditionInfoTest extends Skill6WebsiteApplicationTest {
     userAdditionInfo.setUserId(id);
     userAdditionInfo.setUserNickName("jliu666");
     userAdditionInfo.setUserRegisterTime(new Date());
+    userAdditionInfo.setUserLastLoginTime(new Date());
     log.info("{}", userAdditionInfoMapper.insert(userAdditionInfo));
   }
 

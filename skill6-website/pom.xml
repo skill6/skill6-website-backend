@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>cn.skill6</groupId>
 			<artifactId>skill6-common</artifactId>
-			<version>0.0.5-SNAPSHOT</version>
+			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>

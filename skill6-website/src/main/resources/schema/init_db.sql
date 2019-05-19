@@ -338,7 +338,7 @@ PRIMARY KEY (`version_id`)
 /* 第三方授权  */
 
 CREATE TABLE IF NOT EXISTS `thirdparty_auth` (
-`thirdparty_id` bigint(19) NULL COMMENT '主键分布式id',
+`thirdparty_id` bigint(19) NOT NULL COMMENT '主键分布式id',
 `user_id` bigint(19) NULL COMMENT '用户id',
 `thirdparty_primary_key` varchar(36) NULL COMMENT '第三方返回的数据中选择选择一个作为主键',
 `thirdparty_data` text NULL COMMENT '第三方返回的所有数据',
