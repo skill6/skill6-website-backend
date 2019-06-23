@@ -24,7 +24,7 @@ spring:
     url: ${SKILL6_MYSQL_URL}
     druid:
       name: skill6-mysql-01
-    schema: classpath*:schema/init_db.sql
+    schema: classpath*:schema/*.sql
     initialization-mode: always
   redis:
     host: ${SKILL6_REDIS_HOST}
