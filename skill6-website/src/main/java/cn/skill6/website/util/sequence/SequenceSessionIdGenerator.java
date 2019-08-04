@@ -15,10 +15,10 @@ import java.io.Serializable;
  */
 @Component
 public class SequenceSessionIdGenerator implements SessionIdGenerator {
-  @Override
-  public Serializable generateId(Session session) {
-    String sequenceId = SequenceManager.getNextIdStr();
+    @Override
+    public Serializable generateId(Session session) {
+        String sequenceId = SequenceManager.getNextIdStr();
 
-    return sequenceId;
-  }
+        return sequenceId;
+    }
 }

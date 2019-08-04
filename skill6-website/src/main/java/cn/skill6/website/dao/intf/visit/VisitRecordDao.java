@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.visit;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.visit.VisitRecord;
+
+import java.util.List;
 
 /**
  * 访问记录操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.visit.VisitRecord;
  * @since 2018年8月24日 上午12:31:23
  */
 public interface VisitRecordDao {
-  int deleteByVisitId(Long visitId);
+    int deleteByVisitId(Long visitId);
 
-  void addVisitRecord(VisitRecord visitRecord);
+    void addVisitRecord(VisitRecord visitRecord);
 
-  VisitRecord findByVisitId(Long visitId);
+    VisitRecord findByVisitId(Long visitId);
 
-  List<VisitRecord> findAll();
+    List<VisitRecord> findAll();
 
-  void modifyByVisitId(VisitRecord visitRecord);
+    void modifyByVisitId(VisitRecord visitRecord);
 }

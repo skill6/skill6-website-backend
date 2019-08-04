@@ -1,7 +1,7 @@
 package cn.skill6.website.security.credentials;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+import cn.skill6.common.constant.RedisCachePrefix;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -9,8 +9,7 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 
-import cn.skill6.common.constant.RedisCachePrefix;
-import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 密码验证服务,带失败重试次数限制
@@ -21,42 +20,44 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class RetryLimitCredentialsMatcher extends HashedCredentialsMatcher {
-  /** 密码失败次数缓存 */
-  private Cache<String, AtomicInteger> passwordRetryCache;
+    /**
+     * 密码失败次数缓存
+     */
+    private Cache<String, AtomicInteger> passwordRetryCache;
 
-  public RetryLimitCredentialsMatcher(CacheManager cacheManager) {
-    passwordRetryCache = cacheManager.getCache("passwordRetryCache");
-  }
-
-  @Override
-  public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
-    String userName = (String) token.getPrincipal();
-    AtomicInteger retryCount = passwordRetryCache.get(getCacheKey(userName));
-    log.info("current retry count: " + retryCount);
-
-    if (retryCount == null) {
-      log.debug("retryCount 为Null, 初始化为0");
-
-      retryCount = new AtomicInteger(0);
-      passwordRetryCache.put(getCacheKey(userName), retryCount);
+    public RetryLimitCredentialsMatcher(CacheManager cacheManager) {
+        passwordRetryCache = cacheManager.getCache("passwordRetryCache");
     }
 
-    // if retry count > 5 throw
-    if (retryCount.incrementAndGet() > RedisCachePrefix.SHIRO_LOGIN_FAIL_MAX_COUNT) {
-      log.warn("retryCount 大于5,登录失败超过5次");
-      throw new ExcessiveAttemptsException();
+    @Override
+    public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
+        String userName = (String) token.getPrincipal();
+        AtomicInteger retryCount = passwordRetryCache.get(getCacheKey(userName));
+        log.info("current retry count: " + retryCount);
+
+        if (retryCount == null) {
+            log.debug("retryCount 为Null, 初始化为0");
+
+            retryCount = new AtomicInteger(0);
+            passwordRetryCache.put(getCacheKey(userName), retryCount);
+        }
+
+        // if retry count > 5 throw
+        if (retryCount.incrementAndGet() > RedisCachePrefix.SHIRO_LOGIN_FAIL_MAX_COUNT) {
+            log.warn("retryCount 大于5,登录失败超过5次");
+            throw new ExcessiveAttemptsException();
+        }
+
+        boolean matches = super.doCredentialsMatch(token, info);
+        if (matches) {
+            // if matches, clear retry count
+            passwordRetryCache.remove(getCacheKey(userName));
+        }
+
+        return matches;
     }
 
-    boolean matches = super.doCredentialsMatch(token, info);
-    if (matches) {
-      // if matches, clear retry count
-      passwordRetryCache.remove(getCacheKey(userName));
+    private String getCacheKey(String key) {
+        return RedisCachePrefix.SHIRO_LOGIN_FAIL_COUNT + key;
     }
-
-    return matches;
-  }
-
-  private String getCacheKey(String key) {
-    return RedisCachePrefix.SHIRO_LOGIN_FAIL_COUNT + key;
-  }
 }

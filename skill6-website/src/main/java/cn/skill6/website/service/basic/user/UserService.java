@@ -1,11 +1,5 @@
 package cn.skill6.website.service.basic.user;
 
-import java.util.Date;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
 import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import cn.skill6.common.utility.DateFormat;
@@ -14,6 +8,11 @@ import cn.skill6.website.dao.intf.user.UserAdditionInfoDao;
 import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * 用户服务实现
@@ -26,32 +25,34 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class UserService implements UserSvc {
 
-  @Autowired private UserPrivacyInfoDao userPrivacyInfoDao;
+    @Autowired
+    private UserPrivacyInfoDao userPrivacyInfoDao;
 
-  @Autowired private UserAdditionInfoDao userAdditionInfoDao;
+    @Autowired
+    private UserAdditionInfoDao userAdditionInfoDao;
 
-  @Override
-  public Long quickCreateUser(UserPrivacyInfo userPrivacyInfo) {
-    Long userId = SequenceManager.getNextId();
-    userPrivacyInfo.setUserId(userId);
-    userPrivacyInfo.setUserName(createUserName());
-    userPrivacyInfo.setUserPassword("password");
-    userPrivacyInfo.setUserPwdSalt("salt");
-    userPrivacyInfo.setUserType("100");
+    @Override
+    public Long quickCreateUser(UserPrivacyInfo userPrivacyInfo) {
+        Long userId = SequenceManager.getNextId();
+        userPrivacyInfo.setUserId(userId);
+        userPrivacyInfo.setUserName(createUserName());
+        userPrivacyInfo.setUserPassword("password");
+        userPrivacyInfo.setUserPwdSalt("salt");
+        userPrivacyInfo.setUserType("100");
 
-    userPrivacyInfoDao.addUserPrivacyInfo(userPrivacyInfo);
+        userPrivacyInfoDao.addUserPrivacyInfo(userPrivacyInfo);
 
-    UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
-    userAdditionInfo.setUserId(userId);
-    userAdditionInfo.setUserLastLoginTime(new Date());
+        UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
+        userAdditionInfo.setUserId(userId);
+        userAdditionInfo.setUserLastLoginTime(new Date());
 
-    userAdditionInfoDao.addUserAdditionInfo(userAdditionInfo);
-    log.info("quickCreateUser, userAdditionInfo: {}", userAdditionInfo);
+        userAdditionInfoDao.addUserAdditionInfo(userAdditionInfo);
+        log.info("quickCreateUser, userAdditionInfo: {}", userAdditionInfo);
 
-    return userId;
-  }
+        return userId;
+    }
 
-  private String createUserName() {
-    return StringUtils.join("用户", DateFormat.dateNumberFormat(), DateFormat.secondsTodayTotal());
-  }
+    private String createUserName() {
+        return StringUtils.join("用户", DateFormat.dateNumberFormat(), DateFormat.secondsTodayTotal());
+    }
 }

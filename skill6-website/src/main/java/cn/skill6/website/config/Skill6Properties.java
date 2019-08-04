@@ -17,67 +17,85 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "skill6")
 public class Skill6Properties {
 
-  /** 图片存储路径 */
-  private String imagePath = "image/";
+    /**
+     * 图片存储路径
+     */
+    private String imagePath = "image/";
 
-  /** 文件存储路径 */
-  private String filePath = "file/";
+    /**
+     * 文件存储路径
+     */
+    private String filePath = "file/";
 
-  /** 分布式id相关配置 */
-  private Sequence sequence;
+    /**
+     * 分布式id相关配置
+     */
+    private Sequence sequence;
 
-  private Recaptcha recaptcha;
+    private Recaptcha recaptcha;
 
-  /** github授权配置 */
-  private GitHub gitHub;
+    /**
+     * github授权配置
+     */
+    private GitHub gitHub;
 
-  /** QQ授权配置 */
-  private QQ qq;
-
-  @Data
-  public static class Recaptcha {
-    /** Google reCaptcha私钥 */
-    private String secretKey;
-
-    /** Google reCaptcha验证URL */
-    private String verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
-  }
-
-  @Data
-  public static class Sequence {
-
-    private Worker worker;
-
-    private DataCenter dataCenter;
+    /**
+     * QQ授权配置
+     */
+    private QQ qq;
 
     @Data
-    public static class Worker {
+    public static class Recaptcha {
+        /**
+         * Google reCaptcha私钥
+         */
+        private String secretKey;
 
-      /** 工作节点id */
-      private String id = "0";
+        /**
+         * Google reCaptcha验证URL
+         */
+        private String verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     }
 
     @Data
-    public static class DataCenter {
+    public static class Sequence {
 
-      /** 数据中心节点id */
-      private String id = "0";
+        private Worker worker;
+
+        private DataCenter dataCenter;
+
+        @Data
+        public static class Worker {
+
+            /**
+             * 工作节点id
+             */
+            private String id = "0";
+        }
+
+        @Data
+        public static class DataCenter {
+
+            /**
+             * 数据中心节点id
+             */
+            private String id = "0";
+        }
     }
-  }
 
-  @Data
-  public static class GitHub {
-    private String clientId;
-    private String clientSecret;
-    private String redirectUri;
-  }
+    @Data
+    public static class GitHub {
+        private String clientId;
+        private String clientSecret;
+        private String redirectUri;
+    }
 
-  @Data
-  public static class QQ {
-    private String clientId;
-    private String clientSecret;
-    private String redirectUri;
-    private String scope;
-    private String state;
-  }
+    @Data
+    public static class QQ {
+        private String clientId;
+        private String clientSecret;
+        private String redirectUri;
+        private String scope;
+        private String state;
+    }
 }

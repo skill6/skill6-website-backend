@@ -16,10 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShiroRedisCacheManager extends AbstractCacheManager {
 
-  @Autowired ShiroRedisCache<?, ?> cache;
+    @Autowired
+    ShiroRedisCache<?, ?> cache;
 
-  @Override
-  protected Cache<?, ?> createCache(String paramString) throws CacheException {
-    return cache;
-  }
+    @Override
+    protected Cache<?, ?> createCache(String paramString) throws CacheException {
+        return cache;
+    }
 }

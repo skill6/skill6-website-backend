@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.feature;
 
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年8月15日 下午11:39:53
  */
 public interface FeatureCategoryInfoMapper {
-  int deleteByPrimaryKey(Long categoryId);
+    int deleteByPrimaryKey(Long categoryId);
 
-  int insert(FeatureCategoryInfo featureCategoryInfo);
+    int insert(FeatureCategoryInfo featureCategoryInfo);
 
-  FeatureCategoryInfo selectByPrimaryKey(Long categoryId);
+    FeatureCategoryInfo selectByPrimaryKey(Long categoryId);
 
-  List<FeatureCategoryInfo> selectAll();
+    List<FeatureCategoryInfo> selectAll();
 
-  int updateByPrimaryKey(FeatureCategoryInfo featureCategoryInfo);
+    int updateByPrimaryKey(FeatureCategoryInfo featureCategoryInfo);
 }

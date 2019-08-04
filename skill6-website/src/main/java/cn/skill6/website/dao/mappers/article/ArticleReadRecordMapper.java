@@ -1,9 +1,10 @@
 package cn.skill6.website.dao.mappers.article;
 
 import cn.skill6.common.entity.po.article.ArticleReadRecord;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.Date;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 文章阅读记录mapper
@@ -13,15 +14,15 @@ import org.apache.ibatis.annotations.Param;
  * @since 2018年8月15日 下午11:39:38
  */
 public interface ArticleReadRecordMapper {
-  int deleteByPrimaryKey(
-      @Param("articleId") Long articleId, @Param("articleDateDaily") Date articleDateDaily);
+    int deleteByPrimaryKey(
+            @Param("articleId") Long articleId, @Param("articleDateDaily") Date articleDateDaily);
 
-  int insert(ArticleReadRecord articleReadRecord);
+    int insert(ArticleReadRecord articleReadRecord);
 
-  ArticleReadRecord selectByPrimaryKey(
-      @Param("articleId") Long articleId, @Param("articleDateDaily") Date articleDateDaily);
+    ArticleReadRecord selectByPrimaryKey(
+            @Param("articleId") Long articleId, @Param("articleDateDaily") Date articleDateDaily);
 
-  List<ArticleReadRecord> selectAll();
+    List<ArticleReadRecord> selectAll();
 
-  int updateByPrimaryKey(ArticleReadRecord articleReadRecord);
+    int updateByPrimaryKey(ArticleReadRecord articleReadRecord);
 }

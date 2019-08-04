@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.rbac;
 
 import cn.skill6.common.entity.po.rbac.RbacSession;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年9月24日 上午2:44:59
  */
 public interface RbacSessionMapper {
-  int deleteByPrimaryKey(Long sessionId);
+    int deleteByPrimaryKey(Long sessionId);
 
-  int insert(RbacSession rbacSession);
+    int insert(RbacSession rbacSession);
 
-  RbacSession selectByPrimaryKey(Long sessionId);
+    RbacSession selectByPrimaryKey(Long sessionId);
 
-  List<RbacSession> selectAll();
+    List<RbacSession> selectAll();
 
-  int updateByPrimaryKey(RbacSession rbacSession);
+    int updateByPrimaryKey(RbacSession rbacSession);
 }

@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.mappers.article;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.article.ArticleInfo;
+
+import java.util.List;
 
 /**
  * 文章信息mapper
@@ -12,15 +12,15 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
  * @since 2018年8月15日 下午11:39:27
  */
 public interface ArticleInfoMapper {
-  int deleteByPrimaryKey(Long articleId);
+    int deleteByPrimaryKey(Long articleId);
 
-  int insert(ArticleInfo articleInfo);
+    int insert(ArticleInfo articleInfo);
 
-  ArticleInfo selectByPrimaryKey(Long articleId);
+    ArticleInfo selectByPrimaryKey(Long articleId);
 
-  List<ArticleInfo> selectAll();
+    List<ArticleInfo> selectAll();
 
-  int updateByPrimaryKey(ArticleInfo articleInfo);
-  
-  List<ArticleInfo> selectByParams(ArticleInfo articleInfo);
+    int updateByPrimaryKey(ArticleInfo articleInfo);
+
+    List<ArticleInfo> selectByParams(ArticleInfo articleInfo);
 }

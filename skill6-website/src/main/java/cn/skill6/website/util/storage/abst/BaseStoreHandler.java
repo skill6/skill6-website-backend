@@ -1,28 +1,21 @@
 package cn.skill6.website.util.storage.abst;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
 import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.common.exception.general.ParamsException;
 import cn.skill6.website.util.sequence.SequenceManager;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 
 /**
  * 文件存储基类
@@ -32,101 +25,103 @@ import cn.skill6.website.util.sequence.SequenceManager;
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
-  public void storeFile(InputStream inputStream, String storePath) throws IOException {
-    FileOutputStream out = new FileOutputStream(storePath);
-    byte buffer[] = new byte[1024];
-    int length = 0;
+    public void storeFile(InputStream inputStream, String storePath) throws IOException {
+        FileOutputStream out = new FileOutputStream(storePath);
+        byte buffer[] = new byte[1024];
+        int length = 0;
 
-    while ((length = inputStream.read(buffer)) > 0) {
-      out.write(buffer, 0, length);
+        while ((length = inputStream.read(buffer)) > 0) {
+            out.write(buffer, 0, length);
+        }
+
+        inputStream.close();
+        out.close();
     }
 
-    inputStream.close();
-    out.close();
-  }
+    public void readFile(HttpServletResponse response, String fileUrl, String fileName)
+            throws IOException {
+        File file = new File(fileUrl);
+        if (!file.exists()) {
+            throw new FileNotFoundException("文件未找到");
+        }
 
-  public void readFile(HttpServletResponse response, String fileUrl, String fileName)
-      throws IOException {
-    File file = new File(fileUrl);
-    if (!file.exists()) {
-      throw new FileNotFoundException("文件未找到");
+        // 解决文件空格变加号问题
+        String fileNameShow = URLEncoder.encode(fileName, "UTF-8");
+        fileNameShow = StringUtils.replace(fileNameShow, "+", "%20");
+
+        response.setContentType("application/x-msdownload");
+        response.setCharacterEncoding("UTF-8");
+        // 设置响应头，控制浏览器下载该文件
+        response.setHeader("content-disposition", "attachment;filename=" + fileNameShow);
+
+        // 读取要下载的文件，保存到文件输入流
+        FileInputStream in = new FileInputStream(fileUrl);
+        // 创建缓冲区
+        byte buffer[] = new byte[1024];
+        int len = 0;
+        OutputStream outputStream = response.getOutputStream();
+        // 循环将输入流中的内容读取到缓冲区当中
+        while ((len = in.read(buffer)) > 0) {
+            // 输出缓冲区的内容到浏览器，实现文件下载
+            outputStream.write(buffer, 0, len);
+        }
+
+        in.close();
+        outputStream.close();
     }
 
-    // 解决文件空格变加号问题
-    String fileNameShow = URLEncoder.encode(fileName, "UTF-8");
-    fileNameShow = StringUtils.replace(fileNameShow, "+", "%20");
+    public MultipartHttpServletRequest parseRequest(HttpServletRequest request)
+            throws FileUploadException {
+        // 将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
+        ServletContext servletContext = request.getSession().getServletContext();
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(servletContext);
 
-    response.setContentType("application/x-msdownload");
-    response.setCharacterEncoding("UTF-8");
-    // 设置响应头，控制浏览器下载该文件
-    response.setHeader("content-disposition", "attachment;filename=" + fileNameShow);
+        // 检查form中是否有enctype="multipart/form-data"
+        if (!multipartResolver.isMultipart(request)) {
+            throw new ParamsException("上传中不含有文件！");
+        }
 
-    // 读取要下载的文件，保存到文件输入流
-    FileInputStream in = new FileInputStream(fileUrl);
-    // 创建缓冲区
-    byte buffer[] = new byte[1024];
-    int len = 0;
-    OutputStream outputStream = response.getOutputStream();
-    // 循环将输入流中的内容读取到缓冲区当中
-    while ((len = in.read(buffer)) > 0) {
-      // 输出缓冲区的内容到浏览器，实现文件下载
-      outputStream.write(buffer, 0, len);
+        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+        return multiRequest;
     }
 
-    in.close();
-    outputStream.close();
-  }
+    public String isFileExist(String parentFilePath, String suffix) {
+        String fileId;
 
-  public MultipartHttpServletRequest parseRequest(HttpServletRequest request)
-      throws FileUploadException {
-    // 将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
-    ServletContext servletContext = request.getSession().getServletContext();
-    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(servletContext);
+        // 判断文件是否已经存在
+        while (true) {
+            fileId = SequenceManager.getNextIdStr();
+            String fileName = parentFilePath + "/" + fileId + "." + suffix;
+            File tempFile = new File(fileName);
 
-    // 检查form中是否有enctype="multipart/form-data"
-    if (!multipartResolver.isMultipart(request)) {
-      throw new ParamsException("上传中不含有文件！");
+            if (!tempFile.exists()) {
+                return fileId;
+            }
+        }
     }
 
-    MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-    return multiRequest;
-  }
+    /**
+     * @return 文件后缀
+     */
+    public String getFileSuffix(String fileName) {
+        if (BaseUtils.isEmpty(fileName)) {
+            throw new NullPointerException("文件名称为null");
+        }
 
-  public String isFileExist(String parentFilePath, String suffix) {
-    String fileId;
+        // 增加对.tar.gz等的判断
+        ArrayList<String> specialSuffix = new ArrayList<>(1);
+        specialSuffix.add("tar.gz");
+        specialSuffix.add("tar.bz2");
 
-    // 判断文件是否已经存在
-    while (true) {
-      fileId = SequenceManager.getNextIdStr();
-      String fileName = parentFilePath + "/" + fileId + "." + suffix;
-      File tempFile = new File(fileName);
+        for (String sSuffix : specialSuffix) {
+            if (fileName.indexOf(sSuffix) != -1) {
+                return sSuffix;
+            }
+        }
 
-      if (!tempFile.exists()) {
-        return fileId;
-      }
+        int index = fileName.lastIndexOf(".");
+        String suffix = fileName.substring(index + 1);
+
+        return suffix;
     }
-  }
-
-  /** @return 文件后缀 */
-  public String getFileSuffix(String fileName) {
-    if (BaseUtils.isEmpty(fileName)) {
-      throw new NullPointerException("文件名称为null");
-    }
-
-    // 增加对.tar.gz等的判断
-    ArrayList<String> specialSuffix = new ArrayList<>(1);
-    specialSuffix.add("tar.gz");
-    specialSuffix.add("tar.bz2");
-
-    for (String sSuffix : specialSuffix) {
-      if (fileName.indexOf(sSuffix) != -1) {
-        return sSuffix;
-      }
-    }
-
-    int index = fileName.lastIndexOf(".");
-    String suffix = fileName.substring(index + 1);
-
-    return suffix;
-  }
 }

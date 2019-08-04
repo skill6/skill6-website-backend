@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.other;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.other.VersionInfo;
+
+import java.util.List;
 
 /**
  * 版本信息操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.other.VersionInfo;
  * @since 2018年8月24日 上午12:31:10
  */
 public interface VersionInfoDao {
-  int deleteByVersionId(Long versionId);
+    int deleteByVersionId(Long versionId);
 
-  void addVersionInfo(VersionInfo versionInfo);
+    void addVersionInfo(VersionInfo versionInfo);
 
-  VersionInfo findByVersionId(Long versionId);
+    VersionInfo findByVersionId(Long versionId);
 
-  List<VersionInfo> findAll();
+    List<VersionInfo> findAll();
 
-  void modifyByVersionId(VersionInfo versionInfo);
+    void modifyByVersionId(VersionInfo versionInfo);
 }

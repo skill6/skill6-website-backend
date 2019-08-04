@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.other;
 
 import cn.skill6.common.entity.po.other.VersionInfo;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年8月15日 下午11:41:56
  */
 public interface VersionInfoMapper {
-  int deleteByPrimaryKey(Long versionId);
+    int deleteByPrimaryKey(Long versionId);
 
-  int insert(VersionInfo versionInfo);
+    int insert(VersionInfo versionInfo);
 
-  VersionInfo selectByPrimaryKey(Long versionId);
+    VersionInfo selectByPrimaryKey(Long versionId);
 
-  List<VersionInfo> selectAll();
+    List<VersionInfo> selectAll();
 
-  int updateByPrimaryKey(VersionInfo versionInfo);
+    int updateByPrimaryKey(VersionInfo versionInfo);
 }

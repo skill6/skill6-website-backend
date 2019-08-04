@@ -1,17 +1,5 @@
 package cn.skill6.website.service.basic.store;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import cn.skill6.common.entity.po.store.StoreImage;
 import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
@@ -21,6 +9,16 @@ import cn.skill6.microservice.basic.store.StoreImageSvc;
 import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.util.storage.FileStoreHandler;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 图片存储服务类
@@ -32,56 +30,59 @@ import cn.skill6.website.util.storage.FileStoreHandler;
 @Service
 public class StoreImageService implements StoreImageSvc {
 
-  @Autowired private StoreImageDao storeImageDao;
+    @Autowired
+    private StoreImageDao storeImageDao;
 
-  @Autowired private FileStoreHandler fileStoreHandler;
+    @Autowired
+    private FileStoreHandler fileStoreHandler;
 
-  @Autowired private Skill6Properties skill6Properties;
+    @Autowired
+    private Skill6Properties skill6Properties;
 
-  private String userHomeDir = System.getProperty("user.home");
+    private String userHomeDir = System.getProperty("user.home");
 
-  @Override
-  public ResponseJson uploadImage(HttpServletRequest request)
-      throws IOException, FileUploadException {
-    String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
-    String userHomeDir = System.getProperty("user.home");
-    String storeParentPath = StringUtils.join(skill6Properties.getImagePath(), dateFormat);
+    @Override
+    public ResponseJson uploadImage(HttpServletRequest request)
+            throws IOException, FileUploadException {
+        String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
+        String userHomeDir = System.getProperty("user.home");
+        String storeParentPath = StringUtils.join(skill6Properties.getImagePath(), dateFormat);
 
-    StoreImage storeImage = new StoreImage();
-    FileAttribute fileAttribute =
-        fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
+        StoreImage storeImage = new StoreImage();
+        FileAttribute fileAttribute =
+                fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
 
-    storeImage.setImageId(Long.valueOf(fileAttribute.getId()));
-    storeImage.setImageName(fileAttribute.getName());
-    storeImage.setImageUrl(fileAttribute.getUrl());
-    storeImage.setImageHashCode(fileAttribute.getHashCode());
+        storeImage.setImageId(Long.valueOf(fileAttribute.getId()));
+        storeImage.setImageName(fileAttribute.getName());
+        storeImage.setImageUrl(fileAttribute.getUrl());
+        storeImage.setImageHashCode(fileAttribute.getHashCode());
 
-    storeImageDao.addImageUpload(storeImage);
+        storeImageDao.addImageUpload(storeImage);
 
-    Map<String, String> resultMap = new HashMap<String, String>(5);
-    resultMap.put("information", "上传成功");
+        Map<String, String> resultMap = new HashMap<String, String>(5);
+        resultMap.put("information", "上传成功");
 
-    StringBuffer contextUrl = RequestParser.parseContextIndex(request);
-    String imageUrl =
-        contextUrl
-            .append("/image/")
-            .append(dateFormat)
-            .append("/")
-            .append(storeImage.getImageId())
-            .toString();
-    resultMap.put("image_url", imageUrl);
+        StringBuffer contextUrl = RequestParser.parseContextIndex(request);
+        String imageUrl =
+                contextUrl
+                        .append("/image/")
+                        .append(dateFormat)
+                        .append("/")
+                        .append(storeImage.getImageId())
+                        .toString();
+        resultMap.put("image_url", imageUrl);
 
-    return new ResponseJson(true, resultMap);
-  }
+        return new ResponseJson(true, resultMap);
+    }
 
-  @Override
-  public void downloadImageById(Long imageId, HttpServletResponse response) throws IOException {
-    StoreImage storeImage = storeImageDao.findByImageId(imageId);
+    @Override
+    public void downloadImageById(Long imageId, HttpServletResponse response) throws IOException {
+        StoreImage storeImage = storeImageDao.findByImageId(imageId);
 
-    String imageUrl = storeImage.getImageUrl();
-    imageUrl = StringUtils.join(userHomeDir, imageUrl);
-    String imageName = storeImage.getImageName();
+        String imageUrl = storeImage.getImageUrl();
+        imageUrl = StringUtils.join(userHomeDir, imageUrl);
+        String imageName = storeImage.getImageName();
 
-    fileStoreHandler.fileDownloadHandler(response, imageUrl, imageName);
-  }
+        fileStoreHandler.fileDownloadHandler(response, imageUrl, imageName);
+    }
 }

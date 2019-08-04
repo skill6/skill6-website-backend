@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.rbac.RbacSessionMapper">
-	<resultMap id="BaseResultMap" type="RbacSession">
-		<constructor>
-			<idArg column="session_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<arg column="session_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="session_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="session_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
-			<arg column="session_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-		</constructor>
-	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <resultMap id="BaseResultMap" type="RbacSession">
+        <constructor>
+            <idArg column="session_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="session_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="session_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="session_valid" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="session_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </constructor>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from rbac_session
 		where session_id = #{sessionId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="RbacSession">
+    <insert id="insert" parameterType="RbacSession">
 		insert into rbac_session (session_id, session_create_time, session_update_time,
 		session_valid, session_content)
 		values (#{sessionId,jdbcType=BIGINT},
 		#{sessionCreateTime,jdbcType=TIMESTAMP}, #{sessionUpdateTime,jdbcType=TIMESTAMP},
 		#{sessionValid,jdbcType=BIT}, #{sessionContent,jdbcType=LONGVARCHAR})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="RbacSession">
+    <update id="updateByPrimaryKey" parameterType="RbacSession">
 		update rbac_session
 		set session_create_time = #{sessionCreateTime,jdbcType=TIMESTAMP},
 		session_update_time =
@@ -30,13 +30,13 @@
 		session_content = #{sessionContent,jdbcType=LONGVARCHAR}
 		where session_id = #{sessionId,jdbcType=BIGINT}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select session_id, session_create_time, session_update_time, session_valid, session_content
 		from rbac_session
 		where
 		session_id = #{sessionId,jdbcType=BIGINT}
 	</select>
-	<select id="selectAll" resultMap="BaseResultMap">
+    <select id="selectAll" resultMap="BaseResultMap">
 		select session_id, session_create_time, session_update_time, session_valid, session_content
 		from rbac_session
 	</select>

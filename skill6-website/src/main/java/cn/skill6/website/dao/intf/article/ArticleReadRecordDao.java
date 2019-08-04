@@ -1,9 +1,9 @@
 package cn.skill6.website.dao.intf.article;
 
+import cn.skill6.common.entity.po.article.ArticleReadRecord;
+
 import java.util.Date;
 import java.util.List;
-
-import cn.skill6.common.entity.po.article.ArticleReadRecord;
 
 /**
  * 文章阅读记录操作接口
@@ -13,13 +13,13 @@ import cn.skill6.common.entity.po.article.ArticleReadRecord;
  * @since 2018年8月24日 上午12:27:47
  */
 public interface ArticleReadRecordDao {
-  int deleteByPrimaryKey(Long articleId, Date articleDateDaily);
+    int deleteByPrimaryKey(Long articleId, Date articleDateDaily);
 
-  Long addArticleReadRecord(ArticleReadRecord articleReadRecord);
+    Long addArticleReadRecord(ArticleReadRecord articleReadRecord);
 
-  ArticleReadRecord findByPrimaryKey(Long articleId, Date articleDateDaily);
+    ArticleReadRecord findByPrimaryKey(Long articleId, Date articleDateDaily);
 
-  List<ArticleReadRecord> findAll();
+    List<ArticleReadRecord> findAll();
 
-  int updateByArtilceId(ArticleReadRecord articleReadRecord);
+    int updateByArtilceId(ArticleReadRecord articleReadRecord);
 }

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.feature.FeatureThumbsUpRecordMapper">
-	<resultMap id="BaseResultMap" type="FeatureThumbsUpRecord">
-		<constructor>
-			<idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<idArg column="thumbs_up_type" javaType="java.lang.String" jdbcType="VARCHAR" />
-			<arg column="thumbs_up_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-		</constructor>
-	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="map">
+    <resultMap id="BaseResultMap" type="FeatureThumbsUpRecord">
+        <constructor>
+            <idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <idArg column="thumbs_up_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="thumbs_up_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="map">
 		delete from feature_thumbs_up_record
 		where user_id = #{userId,jdbcType=BIGINT}
 		and article_id = #{articleId,jdbcType=BIGINT}
 		and thumbs_up_type =
 		#{thumbsUpType,jdbcType=VARCHAR}
 	</delete>
-	<insert id="insert" parameterType="FeatureThumbsUpRecord">
+    <insert id="insert" parameterType="FeatureThumbsUpRecord">
 		insert into feature_thumbs_up_record (user_id, article_id, thumbs_up_type,
 		thumbs_up_time)
 		values (#{userId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT},
 		#{thumbsUpType,jdbcType=VARCHAR},
 		#{thumbsUpTime,jdbcType=TIMESTAMP})
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="FeatureThumbsUpRecord">
+    <update id="updateByPrimaryKey" parameterType="FeatureThumbsUpRecord">
 		update feature_thumbs_up_record
 		set thumbs_up_time = #{thumbsUpTime,jdbcType=TIMESTAMP}
 		where user_id = #{userId,jdbcType=BIGINT}
@@ -31,14 +31,14 @@
 		#{articleId,jdbcType=BIGINT}
 		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
 		select user_id, article_id, thumbs_up_type, thumbs_up_time
 		from feature_thumbs_up_record
 		where user_id = #{userId,jdbcType=BIGINT}
 		and article_id = #{articleId,jdbcType=BIGINT}
 		and thumbs_up_type = #{thumbsUpType,jdbcType=VARCHAR}
 	</select>
-	<select id="selectAll" resultMap="BaseResultMap">
+    <select id="selectAll" resultMap="BaseResultMap">
 		select user_id, article_id, thumbs_up_type, thumbs_up_time
 		from feature_thumbs_up_record
 	</select>

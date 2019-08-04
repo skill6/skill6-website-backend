@@ -3,8 +3,9 @@ package cn.skill6.website.controller.sign;
 /**
  * 注册控制器
  *
- * @author 何明胜
- * @version 1.0
- * @since 2018年11月23日 下午10:08:51
+ * @author 何明胜 husen@hemingsheng.cn
+ * @since 2019-08-03 03:07
  */
-public class SignUpController {}
+public class SignUpController {
+
+}

@@ -11,15 +11,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class SEOInterceptorTest extends Skill6WebsiteApplicationTest {
 
-  @Test
-  public void preHandle() throws Exception {
-    mockMvc
-        .perform(
-            get("/")
-                .header(
-                    "User-Agent",
-                    "Mozilla/5.0 (compatible; Baiduspider-render/2.0; +http://www.baidu.com/search/spider.html)"))
-        .andExpect(status().isOk())
-        .andDo(print());
-  }
+    @Test
+    public void preHandle() throws Exception {
+        mockMvc
+                .perform(
+                        get("/")
+                                .header(
+                                        "User-Agent",
+                                        "Mozilla/5.0 (compatible; Baiduspider-render/2.0; +http://www.baidu.com/search/spider.html)"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 }

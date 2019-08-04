@@ -9,4 +9,5 @@ import cn.skill6.microservice.sign.SignUpSvc;
  * @version 1.0
  * @since 2018年11月23日 下午10:24:15
  */
-public class SignUpService implements SignUpSvc {}
+public class SignUpService implements SignUpSvc {
+}

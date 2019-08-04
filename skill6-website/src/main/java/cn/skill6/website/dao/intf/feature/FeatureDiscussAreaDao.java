@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.feature;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.feature.FeatureDiscussArea;
+
+import java.util.List;
 
 /**
  * 讨论区操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.feature.FeatureDiscussArea;
  * @since 2018年8月24日 上午12:28:17
  */
 public interface FeatureDiscussAreaDao {
-  int deleteByDiscussId(Long discussId);
+    int deleteByDiscussId(Long discussId);
 
-  Long addDiscussArea(FeatureDiscussArea featureDiscussArea);
+    Long addDiscussArea(FeatureDiscussArea featureDiscussArea);
 
-  FeatureDiscussArea findByDiscussId(Long discussId);
+    FeatureDiscussArea findByDiscussId(Long discussId);
 
-  List<FeatureDiscussArea> findAll();
+    List<FeatureDiscussArea> findAll();
 
-  void modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
+    void modifyByDiscussId(FeatureDiscussArea featureDiscussArea);
 }

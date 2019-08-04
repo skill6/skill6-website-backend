@@ -1,16 +1,14 @@
 package cn.skill6.website.service.basic.feature;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.alibaba.dubbo.config.annotation.Service;
-
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.general.FormatException;
 import cn.skill6.microservice.basic.feature.FeatureCategoryInfoSvc;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
+import com.alibaba.dubbo.config.annotation.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * 目录信息处理服务类
@@ -23,39 +21,40 @@ import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
 @Component
 public class FeatureCategoryInfoService implements FeatureCategoryInfoSvc {
 
-  @Autowired private FeatureCategoryInfoDao featureCategoryInfoDao;
+    @Autowired
+    private FeatureCategoryInfoDao featureCategoryInfoDao;
 
-  @Override
-  public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo) {
-    ResponseJson responseJson;
+    @Override
+    public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo) {
+        ResponseJson responseJson;
 
-    try {
-      Long categoryId = featureCategoryInfoDao.addCategoryInfo(featureCategoryInfo);
-      responseJson = new ResponseJson(true, String.valueOf(categoryId));
-    } catch (Exception e) {
-      responseJson = new ResponseJson(false, "注册失败");
+        try {
+            Long categoryId = featureCategoryInfoDao.addCategoryInfo(featureCategoryInfo);
+            responseJson = new ResponseJson(true, String.valueOf(categoryId));
+        } catch (Exception e) {
+            responseJson = new ResponseJson(false, "注册失败");
+        }
+
+        return responseJson;
     }
 
-    return responseJson;
-  }
+    @Override
+    public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo, int categoryType) {
+        switch (categoryType) {
+            case 100:
+                featureCategoryInfo.setCategoryType(CategoryType.ARTICLE);
+                break;
+            case 200:
+                featureCategoryInfo.setCategoryType(CategoryType.DISCUSS_AREA);
+                break;
+            case 300:
+                featureCategoryInfo.setCategoryType(CategoryType.FILE_DOWNLOAD);
+                break;
 
-  @Override
-  public ResponseJson addCategoryInfo(FeatureCategoryInfo featureCategoryInfo, int categoryType) {
-    switch (categoryType) {
-      case 100:
-        featureCategoryInfo.setCategoryType(CategoryType.ARTICLE);
-        break;
-      case 200:
-        featureCategoryInfo.setCategoryType(CategoryType.DISCUSS_AREA);
-        break;
-      case 300:
-        featureCategoryInfo.setCategoryType(CategoryType.FILE_DOWNLOAD);
-        break;
+            default:
+                throw new FormatException("目录格式错误");
+        }
 
-      default:
-        throw new FormatException("目录格式错误");
+        return addCategoryInfo(featureCategoryInfo);
     }
-
-    return addCategoryInfo(featureCategoryInfo);
-  }
 }

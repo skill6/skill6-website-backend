@@ -1,12 +1,11 @@
 package cn.skill6.website.dao.impl.thirdparty;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * 第三方登录测试
@@ -18,33 +17,50 @@ import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
 @SpringBootTest
 public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired ThirdpartyAuthDao thirdpartyAuthDao;
+    @Autowired
+    ThirdpartyAuthDao thirdpartyAuthDao;
 
-  public void deleteByPrimaryKey() {};
+    public void deleteByPrimaryKey() {
+    }
 
-  @Test
-  public void insert() {
-    ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
-    String githubId = "21255916";
-    thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
-    thirdpartyAuth.setThirdpartyValid(true);
+    ;
 
-    thirdpartyAuthDao.addThirdpartyAuth(thirdpartyAuth);
-  };
+    @Test
+    public void insert() {
+        ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
+        String githubId = "21255916";
+        thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
+        thirdpartyAuth.setThirdpartyValid(true);
 
-  public void selectByPrimaryKey() {};
+        thirdpartyAuthDao.addThirdpartyAuth(thirdpartyAuth);
+    }
 
-  public void selectAll() {};
+    ;
 
-  public void updateByPrimaryKey() {};
+    public void selectByPrimaryKey() {
+    }
 
-  @Test
-  public void selectByParams() {
-    ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
-    String githubId = "21255916";
-    thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
-    thirdpartyAuth.setThirdpartyValid(true);
+    ;
 
-    thirdpartyAuthDao.findByParams(thirdpartyAuth);
-  };
+    public void selectAll() {
+    }
+
+    ;
+
+    public void updateByPrimaryKey() {
+    }
+
+    ;
+
+    @Test
+    public void selectByParams() {
+        ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
+        String githubId = "21255916";
+        thirdpartyAuth.setThirdpartyPrimaryKey(githubId);
+        thirdpartyAuth.setThirdpartyValid(true);
+
+        thirdpartyAuthDao.findByParams(thirdpartyAuth);
+    }
+
+    ;
 }

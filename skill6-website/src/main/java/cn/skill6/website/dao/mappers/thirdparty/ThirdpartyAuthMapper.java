@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.mappers.thirdparty;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
+
+import java.util.List;
 
 /**
  * 第三方授权mapper
@@ -13,15 +13,15 @@ import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
  */
 public interface ThirdpartyAuthMapper {
 
-  int deleteByPrimaryKey(Long thirdpartyId);
+    int deleteByPrimaryKey(Long thirdpartyId);
 
-  int insert(ThirdpartyAuth thirdpartyAuth);
+    int insert(ThirdpartyAuth thirdpartyAuth);
 
-  ThirdpartyAuth selectByPrimaryKey(Long thirdpartyId);
+    ThirdpartyAuth selectByPrimaryKey(Long thirdpartyId);
 
-  List<ThirdpartyAuth> selectAll();
+    List<ThirdpartyAuth> selectAll();
 
-  int updateByPrimaryKey(ThirdpartyAuth thirdpartyAuth);
-  
-  List<ThirdpartyAuth> selectByParams(ThirdpartyAuth thirdpartyAuth);
+    int updateByPrimaryKey(ThirdpartyAuth thirdpartyAuth);
+
+    List<ThirdpartyAuth> selectByParams(ThirdpartyAuth thirdpartyAuth);
 }

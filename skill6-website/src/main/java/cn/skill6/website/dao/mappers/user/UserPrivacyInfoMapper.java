@@ -1,10 +1,9 @@
 package cn.skill6.website.dao.mappers.user;
 
-import java.util.List;
-
+import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 import org.apache.ibatis.annotations.Mapper;
 
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import java.util.List;
 
 /**
  * 用户隐私信息mapper
@@ -16,13 +15,13 @@ import cn.skill6.common.entity.po.user.UserPrivacyInfo;
 @Mapper
 public interface UserPrivacyInfoMapper {
 
-  int deleteByPrimaryKey(Long userId);
+    int deleteByPrimaryKey(Long userId);
 
-  int insert(UserPrivacyInfo userPrivacyInfo);
+    int insert(UserPrivacyInfo userPrivacyInfo);
 
-  UserPrivacyInfo selectByPrimaryKey(Long userId);
+    UserPrivacyInfo selectByPrimaryKey(Long userId);
 
-  List<UserPrivacyInfo> selectAll();
+    List<UserPrivacyInfo> selectAll();
 
-  int updateByPrimaryKey(UserPrivacyInfo userPrivacyInfo);
+    int updateByPrimaryKey(UserPrivacyInfo userPrivacyInfo);
 }
