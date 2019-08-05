@@ -20,7 +20,7 @@ public class RedisConfiguration {
      * redisTemplate 序列化使用的jdkSerializeable, 存储二进制字节码, 自定义序列化类使用jackson
      *
      * @param redisConnectionFactory factory
-     * @return redisTemplate
+     * @return redisTemplate redis类型
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
@@ -33,8 +33,8 @@ public class RedisConfiguration {
     /**
      * 对redis value类型数据操作
      *
-     * @param redisTemplate
-     * @return
+     * @param redisTemplate redis类型
+     * @return 对应的值
      */
     @Bean
     public ValueOperations<String, Object> valueOperations(

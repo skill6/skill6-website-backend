@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8086
   compression:
     enabled: true
     min-response-size: 1024
@@ -65,6 +65,7 @@ logging:
     root: INFO
     cn.skill6.website.dao: DEBUG
     cn.skill6.website.config.SEOInterceptor: DEBUG
+    cn.skill6.website: INFO
 skill6:
   file-path: /skill6/file/
   image-path: /skill6/image/

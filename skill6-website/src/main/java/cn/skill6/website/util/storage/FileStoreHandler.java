@@ -33,12 +33,12 @@ public class FileStoreHandler extends BaseStoreHandler {
     /**
      * 文件存储处理
      *
-     * @param request
-     * @param rootDirPath  绝对根路径
-     * @param relativePath 相对路径(不包含文件名)
-     * @return
-     * @throws IOException
-     * @throws FileUploadException
+     * @param request         HTTP请求
+     * @param rootDirPath     绝对根路径
+     * @param relativeDirPath 相对路径
+     * @return 文件属性
+     * @throws IOException         异常
+     * @throws FileUploadException 异常
      */
     public FileAttribute fileUploadHandler(
             HttpServletRequest request, String rootDirPath, String relativeDirPath)

@@ -24,6 +24,8 @@ import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.session.mgt.eis.SessionIdGenerator;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.util.CollectionUtils;
 import org.apache.shiro.web.config.IniFilterChainResolverFactory;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
@@ -33,9 +35,11 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.servlet.Filter;
 import java.io.IOException;
@@ -48,7 +52,6 @@ import java.util.Map;
 /**
  * 用于进行Shiro配置
  *
- * @author liujichun
  * @author 何明胜
  * @version 1.3
  */
@@ -67,7 +70,7 @@ public class ShiroConfiguration {
     /**
      * shiro配置文件位置
      */
-    private String configPath = "classpath:config/shiro-urls.ini";
+    private final String configPath = "classpath:config/shiro-urls.ini";
 
     /**
      * session id生成器
@@ -114,7 +117,7 @@ public class ShiroConfiguration {
 
     @Bean
     public SimpleCookie sessionIdCookie() {
-        SimpleCookie simpleCookie = new SimpleCookie("sessionId-cookie");
+        SimpleCookie simpleCookie = new SimpleCookie("session-id");
 
         simpleCookie.setMaxAge(2592000);
         simpleCookie.setPath("/");
@@ -124,7 +127,7 @@ public class ShiroConfiguration {
 
     @Bean
     public SimpleCookie rememberMeCookie() {
-        SimpleCookie simpleCookie = new SimpleCookie("rememberMe-cookie");
+        SimpleCookie simpleCookie = new SimpleCookie("remember-me");
 
         simpleCookie.setMaxAge(2592000);
         simpleCookie.setPath("/");
@@ -203,7 +206,7 @@ public class ShiroConfiguration {
     }
 
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
@@ -212,7 +215,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setUnauthorizedUrl(unauthorizedUrl);
 
         // 设置过滤器
-        Map<String, Filter> filters = new HashMap<String, Filter>(3);
+        Map<String, Filter> filters = new HashMap<>(3);
         filters.put("authc", skill6AuthenticationFilter);
         // filters.put("perms", value);
         // .put("logout", logoutUrl);
@@ -221,6 +224,23 @@ public class ShiroConfiguration {
         setFilterChainDefinitionsLocation(shiroFilterFactoryBean);
 
         return shiroFilterFactoryBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean<DelegatingFilterProxy> delegatingFilterProxy() {
+        FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<>();
+
+        DelegatingFilterProxy proxy = new DelegatingFilterProxy();
+        proxy.setTargetFilterLifecycle(true);
+        proxy.setTargetBeanName("shiroFilter");
+        filterRegistrationBean.setFilter(proxy);
+
+        return filterRegistrationBean;
+    }
+
+    @Bean
+    ShiroFilterChainDefinition shiroFilterChainDefinition() {
+        return new DefaultShiroFilterChainDefinition();
     }
 
     /**

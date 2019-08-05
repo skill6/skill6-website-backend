@@ -104,7 +104,7 @@ public class QQRealm extends Skill6Realm {
         Map<String, String> map = ConvertRequestParams.paramsStr2Map(response);
         String accessToken = map.get(UrlRequest.PARAM_ACCESS_TOKEN);
 
-        // 2.根据access_toekn获取openid
+        // 2.根据access_token获取openid
         params.clear();
         params.put(UrlRequest.PARAM_ACCESS_TOKEN, accessToken);
         response = HttpsClient.doGet(UrlRequest.QQ_GET_OPENID, params);
