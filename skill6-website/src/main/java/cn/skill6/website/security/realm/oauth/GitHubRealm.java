@@ -71,8 +71,6 @@ public class GitHubRealm extends Skill6Realm {
     @Override
     protected void assertCredentialsMatch(AuthenticationToken authcToken, AuthenticationInfo info)
             throws AuthenticationException {
-
-        return;
     }
 
     @Override

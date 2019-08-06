@@ -25,6 +25,7 @@ public class Skill6AuthenticationFilter extends FormAuthenticationFilter {
 
     private boolean thirdPartyAuth = false;
 
+    @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
             throws Exception {
         if (!isLoginRequest(request, response)) {
@@ -89,14 +90,15 @@ public class Skill6AuthenticationFilter extends FormAuthenticationFilter {
     @Override
     protected void issueSuccessRedirect(ServletRequest request, ServletResponse response)
             throws Exception {
+        Session session = SecurityUtils.getSubject().getSession();
+        log.info("success id: {}", session.getId());
         if (!thirdPartyAuth) {
             super.issueSuccessRedirect(request, response);
             return;
         }
 
-        Session session = SecurityUtils.getSubject().getSession();
         String successUrl = (String) session.getAttribute(REFERER_URI_KEY);
-        log.info("last resquest url: {}", successUrl);
+        log.info("last request url: {}", successUrl);
 
         if (StringUtils.isEmpty(successUrl)) {
             successUrl = getSuccessUrl();
@@ -105,7 +107,7 @@ public class Skill6AuthenticationFilter extends FormAuthenticationFilter {
         WebUtils.issueRedirect(request, response, successUrl, null, true);
     }
 
-    protected String getAuthCode(ServletRequest request) {
+    private String getAuthCode(ServletRequest request) {
         return WebUtils.getCleanParam(request, AUTH_CODE_PARAM);
     }
 }

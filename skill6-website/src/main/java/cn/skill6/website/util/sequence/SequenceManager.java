@@ -44,10 +44,10 @@ public class SequenceManager {
 
         try {
             sequence = new Sequence(Long.valueOf(workerId), Long.valueOf(datacenterId));
-            log.info("初始化sequence完成. workerId: {}, datacenterId: {}.", workerId, datacenterId);
+            log.info("init sequence finished. workerId: {}, datacenterId: {}.", workerId, datacenterId);
         } catch (NumberFormatException e) {
             sequence = new Sequence(0, 0);
-            log.warn(StackTrace2Str.exceptionStackTrace2Str("配置sequence失败，采用默认配置", e));
+            log.warn(StackTrace2Str.exceptionStackTrace2Str("config sequence fail, use default config", e));
         }
     }
 
@@ -61,7 +61,7 @@ public class SequenceManager {
             try {
                 id = sequence.nextId();
             } catch (Exception e) {
-                log.warn("第{}次生成id失败", i);
+                log.warn("the {} times create id fail", i);
                 continue;
             }
 

@@ -30,23 +30,25 @@ public class ThirdConnectController extends BaseController {
 
     @GetMapping(value = "/github")
     public String connectByGitHub() throws ServletException, IOException {
-        if (!securityChainCheck()) {
+        if (!isSecurityChain()) {
             ThirdConnectController.log.warn("security chain check fail");
             return "redirect:/error";
         }
 
         Skill6Properties.GitHub github = skill6Properties.getGitHub();
 
-        String githubAuthUrl = new StringBuilder().append("redirect:")
-                .append("https://github.com/login/oauth/authorize").append("?client_id=").append(github.getClientId())
-                .append("&redirect_uri=").append(github.getRedirectUri()).toString();
+        String githubAuthUrl = "redirect:" + "https://github.com/login/oauth/authorize" +
+                "?client_id=" + github.getClientId() +
+                "&redirect_uri=" + github.getRedirectUri();
+
+        log.info("github auth url: {}", githubAuthUrl);
 
         return githubAuthUrl;
     }
 
     @GetMapping(value = "/qq")
-    public String connectByQq() throws ServletException, IOException {
-        if (!securityChainCheck()) {
+    public String connectByQq() {
+        if (!isSecurityChain()) {
             ThirdConnectController.log.warn("security chain check fail");
             return "redirect:/error";
         }
@@ -58,10 +60,15 @@ public class ThirdConnectController extends BaseController {
             display = UserAgentType.MOBILE.getUserAgent();
         }
 
-        String qqAuthUrl = new StringBuilder("redirect:").append("https://graph.qq.com/oauth2.0/authorize")
-                .append("?response_type=code").append("&client_id=").append(qq.getClientId()).append("&redirect_uri=")
-                .append(qq.getRedirectUri()).append("&state=").append(qq.getState()).append("&scope=").append(qq.getScope())
-                .append("&display=").append(display).toString();
+        String qqAuthUrl = "redirect:" + "https://graph.qq.com/oauth2.0/authorize" +
+                "?response_type=code" +
+                "&client_id=" + qq.getClientId() +
+                "&redirect_uri=" + qq.getRedirectUri() +
+                "&state=" + qq.getState() +
+                "&scope=" + qq.getScope() +
+                "&display=" + display;
+
+        log.info("qq auth url: {}", qqAuthUrl);
 
         return qqAuthUrl;
     }
@@ -70,30 +77,24 @@ public class ThirdConnectController extends BaseController {
      * 防盗链检查
      *
      * @return 防盗链检查结果
-     * @throws IOException
      */
-    private boolean securityChainCheck() throws IOException {
+    private boolean isSecurityChain() {
         // 获取请求来源地址
         String refererUrl = request.getHeader("referer");
 
         if (refererUrl == null) {
             return false;
         }
-
         if (refererUrl.startsWith("https://skill6")) {
             return true;
         }
         if (refererUrl.startsWith("http://skill6")) {
             return true;
         }
-
         if (refererUrl.startsWith("http://localhost")) {
             return true;
         }
-        if (refererUrl.startsWith("http://127.0.0.1")) {
-            return true;
-        }
 
-        return false;
+        return refererUrl.startsWith("http://127.0.0.1");
     }
 }

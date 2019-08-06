@@ -9,6 +9,7 @@ import cn.skill6.website.security.realm.oauth.GitHubRealm;
 import cn.skill6.website.security.realm.oauth.GoogleRealm;
 import cn.skill6.website.security.realm.oauth.QQRealm;
 import cn.skill6.website.security.realm.oauth.WeChatRealm;
+import com.google.common.collect.Lists;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -44,7 +45,6 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import javax.servlet.Filter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -164,6 +164,7 @@ public class ShiroConfiguration {
         sessionManager.setSessionDAO(sessionDAO());
         sessionManager.setSessionIdCookieEnabled(true);
         sessionManager.setSessionIdCookie(sessionIdCookie());
+        sessionManager.setSessionIdUrlRewritingEnabled(false);
 
         return sessionManager;
     }
@@ -176,9 +177,7 @@ public class ShiroConfiguration {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
         // 添加所有的realm
-        List<Realm> realms =
-                Arrays.asList(
-                        userNameRealm, phoneRealm, emailRealm, gitHubRealm, googleRealm, qqRealm, weChatRealm);
+        List<Realm> realms = Lists.newArrayList(userNameRealm, phoneRealm, emailRealm, gitHubRealm, googleRealm, qqRealm, weChatRealm);
         securityManager.setRealms(realms);
 
         // 自定义缓存实现 使用redis
@@ -189,20 +188,6 @@ public class ShiroConfiguration {
         securityManager.setRememberMeManager(rememberMeManager());
 
         return securityManager;
-    }
-
-    /**
-     * 注入安全管理
-     *
-     * @param securityManager 安全管理器
-     */
-    @Bean
-    public MethodInvokingFactoryBean methodInvokingFactoryBean(SecurityManager securityManager) {
-        MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();
-        methodInvokingFactoryBean.setStaticMethod("org.apache.shiro.SecurityUtils.setSecurityManager");
-        methodInvokingFactoryBean.setArguments(securityManager);
-
-        return methodInvokingFactoryBean;
     }
 
     @Bean
