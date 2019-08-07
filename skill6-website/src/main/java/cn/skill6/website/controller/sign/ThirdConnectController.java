@@ -4,6 +4,7 @@ import cn.skill6.common.constant.UserAgentType;
 import cn.skill6.common.controller.BaseController;
 import cn.skill6.common.utility.JudgeIsMobile;
 import cn.skill6.website.config.Skill6Properties;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * 第三方授权连接控制器
@@ -30,7 +32,7 @@ public class ThirdConnectController extends BaseController {
 
     @GetMapping(value = "/github")
     public String connectByGitHub() throws ServletException, IOException {
-        if (!isSecurityChain()) {
+        if (isSecurityChain()) {
             ThirdConnectController.log.warn("security chain check fail");
             return "redirect:/error";
         }
@@ -48,7 +50,7 @@ public class ThirdConnectController extends BaseController {
 
     @GetMapping(value = "/qq")
     public String connectByQq() {
-        if (!isSecurityChain()) {
+        if (isSecurityChain()) {
             ThirdConnectController.log.warn("security chain check fail");
             return "redirect:/error";
         }
@@ -82,19 +84,10 @@ public class ThirdConnectController extends BaseController {
         // 获取请求来源地址
         String refererUrl = request.getHeader("referer");
 
-        if (refererUrl == null) {
-            return false;
-        }
-        if (refererUrl.startsWith("https://skill6")) {
-            return true;
-        }
-        if (refererUrl.startsWith("http://skill6")) {
-            return true;
-        }
-        if (refererUrl.startsWith("http://localhost")) {
-            return true;
-        }
+        ArrayList<String> referHosts = Lists.newArrayList("http://skill6.cn", "https://skill6.cn",
+                "http://www.skill6.cn", "https://www.skill6.cn", "http://localhost", "http://127.0.0.1");
 
-        return refererUrl.startsWith("http://127.0.0.1");
+        return referHosts.contains(refererUrl);
     }
+
 }

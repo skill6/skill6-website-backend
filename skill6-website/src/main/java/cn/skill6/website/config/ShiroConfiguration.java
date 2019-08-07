@@ -190,6 +190,20 @@ public class ShiroConfiguration {
         return securityManager;
     }
 
+    /**
+     * 注入安全管理
+     *
+     * @param securityManager 安全管理器
+     */
+    @Bean
+    public MethodInvokingFactoryBean methodInvokingFactoryBean(SecurityManager securityManager) {
+        MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();
+        methodInvokingFactoryBean.setStaticMethod("org.apache.shiro.SecurityUtils.setSecurityManager");
+        methodInvokingFactoryBean.setArguments(securityManager);
+
+        return methodInvokingFactoryBean;
+    }
+
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
