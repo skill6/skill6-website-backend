@@ -1,10 +1,9 @@
 package cn.skill6.website.config;
 
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import cn.skill6.website.Skill6WebsiteApplicationTest;
 
 /**
  * spring boot测试
@@ -16,16 +15,17 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 @SpringBootTest
 public class Skill6PropertiesTest extends Skill6WebsiteApplicationTest {
 
-  @Autowired private Skill6Properties skill6Properties;
+    @Autowired
+    private Skill6Properties skill6Properties;
 
-  @Test
-  public void testProperties() {
-    System.out.println(skill6Properties.getGitHub().getClientId());
-    System.out.println(skill6Properties.getGitHub().getClientSecret());
+    @Test
+    public void testProperties() {
+        System.out.println(skill6Properties.getGitHub().getClientId());
+        System.out.println(skill6Properties.getGitHub().getClientSecret());
 
-    System.out.println(skill6Properties.getQq().getClientId());
-    System.out.println(skill6Properties.getQq().getRedirectUri());
-    System.out.println(skill6Properties.getQq().getScope());
-    System.out.println(skill6Properties.getQq().getState());
-  }
+        System.out.println(skill6Properties.getQq().getClientId());
+        System.out.println(skill6Properties.getQq().getRedirectUri());
+        System.out.println(skill6Properties.getQq().getScope());
+        System.out.println(skill6Properties.getQq().getState());
+    }
 }

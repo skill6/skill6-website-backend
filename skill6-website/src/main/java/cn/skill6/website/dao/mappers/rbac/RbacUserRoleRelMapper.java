@@ -1,8 +1,9 @@
 package cn.skill6.website.dao.mappers.rbac;
 
 import cn.skill6.common.entity.po.rbac.RbacUserRoleRel;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 用户-角色关联mapper
@@ -12,9 +13,9 @@ import org.apache.ibatis.annotations.Param;
  * @since 2018年9月23日 下午10:27:16
  */
 public interface RbacUserRoleRelMapper {
-  int deleteByPrimaryKey(@Param("userId") Long userId, @Param("roleId") Long roleId);
+    int deleteByPrimaryKey(@Param("userId") Long userId, @Param("roleId") Long roleId);
 
-  int insert(RbacUserRoleRel rbacUserRoleRel);
+    int insert(RbacUserRoleRel rbacUserRoleRel);
 
-  List<RbacUserRoleRel> selectAll();
+    List<RbacUserRoleRel> selectAll();
 }

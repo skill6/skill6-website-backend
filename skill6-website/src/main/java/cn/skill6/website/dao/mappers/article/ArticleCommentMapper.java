@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.mappers.article;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.article.ArticleComment;
+
+import java.util.List;
 
 /**
  * 文章评论mapper
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.article.ArticleComment;
  * @since 2018年8月15日 下午11:38:54
  */
 public interface ArticleCommentMapper {
-  int deleteByPrimaryKey(Long commentId);
+    int deleteByPrimaryKey(Long commentId);
 
-  int insert(ArticleComment articleComment);
+    int insert(ArticleComment articleComment);
 
-  ArticleComment selectByPrimaryKey(Long commentId);
+    ArticleComment selectByPrimaryKey(Long commentId);
 
-  List<ArticleComment> selectAll();
+    List<ArticleComment> selectAll();
 
-  int updateByPrimaryKey(ArticleComment articleComment);
+    int updateByPrimaryKey(ArticleComment articleComment);
 }

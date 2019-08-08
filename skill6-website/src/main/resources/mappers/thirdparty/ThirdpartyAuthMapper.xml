@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.thirdparty.ThirdpartyAuthMapper">
-	<resultMap id="BaseResultMap" type="ThirdpartyAuth">
-		<constructor>
-			<idArg column="thirdparty_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-			<arg column="thirdparty_primary_key" javaType="java.lang.String" jdbcType="VARCHAR" />
-			<arg column="thirdparty_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
-			<arg column="thirdparty_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-			<arg column="thirdparty_data" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-		</constructor>
-	</resultMap>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <resultMap id="BaseResultMap" type="ThirdpartyAuth">
+        <constructor>
+            <idArg column="thirdparty_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="thirdparty_primary_key" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="thirdparty_valid" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="thirdparty_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="thirdparty_data" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </constructor>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from thirdparty_auth
 		where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="ThirdpartyAuth">
+    <insert id="insert" parameterType="ThirdpartyAuth">
 		insert into thirdparty_auth (thirdparty_id, user_id, thirdparty_primary_key,
 		thirdparty_valid, thirdparty_create_time, thirdparty_data
 		)
@@ -25,7 +25,7 @@
 		#{thirdpartyData,jdbcType=LONGVARCHAR}
 		)
 	</insert>
-	<update id="updateByPrimaryKey" parameterType="ThirdpartyAuth">
+    <update id="updateByPrimaryKey" parameterType="ThirdpartyAuth">
 		update thirdparty_auth
 		set user_id = #{userId,jdbcType=BIGINT},
 		thirdparty_primary_key = #{thirdpartyPrimaryKey,jdbcType=VARCHAR},
@@ -36,28 +36,30 @@
 		where thirdparty_id =
 		#{thirdpartyId,jdbcType=BIGINT}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
 		thirdparty_data
 		from
 		thirdparty_auth
 		where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
 	</select>
-	<select id="selectAll" resultMap="BaseResultMap">
+    <select id="selectAll" resultMap="BaseResultMap">
 		select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
 		thirdparty_data
 		from thirdparty_auth
 	</select>
-	<select id="selectByParams" resultMap="BaseResultMap" parameterType="ThirdpartyAuth">
-		select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
-		thirdparty_data
-		from
-		thirdparty_auth
-		<where>
-			<if test="userId != null">AND user_id = #{userId,jdbcType=BIGINT}</if>
-			<if test="thirdpartyPrimaryKey != null">AND thirdparty_primary_key = #{thirdpartyPrimaryKey,jdbcType=VARCHAR}</if>
-			<if test="thirdpartyValid != null">AND thirdparty_valid = #{thirdpartyValid,jdbcType=BIT}</if>
-		</where>
-		<if test="orderBy != null">ORDER BY ${orderBy} ${sortType.stateCode}</if>
-	</select>
+    <select id="selectByParams" resultMap="BaseResultMap" parameterType="ThirdpartyAuth">
+        select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
+        thirdparty_data
+        from
+        thirdparty_auth
+        <where>
+            <if test="userId != null">AND user_id = #{userId,jdbcType=BIGINT}</if>
+            <if test="thirdpartyPrimaryKey != null">AND thirdparty_primary_key =
+                #{thirdpartyPrimaryKey,jdbcType=VARCHAR}
+            </if>
+            <if test="thirdpartyValid != null">AND thirdparty_valid = #{thirdpartyValid,jdbcType=BIT}</if>
+        </where>
+        <if test="orderBy != null">ORDER BY ${orderBy} ${sortType.value}</if>
+    </select>
 </mapper>

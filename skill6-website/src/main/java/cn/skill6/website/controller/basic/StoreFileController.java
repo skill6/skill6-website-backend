@@ -1,21 +1,15 @@
 package cn.skill6.website.controller.basic;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileUploadException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.microservice.basic.store.StoreFileSvc;
+import org.apache.commons.fileupload.FileUploadException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * 文件存储控制器
@@ -28,26 +22,27 @@ import cn.skill6.microservice.basic.store.StoreFileSvc;
 @RequestMapping(value = "/file")
 public class StoreFileController {
 
-  @Autowired private StoreFileSvc storeFileSvc;
+    @Autowired
+    private StoreFileSvc storeFileSvc;
 
-  @PostMapping(value = "/share")
-  public ResponseJson uploadFile(HttpServletRequest request)
-      throws IOException, FileUploadException {
+    @PostMapping(value = "/share")
+    public ResponseJson uploadFile(HttpServletRequest request)
+            throws IOException, FileUploadException {
 
-    return storeFileSvc.uploadFile(request, FileType.SHARE_FILES);
-  }
+        return storeFileSvc.uploadFile(request, FileType.SHARE_FILES);
+    }
 
-  @PostMapping(value = "/attach")
-  public ResponseJson uploadAttachment(HttpServletRequest request)
-      throws IOException, FileUploadException {
+    @PostMapping(value = "/attach")
+    public ResponseJson uploadAttachment(HttpServletRequest request)
+            throws IOException, FileUploadException {
 
-    return storeFileSvc.uploadFile(request, FileType.ATTACHMENT);
-  }
+        return storeFileSvc.uploadFile(request, FileType.ATTACHMENT);
+    }
 
-  @GetMapping(value = "/{year}/{month}/{day}/{fileId}")
-  public void downloadFileById(
-      @PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
+    @GetMapping(value = "/{year}/{month}/{day}/{fileId}")
+    public void downloadFileById(
+            @PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
 
-    storeFileSvc.downloadFileById(fileId, response);
-  }
+        storeFileSvc.downloadFileById(fileId, response);
+    }
 }

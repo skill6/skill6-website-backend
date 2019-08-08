@@ -16,29 +16,29 @@ import org.springframework.data.redis.core.ValueOperations;
 @Configuration
 public class RedisConfiguration {
 
-  /**
-   * redisTemplate 序列化使用的jdkSerializeable, 存储二进制字节码, 自定义序列化类使用jackson
-   *
-   * @param redisConnectionFactory factory
-   * @return redisTemplate
-   */
-  @Bean
-  public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-    RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-    redisTemplate.setConnectionFactory(factory);
+    /**
+     * redisTemplate 序列化使用的jdkSerializeable, 存储二进制字节码, 自定义序列化类使用jackson
+     *
+     * @param factory factory
+     * @return redisTemplate redis类型
+     */
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(factory);
 
-    return redisTemplate;
-  }
+        return redisTemplate;
+    }
 
-  /**
-   * 对redis value类型数据操作
-   *
-   * @param redisTemplate
-   * @return
-   */
-  @Bean
-  public ValueOperations<String, Object> valueOperations(
-      RedisTemplate<String, Object> redisTemplate) {
-    return redisTemplate.opsForValue();
-  }
+    /**
+     * 对redis value类型数据操作
+     *
+     * @param redisTemplate redis类型
+     * @return 对应的值
+     */
+    @Bean
+    public ValueOperations<String, Object> valueOperations(
+            RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForValue();
+    }
 }

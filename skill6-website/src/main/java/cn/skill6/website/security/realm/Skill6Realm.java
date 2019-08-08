@@ -16,29 +16,30 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class Skill6Realm extends AuthorizingRealm {
 
-  @Autowired CredentialsMatcher credentialsMatcher;
+    @Autowired
+    CredentialsMatcher credentialsMatcher;
 
-  public Skill6Realm() {
-    this.setCredentialsMatcher(credentialsMatcher);
-    this.setCachingEnabled(true);
-    this.setAuthenticationCachingEnabled(true);
-    this.setAuthenticationCacheName("authenticationCache");
-    this.setAuthorizationCachingEnabled(true);
-    this.setAuthorizationCacheName("authorizationCache");
-  }
+    public Skill6Realm() {
+        this.setCredentialsMatcher(credentialsMatcher);
+        this.setCachingEnabled(true);
+        this.setAuthenticationCachingEnabled(true);
+        this.setAuthenticationCacheName("authenticationCache");
+        this.setAuthorizationCachingEnabled(true);
+        this.setAuthorizationCacheName("authorizationCache");
+    }
 
-  /**
-   * 第三方授权包装没有密码的认证信息
-   *
-   * @param principal 用户id
-   * @param realmName realm名称
-   * @return 认证信息
-   */
-  protected SimpleAuthenticationInfo buildAuthenticationInfo(Object principal, String realmName) {
-    SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
-    PrincipalCollection principals = new SimplePrincipalCollection(principal, realmName);
-    authenticationInfo.setPrincipals(principals);
+    /**
+     * 第三方授权包装没有密码的认证信息
+     *
+     * @param principal 用户id
+     * @param realmName realm名称
+     * @return 认证信息
+     */
+    protected SimpleAuthenticationInfo buildAuthenticationInfo(Object principal, String realmName) {
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
+        PrincipalCollection principals = new SimplePrincipalCollection(principal, realmName);
+        authenticationInfo.setPrincipals(principals);
 
-    return authenticationInfo;
-  }
+        return authenticationInfo;
+    }
 }

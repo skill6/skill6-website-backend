@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.rbac;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.rbac.RbacSession;
+
+import java.util.List;
 
 /**
  * 会话操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.rbac.RbacSession;
  * @since 2018年9月23日 下午10:48:43
  */
 public interface RbacSessionsDao {
-  int deleteByPrimaryKey(Long sessionId);
+    int deleteByPrimaryKey(Long sessionId);
 
-  int addRbacSessions(RbacSession rbacSessions);
+    int addRbacSessions(RbacSession rbacSessions);
 
-  RbacSession findByPrimaryKey(Long sessionId);
+    RbacSession findByPrimaryKey(Long sessionId);
 
-  List<RbacSession> findAll();
+    List<RbacSession> findAll();
 
-  int modifyByPrimaryKey(RbacSession rbacSessions);
+    int modifyByPrimaryKey(RbacSession rbacSessions);
 }

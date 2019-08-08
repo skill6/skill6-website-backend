@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.user;
 
 import cn.skill6.common.entity.po.user.UserModifyRecord;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年8月15日 下午11:41:32
  */
 public interface UserModifyRecordMapper {
-  int deleteByPrimaryKey(Long userId);
+    int deleteByPrimaryKey(Long userId);
 
-  int insert(UserModifyRecord userModifyRecord);
+    int insert(UserModifyRecord userModifyRecord);
 
-  UserModifyRecord selectByPrimaryKey(Long userId);
+    UserModifyRecord selectByPrimaryKey(Long userId);
 
-  List<UserModifyRecord> selectAll();
+    List<UserModifyRecord> selectAll();
 
-  int updateByPrimaryKey(UserModifyRecord userModifyRecord);
+    int updateByPrimaryKey(UserModifyRecord userModifyRecord);
 }

@@ -1,10 +1,9 @@
 package cn.skill6.website.dao.intf.rbac;
 
-import java.util.List;
-
+import cn.skill6.common.entity.po.rbac.RbacUserRoleRel;
 import org.apache.ibatis.annotations.Param;
 
-import cn.skill6.common.entity.po.rbac.RbacUserRoleRel;
+import java.util.List;
 
 /**
  * 用户-角色关联操作接口
@@ -14,9 +13,9 @@ import cn.skill6.common.entity.po.rbac.RbacUserRoleRel;
  * @since 2018年9月23日 下午10:49:11
  */
 public interface RbacUserRoleRelDao {
-  int deleteByPrimaryKey(@Param("userId") Long userId, @Param("roleId") Long roleId);
+    int deleteByPrimaryKey(@Param("userId") Long userId, @Param("roleId") Long roleId);
 
-  int addRbacUserRoleRel(RbacUserRoleRel rbacUserRoleRel);
+    int addRbacUserRoleRel(RbacUserRoleRel rbacUserRoleRel);
 
-  List<RbacUserRoleRel> findAll();
+    List<RbacUserRoleRel> findAll();
 }

@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.rbac;
 
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年9月23日 下午10:25:34
  */
 public interface RbacRoleInfoMapper {
-  int deleteByPrimaryKey(Long roleId);
+    int deleteByPrimaryKey(Long roleId);
 
-  int insert(RbacRoleInfo rbacRoleInfo);
+    int insert(RbacRoleInfo rbacRoleInfo);
 
-  RbacRoleInfo selectByPrimaryKey(Long roleId);
+    RbacRoleInfo selectByPrimaryKey(Long roleId);
 
-  List<RbacRoleInfo> selectAll();
+    List<RbacRoleInfo> selectAll();
 
-  int updateByPrimaryKey(RbacRoleInfo rbacRoleInfo);
+    int updateByPrimaryKey(RbacRoleInfo rbacRoleInfo);
 }

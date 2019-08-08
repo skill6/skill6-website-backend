@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.feature;
 
 import cn.skill6.common.entity.po.feature.FeatureDiscussArea;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年8月15日 下午11:40:09
  */
 public interface FeatureDiscussAreaMapper {
-  int deleteByPrimaryKey(Long discussId);
+    int deleteByPrimaryKey(Long discussId);
 
-  int insert(FeatureDiscussArea featureDiscussArea);
+    int insert(FeatureDiscussArea featureDiscussArea);
 
-  FeatureDiscussArea selectByPrimaryKey(Long discussId);
+    FeatureDiscussArea selectByPrimaryKey(Long discussId);
 
-  List<FeatureDiscussArea> selectAll();
+    List<FeatureDiscussArea> selectAll();
 
-  int updateByPrimaryKey(FeatureDiscussArea featureDiscussArea);
+    int updateByPrimaryKey(FeatureDiscussArea featureDiscussArea);
 }

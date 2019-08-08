@@ -1,35 +1,35 @@
 server:
-  port: 8081
+  port: 8086
   compression:
     enabled: true
     min-response-size: 1024
     mime-types:
-    - text/html
-    - text/xml
-    - text/plain
-    - text/css
-    - text/javascript
-    - application/javascript
-    - application/json
-    - application/xml
-    - image/png
-    - image/jpeg
-    - image/jpg
+      - text/html
+      - text/xml
+      - text/plain
+      - text/css
+      - text/javascript
+      - application/javascript
+      - application/json
+      - application/xml
+      - image/png
+      - image/jpeg
+      - image/jpg
 spring:
   application:
     name: skill6-website
   datasource:
-    username: ${SKILL6_MYSQL_USERNAME}
-    password: ${SKILL6_MYSQL_PASSWROD}
-    url: ${SKILL6_MYSQL_URL}
+    username: username
+    password: password
+    url: url
     druid:
       name: skill6-mysql-01
     schema: classpath*:schema/*.sql
     initialization-mode: always
   redis:
-    host: ${SKILL6_REDIS_HOST}
-    password: ${SKILL6_REDIS_PASSWORD}
-    port: ${SKILL6_REDIS_PORT}
+    host: host
+    password: password
+    port: 6379
   jackson:
     property-naming-strategy: SNAKE_CASE
     date-format: yyyy-MM-dd HH:mm:ss
@@ -44,6 +44,8 @@ dubbo:
     name: user-rbac-provider
   registry:
     address: zookeeper://localhost:2181
+    username: username
+    password: password
 mybatis:
   mapper-locations: classpath*:mappers/**/*.xml
   type-aliases-package: cn.skill6.common.entity.po
@@ -65,6 +67,9 @@ logging:
     root: INFO
     cn.skill6.website.dao: DEBUG
     cn.skill6.website.config.SEOInterceptor: DEBUG
+    cn.skill6.website: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%C::%M %L] %logger{15} - %msg%n'
 skill6:
   file-path: /skill6/file/
   image-path: /skill6/image/
@@ -74,7 +79,7 @@ skill6:
     data-center:
       id: 1
   recaptcha:
-    secret-key: ${SKILL6_RECAPTCHA_SECRET_KEY}
+    secret-key: key
     verify-url: https://www.recaptcha.net/recaptcha/api/siteverify
   github:
     client_id: gsasga241124

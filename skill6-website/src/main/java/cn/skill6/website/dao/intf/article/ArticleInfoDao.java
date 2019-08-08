@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.article;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.article.ArticleInfo;
+
+import java.util.List;
 
 /**
  * 文章信息微服务接口
@@ -13,15 +13,15 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
  */
 public interface ArticleInfoDao {
 
-  int deleteByPrimaryKey(Long articleId);
+    int deleteByPrimaryKey(Long articleId);
 
-  Long addArticleInfo(ArticleInfo articleInfo);
+    Long addArticleInfo(ArticleInfo articleInfo);
 
-  ArticleInfo findByArticleId(Long articleId);
+    ArticleInfo findByArticleId(Long articleId);
 
-  List<ArticleInfo> findAll();
+    List<ArticleInfo> findAll();
 
-  void modifyByArticleId(ArticleInfo articleInfo);
+    void modifyByArticleId(ArticleInfo articleInfo);
 
-  List<ArticleInfo> findByParams(ArticleInfo articleInfo);
+    List<ArticleInfo> findByParams(ArticleInfo articleInfo);
 }

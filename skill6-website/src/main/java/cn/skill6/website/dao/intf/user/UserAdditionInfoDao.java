@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.user;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
+
+import java.util.List;
 
 /**
  * 用户信息操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.user.UserAdditionInfo;
  * @since 2018年8月24日 上午12:30:09
  */
 public interface UserAdditionInfoDao {
-  int deleteByUserId(Long userId);
+    int deleteByUserId(Long userId);
 
-  void addUserAdditionInfo(UserAdditionInfo userAdditionInfo);
+    void addUserAdditionInfo(UserAdditionInfo userAdditionInfo);
 
-  UserAdditionInfo findByUserId(Long userId);
+    UserAdditionInfo findByUserId(Long userId);
 
-  List<UserAdditionInfo> findAll();
+    List<UserAdditionInfo> findAll();
 
-  void modifyByUserId(UserAdditionInfo userAdditionInfo);
+    void modifyByUserId(UserAdditionInfo userAdditionInfo);
 }

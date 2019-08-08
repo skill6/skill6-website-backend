@@ -28,26 +28,33 @@ import org.springframework.web.context.request.ServletWebRequest;
 @WebAppConfiguration
 public class Skill6WebsiteApplicationTest {
 
-  @Autowired protected WebApplicationContext wac;
+    @Autowired
+    protected WebApplicationContext wac;
 
-  @Autowired protected MockServletContext servletContext;
+    @Autowired
+    protected MockServletContext servletContext;
 
-  @Autowired protected MockHttpSession session;
+    @Autowired
+    protected MockHttpSession session;
 
-  @Autowired protected MockHttpServletRequest request;
+    @Autowired
+    protected MockHttpServletRequest request;
 
-  @Autowired protected MockHttpServletResponse response;
+    @Autowired
+    protected MockHttpServletResponse response;
 
-  @Autowired protected ServletWebRequest webRequest;
+    @Autowired
+    protected ServletWebRequest webRequest;
 
-  protected static MockMvc mockMvc;
+    protected static MockMvc mockMvc;
 
-  @SuppressWarnings("static-access")
-  @Before
-  public void setup() {
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-  }
+    @SuppressWarnings("static-access")
+    @Before
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
-  @Test
-  public void loadContext() {}
+    @Test
+    public void loadContext() {
+    }
 }

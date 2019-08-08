@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.user;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.user.UserLoginRecord;
+
+import java.util.List;
 
 /**
  * 登录记录操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.user.UserLoginRecord;
  * @since 2018年8月24日 上午12:29:04
  */
 public interface UserLoginRecordDao {
-  int deleteByLoginId(Long loginId);
+    int deleteByLoginId(Long loginId);
 
-  void addLoginRecord(UserLoginRecord userLoginRecord);
+    void addLoginRecord(UserLoginRecord userLoginRecord);
 
-  UserLoginRecord findByLoginId(Long loginId);
+    UserLoginRecord findByLoginId(Long loginId);
 
-  List<UserLoginRecord> findAll();
+    List<UserLoginRecord> findAll();
 
-  void modifyByLoginId(UserLoginRecord userLoginRecord);
+    void modifyByLoginId(UserLoginRecord userLoginRecord);
 }

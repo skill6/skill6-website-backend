@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.rbac;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
+
+import java.util.List;
 
 /**
  * 权限信息操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
  * @since 2018年9月23日 下午10:39:58
  */
 public interface RbacPermissionInfoDao {
-  int deleteByPermissionId(Long permissionId);
+    int deleteByPermissionId(Long permissionId);
 
-  int addRbacPermissionInfo(RbacPermissionInfo rbacPermissionInfo);
+    int addRbacPermissionInfo(RbacPermissionInfo rbacPermissionInfo);
 
-  RbacPermissionInfo findByPrimaryKey(Long permissionId);
+    RbacPermissionInfo findByPrimaryKey(Long permissionId);
 
-  List<RbacPermissionInfo> findAll();
+    List<RbacPermissionInfo> findAll();
 
-  int modifyByPermissionId(RbacPermissionInfo rbacPermissionInfo);
+    int modifyByPermissionId(RbacPermissionInfo rbacPermissionInfo);
 }

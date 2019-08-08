@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.thirdparty;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
+
+import java.util.List;
 
 /**
  * 第三方授权操作接口
@@ -12,15 +12,15 @@ import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
  * @since 2018年11月21日 下午10:54:52
  */
 public interface ThirdpartyAuthDao {
-  void addThirdpartyAuth(ThirdpartyAuth thirdpartyAuth);
+    void addThirdpartyAuth(ThirdpartyAuth thirdpartyAuth);
 
-  void deleteByThirdpartyId(Long thirdpartyId);
+    void deleteByThirdpartyId(Long thirdpartyId);
 
-  ThirdpartyAuth findByThirdpartyId(Long thirdpartyId);
+    ThirdpartyAuth findByThirdpartyId(Long thirdpartyId);
 
-  List<ThirdpartyAuth> findAll();
+    List<ThirdpartyAuth> findAll();
 
-  void updateByThirdpartyId(ThirdpartyAuth thirdpartyAuth);
-  
-  List<ThirdpartyAuth> findByParams(ThirdpartyAuth thirdpartyAuth);
+    void updateByThirdpartyId(ThirdpartyAuth thirdpartyAuth);
+
+    List<ThirdpartyAuth> findByParams(ThirdpartyAuth thirdpartyAuth);
 }

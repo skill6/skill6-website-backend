@@ -1,17 +1,5 @@
 package cn.skill6.website.service.basic.store;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.po.store.StoreFile;
 import cn.skill6.common.entity.vo.FileAttribute;
@@ -22,6 +10,16 @@ import cn.skill6.microservice.basic.store.StoreFileSvc;
 import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.util.storage.FileStoreHandler;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 文件存储服务类
@@ -33,57 +31,60 @@ import cn.skill6.website.util.storage.FileStoreHandler;
 @Service
 public class StoreFileService implements StoreFileSvc {
 
-  @Autowired private StoreFileDao storeFileDao;
+    @Autowired
+    private StoreFileDao storeFileDao;
 
-  @Autowired private FileStoreHandler fileStoreHandler;
+    @Autowired
+    private FileStoreHandler fileStoreHandler;
 
-  @Autowired private Skill6Properties skill6Properties;
+    @Autowired
+    private Skill6Properties skill6Properties;
 
-  private String userHomeDir = System.getProperty("user.home");
+    private String userHomeDir = System.getProperty("user.home");
 
-  @Override
-  public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
-      throws IOException, FileUploadException {
-    String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
+    @Override
+    public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
+            throws IOException, FileUploadException {
+        String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
 
-    String storeParentPath = StringUtils.join(skill6Properties.getFilePath(), dateFormat);
+        String storeParentPath = StringUtils.join(skill6Properties.getFilePath(), dateFormat);
 
-    FileAttribute fileAttribute =
-        fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
-    StoreFile storeFile = new StoreFile();
+        FileAttribute fileAttribute =
+                fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
+        StoreFile storeFile = new StoreFile();
 
-    storeFile.setFileId(Long.valueOf(fileAttribute.getId()));
-    storeFile.setFileName(fileAttribute.getName());
-    storeFile.setFileUrl(fileAttribute.getUrl());
-    storeFile.setFileHashCode(fileAttribute.getHashCode());
-    storeFile.setFileType(fileType);
+        storeFile.setFileId(Long.valueOf(fileAttribute.getId()));
+        storeFile.setFileName(fileAttribute.getName());
+        storeFile.setFileUrl(fileAttribute.getUrl());
+        storeFile.setFileHashCode(fileAttribute.getHashCode());
+        storeFile.setFileType(fileType);
 
-    storeFileDao.addFileDownload(storeFile);
+        storeFileDao.addFileDownload(storeFile);
 
-    Map<String, String> resultMap = new HashMap<String, String>(5);
-    resultMap.put("information", "上传成功");
+        Map<String, String> resultMap = new HashMap<String, String>(5);
+        resultMap.put("information", "上传成功");
 
-    StringBuffer contextUrl = RequestParser.parseContextIndex(request);
-    String fileUrl =
-        contextUrl
-            .append("/file/")
-            .append(dateFormat)
-            .append("/")
-            .append(storeFile.getFileId())
-            .toString();
-    resultMap.put("file_url", fileUrl);
+        StringBuffer contextUrl = RequestParser.parseContextIndex(request);
+        String fileUrl =
+                contextUrl
+                        .append("/file/")
+                        .append(dateFormat)
+                        .append("/")
+                        .append(storeFile.getFileId())
+                        .toString();
+        resultMap.put("file_url", fileUrl);
 
-    return new ResponseJson(true, resultMap);
-  }
+        return new ResponseJson(true, resultMap);
+    }
 
-  @Override
-  public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
-    StoreFile storeFile = storeFileDao.findByFileId(fileId);
+    @Override
+    public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
+        StoreFile storeFile = storeFileDao.findByFileId(fileId);
 
-    String fileUrl = storeFile.getFileUrl();
-    fileUrl = StringUtils.join(userHomeDir, fileUrl);
-    String fileName = storeFile.getFileName();
+        String fileUrl = storeFile.getFileUrl();
+        fileUrl = StringUtils.join(userHomeDir, fileUrl);
+        String fileName = storeFile.getFileName();
 
-    fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
-  }
+        fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
+    }
 }

@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.store;
 
 import cn.skill6.common.entity.po.store.StoreFile;
+
 import java.util.List;
 
 /**
@@ -11,13 +12,13 @@ import java.util.List;
  * @since 2018年8月15日 下午11:40:27
  */
 public interface StoreFileMapper {
-  int deleteByPrimaryKey(Long fileId);
+    int deleteByPrimaryKey(Long fileId);
 
-  int insert(StoreFile storeFile);
+    int insert(StoreFile storeFile);
 
-  StoreFile selectByPrimaryKey(Long fileId);
+    StoreFile selectByPrimaryKey(Long fileId);
 
-  List<StoreFile> selectAll();
+    List<StoreFile> selectAll();
 
-  int updateByPrimaryKey(StoreFile storeFile);
+    int updateByPrimaryKey(StoreFile storeFile);
 }

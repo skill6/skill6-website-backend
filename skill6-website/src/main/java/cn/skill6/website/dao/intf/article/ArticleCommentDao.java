@@ -1,8 +1,8 @@
 package cn.skill6.website.dao.intf.article;
 
-import java.util.List;
-
 import cn.skill6.common.entity.po.article.ArticleComment;
+
+import java.util.List;
 
 /**
  * 文章评论操作接口
@@ -12,13 +12,13 @@ import cn.skill6.common.entity.po.article.ArticleComment;
  * @since 2018年8月24日 上午12:27:22
  */
 public interface ArticleCommentDao {
-  int deleteByCommentId(Long commentId);
+    int deleteByCommentId(Long commentId);
 
-  Long addArticleComment(ArticleComment articleComment);
+    Long addArticleComment(ArticleComment articleComment);
 
-  ArticleComment findByCommentId(Long commentId);
+    ArticleComment findByCommentId(Long commentId);
 
-  List<ArticleComment> findAll();
+    List<ArticleComment> findAll();
 
-  int modifyByCommentId(ArticleComment articleComment);
+    int modifyByCommentId(ArticleComment articleComment);
 }

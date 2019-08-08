@@ -1,12 +1,11 @@
 package cn.skill6.website.middleware;
 
+import cn.skill6.website.Skill6WebsiteApplicationTest;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
-
-import cn.skill6.website.Skill6WebsiteApplicationTest;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * redis测试
@@ -19,10 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest
 public class TestRedis extends Skill6WebsiteApplicationTest {
 
-  @Autowired private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-  @Test
-  public void testRedis() {
-    log.info("获取redis keys {}", stringRedisTemplate.keys("*"));
-  }
+    @Test
+    public void testRedis() {
+        log.info("获取redis keys {}", stringRedisTemplate.keys("*"));
+    }
 }

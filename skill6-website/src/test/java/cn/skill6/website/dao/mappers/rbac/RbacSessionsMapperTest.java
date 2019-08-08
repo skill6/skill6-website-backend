@@ -1,20 +1,19 @@
 package cn.skill6.website.dao.mappers.rbac;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
-import java.util.Date;
-import java.util.List;
-
+import cn.skill6.common.entity.po.rbac.RbacSession;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cn.skill6.common.entity.po.rbac.RbacSession;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
-import cn.skill6.website.util.sequence.SequenceManager;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * 会话测试类
@@ -26,42 +25,43 @@ import cn.skill6.website.util.sequence.SequenceManager;
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RbacSessionsMapperTest extends Skill6WebsiteApplicationTest {
-  @Autowired private RbacSessionMapper rbacSessionsMapper;
+    @Autowired
+    private RbacSessionMapper rbacSessionsMapper;
 
-  private static Long sessionId = SequenceManager.getNextId();
+    private static Long sessionId = SequenceManager.getNextId();
 
-  @Test
-  public void test01Insert() {
-    RbacSession rbacSessions =
-        new RbacSession(sessionId, new Date(), new Date(), true, "session content");
+    @Test
+    public void test01Insert() {
+        RbacSession rbacSessions =
+                new RbacSession(sessionId, new Date(), new Date(), true, "session content");
 
-    rbacSessionsMapper.insert(rbacSessions);
-  }
+        rbacSessionsMapper.insert(rbacSessions);
+    }
 
-  @Test
-  public void test02SelectByPrimaryKey() {
-    RbacSession rbacSessions = rbacSessionsMapper.selectByPrimaryKey(sessionId);
+    @Test
+    public void test02SelectByPrimaryKey() {
+        RbacSession rbacSessions = rbacSessionsMapper.selectByPrimaryKey(sessionId);
 
-    assertEquals("session content", rbacSessions.getSessionContent());
-  }
+        assertEquals("session content", rbacSessions.getSessionContent());
+    }
 
-  @Test
-  public void test03UpdateByPrimaryKey() {
-    RbacSession rbacSessions =
-        new RbacSession(sessionId, new Date(), new Date(), true, "session content1");
+    @Test
+    public void test03UpdateByPrimaryKey() {
+        RbacSession rbacSessions =
+                new RbacSession(sessionId, new Date(), new Date(), true, "session content1");
 
-    rbacSessionsMapper.updateByPrimaryKey(rbacSessions);
-  }
+        rbacSessionsMapper.updateByPrimaryKey(rbacSessions);
+    }
 
-  @Test
-  public void test04SelectAll() {
-    List<RbacSession> rbacSessions = rbacSessionsMapper.selectAll();
+    @Test
+    public void test04SelectAll() {
+        List<RbacSession> rbacSessions = rbacSessionsMapper.selectAll();
 
-    assertNotEquals(null, rbacSessions);
-  }
+        assertNotEquals(null, rbacSessions);
+    }
 
-  @Test
-  public void test05DeleteByPrimaryKey() {
-    rbacSessionsMapper.deleteByPrimaryKey(sessionId);
-  }
+    @Test
+    public void test05DeleteByPrimaryKey() {
+        rbacSessionsMapper.deleteByPrimaryKey(sessionId);
+    }
 }
