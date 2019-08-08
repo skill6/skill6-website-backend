@@ -1,12 +1,12 @@
 package cn.skill6.website.dao.impl.feature;
 
-import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.feature.FeatureCategoryInfo;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.feature.FeatureCategoryInfoDao;
 import cn.skill6.website.dao.mappers.feature.FeatureCategoryInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -73,7 +73,7 @@ public class FeatureCategoryInfoDaoImpl implements FeatureCategoryInfoDao {
         FeatureCategoryInfo categoryInfoNew =
                 featureCategoryInfoMapper.selectByPrimaryKey(featureCategoryInfo.getCategoryId());
 
-        if (BaseUtils.isNotEmpty(featureCategoryInfo.getCategoryName())) {
+        if (StringUtils.isNotEmpty(featureCategoryInfo.getCategoryName())) {
             categoryInfoNew.setCategoryName(featureCategoryInfo.getCategoryName());
         }
         categoryInfoNew.setCategoryUpdateTime(new Date());

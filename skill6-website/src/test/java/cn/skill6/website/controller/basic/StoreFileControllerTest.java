@@ -44,33 +44,28 @@ public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
     /**
      * 文件上传公共函数
      */
-    @SuppressWarnings("unchecked")
     public void fileUploadMock(String uploadUrl) throws Exception {
-        MockMultipartFile firstFile =
-                new MockMultipartFile(
-                        "text_file_upoad.txt",
-                        "text_file_upoad.txt",
-                        MediaType.TEXT_PLAIN_VALUE,
-                        "模拟文件".getBytes());
+        MockMultipartFile firstFile = new MockMultipartFile(
+                "text_file_upload.txt",
+                "text_file_upload.txt",
+                MediaType.TEXT_PLAIN_VALUE,
+                "模拟文件".getBytes());
 
-        MvcResult mvcResult =
-                mockMvc
-                        .perform(multipart(uploadUrl).file(firstFile).param("some-random", "4"))
-                        .andExpect(status().isOk())
-                        .andExpect(jsonPath("$.success").value(true))
-                        .andReturn();
+        MvcResult mvcResult = mockMvc
+                .perform(multipart(uploadUrl).file(firstFile).param("some-random", "4"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andReturn();
 
         String response = mvcResult.getResponse().getContentAsString();
-        Object message = JacksonUtil.str2Entity(response, ResponseJson.class).getMessage();
+        Object message = JacksonUtil.fromStr(response, ResponseJson.class).getMessage();
         urlDownload = ((Map<String, String>) message).get("file_url");
     }
 
     @Test
     public void test03DownloadFileById() throws Exception {
-        mockMvc
-                .perform(
-                        get(urlDownload)
-                                .accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
-                .andExpect(status().isOk());
+        mockMvc.perform(get(urlDownload).
+                accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE))).
+                andExpect(status().isOk());
     }
 }

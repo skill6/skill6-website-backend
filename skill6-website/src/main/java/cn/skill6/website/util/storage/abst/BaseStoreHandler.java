@@ -1,6 +1,5 @@
 package cn.skill6.website.util.storage.abst;
 
-import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.common.exception.general.ParamsException;
@@ -104,7 +103,7 @@ public abstract class BaseStoreHandler {
      * @return 文件后缀
      */
     public String getFileSuffix(String fileName) {
-        if (BaseUtils.isEmpty(fileName)) {
+        if (StringUtils.isEmpty(fileName)) {
             throw new NullPointerException("文件名称为null");
         }
 

@@ -1,10 +1,10 @@
 package cn.skill6.website.util.sequence;
 
-import cn.skill6.common.BaseUtils;
 import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.sequence.Sequence;
 import cn.skill6.website.config.Skill6Properties;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,18 +33,18 @@ public class SequenceManager {
     public void init() {
         String workerId = skill6Properties.getSequence().getWorker().getId();
         String datacenterId = skill6Properties.getSequence().getDataCenter().getId();
-        if (BaseUtils.isEmpty(workerId)) {
+        if (StringUtils.isEmpty(workerId)) {
             workerId = "0";
             log.info("workerId is empty, initialize to 0.");
         }
-        if (BaseUtils.isEmpty(datacenterId)) {
+        if (StringUtils.isEmpty(datacenterId)) {
             datacenterId = "0";
             log.info("datacenterId is empty, initialize to 0.");
         }
 
         try {
-            sequence = new Sequence(Long.valueOf(workerId), Long.valueOf(datacenterId));
-            log.info("init sequence finished. workerId: {}, datacenterId: {}.", workerId, datacenterId);
+            sequence = new Sequence(Long.parseLong(workerId), Long.parseLong(datacenterId));
+            log.info("init sequence finished. workerId: {}, dataCenterId: {}.", workerId, datacenterId);
         } catch (NumberFormatException e) {
             sequence = new Sequence(0, 0);
             log.warn(StackTrace2Str.exceptionStackTrace2Str("config sequence fail, use default config", e));

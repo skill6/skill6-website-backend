@@ -1,6 +1,5 @@
 package cn.skill6.website.dao.impl.article;
 
-import cn.skill6.common.BaseUtils;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 import cn.skill6.website.dao.mappers.article.ArticleInfoMapper;
@@ -8,6 +7,7 @@ import cn.skill6.website.util.sequence.SequenceManager;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -84,31 +84,31 @@ public class ArticleInfoDaoImpl implements ArticleInfoDao {
     public void modifyByArticleId(ArticleInfo articleInfo) {
         ArticleInfo articleInfoNew = findByArticleId(articleInfo.getArticleId());
 
-        if (BaseUtils.isNotEmpty(articleInfo.getArticleTitle())) {
+        if (StringUtils.isNotEmpty(articleInfo.getArticleTitle())) {
             articleInfoNew.setArticleTitle(articleInfo.getArticleTitle());
         }
-        if (BaseUtils.isNotEmpty(articleInfo.getArticleSummary())) {
+        if (StringUtils.isNotEmpty(articleInfo.getArticleSummary())) {
             articleInfoNew.setArticleSummary(articleInfo.getArticleSummary());
         }
-        if (BaseUtils.isNotEmpty(articleInfo.getArticleLabel())) {
+        if (StringUtils.isNotEmpty(articleInfo.getArticleLabel())) {
             articleInfoNew.setArticleLabel(articleInfo.getArticleLabel());
         }
-        if (BaseUtils.isNotEmpty(articleInfo.getArticleHtmlContent())) {
+        if (StringUtils.isNotEmpty(articleInfo.getArticleHtmlContent())) {
             articleInfoNew.setArticleHtmlContent(articleInfo.getArticleHtmlContent());
         }
-        if (BaseUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
+        if (StringUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
             articleInfoNew.setArticleMdContent(articleInfo.getArticleMdContent());
         }
         if (articleInfo.getCategoryId() != null) {
             articleInfoNew.setCategoryId(articleInfo.getCategoryId());
         }
         Boolean artilcePlaceTop = articleInfo.getArtilcePlaceTop();
-        if (artilcePlaceTop != null && artilcePlaceTop == true) {
+        if (artilcePlaceTop != null && artilcePlaceTop) {
             articleInfoNew.setArtilcePlaceTop(true);
             articleInfoNew.setArticleTopPriority(articleInfo.getArticleTopPriority());
         }
         Boolean articleAttachFile = articleInfo.getArticleAttachFile();
-        if (articleAttachFile != null && articleAttachFile == true) {
+        if (articleAttachFile != null && articleAttachFile) {
             articleInfoNew.setArticleAttachFile(true);
             articleInfoNew.setArticleAttachUrl(articleInfo.getArticleAttachUrl());
         }

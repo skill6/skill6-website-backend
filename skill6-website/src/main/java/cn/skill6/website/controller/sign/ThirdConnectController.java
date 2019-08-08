@@ -57,9 +57,9 @@ public class ThirdConnectController extends BaseController {
 
         Skill6Properties.QQ qq = skill6Properties.getQq();
 
-        String display = UserAgentType.PC.getUserAgent();
+        String display = UserAgentType.PC.getEnumName();
         if (JudgeIsMobile.isMobile(request.getHeader("user-agent"))) {
-            display = UserAgentType.MOBILE.getUserAgent();
+            display = UserAgentType.MOBILE.getEnumName();
         }
 
         String qqAuthUrl = "redirect:" + "https://graph.qq.com/oauth2.0/authorize" +

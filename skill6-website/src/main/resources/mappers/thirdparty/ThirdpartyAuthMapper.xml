@@ -60,6 +60,6 @@
             </if>
             <if test="thirdpartyValid != null">AND thirdparty_valid = #{thirdpartyValid,jdbcType=BIT}</if>
         </where>
-        <if test="orderBy != null">ORDER BY ${orderBy} ${sortType.stateCode}</if>
+        <if test="orderBy != null">ORDER BY ${orderBy} ${sortType.value}</if>
     </select>
 </mapper>

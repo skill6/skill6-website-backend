@@ -34,8 +34,8 @@ public class StoreFileDaoOperTest extends Skill6WebsiteApplicationTest {
     public void TestAddFileDownload() {
         String fileId = SequenceManager.getNextIdStr();
         String fileName = "Java虚拟机";
-        String fileUrl =
-                skill6Properties.getFilePath() + DateFormat.formatDateYMD("yyyy/MM/dd") + "/" + fileId;
+        String fileUrl = skill6Properties.getFilePath() +
+                DateFormat.formatDateYMD("yyyy/MM/dd") + "/" + fileId;
         String fileHashCode = Md5Encrypt.getMD5Code("测试");
 
         StoreFile storeFile = new StoreFile();

@@ -19,17 +19,17 @@ spring:
   application:
     name: skill6-website
   datasource:
-    username: ${SKILL6_MYSQL_USERNAME}
-    password: ${SKILL6_MYSQL_PASSWROD}
-    url: ${SKILL6_MYSQL_URL}
+    username: username
+    password: password
+    url: url
     druid:
       name: skill6-mysql-01
     schema: classpath*:schema/*.sql
     initialization-mode: always
   redis:
-    host: ${SKILL6_REDIS_HOST}
-    password: ${SKILL6_REDIS_PASSWORD}
-    port: ${SKILL6_REDIS_PORT}
+    host: host
+    password: password
+    port: 6379
   jackson:
     property-naming-strategy: SNAKE_CASE
     date-format: yyyy-MM-dd HH:mm:ss
@@ -44,6 +44,8 @@ dubbo:
     name: user-rbac-provider
   registry:
     address: zookeeper://localhost:2181
+    username: username
+    password: password
 mybatis:
   mapper-locations: classpath*:mappers/**/*.xml
   type-aliases-package: cn.skill6.common.entity.po
@@ -77,7 +79,7 @@ skill6:
     data-center:
       id: 1
   recaptcha:
-    secret-key: ${SKILL6_RECAPTCHA_SECRET_KEY}
+    secret-key: key
     verify-url: https://www.recaptcha.net/recaptcha/api/siteverify
   github:
     client_id: gsasga241124
