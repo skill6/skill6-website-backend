@@ -3,7 +3,6 @@ package cn.skill6.website.security.realm.oauth;
 import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 import cn.skill6.common.entity.po.user.UserPrivacyInfo;
-import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.transform.ConvertRequestParams;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.common.utility.HttpsClient;
@@ -25,7 +24,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -114,12 +112,7 @@ public class QQRealm extends Skill6Realm {
             return null;
         }
 
-        try {
-            map = JacksonUtil.str2Map(response);
-        } catch (IOException e) {
-            log.warn(StackTrace2Str.exceptionStackTrace2Str("解析json失败", e));
-            return null;
-        }
+        map = JacksonUtil.str2Map(response);
         String openid = map.get(UrlRequest.PARAM_OPENID);
 
         // 3.获取用户信息

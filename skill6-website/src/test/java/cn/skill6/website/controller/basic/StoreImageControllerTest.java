@@ -49,7 +49,7 @@ public class StoreImageControllerTest extends Skill6WebsiteApplicationTest {
                         .andReturn();
 
         String response = mvcResult.getResponse().getContentAsString();
-        Object message = JacksonUtil.fromStr(response, ResponseJson.class).getMessage();
+        Object message = JacksonUtil.toObj(response, ResponseJson.class).getMessage();
         urlDownload = ((Map<String, String>) message).get("image_url");
     }
 
