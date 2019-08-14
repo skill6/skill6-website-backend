@@ -23,7 +23,6 @@ import java.util.*;
  */
 @Slf4j
 @Repository
-@SuppressWarnings("unchecked")
 public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
 
     @Autowired
@@ -32,12 +31,14 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
     @Autowired
     ValueOperations<String, Object> operations;
 
-    public String buildKey(K paramK) {
-        if (StringUtils.contains((CharSequence) paramK, "shiro@")) {
-            return (String) paramK;
+    private String buildKey(K paramK) {
+        String paramKey = String.valueOf(paramK);
+
+        if (StringUtils.contains(paramKey, "shiro@")) {
+            return paramKey;
         }
 
-        return StringUtils.join(RedisCachePrefix.SHIRO_REDIS_CACHE, paramK);
+        return StringUtils.join(RedisCachePrefix.SHIRO_REDIS_CACHE, paramKey);
     }
 
     @Override
@@ -58,20 +59,20 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
             return null;
         }
         log.debug("redis get, paramK:{}", paramK);
-        operations.set(this.buildKey(paramK), paramV);
+        operations.set(buildKey(paramK), paramV);
 
         return paramV;
     }
 
     @Override
     public V remove(K paramK) throws CacheException {
-        if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
+        if (paramK == null || StringUtils.isEmpty(String.valueOf(paramK))) {
             log.debug("paramK is empty");
             return null;
         }
         log.debug("redis get, paramK:{}", paramK);
 
-        return (V) redisTemplate.delete(this.buildKey(paramK));
+        return (V) redisTemplate.delete(buildKey(paramK));
     }
 
     @Override
@@ -84,7 +85,7 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
         }
 
         for (K key : keys) {
-            this.remove(key);
+            remove(key);
         }
     }
 
@@ -92,7 +93,7 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
     public int size() {
         log.debug("redis get size");
 
-        return redisTemplate.keys(this.buildKey((K) "*")).size();
+        return redisTemplate.keys(buildKey((K) "*")).size();
     }
 
     @Override
