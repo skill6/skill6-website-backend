@@ -23,8 +23,6 @@ public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
     public void deleteByPrimaryKey() {
     }
 
-    ;
-
     @Test
     public void insert() {
         ThirdpartyAuth thirdpartyAuth = new ThirdpartyAuth();
@@ -35,22 +33,14 @@ public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
         thirdpartyAuthDao.addThirdpartyAuth(thirdpartyAuth);
     }
 
-    ;
-
     public void selectByPrimaryKey() {
     }
-
-    ;
 
     public void selectAll() {
     }
 
-    ;
-
     public void updateByPrimaryKey() {
     }
-
-    ;
 
     @Test
     public void selectByParams() {
@@ -62,5 +52,4 @@ public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
         thirdpartyAuthDao.findByParams(thirdpartyAuth);
     }
 
-    ;
 }

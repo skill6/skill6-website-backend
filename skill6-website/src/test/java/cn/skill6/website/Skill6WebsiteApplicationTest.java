@@ -19,9 +19,8 @@ import org.springframework.web.context.request.ServletWebRequest;
 /**
  * 测试基类
  *
- * @author 刘纪春
- * @version 1.0
- * @since 2018年9月15日 上午2:05:48
+ * @author 何明胜 husen@hemingsheng.cn
+ * @since 2019-08-18 19:37
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

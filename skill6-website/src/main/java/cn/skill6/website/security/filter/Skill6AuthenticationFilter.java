@@ -36,6 +36,7 @@ public class Skill6AuthenticationFilter extends FormAuthenticationFilter {
                             + "]");
 
             saveRequestAndRedirectToLogin(request, response);
+
             return false;
         }
 
@@ -71,13 +72,14 @@ public class Skill6AuthenticationFilter extends FormAuthenticationFilter {
         String requestURI = getPathWithinApplication(request);
 
         if (StringUtils.equals(requestURI, LoginType.GITHUB.getUri())) {
+            thirdPartyAuth = true;
             return new AccountPasswordTypeToken(rememberMe, host, LoginType.GITHUB, authCode);
         }
         if (StringUtils.equals(requestURI, LoginType.QQ.getUri())) {
+            thirdPartyAuth = true;
             return new AccountPasswordTypeToken(rememberMe, host, LoginType.QQ, authCode);
         }
 
-        thirdPartyAuth = true;
         String username = getUsername(request);
         String password = getPassword(request);
 

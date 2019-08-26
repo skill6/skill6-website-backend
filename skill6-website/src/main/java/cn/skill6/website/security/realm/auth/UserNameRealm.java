@@ -105,10 +105,7 @@ public class UserNameRealm extends Skill6Realm {
                 new SimpleByteSource(StringUtils.join(user.getUserPwdSalt(), "@", user.getUserName()));
 
         // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配. 用户名, 密码, salt, realm name
-        SimpleAuthenticationInfo authenticationInfo =
-                new SimpleAuthenticationInfo(
-                        user.getUserName(), user.getUserPassword(), saltByteSource, getName());
-
-        return authenticationInfo;
+        return new SimpleAuthenticationInfo(
+                user.getUserName(), user.getUserPassword(), saltByteSource, getName());
     }
 }

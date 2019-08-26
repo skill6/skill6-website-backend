@@ -31,16 +31,6 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
     @Autowired
     ValueOperations<String, Object> operations;
 
-    private String buildKey(K paramK) {
-        String paramKey = String.valueOf(paramK);
-
-        if (StringUtils.contains(paramKey, "shiro@")) {
-            return paramKey;
-        }
-
-        return StringUtils.join(RedisCachePrefix.SHIRO_REDIS_CACHE, paramKey);
-    }
-
     @Override
     public V get(K paramK) throws CacheException {
         if (paramK == null || StringUtils.isEmpty((CharSequence) paramK)) {
@@ -49,7 +39,7 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
         }
         log.debug("redis get, paramK:{}", paramK);
 
-        return (V) operations.get(this.buildKey(paramK));
+        return (V) operations.get(buildKey(paramK));
     }
 
     @Override
@@ -127,5 +117,15 @@ public class ShiroRedisCache<K extends Serializable, V> implements Cache<K, V> {
         }
 
         return Collections.unmodifiableList(values);
+    }
+
+    private String buildKey(K paramK) {
+        String paramKey = String.valueOf(paramK);
+
+        if (StringUtils.contains(paramKey, "shiro@")) {
+            return paramKey;
+        }
+
+        return StringUtils.join(RedisCachePrefix.SHIRO_REDIS_CACHE, paramKey);
     }
 }
