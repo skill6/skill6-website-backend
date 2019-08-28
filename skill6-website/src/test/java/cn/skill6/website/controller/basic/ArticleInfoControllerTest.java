@@ -5,7 +5,6 @@ import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 
@@ -16,11 +15,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Controller测试类
  *
- * @author liujichun
  * @author 何明胜
  * @version 1.3
  */
-@SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // 指定测试方法按定义的顺序执行
 public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
 

@@ -7,7 +7,6 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.article.ArticleInfoDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -22,7 +21,6 @@ import static org.junit.Assert.assertTrue;
  * @version 1.2
  * @since 2018年9月21日 下午11:24:25
  */
-@SpringBootTest
 @Transactional
 public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationTest {
 

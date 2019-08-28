@@ -5,7 +5,6 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * 第三方登录测试
@@ -14,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @version 1.0
  * @since 2018年11月23日 下午11:47:28
  */
-@SpringBootTest
 public class ThirdpartyAuthDaoOperTest extends Skill6WebsiteApplicationTest {
 
     @Autowired
