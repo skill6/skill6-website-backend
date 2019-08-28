@@ -10,7 +10,6 @@ import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,7 +20,6 @@ import static org.junit.Assert.assertEquals;
  * @version 1.7
  * @since 2018年9月4日 下午11:19:15
  */
-@SpringBootTest
 public class StoreFileDaoOperTest extends Skill6WebsiteApplicationTest {
 
     @Autowired

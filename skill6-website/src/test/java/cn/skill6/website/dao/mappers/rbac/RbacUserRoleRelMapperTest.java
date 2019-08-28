@@ -5,7 +5,6 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -18,7 +17,6 @@ import static org.junit.Assert.assertNotEquals;
  * @version 1.0
  * @since 2018年9月23日 下午11:27:57
  */
-@SpringBootTest
 public class RbacUserRoleRelMapperTest extends Skill6WebsiteApplicationTest {
     @Autowired
     private RbacUserRoleRelMapper rbacUserRoleRelMapper;

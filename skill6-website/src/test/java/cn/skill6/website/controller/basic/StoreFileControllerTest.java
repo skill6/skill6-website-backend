@@ -6,7 +6,6 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MvcResult;
@@ -25,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @version 1.0
  * @since 2018年9月19日 下午6:51:45
  */
-@SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
 

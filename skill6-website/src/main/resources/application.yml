@@ -67,7 +67,9 @@ logging:
     root: INFO
     cn.skill6.website.dao: DEBUG
     cn.skill6.website.config.SEOInterceptor: DEBUG
+    cn.skill6.website.cache: DEBUG
     cn.skill6.website: INFO
+    org.mybatis.spring: INFO
   pattern:
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%C::%M %L] %logger{15} - %msg%n'
 skill6:

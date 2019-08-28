@@ -6,7 +6,6 @@ import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 1.0
  * @since 2018年9月25日 上午12:02:43
  */
-@SpringBootTest
 public class StoreImageDaoOperTest extends Skill6WebsiteApplicationTest {
 
     @Autowired

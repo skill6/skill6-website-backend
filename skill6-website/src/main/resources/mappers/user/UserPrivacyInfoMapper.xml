@@ -11,13 +11,16 @@
             <arg column="user_password" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="user_pwd_salt" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="user_type" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="user_state" javaType="java.lang.String" jdbcType="VARCHAR"/>
+<!--            <arg column="user_state" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
         </constructor>
+		<result column="user_state" property="userState" jdbcType="VARCHAR" />
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
 		delete from user_privacy_info
 		where user_id = #{userId,jdbcType=BIGINT}
 	</delete>
+
     <insert id="insert" parameterType="UserPrivacyInfo">
 		insert into user_privacy_info (user_id, user_name, user_email,
 		user_phone, user_login_from, user_password,
@@ -29,6 +32,7 @@
 		#{userPwdSalt,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}
 		)
 	</insert>
+
     <update id="updateByPrimaryKey" parameterType="UserPrivacyInfo">
 		update user_privacy_info
 		set user_name = #{userName,jdbcType=VARCHAR},
@@ -43,12 +47,21 @@
 		user_state = #{userState,jdbcType=VARCHAR}
 		where user_id = #{userId,jdbcType=BIGINT}
 	</update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
 		select user_id, user_name, user_email, user_phone, user_login_from, user_password,
 		user_pwd_salt, user_type, user_state
 		from user_privacy_info
 		where user_id = #{userId,jdbcType=BIGINT}
 	</select>
+
+	<select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select user_id, user_name, user_email, user_phone, user_login_from, user_password,
+		user_pwd_salt, user_type, user_state
+		from user_privacy_info
+		where user_name = #{userName,jdbcType=VARCHAR}
+	</select>
+
     <select id="selectAll" resultMap="BaseResultMap">
 		select user_id, user_name, user_email, user_phone, user_login_from, user_password,
 		user_pwd_salt, user_type, user_state

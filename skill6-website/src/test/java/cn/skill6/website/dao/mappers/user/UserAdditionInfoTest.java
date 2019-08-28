@@ -6,7 +6,6 @@ import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,12 +14,10 @@ import java.util.Date;
 /**
  * 用户信息测试类
  *
- * @author 刘纪春
- * @version 1.4
- * @since 2018年8月21日 下午11:41:17
+ * @author 何明胜 husen@hemingsheng.cn
+ * @since 2019-08-27 00:45
  */
 @Slf4j
-@SpringBootTest
 @Transactional
 public class UserAdditionInfoTest extends Skill6WebsiteApplicationTest {
 
@@ -40,7 +37,7 @@ public class UserAdditionInfoTest extends Skill6WebsiteApplicationTest {
         log.info("id:{}", id);
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(id);
-        userAdditionInfo.setUserNickName("jliu666");
+        userAdditionInfo.setUserNickName("testUser");
         userAdditionInfo.setUserRegisterTime(new Date());
         log.info("{}", userAdditionInfoMapper.insert(userAdditionInfo));
     }
@@ -63,7 +60,7 @@ public class UserAdditionInfoTest extends Skill6WebsiteApplicationTest {
         Long id = SequenceManager.getNextId();
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(id);
-        userAdditionInfo.setUserNickName("jliu667");
+        userAdditionInfo.setUserNickName("testUser");
         userAdditionInfo.setUserRegisterTime(new Date());
         log.info("{}", userAdditionInfoMapper.updateByPrimaryKey(userAdditionInfo));
     }

@@ -21,6 +21,8 @@ public interface UserPrivacyInfoMapper {
 
     UserPrivacyInfo selectByPrimaryKey(Long userId);
 
+    UserPrivacyInfo selectByUserName(String userName);
+
     List<UserPrivacyInfo> selectAll();
 
     int updateByPrimaryKey(UserPrivacyInfo userPrivacyInfo);

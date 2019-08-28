@@ -4,7 +4,6 @@ import cn.skill6.website.Skill6WebsiteApplicationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
@@ -15,7 +14,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @since 2018年9月24日 上午12:15:11
  */
 @Slf4j
-@SpringBootTest
 public class TestRedis extends Skill6WebsiteApplicationTest {
 
     @Autowired

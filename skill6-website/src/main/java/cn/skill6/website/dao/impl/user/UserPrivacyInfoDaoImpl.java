@@ -127,8 +127,8 @@ public class UserPrivacyInfoDaoImpl implements UserPrivacyInfoDao {
     }
 
     @Override
-    public UserPrivacyInfo findUserByUserName(String userName) { // TODO Auto-generated method stub
-        return null;
+    public UserPrivacyInfo findUserByUserName(String userName) {
+        return userPrivacyInfoMapper.selectByUserName(userName);
     }
 
     @Override

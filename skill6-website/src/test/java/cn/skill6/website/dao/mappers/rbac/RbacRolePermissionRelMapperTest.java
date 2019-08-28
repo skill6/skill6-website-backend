@@ -7,7 +7,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ import static org.junit.Assert.assertNotEquals;
  * @version 1.0
  * @since 2018年9月23日 下午11:27:22
  */
-@SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RbacRolePermissionRelMapperTest extends Skill6WebsiteApplicationTest {
     @Autowired

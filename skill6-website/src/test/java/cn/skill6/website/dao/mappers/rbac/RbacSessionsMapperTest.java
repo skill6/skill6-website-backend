@@ -22,7 +22,6 @@ import static org.junit.Assert.assertNotEquals;
  * @version 1.0
  * @since 2018年9月23日 下午11:27:43
  */
-@SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RbacSessionsMapperTest extends Skill6WebsiteApplicationTest {
     @Autowired
