@@ -23,7 +23,7 @@ public class UserPrivacyInfoTest extends Skill6WebsiteApplicationTest {
 
     @Test
     public void testSelectByUserName() {
-        UserPrivacyInfo userPrivacyInfo = userPrivacyInfoMapper.selectByUserName("husen1");
+        UserPrivacyInfo userPrivacyInfo = userPrivacyInfoMapper.selectByUserName("husen");
         log.info("query success, {}", JacksonUtil.toStr(userPrivacyInfo));
     }
 

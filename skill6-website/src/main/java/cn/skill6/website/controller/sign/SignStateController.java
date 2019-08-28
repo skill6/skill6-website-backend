@@ -1,7 +1,6 @@
 package cn.skill6.website.controller.sign;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.common.transform.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -22,16 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class SignStateController {
 
     @GetMapping(value = "/authenticated")
-    public String getLoginState() {
+    public ResponseJson getLoginState() {
         Subject subject = SecurityUtils.getSubject();
         boolean authenticated = subject.isAuthenticated();
         log.info("session id: {}, isAuthenticated： {}", subject.getSession().getId(), authenticated);
 
-        return JacksonUtil.toStr(new ResponseJson(authenticated));
+        return new ResponseJson(authenticated);
     }
 
     @PostMapping(value = "/logout")
-    public ResponseJson loginOut() {
+    public ResponseJson logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
 

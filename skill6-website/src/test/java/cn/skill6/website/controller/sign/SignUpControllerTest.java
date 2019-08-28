@@ -18,9 +18,9 @@ public class SignUpControllerTest extends Skill6WebsiteApplicationTest {
 
     @Test
     public void test01CreateUser() throws Exception {
-        LinkedMultiValueMap<String, String> paramMap = new LinkedMultiValueMap<String, String>(2);
+        LinkedMultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>(2);
 
-        paramMap.add("userName", "husen");
+        paramMap.add("userName", "husen_test");
         paramMap.add("password", "123456");
 
         mockMvc
