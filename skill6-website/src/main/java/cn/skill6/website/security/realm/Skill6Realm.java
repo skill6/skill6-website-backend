@@ -1,11 +1,9 @@
 package cn.skill6.website.security.realm;
 
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 自定义域基类
@@ -16,16 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class Skill6Realm extends AuthorizingRealm {
 
-    @Autowired
-    CredentialsMatcher credentialsMatcher;
-
     public Skill6Realm() {
-        this.setCredentialsMatcher(credentialsMatcher);
-        this.setCachingEnabled(true);
-        this.setAuthenticationCachingEnabled(true);
-        this.setAuthenticationCacheName("authenticationCache");
-        this.setAuthorizationCachingEnabled(true);
-        this.setAuthorizationCacheName("authorizationCache");
+        super.setCachingEnabled(true);
+
+        super.setAuthenticationCachingEnabled(true);
+        super.setAuthenticationCacheName("authenticationCache");
+
+        super.setAuthorizationCachingEnabled(true);
+        super.setAuthorizationCacheName("authorizationCache");
     }
 
     /**

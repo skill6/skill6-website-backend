@@ -2,6 +2,7 @@ package cn.skill6.website.config;
 
 import cn.skill6.website.security.credentials.RetryLimitCredentialsMatcher;
 import cn.skill6.website.security.filter.Skill6AuthenticationFilter;
+import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.realm.auth.EmailRealm;
 import cn.skill6.website.security.realm.auth.PhoneRealm;
 import cn.skill6.website.security.realm.auth.UserNameRealm;
@@ -48,6 +49,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 用于进行Shiro配置
@@ -104,9 +106,8 @@ public class ShiroConfiguration {
      * 密码匹配器
      */
     @Bean
-    public CredentialsMatcher hashedCredentialsMatcher() {
-        RetryLimitCredentialsMatcher credentialsMatcher =
-                new RetryLimitCredentialsMatcher(cacheManager);
+    public CredentialsMatcher retryLimitCredentialsMatcher() {
+        RetryLimitCredentialsMatcher credentialsMatcher = new RetryLimitCredentialsMatcher(cacheManager);
 
         credentialsMatcher.setHashAlgorithmName("md5");
         credentialsMatcher.setHashIterations(2);
@@ -177,7 +178,14 @@ public class ShiroConfiguration {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
         // 添加所有的realm
-        List<Realm> realms = Lists.newArrayList(userNameRealm, phoneRealm, emailRealm, gitHubRealm, googleRealm, qqRealm, weChatRealm);
+        List<Skill6Realm> skill6Realms = Lists.newArrayList(userNameRealm, phoneRealm, emailRealm, gitHubRealm,
+                googleRealm, qqRealm, weChatRealm);
+
+        // 加入密码校验器
+        List<Realm> realms = skill6Realms.stream()
+                .peek(skill6Realm -> skill6Realm.setCredentialsMatcher(retryLimitCredentialsMatcher()))
+                .collect(Collectors.toList());
+
         securityManager.setRealms(realms);
 
         // 自定义缓存实现 使用redis

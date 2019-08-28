@@ -9,13 +9,13 @@ import cn.skill6.website.dao.intf.rbac.RbacRoleInfoDao;
 import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
 import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
+import cn.skill6.website.util.ByteSourceSerializable;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.SimpleByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -101,8 +101,8 @@ public class UserNameRealm extends Skill6Realm {
         }
 
         // salt=salt@username
-        SimpleByteSource saltByteSource =
-                new SimpleByteSource(StringUtils.join(user.getUserPwdSalt(), "@", user.getUserName()));
+        String salt = StringUtils.join(user.getUserPwdSalt(), "@", user.getUserName());
+        ByteSourceSerializable saltByteSource = new ByteSourceSerializable(salt);
 
         // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配. 用户名, 密码, salt, realm name
         return new SimpleAuthenticationInfo(
