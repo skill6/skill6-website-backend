@@ -2,7 +2,7 @@ package cn.skill6.website.controller.basic;
 
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.transform.JacksonUtil;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @since 2018年9月21日 上午12:19:12
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class StoreImageControllerTest extends Skill6WebsiteApplicationTest {
+public class StoreImageControllerTest extends Skill6WebsiteApplicationBase {
 
     private static String urlDownload = null;
 

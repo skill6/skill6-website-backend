@@ -1,13 +1,12 @@
 package cn.skill6.website.dao.mappers.rbac;
 
 import cn.skill6.common.entity.po.rbac.RbacSession;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +22,7 @@ import static org.junit.Assert.assertNotEquals;
  * @since 2018年9月23日 下午11:27:43
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RbacSessionsMapperTest extends Skill6WebsiteApplicationTest {
+public class RbacSessionsMapperTest extends Skill6WebsiteApplicationBase {
     @Autowired
     private RbacSessionMapper rbacSessionsMapper;
 

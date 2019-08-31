@@ -1,7 +1,7 @@
 package cn.skill6.website.dao.impl.store;
 
 import cn.skill6.common.entity.po.store.StoreImage;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version 1.0
  * @since 2018年9月25日 上午12:02:43
  */
-public class StoreImageDaoOperTest extends Skill6WebsiteApplicationTest {
+public class StoreImageDaoOperTest extends Skill6WebsiteApplicationBase {
 
     @Autowired
     StoreImageDao storeImageDao;

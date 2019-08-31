@@ -1,7 +1,6 @@
 package cn.skill6.website;
 
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @WebAppConfiguration
 @RunWith(SpringRunner.class)
-public class Skill6WebsiteApplicationTest {
+public class Skill6WebsiteApplicationBase {
 
     @Autowired
     protected WebApplicationContext wac;
@@ -32,7 +31,4 @@ public class Skill6WebsiteApplicationTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
-    @Test
-    public void initializeContext() {
-    }
 }

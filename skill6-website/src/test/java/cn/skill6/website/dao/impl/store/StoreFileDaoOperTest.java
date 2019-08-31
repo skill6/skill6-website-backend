@@ -4,7 +4,7 @@ import cn.skill6.common.encrypt.Md5Encrypt;
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.po.store.StoreFile;
 import cn.skill6.common.utility.DateFormat;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import cn.skill6.website.config.Skill6Properties;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  * @version 1.7
  * @since 2018年9月4日 下午11:19:15
  */
-public class StoreFileDaoOperTest extends Skill6WebsiteApplicationTest {
+public class StoreFileDaoOperTest extends Skill6WebsiteApplicationBase {
 
     @Autowired
     private StoreFileDao storeFileDao;

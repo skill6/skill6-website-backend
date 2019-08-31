@@ -1,6 +1,6 @@
 package cn.skill6.website.middleware;
 
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @since 2018年9月24日 上午12:15:11
  */
 @Slf4j
-public class TestRedis extends Skill6WebsiteApplicationTest {
+public class TestRedis extends Skill6WebsiteApplicationBase {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

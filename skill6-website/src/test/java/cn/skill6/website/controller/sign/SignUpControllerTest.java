@@ -1,6 +1,6 @@
 package cn.skill6.website.controller.sign;
 
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author 何明胜 husen@hemingsheng.cn
  * @since 2019-08-27 00:49
  */
-public class SignUpControllerTest extends Skill6WebsiteApplicationTest {
+public class SignUpControllerTest extends Skill6WebsiteApplicationBase {
 
     @Test
     public void test01CreateUser() throws Exception {
