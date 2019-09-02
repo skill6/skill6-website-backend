@@ -25,7 +25,7 @@ spring:
     druid:
       name: skill6-mysql-01
     schema: classpath*:schema/*.sql
-    initialization-mode: always
+    initialization-mode: never
   redis:
     host: host
     password: password

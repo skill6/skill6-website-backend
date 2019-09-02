@@ -11,43 +11,52 @@
             <arg column="thirdparty_data" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
         </constructor>
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from thirdparty_auth
-		where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
-	</delete>
+        delete
+        from thirdparty_auth
+        where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
+    </delete>
+
     <insert id="insert" parameterType="ThirdpartyAuth">
-		insert into thirdparty_auth (thirdparty_id, user_id, thirdparty_primary_key,
-		thirdparty_valid, thirdparty_create_time, thirdparty_data
-		)
-		values
-		(#{thirdpartyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{thirdpartyPrimaryKey,jdbcType=VARCHAR},
-		#{thirdpartyValid,jdbcType=BIT}, #{thirdpartyCreateTime,jdbcType=TIMESTAMP},
-		#{thirdpartyData,jdbcType=LONGVARCHAR}
-		)
-	</insert>
+        insert into thirdparty_auth (thirdparty_id, user_id, thirdparty_primary_key,
+                                     thirdparty_valid, thirdparty_create_time, thirdparty_data)
+        values (#{thirdpartyId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{thirdpartyPrimaryKey,jdbcType=VARCHAR},
+                #{thirdpartyValid,jdbcType=BIT}, #{thirdpartyCreateTime,jdbcType=TIMESTAMP},
+                #{thirdpartyData,jdbcType=LONGVARCHAR})
+    </insert>
+
     <update id="updateByPrimaryKey" parameterType="ThirdpartyAuth">
-		update thirdparty_auth
-		set user_id = #{userId,jdbcType=BIGINT},
-		thirdparty_primary_key = #{thirdpartyPrimaryKey,jdbcType=VARCHAR},
-		thirdparty_valid =
-		#{thirdpartyValid,jdbcType=BIT},
-		thirdparty_create_time = #{thirdpartyCreateTime,jdbcType=TIMESTAMP},
-		thirdparty_data = #{thirdpartyData,jdbcType=LONGVARCHAR}
-		where thirdparty_id =
-		#{thirdpartyId,jdbcType=BIGINT}
-	</update>
+        update thirdparty_auth
+        set user_id                = #{userId,jdbcType=BIGINT},
+            thirdparty_primary_key = #{thirdpartyPrimaryKey,jdbcType=VARCHAR},
+            thirdparty_valid       = #{thirdpartyValid,jdbcType=BIT},
+            thirdparty_create_time = #{thirdpartyCreateTime,jdbcType=TIMESTAMP},
+            thirdparty_data        = #{thirdpartyData,jdbcType=LONGVARCHAR}
+        where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
-		thirdparty_data
-		from
-		thirdparty_auth
-		where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
-	</select>
+        select thirdparty_id,
+               user_id,
+               thirdparty_primary_key,
+               thirdparty_valid,
+               thirdparty_create_time,
+               thirdparty_data
+        from thirdparty_auth
+        where thirdparty_id = #{thirdpartyId,jdbcType=BIGINT}
+    </select>
+
     <select id="selectAll" resultMap="BaseResultMap">
-		select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
-		thirdparty_data
-		from thirdparty_auth
-	</select>
+        select thirdparty_id,
+               user_id,
+               thirdparty_primary_key,
+               thirdparty_valid,
+               thirdparty_create_time,
+               thirdparty_data
+        from thirdparty_auth
+    </select>
+
     <select id="selectByParams" resultMap="BaseResultMap" parameterType="ThirdpartyAuth">
         select thirdparty_id, user_id, thirdparty_primary_key, thirdparty_valid, thirdparty_create_time,
         thirdparty_data
@@ -60,6 +69,6 @@
             </if>
             <if test="thirdpartyValid != null">AND thirdparty_valid = #{thirdpartyValid,jdbcType=BIT}</if>
         </where>
-        <if test="orderBy != null">ORDER BY ${orderBy} ${sortType.value}</if>
+        <if test="orderBy != null">ORDER BY #{orderBy} #{sortType.value}</if>
     </select>
 </mapper>

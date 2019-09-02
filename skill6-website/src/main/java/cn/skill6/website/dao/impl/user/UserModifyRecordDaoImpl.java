@@ -39,7 +39,7 @@ public class UserModifyRecordDaoImpl implements UserModifyRecordDao {
         if (userModifyRecord.getUserModifyType() == null) {
             throw new NullPointerException("用户修改记录类型不能为null");
         }
-        if (userModifyRecord.getUserModufyResult() == null) {
+        if (userModifyRecord.getUserModifyResult() == null) {
             throw new NullPointerException("用户修改记录结果不能为null");
         }
 

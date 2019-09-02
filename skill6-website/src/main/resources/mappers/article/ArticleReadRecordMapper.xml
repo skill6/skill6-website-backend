@@ -8,33 +8,36 @@
             <arg column="article_read_daily" javaType="java.lang.Integer" jdbcType="INTEGER"/>
         </constructor>
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="map">
-		delete from article_read_record
-		where article_id = #{articleId,jdbcType=BIGINT}
-		and article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
-	</delete>
+        DELETE
+        FROM article_read_record
+        WHERE article_id = #{articleId,jdbcType=BIGINT}
+          AND article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
+    </delete>
+
     <insert id="insert" parameterType="ArticleReadRecord">
-		insert into article_read_record (article_id, article_date_daily, article_read_daily
-		)
-		values (#{articleId,jdbcType=BIGINT},
-		#{articleDateDaily,jdbcType=TIMESTAMP}, #{articleReadDaily,jdbcType=INTEGER}
-		)
-	</insert>
+        INSERT INTO article_read_record (article_id, article_date_daily, article_read_daily)
+        VALUES (#{articleId,jdbcType=BIGINT}, #{articleDateDaily,jdbcType=TIMESTAMP},
+                #{articleReadDaily,jdbcType=INTEGER})
+    </insert>
+
     <update id="updateByPrimaryKey" parameterType="ArticleReadRecord">
-		update article_read_record
-		set article_read_daily = #{articleReadDaily,jdbcType=INTEGER}
-		where article_id = #{articleId,jdbcType=BIGINT}
-		and
-		article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
-	</update>
+        UPDATE article_read_record
+        SET article_read_daily = #{articleReadDaily,jdbcType=INTEGER}
+        WHERE article_id = #{articleId,jdbcType=BIGINT}
+          AND article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
-		select article_id, article_date_daily, article_read_daily
-		from article_read_record
-		where article_id = #{articleId,jdbcType=BIGINT}
-		and article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
-	</select>
+        SELECT article_id, article_date_daily, article_read_daily
+        FROM article_read_record
+        WHERE article_id = #{articleId,jdbcType=BIGINT}
+          AND article_date_daily = #{articleDateDaily,jdbcType=TIMESTAMP}
+    </select>
+
     <select id="selectAll" resultMap="BaseResultMap">
-		select article_id, article_date_daily, article_read_daily
-		from article_read_record
-	</select>
+        SELECT article_id, article_date_daily, article_read_daily
+        FROM article_read_record
+    </select>
 </mapper>

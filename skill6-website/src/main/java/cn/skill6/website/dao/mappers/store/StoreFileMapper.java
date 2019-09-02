@@ -8,7 +8,6 @@ import java.util.List;
  * 文件存储mapper
  *
  * @author 何明胜
- * @version 1.3
  * @since 2018年8月15日 下午11:40:27
  */
 public interface StoreFileMapper {

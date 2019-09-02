@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.question.QuestionInfoMapper">
+    <resultMap id="BaseResultMap" type="QuestionInfo">
+        <constructor>
+            <idArg column="question_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="categoryId" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="recommend_answer_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="question_title" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="question_label" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="question_visit_count" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="question_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="question_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="question_attach_file" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="question_attach_ids" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="question_valid" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="question_solve" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="question_html_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+            <arg column="question_md_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        DELETE
+        FROM question_info
+        WHERE question_id = #{questionId,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="QuestionInfo">
+        INSERT INTO question_info (question_id, categoryId, user_id,
+                                   recommend_answer_id, question_title, question_label,
+                                   question_visit_count, question_create_time,
+                                   question_update_time, question_attach_file, question_attach_ids,
+                                   question_valid, question_solve, question_html_content,
+                                   question_md_content)
+        VALUES (#{questionId,jdbcType=BIGINT}, #{categoryid,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+                #{recommendAnswerId,jdbcType=BIGINT}, #{questionTitle,jdbcType=VARCHAR},
+                #{questionLabel,jdbcType=VARCHAR},
+                #{questionVisitCount,jdbcType=INTEGER}, #{questionCreateTime,jdbcType=TIMESTAMP},
+                #{questionUpdateTime,jdbcType=TIMESTAMP}, #{questionAttachFile,jdbcType=BIT},
+                #{questionAttachIds,jdbcType=VARCHAR},
+                #{questionValid,jdbcType=BIT}, #{questionSolve,jdbcType=BIT},
+                #{questionHtmlContent,jdbcType=LONGVARCHAR},
+                #{questionMdContent,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="QuestionInfo">
+        UPDATE question_info
+        SET categoryId            = #{categoryid,jdbcType=BIGINT},
+            user_id               = #{userId,jdbcType=BIGINT},
+            recommend_answer_id   = #{recommendAnswerId,jdbcType=BIGINT},
+            question_title        = #{questionTitle,jdbcType=VARCHAR},
+            question_label        = #{questionLabel,jdbcType=VARCHAR},
+            question_visit_count  = #{questionVisitCount,jdbcType=INTEGER},
+            question_create_time  = #{questionCreateTime,jdbcType=TIMESTAMP},
+            question_update_time  = #{questionUpdateTime,jdbcType=TIMESTAMP},
+            question_attach_file  = #{questionAttachFile,jdbcType=BIT},
+            question_attach_ids   = #{questionAttachIds,jdbcType=VARCHAR},
+            question_valid        = #{questionValid,jdbcType=BIT},
+            question_solve        = #{questionSolve,jdbcType=BIT},
+            question_html_content = #{questionHtmlContent,jdbcType=LONGVARCHAR},
+            question_md_content   = #{questionMdContent,jdbcType=LONGVARCHAR}
+        WHERE question_id = #{questionId,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT question_id,
+               categoryId,
+               user_id,
+               recommend_answer_id,
+               question_title,
+               question_label,
+               question_visit_count,
+               question_create_time,
+               question_update_time,
+               question_attach_file,
+               question_attach_ids,
+               question_valid,
+               question_solve,
+               question_html_content,
+               question_md_content
+        FROM question_info
+        WHERE question_id = #{questionId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT question_id,
+               categoryId,
+               user_id,
+               recommend_answer_id,
+               question_title,
+               question_label,
+               question_visit_count,
+               question_create_time,
+               question_update_time,
+               question_attach_file,
+               question_attach_ids,
+               question_valid,
+               question_solve,
+               question_html_content,
+               question_md_content
+        FROM question_info
+    </select>
+</mapper>

@@ -8,7 +8,6 @@ import java.util.List;
  * 文章信息mapper
  *
  * @author 何明胜
- * @version 1.3
  * @since 2018年8月15日 下午11:39:27
  */
 public interface ArticleInfoMapper {

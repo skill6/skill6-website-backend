@@ -13,40 +13,56 @@
             <arg column="login_fail_reason" javaType="java.lang.String" jdbcType="VARCHAR"/>
         </constructor>
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from user_login_record
-		where login_id = #{loginId,jdbcType=BIGINT}
-	</delete>
+        delete
+        from user_login_record
+        where login_id = #{loginId,jdbcType=BIGINT}
+    </delete>
+
     <insert id="insert" parameterType="UserLoginRecord">
-		insert into user_login_record (login_id, user_id, login_ip,
-		login_type, login_equipment, login_time,
-		login_result, login_fail_reason)
-		values
-		(#{loginId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{loginIp,jdbcType=VARCHAR},
-		#{loginType,jdbcType=VARCHAR}, #{loginEquipment,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP},
-		#{loginResult,jdbcType=BIT}, #{loginFailReason,jdbcType=VARCHAR})
-	</insert>
+        insert into user_login_record (login_id, user_id, login_ip,
+                                       login_type, login_equipment, login_time,
+                                       login_result, login_fail_reason)
+        values (#{loginId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{loginIp,jdbcType=VARCHAR},
+                #{loginType,jdbcType=VARCHAR}, #{loginEquipment,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP},
+                #{loginResult,jdbcType=BIT}, #{loginFailReason,jdbcType=VARCHAR})
+    </insert>
+
     <update id="updateByPrimaryKey" parameterType="UserLoginRecord">
-		update user_login_record
-		set user_id = #{userId,jdbcType=BIGINT},
-		login_ip = #{loginIp,jdbcType=VARCHAR},
-		login_type = #{loginType,jdbcType=VARCHAR},
-		login_equipment = #{loginEquipment,jdbcType=VARCHAR},
-		login_time = #{loginTime,jdbcType=TIMESTAMP},
-		login_result = #{loginResult,jdbcType=BIT},
-		login_fail_reason = #{loginFailReason,jdbcType=VARCHAR}
-		where login_id = #{loginId,jdbcType=BIGINT}
-	</update>
+        update user_login_record
+        set user_id           = #{userId,jdbcType=BIGINT},
+            login_ip          = #{loginIp,jdbcType=VARCHAR},
+            login_type        = #{loginType,jdbcType=VARCHAR},
+            login_equipment   = #{loginEquipment,jdbcType=VARCHAR},
+            login_time        = #{loginTime,jdbcType=TIMESTAMP},
+            login_result      = #{loginResult,jdbcType=BIT},
+            login_fail_reason = #{loginFailReason,jdbcType=VARCHAR}
+        where login_id = #{loginId,jdbcType=BIGINT}
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select login_id, user_id, login_ip, login_type, login_equipment, login_time, login_result,
-		login_fail_reason
-		from
-		user_login_record
-		where login_id = #{loginId,jdbcType=BIGINT}
-	</select>
+        select login_id,
+               user_id,
+               login_ip,
+               login_type,
+               login_equipment,
+               login_time,
+               login_result,
+               login_fail_reason
+        from user_login_record
+        where login_id = #{loginId,jdbcType=BIGINT}
+    </select>
+
     <select id="selectAll" resultMap="BaseResultMap">
-		select login_id, user_id, login_ip, login_type, login_equipment, login_time, login_result,
-		login_fail_reason
-		from user_login_record
-	</select>
+        select login_id,
+               user_id,
+               login_ip,
+               login_type,
+               login_equipment,
+               login_time,
+               login_result,
+               login_fail_reason
+        from user_login_record
+    </select>
 </mapper>

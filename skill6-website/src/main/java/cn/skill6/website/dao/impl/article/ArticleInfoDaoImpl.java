@@ -47,7 +47,7 @@ public class ArticleInfoDaoImpl implements ArticleInfoDao {
         articleInfo.setArticleCreateTime(new Date());
         articleInfo.setArticleUpdateTime(new Date());
         // 默认不置顶、无附件
-        articleInfo.setArtilcePlaceTop(false);
+        articleInfo.setArticlePlaceTop(false);
         articleInfo.setArticleAttachFile(false);
         // 初始化阅读为0
         articleInfo.setArticleReadTotal(0);
@@ -102,15 +102,15 @@ public class ArticleInfoDaoImpl implements ArticleInfoDao {
         if (articleInfo.getCategoryId() != null) {
             articleInfoNew.setCategoryId(articleInfo.getCategoryId());
         }
-        Boolean artilcePlaceTop = articleInfo.getArtilcePlaceTop();
+        Boolean artilcePlaceTop = articleInfo.getArticlePlaceTop();
         if (artilcePlaceTop != null && artilcePlaceTop) {
-            articleInfoNew.setArtilcePlaceTop(true);
+            articleInfoNew.setArticlePlaceTop(true);
             articleInfoNew.setArticleTopPriority(articleInfo.getArticleTopPriority());
         }
         Boolean articleAttachFile = articleInfo.getArticleAttachFile();
         if (articleAttachFile != null && articleAttachFile) {
             articleInfoNew.setArticleAttachFile(true);
-            articleInfoNew.setArticleAttachUrl(articleInfo.getArticleAttachUrl());
+            articleInfoNew.setArticleAttachIds(articleInfo.getArticleAttachIds());
         }
 
         articleInfoMapper.updateByPrimaryKey(articleInfoNew);

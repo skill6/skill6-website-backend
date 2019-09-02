@@ -7,17 +7,21 @@
             <idArg column="permission_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
         </constructor>
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="map">
-		delete from rbac_role_permission_rel
-		where role_id = #{roleId,jdbcType=BIGINT}
-		and permission_id = #{permissionId,jdbcType=BIGINT}
-	</delete>
+        DELETE
+        FROM rbac_role_permission_rel
+        WHERE role_id = #{roleId,jdbcType=BIGINT}
+          AND permission_id = #{permissionId,jdbcType=BIGINT}
+    </delete>
+
     <insert id="insert" parameterType="RbacRolePermissionRel">
-		insert into rbac_role_permission_rel (role_id, permission_id)
-		values (#{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT})
-	</insert>
+        INSERT INTO rbac_role_permission_rel (role_id, permission_id)
+        VALUES (#{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT})
+    </insert>
+
     <select id="selectAll" resultMap="BaseResultMap">
-		select role_id, permission_id
-		from rbac_role_permission_rel
-	</select>
+        SELECT role_id, permission_id
+        FROM rbac_role_permission_rel
+    </select>
 </mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.video.VideoInfoMapper">
+    <resultMap id="BaseResultMap" type="VideoInfo">
+        <constructor>
+            <idArg column="video_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="video_poster_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="video_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="video_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="video_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="video_desc" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </constructor>
+    </resultMap>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from video_info
+        where video_id = #{videoId,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="VideoInfo">
+        insert into video_info (video_id, video_poster_id, video_name,
+                                video_create_time, video_update_time, video_desc)
+        values (#{videoId,jdbcType=BIGINT}, #{videoPosterId,jdbcType=BIGINT}, #{videoName,jdbcType=VARCHAR},
+                #{videoCreateTime,jdbcType=TIMESTAMP}, #{videoUpdateTime,jdbcType=TIMESTAMP},
+                #{videoDesc,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="VideoInfo">
+        update video_info
+        set video_poster_id   = #{videoPosterId,jdbcType=BIGINT},
+            video_name        = #{videoName,jdbcType=VARCHAR},
+            video_create_time = #{videoCreateTime,jdbcType=TIMESTAMP},
+            video_update_time = #{videoUpdateTime,jdbcType=TIMESTAMP},
+            video_desc        = #{videoDesc,jdbcType=LONGVARCHAR}
+        where video_id = #{videoId,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select video_id,
+               video_poster_id,
+               video_name,
+               video_create_time,
+               video_update_time,
+               video_desc
+        from video_info
+        where video_id = #{videoId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select video_id,
+               video_poster_id,
+               video_name,
+               video_create_time,
+               video_update_time,
+               video_desc
+        from video_info
+    </select>
+</mapper>

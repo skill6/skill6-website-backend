@@ -25,16 +25,13 @@ public class StoreImageController {
     private StoreImageSvc storeImageSvc;
 
     @PostMapping
-    public ResponseJson uploadImage(HttpServletRequest request)
-            throws IOException, FileUploadException {
-
+    public ResponseJson uploadImage(HttpServletRequest request) throws IOException, FileUploadException {
         return storeImageSvc.uploadImage(request);
     }
 
     @GetMapping(value = "/{year}/{month}/{day}/{imageId}")
     public void downloadImageById(
-            @PathVariable(name = "imageId") Long imageId, HttpServletResponse response)
-            throws IOException {
+        @PathVariable(name = "imageId") Long imageId, HttpServletResponse response) throws IOException {
 
         storeImageSvc.downloadImageById(imageId, response);
     }

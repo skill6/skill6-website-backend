@@ -54,8 +54,8 @@ import java.util.stream.Collectors;
 /**
  * 用于进行Shiro配置
  *
- * @author 何明胜
- * @version 1.3
+ * @author 何明胜 husen@hemingsheng.cn
+ * @since 2019-09-03 02:31
  */
 @Slf4j
 @Configuration
@@ -179,12 +179,12 @@ public class ShiroConfiguration {
 
         // 添加所有的realm
         List<Skill6Realm> skill6Realms = Lists.newArrayList(userNameRealm, phoneRealm, emailRealm, gitHubRealm,
-                googleRealm, qqRealm, weChatRealm);
+            googleRealm, qqRealm, weChatRealm);
 
         // 加入密码校验器
         List<Realm> realms = skill6Realms.stream()
-                .peek(skill6Realm -> skill6Realm.setCredentialsMatcher(retryLimitCredentialsMatcher()))
-                .collect(Collectors.toList());
+            .peek(skill6Realm -> skill6Realm.setCredentialsMatcher(retryLimitCredentialsMatcher()))
+            .collect(Collectors.toList());
 
         securityManager.setRealms(realms);
 
@@ -269,7 +269,7 @@ public class ShiroConfiguration {
                 ini.load(is);
             } else {
                 throw new ConfigurationException(
-                        "Unable to load shiro config path: " + filterChainDefinitionsLocation);
+                    "Unable to load shiro config path: " + filterChainDefinitionsLocation);
             }
             is.close();
         } catch (IOException e) {

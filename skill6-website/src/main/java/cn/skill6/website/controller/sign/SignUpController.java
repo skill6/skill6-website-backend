@@ -1,7 +1,7 @@
 package cn.skill6.website.controller.sign;
 
 import cn.skill6.common.entity.enums.LoginType;
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.service.sign.SignUpService;
@@ -27,13 +27,13 @@ public class SignUpController {
 
     @PostMapping
     public String signUp(String userName, String password) {
-        UserPrivacyInfo userPrivacyInfo = new UserPrivacyInfo();
-        userPrivacyInfo.setUserName(userName);
-        userPrivacyInfo.setUserPassword(password);
-        userPrivacyInfo.setUserLoginFrom(LoginType.USERNAME.getEnumName());
-        userPrivacyInfo.setUserType("100");
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName(userName);
+        userInfo.setUserPassword(password);
+        userInfo.setUserLoginFrom(LoginType.USERNAME.getEnumName());
+        userInfo.setUserType("100");
 
-        signUpService.createUser(userPrivacyInfo);
+        signUpService.createUser(userInfo);
 
         return JacksonUtil.toStr(new ResponseJson(true, userName));
     }

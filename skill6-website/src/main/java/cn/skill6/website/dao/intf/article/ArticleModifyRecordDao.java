@@ -2,7 +2,6 @@ package cn.skill6.website.dao.intf.article;
 
 import cn.skill6.common.entity.po.article.ArticleModifyRecord;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,11 +12,11 @@ import java.util.List;
  * @since 2018年8月28日 上午1:28:25
  */
 public interface ArticleModifyRecordDao {
-    int deleteByPrimaryKey(Long articleId, Date lastModifyDate);
+    int deleteByPrimaryKey(Long articleModifyId);
 
     Long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord);
 
-    ArticleModifyRecord findByPrimaryKey(Long articleId, Date lastModifyDate);
+    ArticleModifyRecord findByPrimaryKey(Long articleModifyId);
 
     List<ArticleModifyRecord> findAll();
 

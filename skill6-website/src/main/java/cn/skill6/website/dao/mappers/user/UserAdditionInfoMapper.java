@@ -8,7 +8,6 @@ import java.util.List;
  * 用户附加信息mapper
  *
  * @author 何明胜
- * @version 1.3
  * @since 2018年8月15日 下午11:41:20
  */
 public interface UserAdditionInfoMapper {

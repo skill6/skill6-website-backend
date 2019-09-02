@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @WebAppConfiguration
 @RunWith(SpringRunner.class)
-public class Skill6WebsiteApplicationTest {
+public class Skill6WebsiteApplicationBase {
 
     @Autowired
     protected WebApplicationContext wac;
@@ -33,6 +33,6 @@ public class Skill6WebsiteApplicationTest {
     }
 
     @Test
-    public void initializeContext() {
+    public void initContext() {
     }
 }

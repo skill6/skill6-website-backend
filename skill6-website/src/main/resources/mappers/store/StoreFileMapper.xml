@@ -5,47 +5,83 @@
         <constructor>
             <idArg column="file_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
             <arg column="file_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="file_full_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="file_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="file_upload_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="file_label" javaType="java.lang.String" jdbcType="VARCHAR"/>
             <arg column="file_hash_code" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="file_visit_count" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="file_collect_count" javaType="java.lang.Integer" jdbcType="INTEGER"/>
             <arg column="file_download_count" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="file_desc" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
         </constructor>
         <result column="file_type" property="fileType" jdbcType="VARCHAR"/>
     </resultMap>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from store_file
-		where file_id = #{fileId,jdbcType=BIGINT}
-	</delete>
+        delete
+        from store_file
+        where file_id = #{fileId,jdbcType=BIGINT}
+    </delete>
+
     <insert id="insert" parameterType="StoreFile">
-		insert into store_file (file_id, file_name, file_url,
-		file_upload_time, file_type, file_hash_code,
-		file_download_count)
-		values (#{fileId,jdbcType=BIGINT},
-		#{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR},
-		#{fileUploadTime,jdbcType=TIMESTAMP}, #{fileType,jdbcType=VARCHAR}, #{fileHashCode,jdbcType=VARCHAR},
-		#{fileDownloadCount,jdbcType=INTEGER})
-	</insert>
+        INSERT INTO store_file (file_id, file_name, file_full_name,
+                                file_url, file_upload_time, file_label,
+                                file_type, file_hash_code, file_visit_count,
+                                file_collect_count, file_download_count, file_desc)
+        VALUES (#{fileId,jdbcType=BIGINT}, #{fileName,jdbcType=VARCHAR}, #{fileFullName,jdbcType=VARCHAR},
+                #{fileUrl,jdbcType=VARCHAR}, #{fileUploadTime,jdbcType=TIMESTAMP}, #{fileLabel,jdbcType=VARCHAR},
+                #{fileType,jdbcType=VARCHAR}, #{fileHashCode,jdbcType=VARCHAR}, #{fileVisitCount,jdbcType=INTEGER},
+                #{fileCollectCount,jdbcType=INTEGER}, #{fileDownloadCount,jdbcType=INTEGER},
+                #{fileDesc,jdbcType=LONGVARCHAR})
+    </insert>
+
     <update id="updateByPrimaryKey" parameterType="StoreFile">
-		update store_file
-		set file_name = #{fileName,jdbcType=VARCHAR},
-		file_url = #{fileUrl,jdbcType=VARCHAR},
-		file_upload_time =
-		#{fileUploadTime,jdbcType=TIMESTAMP},
-		file_type = #{fileType,jdbcType=VARCHAR},
-		file_hash_code = #{fileHashCode,jdbcType=VARCHAR},
-		file_download_count = #{fileDownloadCount,jdbcType=INTEGER}
-		where
-		file_id = #{fileId,jdbcType=BIGINT}
-	</update>
+        UPDATE store_file
+        SET file_name           = #{fileName,jdbcType=VARCHAR},
+            file_full_name      = #{fileFullName,jdbcType=VARCHAR},
+            file_url            = #{fileUrl,jdbcType=VARCHAR},
+            file_upload_time    = #{fileUploadTime,jdbcType=TIMESTAMP},
+            file_label          = #{fileLabel,jdbcType=VARCHAR},
+            file_type           = #{fileType,jdbcType=VARCHAR},
+            file_hash_code      = #{fileHashCode,jdbcType=VARCHAR},
+            file_visit_count    = #{fileVisitCount,jdbcType=INTEGER},
+            file_collect_count  = #{fileCollectCount,jdbcType=INTEGER},
+            file_download_count = #{fileDownloadCount,jdbcType=INTEGER},
+            file_desc           = #{fileDesc,jdbcType=LONGVARCHAR}
+        WHERE file_id = #{fileId,jdbcType=BIGINT}
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select file_id, file_name, file_url, file_upload_time, file_type, file_hash_code,
-		file_download_count
-		from store_file
-		where file_id = #{fileId,jdbcType=BIGINT}
-	</select>
+        select file_id,
+               file_name,
+               file_full_name,
+               file_url,
+               file_upload_time,
+               file_label,
+               file_type,
+               file_hash_code,
+               file_visit_count,
+               file_collect_count,
+               file_download_count,
+               file_desc
+        from store_file
+        where file_id = #{fileId,jdbcType=BIGINT}
+    </select>
+
     <select id="selectAll" resultMap="BaseResultMap">
-		select file_id, file_name, file_url, file_upload_time, file_type, file_hash_code,
-		file_download_count
-		from store_file
-	</select>
+        select file_id,
+               file_name,
+               file_full_name,
+               file_url,
+               file_upload_time,
+               file_label,
+               file_type,
+               file_hash_code,
+               file_visit_count,
+               file_collect_count,
+               file_download_count,
+               file_desc
+        from store_file
+    </select>
 </mapper>

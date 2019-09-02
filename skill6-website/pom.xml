@@ -6,7 +6,7 @@
     <parent>
         <artifactId>skill6-website-backend</artifactId>
         <groupId>cn.skill6</groupId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>skill6-website</artifactId>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>cn.skill6</groupId>
             <artifactId>skill6-common</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.2.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -87,6 +87,23 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                    <!--mybatis generator插件配置文件位置，默认值${basedir}/src/main/resources/generatorConfig.xml-->
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.47</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
