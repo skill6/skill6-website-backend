@@ -38,7 +38,7 @@ public class UserAdditionInfoTest extends Skill6WebsiteApplicationBase {
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(id);
         userAdditionInfo.setUserNickName("testUser");
-        userAdditionInfo.setUserRegisterTime(new Date());
+        userAdditionInfo.setUserRegisterDate(new Date());
         log.info("{}", userAdditionInfoMapper.insert(userAdditionInfo));
     }
 
@@ -61,7 +61,7 @@ public class UserAdditionInfoTest extends Skill6WebsiteApplicationBase {
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(id);
         userAdditionInfo.setUserNickName("testUser");
-        userAdditionInfo.setUserRegisterTime(new Date());
+        userAdditionInfo.setUserRegisterDate(new Date());
         log.info("{}", userAdditionInfoMapper.updateByPrimaryKey(userAdditionInfo));
     }
 }
