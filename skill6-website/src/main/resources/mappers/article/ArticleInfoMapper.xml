@@ -1,101 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.skill6.website.dao.mappers.article.ArticleInfoMapper">
-    <resultMap id="BaseResultMap" type="ArticleInfo">
-        <constructor>
-            <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
-            <arg column="category_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
-            <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="article_author" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="article_label" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <arg column="article_read_total" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="article_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="article_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="artilce_place_top" javaType="java.lang.Boolean" jdbcType="BIT"/>
-            <arg column="article_top_priority" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="article_attach_file" javaType="java.lang.Boolean" jdbcType="BIT"/>
-            <arg column="article_valid" javaType="java.lang.Boolean" jdbcType="BIT"/>
-            <arg column="article_html_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
-            <arg column="article_md_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
-            <arg column="article_attach_url" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
-        </constructor>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from article_info
-		where article_id = #{articleId,jdbcType=BIGINT}
-	</delete>
-    <insert id="insert" parameterType="ArticleInfo">
-		insert into article_info (article_id, category_id, article_title,
-		article_author, article_summary, article_label,
-		article_read_total, article_create_time,
-		article_update_time, artilce_place_top, article_top_priority,
-		article_attach_file, article_valid, article_html_content,
-		article_md_content, article_attach_url
-		)
-		values (#{articleId,jdbcType=BIGINT},
-		#{categoryId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR},
-		#{articleAuthor,jdbcType=VARCHAR}, #{articleSummary,jdbcType=VARCHAR}, #{articleLabel,jdbcType=VARCHAR},
-		#{articleReadTotal,jdbcType=INTEGER}, #{articleCreateTime,jdbcType=TIMESTAMP},
-		#{articleUpdateTime,jdbcType=TIMESTAMP}, #{artilcePlaceTop,jdbcType=BIT}, #{articleTopPriority,jdbcType=INTEGER},
-		#{articleAttachFile,jdbcType=BIT}, #{articleValid,jdbcType=BIT}, #{articleHtmlContent,jdbcType=LONGVARCHAR},
-		#{articleMdContent,jdbcType=LONGVARCHAR}, #{articleAttachUrl,jdbcType=LONGVARCHAR}
-		)
-	</insert>
-    <update id="updateByPrimaryKey" parameterType="ArticleInfo">
-		update article_info
-		set category_id = #{categoryId,jdbcType=BIGINT},
-		article_title = #{articleTitle,jdbcType=VARCHAR},
-		article_author =
-		#{articleAuthor,jdbcType=VARCHAR},
-		article_summary = #{articleSummary,jdbcType=VARCHAR},
-		article_label = #{articleLabel,jdbcType=VARCHAR},
-		article_read_total = #{articleReadTotal,jdbcType=INTEGER},
-		article_create_time = #{articleCreateTime,jdbcType=TIMESTAMP},
-		article_update_time = #{articleUpdateTime,jdbcType=TIMESTAMP},
-		artilce_place_top = #{artilcePlaceTop,jdbcType=BIT},
-		article_top_priority =
-		#{articleTopPriority,jdbcType=INTEGER},
-		article_attach_file = #{articleAttachFile,jdbcType=BIT},
-		article_valid = #{articleValid,jdbcType=BIT},
-		article_html_content =
-		#{articleHtmlContent,jdbcType=LONGVARCHAR},
-		article_md_content = #{articleMdContent,jdbcType=LONGVARCHAR},
-		article_attach_url = #{articleAttachUrl,jdbcType=LONGVARCHAR}
-		where article_id =
-		#{articleId,jdbcType=BIGINT}
-	</update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select article_id, category_id, article_title, article_author, article_summary, article_label,
-		article_read_total,
-		article_create_time, article_update_time, artilce_place_top,
-		article_top_priority, article_attach_file, article_valid, article_html_content, article_md_content,
-		article_attach_url
-		from article_info
-		where article_id = #{articleId,jdbcType=BIGINT}
-	</select>
-    <select id="selectAll" resultMap="BaseResultMap">
-		select article_id, category_id, article_title, article_author, article_summary, article_label,
-		article_read_total, article_create_time, article_update_time,
-		artilce_place_top,
-		article_top_priority, article_attach_file, article_valid, article_html_content, article_md_content,
-		article_attach_url
-		from article_info
-	</select>
-    <select id="selectByParams" resultMap="BaseResultMap" parameterType="ArticleInfo">
-        select article_id, article_title, article_author, article_summary, article_label,
-        article_read_total, article_create_time, article_update_time,
-        category_id,
-        artilce_place_top,
-        article_top_priority,
-        article_attach_file, article_valid, article_html_content,
-        article_md_content, article_attach_url
-        from article_info
-        <where>
-            <if test="articleAuthor != null">
-                article_author = #{articleAuthor,jdbcType=VARCHAR}
-            </if>
-        </where>
-        <if test="orderBy != null">ORDER BY ${orderBy} ${sortType.value}</if>
-    </select>
+<mapper namespace="cn.skill6.website.dao.mappers.ArticleInfoMapper">
+  <resultMap id="BaseResultMap" type="ArticleInfo">
+    <constructor>
+      <idArg column="article_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="category_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="article_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_author" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_summary" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_label" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_read_total" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="article_update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="article_place_top" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="article_top_priority" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="article_attach_file" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="article_attach_ids" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="article_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="article_html_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="article_md_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from article_info
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="ArticleInfo">
+    insert into article_info (article_id, category_id, article_title, 
+      article_author, article_summary, article_label, 
+      article_read_total, article_create_time, 
+      article_update_time, article_place_top, article_top_priority, 
+      article_attach_file, article_attach_ids, article_valid, 
+      article_html_content, article_md_content
+      )
+    values (#{articleId,jdbcType=BIGINT}, #{categoryId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR}, 
+      #{articleAuthor,jdbcType=VARCHAR}, #{articleSummary,jdbcType=VARCHAR}, #{articleLabel,jdbcType=VARCHAR}, 
+      #{articleReadTotal,jdbcType=INTEGER}, #{articleCreateTime,jdbcType=TIMESTAMP}, 
+      #{articleUpdateTime,jdbcType=TIMESTAMP}, #{articlePlaceTop,jdbcType=BIT}, #{articleTopPriority,jdbcType=INTEGER}, 
+      #{articleAttachFile,jdbcType=BIT}, #{articleAttachIds,jdbcType=VARCHAR}, #{articleValid,jdbcType=BIT}, 
+      #{articleHtmlContent,jdbcType=LONGVARCHAR}, #{articleMdContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="ArticleInfo">
+    update article_info
+    set category_id = #{categoryId,jdbcType=BIGINT},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_author = #{articleAuthor,jdbcType=VARCHAR},
+      article_summary = #{articleSummary,jdbcType=VARCHAR},
+      article_label = #{articleLabel,jdbcType=VARCHAR},
+      article_read_total = #{articleReadTotal,jdbcType=INTEGER},
+      article_create_time = #{articleCreateTime,jdbcType=TIMESTAMP},
+      article_update_time = #{articleUpdateTime,jdbcType=TIMESTAMP},
+      article_place_top = #{articlePlaceTop,jdbcType=BIT},
+      article_top_priority = #{articleTopPriority,jdbcType=INTEGER},
+      article_attach_file = #{articleAttachFile,jdbcType=BIT},
+      article_attach_ids = #{articleAttachIds,jdbcType=VARCHAR},
+      article_valid = #{articleValid,jdbcType=BIT},
+      article_html_content = #{articleHtmlContent,jdbcType=LONGVARCHAR},
+      article_md_content = #{articleMdContent,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select article_id, category_id, article_title, article_author, article_summary, article_label, 
+    article_read_total, article_create_time, article_update_time, article_place_top, 
+    article_top_priority, article_attach_file, article_attach_ids, article_valid, article_html_content, 
+    article_md_content
+    from article_info
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select article_id, category_id, article_title, article_author, article_summary, article_label, 
+    article_read_total, article_create_time, article_update_time, article_place_top, 
+    article_top_priority, article_attach_file, article_attach_ids, article_valid, article_html_content, 
+    article_md_content
+    from article_info
+  </select>
+
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="ArticleInfo">
+    select article_id, category_id, article_title, article_author, article_summary, article_label,
+    article_read_total, article_create_time, article_update_time, article_place_top,
+    article_top_priority, article_attach_file, article_attach_ids, article_valid, article_html_content,
+    article_md_content
+    from article_info
+    <where>
+      <if test="articleAuthor != null">
+        article_author = #{articleAuthor,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="orderBy != null">ORDER BY #{orderBy} #{sortType.value}</if>
+  </select>
 </mapper>

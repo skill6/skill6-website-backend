@@ -50,6 +50,6 @@
         </javaClientGenerator>
 
         <!-- Modify-7 指定数据库表和自定义查询所有升降序查询.此处可以设置多个table元素指定多张表 -->
-        <table tableName="${tableName}"></table>
+        <table tableName="${tableName}"/>
     </context>
 </generatorConfiguration>

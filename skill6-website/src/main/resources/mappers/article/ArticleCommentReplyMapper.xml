@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.skill6.website.dao.mappers.article.ArticleCommentReplyMapper">
+  <resultMap id="BaseResultMap" type="ArticleCommentReply">
+    <constructor>
+      <arg column="reply_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="comment_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="reply_user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="reply_to_user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="reply_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="reply_valid" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="reply_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+
+  <insert id="insert" parameterType="ArticleCommentReply">
+    insert into article_comment_reply (reply_id, comment_id, reply_user_id, 
+      reply_to_user_id, reply_time, reply_valid, 
+      reply_content)
+    values (#{replyId,jdbcType=BIGINT}, #{commentId,jdbcType=BIGINT}, #{replyUserId,jdbcType=BIGINT}, 
+      #{replyToUserId,jdbcType=BIGINT}, #{replyTime,jdbcType=TIMESTAMP}, #{replyValid,jdbcType=BIT}, 
+      #{replyContent,jdbcType=LONGVARCHAR})
+  </insert>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select reply_id, comment_id, reply_user_id, reply_to_user_id, reply_time, reply_valid, 
+    reply_content
+    from article_comment_reply
+  </select>
+</mapper>

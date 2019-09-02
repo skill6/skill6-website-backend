@@ -10,7 +10,7 @@ CREATE TABLE `article_info` (
 `article_md_content` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'markdown格式的内容',
 `article_create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 `article_update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-`artilce_place_top` tinyint(1) NOT NULL,
+`article_place_top` tinyint(1) NOT NULL,
 `article_top_priority` int(5) NULL,
 `article_attach_file` tinyint(1) NOT NULL,
 `article_attach_ids` varchar(256) NULL COMMENT '附件链接，多个id用逗号分隔',

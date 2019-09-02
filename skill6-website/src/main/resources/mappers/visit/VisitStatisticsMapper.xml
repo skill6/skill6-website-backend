@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.visit.VisitStatisticsMapper">
-    <resultMap id="BaseResultMap" type="VisitStatistics">
-        <constructor>
-            <idArg column="statistics_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
-            <arg column="statistics_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-            <arg column="statistics_online_max" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="statistics_current_day" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-            <arg column="statistics_total_count" javaType="java.lang.Integer" jdbcType="INTEGER"/>
-        </constructor>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from visit_statistics
-		where statistics_id = #{statisticsId,jdbcType=BIGINT}
-	</delete>
-    <insert id="insert" parameterType="VisitStatistics">
-		insert into visit_statistics (statistics_id, statistics_date, statistics_online_max,
-		statistics_current_day, statistics_total_count
-		)
-		values
-		(#{statisticsId,jdbcType=BIGINT}, #{statisticsDate,jdbcType=TIMESTAMP}, #{statisticsOnlineMax,jdbcType=INTEGER},
-		#{statisticsCurrentDay,jdbcType=INTEGER}, #{statisticsTotalCount,jdbcType=INTEGER}
-		)
-	</insert>
-    <update id="updateByPrimaryKey" parameterType="VisitStatistics">
-		update visit_statistics
-		set statistics_date = #{statisticsDate,jdbcType=TIMESTAMP},
-		statistics_online_max = #{statisticsOnlineMax,jdbcType=INTEGER},
-		statistics_current_day = #{statisticsCurrentDay,jdbcType=INTEGER},
-		statistics_total_count = #{statisticsTotalCount,jdbcType=INTEGER}
-		where statistics_id = #{statisticsId,jdbcType=BIGINT}
-	</update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select statistics_id, statistics_date, statistics_online_max, statistics_current_day,
-		statistics_total_count
-		from
-		visit_statistics
-		where statistics_id = #{statisticsId,jdbcType=BIGINT}
-	</select>
-    <select id="selectAll" resultMap="BaseResultMap">
-		select statistics_id, statistics_date, statistics_online_max, statistics_current_day,
-		statistics_total_count
-		from visit_statistics
-	</select>
+  <resultMap id="BaseResultMap" type="VisitStatistics">
+    <constructor>
+      <idArg column="statistics_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="statistics_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="statistics_online_max" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="statistics_current_day" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="statistics_total_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from visit_statistics
+    where statistics_id = #{statisticsId,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="VisitStatistics">
+    insert into visit_statistics (statistics_id, statistics_date, statistics_online_max, 
+      statistics_current_day, statistics_total_count
+      )
+    values (#{statisticsId,jdbcType=BIGINT}, #{statisticsDate,jdbcType=TIMESTAMP}, #{statisticsOnlineMax,jdbcType=INTEGER}, 
+      #{statisticsCurrentDay,jdbcType=INTEGER}, #{statisticsTotalCount,jdbcType=INTEGER}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="VisitStatistics">
+    update visit_statistics
+    set statistics_date = #{statisticsDate,jdbcType=TIMESTAMP},
+      statistics_online_max = #{statisticsOnlineMax,jdbcType=INTEGER},
+      statistics_current_day = #{statisticsCurrentDay,jdbcType=INTEGER},
+      statistics_total_count = #{statisticsTotalCount,jdbcType=INTEGER}
+    where statistics_id = #{statisticsId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select statistics_id, statistics_date, statistics_online_max, statistics_current_day, 
+    statistics_total_count
+    from visit_statistics
+    where statistics_id = #{statisticsId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select statistics_id, statistics_date, statistics_online_max, statistics_current_day, 
+    statistics_total_count
+    from visit_statistics
+  </select>
 </mapper>

@@ -28,10 +28,10 @@ public class ArticleModifyRecordDaoImpl implements ArticleModifyRecordDao {
     private ArticleModifyRecordMapper articleModifyRecordMapper;
 
     @Override
-    public int deleteByPrimaryKey(Long articleId, Date lastModifyDate) {
-        log.warn("删除id为{}的文章历史记录", articleId);
+    public int deleteByPrimaryKey(Long articleModifyId) {
+        log.warn("删除id为{}的文章历史记录", articleModifyId);
 
-        return articleModifyRecordMapper.deleteByPrimaryKey(articleId, lastModifyDate);
+        return articleModifyRecordMapper.deleteByPrimaryKey(articleModifyId);
     }
 
     @Override
@@ -53,10 +53,10 @@ public class ArticleModifyRecordDaoImpl implements ArticleModifyRecordDao {
     }
 
     @Override
-    public ArticleModifyRecord findByPrimaryKey(Long articleId, Date lastModifyDate) {
-        ArticleModifyRecord articleModifyRecord = articleModifyRecordMapper.selectByPrimaryKey(articleId);
+    public ArticleModifyRecord findByPrimaryKey(Long articleModifyId) {
+        ArticleModifyRecord articleModifyRecord = articleModifyRecordMapper.selectByPrimaryKey(articleModifyId);
 
-        log.info("找到id为{}，最后修改日期为{}的文章历史版本，{}", articleId, lastModifyDate, articleModifyRecord);
+        log.info("找到id为{}的文章历史版本，{}", articleModifyId, articleModifyRecord);
 
         return articleModifyRecord;
     }
