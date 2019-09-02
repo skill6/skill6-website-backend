@@ -8,7 +8,6 @@ import java.util.List;
  * 访问记录
  *
  * @author 何明胜
- * @version 1.1
  * @since 2018年9月30日 下午10:02:29
  */
 public interface VisitRecordMapper {

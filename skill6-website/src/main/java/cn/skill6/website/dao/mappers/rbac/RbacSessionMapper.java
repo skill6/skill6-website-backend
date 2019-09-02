@@ -8,7 +8,6 @@ import java.util.List;
  * 会话信息mapper
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年9月24日 上午2:44:59
  */
 public interface RbacSessionMapper {

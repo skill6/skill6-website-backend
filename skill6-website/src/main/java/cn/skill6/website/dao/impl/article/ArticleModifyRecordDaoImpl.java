@@ -54,8 +54,7 @@ public class ArticleModifyRecordDaoImpl implements ArticleModifyRecordDao {
 
     @Override
     public ArticleModifyRecord findByPrimaryKey(Long articleId, Date lastModifyDate) {
-        ArticleModifyRecord articleModifyRecord =
-                articleModifyRecordMapper.selectByPrimaryKey(articleId, lastModifyDate);
+        ArticleModifyRecord articleModifyRecord = articleModifyRecordMapper.selectByPrimaryKey(articleId);
 
         log.info("找到id为{}，最后修改日期为{}的文章历史版本，{}", articleId, lastModifyDate, articleModifyRecord);
 

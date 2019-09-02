@@ -8,7 +8,6 @@ import java.util.List;
  * 角色信息mapper
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年9月23日 下午10:25:34
  */
 public interface RbacRoleInfoMapper {

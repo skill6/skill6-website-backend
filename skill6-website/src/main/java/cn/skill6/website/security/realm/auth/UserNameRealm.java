@@ -4,9 +4,9 @@ import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.enums.UserState;
 import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.website.dao.intf.rbac.RbacRoleInfoDao;
-import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
+import cn.skill6.website.dao.intf.user.UserInfoDao;
 import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import cn.skill6.website.util.ByteSourceSerializable;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 public class UserNameRealm extends Skill6Realm {
 
     @Autowired
-    private UserPrivacyInfoDao userPrivacyInfoDao;
+    private UserInfoDao userInfoDao;
 
     @Autowired
     private RbacRoleInfoDao rbacRoleInfoDao;
@@ -57,7 +57,7 @@ public class UserNameRealm extends Skill6Realm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         // 根据用户名查询当前用户拥有的角色
-        List<RbacRoleInfo> roleInfos = userPrivacyInfoDao.findRolesByUserName(userName);
+        List<RbacRoleInfo> roleInfos = userInfoDao.findRolesByUserName(userName);
 
         // 将角色名称提供给info
         Set<String> roleNames =
@@ -66,8 +66,7 @@ public class UserNameRealm extends Skill6Realm {
         log.info("获取当前所有角色：" + authorizationInfo.getRoles());
 
         // 根据用户名查询当前用户权限
-        List<Long> roleIds =
-                roleInfos.stream().map(RbacRoleInfo::getRoleId).collect(Collectors.toList());
+        List<Long> roleIds = roleInfos.stream().map(RbacRoleInfo::getRoleId).collect(Collectors.toList());
         List<RbacPermissionInfo> permissionInfos = rbacRoleInfoDao.findPermissionByRoleIds(roleIds);
 
         Set<String> permissionNames =
@@ -88,7 +87,7 @@ public class UserNameRealm extends Skill6Realm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
         String userName = (String) token.getPrincipal();
-        UserPrivacyInfo user = userPrivacyInfoDao.findUserByUserName(userName);
+        UserInfo user = userInfoDao.findUserByUserName(userName);
 
         // 没找到帐号
         if (user == null) {

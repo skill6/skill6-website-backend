@@ -2,7 +2,7 @@ package cn.skill6.website.security.realm.oauth;
 
 import cn.skill6.common.entity.enums.LoginType;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.transform.ConvertRequestParams;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.common.utility.HttpsClient;
@@ -131,10 +131,10 @@ public class GitHubRealm extends Skill6Realm {
         thirdpartyAuth.setThirdpartyId(SequenceManager.getNextId());
 
         if (thirdpartyAuth.getUserId() == null) {
-            UserPrivacyInfo userPrivacyInfo = new UserPrivacyInfo();
-            userPrivacyInfo.setUserLoginFrom("3");
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUserLoginFrom("3");
 
-            Long userId = userSvc.quickCreateUser(userPrivacyInfo);
+            Long userId = userSvc.quickCreateUser(userInfo);
             thirdpartyAuth.setUserId(userId);
         }
 

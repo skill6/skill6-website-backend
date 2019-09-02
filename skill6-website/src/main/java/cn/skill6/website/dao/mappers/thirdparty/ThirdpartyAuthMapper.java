@@ -8,11 +8,9 @@ import java.util.List;
  * 第三方授权mapper
  *
  * @author 何明胜
- * @version 1.1
  * @since 2018年11月1日 下午11:42:39
  */
 public interface ThirdpartyAuthMapper {
-
     int deleteByPrimaryKey(Long thirdpartyId);
 
     int insert(ThirdpartyAuth thirdpartyAuth);

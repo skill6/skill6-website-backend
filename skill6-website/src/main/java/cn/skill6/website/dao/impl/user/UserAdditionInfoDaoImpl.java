@@ -43,7 +43,7 @@ public class UserAdditionInfoDaoImpl implements UserAdditionInfoDao {
         if (userAdditionInfo.getUserNickName() == null) {
             userAdditionInfo.setUserNickName("用户" + RandomCode.producedRandomCodeStr6());
         }
-        userAdditionInfo.setUserRegisterTime(new Date());
+        userAdditionInfo.setUserRegisterDate(new Date());
 
         userAdditionInfoMapper.insert(userAdditionInfo);
     }

@@ -1,11 +1,11 @@
 package cn.skill6.website.service.basic.user;
 
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
-import cn.skill6.common.entity.po.user.UserPrivacyInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.microservice.basic.uesr.UserSvc;
 import cn.skill6.website.dao.intf.user.UserAdditionInfoDao;
-import cn.skill6.website.dao.intf.user.UserPrivacyInfoDao;
+import cn.skill6.website.dao.intf.user.UserInfoDao;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,21 +26,21 @@ import java.util.Date;
 public class UserService implements UserSvc {
 
     @Autowired
-    private UserPrivacyInfoDao userPrivacyInfoDao;
+    private UserInfoDao userInfoDao;
 
     @Autowired
     private UserAdditionInfoDao userAdditionInfoDao;
 
     @Override
-    public Long quickCreateUser(UserPrivacyInfo userPrivacyInfo) {
+    public Long quickCreateUser(UserInfo userInfo) {
         Long userId = SequenceManager.getNextId();
-        userPrivacyInfo.setUserId(userId);
-        userPrivacyInfo.setUserName(createUserName());
-        userPrivacyInfo.setUserPassword("password");
-        userPrivacyInfo.setUserPwdSalt("salt");
-        userPrivacyInfo.setUserType("100");
+        userInfo.setUserId(userId);
+        userInfo.setUserName(createUserName());
+        userInfo.setUserPassword("password");
+        userInfo.setUserPwdSalt("salt");
+        userInfo.setUserType("100");
 
-        userPrivacyInfoDao.addUserPrivacyInfo(userPrivacyInfo);
+        userInfoDao.addUserPrivacyInfo(userInfo);
 
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(userId);

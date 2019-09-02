@@ -110,7 +110,7 @@ public class ArticleInfoDaoImpl implements ArticleInfoDao {
         Boolean articleAttachFile = articleInfo.getArticleAttachFile();
         if (articleAttachFile != null && articleAttachFile) {
             articleInfoNew.setArticleAttachFile(true);
-            articleInfoNew.setArticleAttachUrl(articleInfo.getArticleAttachUrl());
+            articleInfoNew.setArticleAttachIds(articleInfo.getArticleAttachIds());
         }
 
         articleInfoMapper.updateByPrimaryKey(articleInfoNew);
