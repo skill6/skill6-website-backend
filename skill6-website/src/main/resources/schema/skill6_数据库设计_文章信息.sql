@@ -59,6 +59,7 @@ PRIMARY KEY (`article_id`, `article_date_daily`)
 );
 
 CREATE TABLE `article_modify_record` (
+`article_modify_id` bigint(19) NOT NULL,
 `article_id` bigint(19) NOT NULL,
 `category_id` bigint(19) NOT NULL,
 `article_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -70,11 +71,11 @@ CREATE TABLE `article_modify_record` (
 `article_md_content` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 `article_create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 `article_update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-`artilce_place_top` tinyint(1) NOT NULL COMMENT '是否置顶，0为假，1为真',
+`article_place_top` tinyint(1) NOT NULL COMMENT '是否置顶，0为假，1为真',
 `article_top_priority` int(5) NULL COMMENT '置顶优先级',
 `article_attach_file` tinyint(1) NOT NULL COMMENT '是否有附件，0为假，1为真',
 `article_attach_ids` text NULL COMMENT '附件id列表，多个id用逗号分隔',
-PRIMARY KEY (`article_id`) 
+PRIMARY KEY (`article_modify_id`) 
 )
 ENGINE = InnoDB
 AUTO_INCREMENT = 73

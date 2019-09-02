@@ -40,13 +40,14 @@ PRIMARY KEY (`login_id`)
 COMMENT = '用户登录记录';
 
 CREATE TABLE `user_modify_record` (
+`user_modify_id` bigint(19) NOT NULL,
 `user_id` bigint(19) NOT NULL,
 `user_modify_type` varchar(3) NOT NULL COMMENT '修改密码、手机、邮箱、头像等等，用枚举',
-`user_modify_time` timestamp(3) NOT NULL COMMENT '用户修改信息的世界',
 `user_modify_before` varchar(255) NULL COMMENT '修改之前的值',
 `user_modify_after` varchar(255) NULL COMMENT '修改之后的值',
 `user_modify_result` tinyint(1) NOT NULL COMMENT '是否修改成功',
-PRIMARY KEY (`user_id`) 
+`user_modify_time` timestamp(3) NOT NULL COMMENT '用户修改信息的世界',
+PRIMARY KEY (`user_modify_id`) 
 )
 COMMENT = '用户信息修改记录';
 

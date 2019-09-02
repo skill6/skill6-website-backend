@@ -11,11 +11,11 @@ import java.util.List;
  * @since 2018年8月15日 下午11:41:32
  */
 public interface UserModifyRecordMapper {
-    int deleteByPrimaryKey(Long userId);
+    int deleteByPrimaryKey(Long userModifyId);
 
     int insert(UserModifyRecord userModifyRecord);
 
-    UserModifyRecord selectByPrimaryKey(Long userId);
+    UserModifyRecord selectByPrimaryKey(Long userModifyId);
 
     List<UserModifyRecord> selectAll();
 
