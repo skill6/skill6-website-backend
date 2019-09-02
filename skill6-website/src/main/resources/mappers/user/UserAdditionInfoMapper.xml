@@ -1,59 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.user.UserAdditionInfoMapper">
-  <resultMap id="BaseResultMap" type="UserAdditionInfo">
-    <constructor>
-      <idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="user_nick_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="user_register_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="user_head_url" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="user_sex" javaType="java.lang.Boolean" jdbcType="BIT" />
-      <arg column="user_birthday" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="user_birthday_type" javaType="java.lang.Boolean" jdbcType="BIT" />
-      <arg column="user_desc" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="user_last_login_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-    </constructor>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="UserAdditionInfo">
+        <constructor>
+            <idArg column="user_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="user_nick_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_register_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="user_head_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_sex" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="user_birthday" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_birthday_type" javaType="java.lang.Boolean" jdbcType="BIT"/>
+            <arg column="user_desc" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="user_last_login_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user_addition_info
-    where user_id = #{userId,jdbcType=BIGINT}
-  </delete>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from user_addition_info
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
 
-  <insert id="insert" parameterType="UserAdditionInfo">
-    insert into user_addition_info (user_id, user_nick_name, user_register_date, 
-      user_head_url, user_sex, user_birthday, 
-      user_birthday_type, user_desc, user_last_login_time
-      )
-    values (#{userId,jdbcType=BIGINT}, #{userNickName,jdbcType=VARCHAR}, #{userRegisterDate,jdbcType=TIMESTAMP}, 
-      #{userHeadUrl,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT}, #{userBirthday,jdbcType=VARCHAR}, 
-      #{userBirthdayType,jdbcType=BIT}, #{userDesc,jdbcType=VARCHAR}, #{userLastLoginTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
+    <insert id="insert" parameterType="UserAdditionInfo">
+        insert into user_addition_info (user_id, user_nick_name, user_register_date,
+                                        user_head_url, user_sex, user_birthday,
+                                        user_birthday_type, user_desc, user_last_login_time)
+        values (#{userId,jdbcType=BIGINT}, #{userNickName,jdbcType=VARCHAR}, #{userRegisterDate,jdbcType=TIMESTAMP},
+                #{userHeadUrl,jdbcType=VARCHAR}, #{userSex,jdbcType=BIT}, #{userBirthday,jdbcType=VARCHAR},
+                #{userBirthdayType,jdbcType=BIT}, #{userDesc,jdbcType=VARCHAR}, #{userLastLoginTime,jdbcType=TIMESTAMP})
+    </insert>
 
-  <update id="updateByPrimaryKey" parameterType="UserAdditionInfo">
-    update user_addition_info
-    set user_nick_name = #{userNickName,jdbcType=VARCHAR},
-      user_register_date = #{userRegisterDate,jdbcType=TIMESTAMP},
-      user_head_url = #{userHeadUrl,jdbcType=VARCHAR},
-      user_sex = #{userSex,jdbcType=BIT},
-      user_birthday = #{userBirthday,jdbcType=VARCHAR},
-      user_birthday_type = #{userBirthdayType,jdbcType=BIT},
-      user_desc = #{userDesc,jdbcType=VARCHAR},
-      user_last_login_time = #{userLastLoginTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=BIGINT}
-  </update>
+    <update id="updateByPrimaryKey" parameterType="UserAdditionInfo">
+        update user_addition_info
+        set user_nick_name       = #{userNickName,jdbcType=VARCHAR},
+            user_register_date   = #{userRegisterDate,jdbcType=TIMESTAMP},
+            user_head_url        = #{userHeadUrl,jdbcType=VARCHAR},
+            user_sex             = #{userSex,jdbcType=BIT},
+            user_birthday        = #{userBirthday,jdbcType=VARCHAR},
+            user_birthday_type   = #{userBirthdayType,jdbcType=BIT},
+            user_desc            = #{userDesc,jdbcType=VARCHAR},
+            user_last_login_time = #{userLastLoginTime,jdbcType=TIMESTAMP}
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select user_id, user_nick_name, user_register_date, user_head_url, user_sex, user_birthday, 
-    user_birthday_type, user_desc, user_last_login_time
-    from user_addition_info
-    where user_id = #{userId,jdbcType=BIGINT}
-  </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select user_id,
+               user_nick_name,
+               user_register_date,
+               user_head_url,
+               user_sex,
+               user_birthday,
+               user_birthday_type,
+               user_desc,
+               user_last_login_time
+        from user_addition_info
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select user_id, user_nick_name, user_register_date, user_head_url, user_sex, user_birthday, 
-    user_birthday_type, user_desc, user_last_login_time
-    from user_addition_info
-  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select user_id,
+               user_nick_name,
+               user_register_date,
+               user_head_url,
+               user_sex,
+               user_birthday,
+               user_birthday_type,
+               user_desc,
+               user_last_login_time
+        from user_addition_info
+    </select>
 </mapper>

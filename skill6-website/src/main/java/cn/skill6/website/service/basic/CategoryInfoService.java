@@ -1,4 +1,4 @@
-package cn.skill6.website.service.basic.feature;
+package cn.skill6.website.service.basic;
 
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.other.CategoryInfo;

@@ -103,9 +103,7 @@ public class FileStoreHandler extends BaseStoreHandler {
         return fileAttribute;
     }
 
-    public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName)
-            throws IOException {
-
+    public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName) throws IOException {
         readFile(response, fileUrl, fileName);
     }
 }

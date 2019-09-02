@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public abstract class BaseStoreHandler {
     public void storeFile(InputStream inputStream, String storePath) throws IOException {
         FileOutputStream out = new FileOutputStream(storePath);
-        byte buffer[] = new byte[1024];
+        byte[] buffer = new byte[1024];
         int length = 0;
 
         while ((length = inputStream.read(buffer)) > 0) {
@@ -69,8 +69,7 @@ public abstract class BaseStoreHandler {
         outputStream.close();
     }
 
-    public MultipartHttpServletRequest parseRequest(HttpServletRequest request)
-            throws FileUploadException {
+    public MultipartHttpServletRequest parseRequest(HttpServletRequest request) throws FileUploadException {
         // 将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
         ServletContext servletContext = request.getSession().getServletContext();
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(servletContext);
@@ -80,8 +79,7 @@ public abstract class BaseStoreHandler {
             throw new ParamsException("上传中不含有文件！");
         }
 
-        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-        return multiRequest;
+        return (MultipartHttpServletRequest) request;
     }
 
     public String isFileExist(String parentFilePath, String suffix) {

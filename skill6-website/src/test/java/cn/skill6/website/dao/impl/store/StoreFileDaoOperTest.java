@@ -11,6 +11,8 @@ import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -33,7 +35,7 @@ public class StoreFileDaoOperTest extends Skill6WebsiteApplicationBase {
         String fileId = SequenceManager.getNextIdStr();
         String fileName = "Java虚拟机";
         String fileUrl = skill6Properties.getFilePath() +
-                DateFormat.formatDateYMD("yyyy/MM/dd") + "/" + fileId;
+                DateFormat.formatDateYMD("yyyy/MM/dd") + File.separator + fileId;
         String fileHashCode = Md5Encrypt.getMD5Code("测试");
 
         StoreFile storeFile = new StoreFile();
@@ -42,6 +44,11 @@ public class StoreFileDaoOperTest extends Skill6WebsiteApplicationBase {
         storeFile.setFileUrl(fileUrl);
         storeFile.setFileHashCode(fileHashCode);
         storeFile.setFileType(FileType.ATTACHMENT);
+
+        storeFile.setFileFullName(fileName);
+        storeFile.setFileLabel("book");
+        storeFile.setFileVisitCount(0);
+        storeFile.setFileCollectCount(0);
 
         Long fileIdReturn = storeFileDao.addFileDownload(storeFile);
 

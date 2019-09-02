@@ -15,40 +15,54 @@
     </resultMap>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from article_comment
-		where comment_id = #{commentId,jdbcType=BIGINT}
-	</delete>
+        DELETE
+        FROM article_comment
+        WHERE comment_id = #{commentId,jdbcType=BIGINT}
+    </delete>
     <insert id="insert" parameterType="ArticleComment">
-        insert into article_comment (comment_id, article_id, user_id,
-            comment_user_id, comment_thumbs_up_count, comment_time,
-            comment_valid, comment_content)
-        values (#{commentId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
-            #{commentUserId,jdbcType=BIGINT}, #{commentThumbsUpCount,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP},
-            #{commentValid,jdbcType=BIT}, #{commentContent,jdbcType=LONGVARCHAR})
+        INSERT INTO article_comment (comment_id, article_id, user_id,
+                                     comment_user_id, comment_thumbs_up_count, comment_time,
+                                     comment_valid, comment_content)
+        VALUES (#{commentId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+                #{commentUserId,jdbcType=BIGINT}, #{commentThumbsUpCount,jdbcType=INTEGER},
+                #{commentTime,jdbcType=TIMESTAMP},
+                #{commentValid,jdbcType=BIT}, #{commentContent,jdbcType=LONGVARCHAR})
     </insert>
 
     <update id="updateByPrimaryKey" parameterType="ArticleComment">
-        update article_comment
-        set article_id = #{articleId,jdbcType=BIGINT},
-            user_id = #{userId,jdbcType=BIGINT},
-            comment_user_id = #{commentUserId,jdbcType=BIGINT},
+        UPDATE article_comment
+        SET article_id              = #{articleId,jdbcType=BIGINT},
+            user_id                 = #{userId,jdbcType=BIGINT},
+            comment_user_id         = #{commentUserId,jdbcType=BIGINT},
             comment_thumbs_up_count = #{commentThumbsUpCount,jdbcType=INTEGER},
-            comment_time = #{commentTime,jdbcType=TIMESTAMP},
-            comment_valid = #{commentValid,jdbcType=BIT},
-            comment_content = #{commentContent,jdbcType=LONGVARCHAR}
-        where comment_id = #{commentId,jdbcType=BIGINT}
+            comment_time            = #{commentTime,jdbcType=TIMESTAMP},
+            comment_valid           = #{commentValid,jdbcType=BIT},
+            comment_content         = #{commentContent,jdbcType=LONGVARCHAR}
+        WHERE comment_id = #{commentId,jdbcType=BIGINT}
     </update>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select comment_id, article_id, user_id, comment_user_id, comment_thumbs_up_count,
-            comment_time, comment_valid, comment_content
-        from article_comment
-        where comment_id = #{commentId,jdbcType=BIGINT}
+        SELECT comment_id,
+               article_id,
+               user_id,
+               comment_user_id,
+               comment_thumbs_up_count,
+               comment_time,
+               comment_valid,
+               comment_content
+        FROM article_comment
+        WHERE comment_id = #{commentId,jdbcType=BIGINT}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        select comment_id, article_id, user_id, comment_user_id, comment_thumbs_up_count,
-            comment_time, comment_valid, comment_content
-        from article_comment
+        SELECT comment_id,
+               article_id,
+               user_id,
+               comment_user_id,
+               comment_thumbs_up_count,
+               comment_time,
+               comment_valid,
+               comment_content
+        FROM article_comment
     </select>
 </mapper>

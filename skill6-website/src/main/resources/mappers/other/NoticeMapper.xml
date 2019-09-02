@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.skill6.website.dao.mappers.other.NoticeMapper">
-  <resultMap id="BaseResultMap" type="Notice">
-    <constructor>
-      <idArg column="notice_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="notice_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="notice_content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-    </constructor>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="Notice">
+        <constructor>
+            <idArg column="notice_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="notice_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="notice_content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </constructor>
+    </resultMap>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </delete>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from notice
+        where notice_id = #{noticeId,jdbcType=BIGINT}
+    </delete>
 
-  <insert id="insert" parameterType="Notice">
-    insert into notice (notice_id, notice_time, notice_content
-      )
-    values (#{noticeId,jdbcType=BIGINT}, #{noticeTime,jdbcType=TIMESTAMP}, #{noticeContent,jdbcType=LONGVARCHAR}
-      )
-  </insert>
+    <insert id="insert" parameterType="Notice">
+        insert into notice (notice_id, notice_time, notice_content)
+        values (#{noticeId,jdbcType=BIGINT}, #{noticeTime,jdbcType=TIMESTAMP}, #{noticeContent,jdbcType=LONGVARCHAR})
+    </insert>
 
-  <update id="updateByPrimaryKey" parameterType="Notice">
-    update notice
-    set notice_time = #{noticeTime,jdbcType=TIMESTAMP},
-      notice_content = #{noticeContent,jdbcType=LONGVARCHAR}
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </update>
+    <update id="updateByPrimaryKey" parameterType="Notice">
+        update notice
+        set notice_time    = #{noticeTime,jdbcType=TIMESTAMP},
+            notice_content = #{noticeContent,jdbcType=LONGVARCHAR}
+        where notice_id = #{noticeId,jdbcType=BIGINT}
+    </update>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select notice_id, notice_time, notice_content
-    from notice
-    where notice_id = #{noticeId,jdbcType=BIGINT}
-  </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select notice_id, notice_time, notice_content
+        from notice
+        where notice_id = #{noticeId,jdbcType=BIGINT}
+    </select>
 
-  <select id="selectAll" resultMap="BaseResultMap">
-    select notice_id, notice_time, notice_content
-    from notice
-  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select notice_id, notice_time, notice_content
+        from notice
+    </select>
 </mapper>

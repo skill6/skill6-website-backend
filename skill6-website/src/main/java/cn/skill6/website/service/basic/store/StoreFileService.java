@@ -49,14 +49,18 @@ public class StoreFileService implements StoreFileSvc {
 
         String storeParentPath = StringUtils.join(skill6Properties.getFilePath(), dateFormat);
 
-        FileAttribute fileAttribute =
-                fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
+        FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
         StoreFile storeFile = new StoreFile();
 
         storeFile.setFileId(Long.valueOf(fileAttribute.getId()));
         storeFile.setFileName(fileAttribute.getName());
+        storeFile.setFileFullName(fileAttribute.getName());
         storeFile.setFileUrl(fileAttribute.getUrl());
         storeFile.setFileHashCode(fileAttribute.getHashCode());
+        // 文件标签待完善
+        storeFile.setFileLabel("book");
+        storeFile.setFileVisitCount(0);
+        storeFile.setFileCollectCount(0);
         storeFile.setFileType(fileType);
 
         storeFileDao.addFileDownload(storeFile);

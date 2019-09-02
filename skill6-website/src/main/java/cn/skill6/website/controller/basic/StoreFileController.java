@@ -27,22 +27,20 @@ public class StoreFileController {
 
     @PostMapping(value = "/share")
     public ResponseJson uploadFile(HttpServletRequest request)
-            throws IOException, FileUploadException {
+        throws IOException, FileUploadException {
 
         return storeFileSvc.uploadFile(request, FileType.SHARE_FILES);
     }
 
     @PostMapping(value = "/attach")
     public ResponseJson uploadAttachment(HttpServletRequest request)
-            throws IOException, FileUploadException {
+        throws IOException, FileUploadException {
 
         return storeFileSvc.uploadFile(request, FileType.ATTACHMENT);
     }
 
     @GetMapping(value = "/{year}/{month}/{day}/{fileId}")
-    public void downloadFileById(
-            @PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
-
+    public void downloadFileById(@PathVariable(name = "fileId") Long fileId, HttpServletResponse response) throws IOException {
         storeFileSvc.downloadFileById(fileId, response);
     }
 }
