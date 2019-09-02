@@ -10,7 +10,6 @@ import org.springframework.data.redis.core.ValueOperations;
  * redis配置
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年12月2日 下午10:36:15
  */
 @Configuration
