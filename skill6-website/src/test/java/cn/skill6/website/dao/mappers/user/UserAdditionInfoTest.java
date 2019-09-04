@@ -1,7 +1,7 @@
 package cn.skill6.website.dao.mappers.user;
 
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
-import cn.skill6.website.Skill6WebsiteApplicationBase;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.util.Date;
  */
 @Slf4j
 @Transactional
-public class UserAdditionInfoTest extends Skill6WebsiteApplicationBase {
+public class UserAdditionInfoTest extends Skill6WebsiteApplicationTest {
 
     @Autowired
     private UserAdditionInfoMapper userAdditionInfoMapper;

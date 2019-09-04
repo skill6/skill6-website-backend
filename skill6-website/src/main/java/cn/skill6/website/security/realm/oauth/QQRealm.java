@@ -6,12 +6,12 @@ import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.transform.ConvertRequestParams;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.common.utility.HttpsClient;
-import cn.skill6.microservice.basic.uesr.UserSvc;
-import cn.skill6.website.config.Skill6Properties;
+import cn.skill6.website.config.Skill6PropertyConfig;
 import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
 import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.realm.oauth.constant.UrlRequest;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
+import cn.skill6.website.sign.SignUpSvc;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
@@ -43,13 +43,13 @@ import java.util.regex.Pattern;
 public class QQRealm extends Skill6Realm {
 
     @Autowired
-    private Skill6Properties skill6Properties;
+    private Skill6PropertyConfig skill6PropertyConfig;
 
     @Autowired
     private ThirdpartyAuthDao thirdpartyAuthDao;
 
     @Autowired
-    private UserSvc userSvc;
+    private SignUpSvc signUpSvc;
 
     /**
      * 仅支持qq方式登录
@@ -84,7 +84,7 @@ public class QQRealm extends Skill6Realm {
         // 1.根据code获取access_token
         AccountPasswordTypeToken typeToken = (AccountPasswordTypeToken) token;
         String authCode = typeToken.getAuthCode();
-        Skill6Properties.QQ qq = skill6Properties.getQq();
+        Skill6PropertyConfig.QQ qq = skill6PropertyConfig.getQq();
 
         Map<String, String> params = new HashMap<>(3);
 
@@ -147,7 +147,7 @@ public class QQRealm extends Skill6Realm {
             UserInfo userInfo = new UserInfo();
             userInfo.setUserLoginFrom("3");
 
-            Long userId = userSvc.quickCreateUser(userInfo);
+            long userId = signUpSvc.quickCreateUser(userInfo);
             thirdpartyAuth.setUserId(userId);
         }
 

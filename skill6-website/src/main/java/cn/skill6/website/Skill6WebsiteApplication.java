@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * 测试启动类
+ * 启动类
  *
  * @author 何明胜
  * @since 2018年8月21日 下午11:40:08

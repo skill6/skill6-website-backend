@@ -1,7 +1,7 @@
 package cn.skill6.website.dao.mappers.rbac;
 
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
-import cn.skill6.website.Skill6WebsiteApplicationBase;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotEquals;
  * @since 2018年9月23日 下午11:27:14
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RbacRoleInfoMapperTest extends Skill6WebsiteApplicationBase {
+public class RbacRoleInfoMapperTest extends Skill6WebsiteApplicationTest {
     @Autowired
     private RbacRoleInfoMapper rbacRoleInfoMapper;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.skill6.website.dao.mappers.other.VersionInfoMapper">
+<mapper namespace="cn.skill6.website.dao.mappers.basic.VersionInfoMapper">
     <resultMap id="BaseResultMap" type="VersionInfo">
         <constructor>
             <idArg column="version_id" javaType="java.lang.Long" jdbcType="BIGINT"/>
