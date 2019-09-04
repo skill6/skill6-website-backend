@@ -82,13 +82,17 @@ public class StoreFileService implements StoreFileSvc {
     }
 
     @Override
-    public void downloadFileById(Long fileId, HttpServletResponse response) throws IOException {
+    public void downloadFileById(Long fileId, HttpServletResponse response) {
         StoreFile storeFile = storeFileDao.findByFileId(fileId);
 
         String fileUrl = storeFile.getFileUrl();
         fileUrl = StringUtils.join(userHomeDir, fileUrl);
         String fileName = storeFile.getFileName();
 
-        fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
+        try {
+            fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

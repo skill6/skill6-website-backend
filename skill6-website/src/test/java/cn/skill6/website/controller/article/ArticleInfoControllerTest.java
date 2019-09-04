@@ -1,4 +1,4 @@
-package cn.skill6.website.controller.basic;
+package cn.skill6.website.controller.article;
 
 import cn.skill6.website.Skill6WebsiteApplicationBase;
 import cn.skill6.website.util.sequence.SequenceManager;

@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2018年10月5日 下午3:49:16
  */
 @RestController
-@RequestMapping(value = "/category")
-public class CategoryInfoController {
+@RequestMapping("/category")
+public class CategoryController {
     @Autowired
     private CategoryInfoSvc categoryInfoSvc;
 
     @PostMapping("/{categoryType}")
-    public ResponseJson addCategoryInfo(CategoryInfo categoryInfo,
-                                        @PathVariable(name = "categoryType") int categoryType) {
+    public ResponseJson addCategoryInfo(
+        CategoryInfo categoryInfo, @PathVariable(name = "categoryType") int categoryType) {
+
         return categoryInfoSvc.addCategoryInfo(categoryInfo, categoryType);
     }
 }
