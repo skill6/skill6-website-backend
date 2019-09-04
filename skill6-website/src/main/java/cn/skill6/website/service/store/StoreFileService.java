@@ -89,10 +89,6 @@ public class StoreFileService implements StoreFileSvc {
         fileUrl = StringUtils.join(userHomeDir, fileUrl);
         String fileName = storeFile.getFileName();
 
-        try {
-            fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        fileStoreHandler.fileDownloadHandler(response, fileUrl, fileName);
     }
 }

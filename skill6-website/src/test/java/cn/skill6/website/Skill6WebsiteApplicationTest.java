@@ -20,7 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @WebAppConfiguration
 @RunWith(SpringRunner.class)
-public class Skill6WebsiteApplicationBase {
+public class Skill6WebsiteApplicationTest {
 
     @Autowired
     protected WebApplicationContext wac;

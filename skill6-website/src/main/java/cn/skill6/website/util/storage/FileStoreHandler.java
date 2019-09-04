@@ -41,8 +41,8 @@ public class FileStoreHandler extends BaseStoreHandler {
      * @throws FileUploadException 异常
      */
     public FileAttribute fileUploadHandler(
-            HttpServletRequest request, String rootDirPath, String relativeDirPath)
-            throws IOException, FileUploadException {
+        HttpServletRequest request, String rootDirPath, String relativeDirPath)
+        throws IOException, FileUploadException {
         MultipartHttpServletRequest multiRequest = parseRequest(request);
         if (multiRequest.getFileMap().size() != 1) {
             throw new Skill6Exception("此种方式仅支持单次单文件上传！");
@@ -73,13 +73,13 @@ public class FileStoreHandler extends BaseStoreHandler {
 
         // 先取得相对路径，再与根路径相加
         String relativePath =
-                new StringBuilder()
-                        .append(relativeDirPath)
-                        .append("/")
-                        .append(fileId)
-                        .append(".")
-                        .append(fileSuffix)
-                        .toString();
+            new StringBuilder()
+                .append(relativeDirPath)
+                .append("/")
+                .append(fileId)
+                .append(".")
+                .append(fileSuffix)
+                .toString();
         String fileUrl = StringUtils.join(rootDirPath, relativePath);
 
         String fileHashCode = DigestUtils.md5DigestAsHex(multipartFile.getInputStream()).toUpperCase();
@@ -103,7 +103,12 @@ public class FileStoreHandler extends BaseStoreHandler {
         return fileAttribute;
     }
 
-    public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName) throws IOException {
-        readFile(response, fileUrl, fileName);
+    public void fileDownloadHandler(HttpServletResponse response, String fileUrl, String fileName) {
+        try {
+            readFile(response, fileUrl, fileName);
+        } catch (IOException e) {
+            log.error("down file error", e);
+            throw new Skill6Exception("down file error", e);
+        }
     }
 }

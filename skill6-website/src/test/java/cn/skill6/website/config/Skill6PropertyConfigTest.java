@@ -1,6 +1,6 @@
 package cn.skill6.website.config;
 
-import cn.skill6.website.Skill6WebsiteApplicationBase;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version 1.1
  * @since 2018年11月21日 下午10:04:51
  */
-public class Skill6PropertyConfigTest extends Skill6WebsiteApplicationBase {
+public class Skill6PropertyConfigTest extends Skill6WebsiteApplicationTest {
 
     @Autowired
     private Skill6PropertyConfig skill6PropertyConfig;

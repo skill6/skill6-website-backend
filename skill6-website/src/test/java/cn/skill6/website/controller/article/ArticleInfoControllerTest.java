@@ -1,6 +1,6 @@
 package cn.skill6.website.controller.article;
 
-import cn.skill6.website.Skill6WebsiteApplicationBase;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.util.sequence.SequenceManager;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @version 1.3
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // 指定测试方法按定义的顺序执行
-public class ArticleInfoControllerTest extends Skill6WebsiteApplicationBase {
+public class ArticleInfoControllerTest extends Skill6WebsiteApplicationTest {
 
     private String articleId = SequenceManager.getNextIdStr();
 

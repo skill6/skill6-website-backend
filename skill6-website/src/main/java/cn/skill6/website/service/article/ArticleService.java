@@ -5,7 +5,7 @@ import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.ArticleSvc;
-import cn.skill6.website.dao.intf.article.ArticleInfoDao;
+import cn.skill6.website.dao.intf.article.ArticleDao;
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +26,12 @@ import java.util.List;
 public class ArticleService implements ArticleSvc {
 
     @Autowired
-    private ArticleInfoDao articleInfoDao;
+    private ArticleDao articleDao;
 
     public ResponseJson addArticle(ArticleInfo articleInfo) {
         ResponseJson responseJson;
         try {
-            Long articleId = articleInfoDao.addArticleInfo(articleInfo);
+            Long articleId = articleDao.addArticleInfo(articleInfo);
             responseJson = new ResponseJson(true, String.valueOf(articleId));
         } catch (Exception e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));
@@ -42,7 +42,7 @@ public class ArticleService implements ArticleSvc {
     }
 
     public ResponseJson deleteArticleById(Long articleId) {
-        articleInfoDao.deleteByPrimaryKey(articleId);
+        articleDao.deleteByPrimaryKey(articleId);
         return new ResponseJson(true, "删除成功");
     }
 
@@ -50,7 +50,7 @@ public class ArticleService implements ArticleSvc {
         ResponseJson responseJson;
 
         try {
-            articleInfoDao.modifyByArticleId(articleInfo);
+            articleDao.modifyByArticleId(articleInfo);
             responseJson = new ResponseJson(true, "修改成功");
         } catch (Exception e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));
@@ -64,7 +64,7 @@ public class ArticleService implements ArticleSvc {
         ResponseJson responseJson;
 
         try {
-            ArticleInfo articleInfo = articleInfoDao.findByArticleId(articleId);
+            ArticleInfo articleInfo = articleDao.findByArticleId(articleId);
             responseJson = new ResponseJson(true, articleInfo);
         } catch (Exception e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));
@@ -78,7 +78,7 @@ public class ArticleService implements ArticleSvc {
         ResponseJson responseJson;
 
         try {
-            List<ArticleInfo> articleInfos = articleInfoDao.findAll();
+            List<ArticleInfo> articleInfos = articleDao.findAll();
             responseJson = new ResponseJson(true, articleInfos);
         } catch (Exception e) {
             log.error(StackTrace2Str.exceptionStackTrace2Str(e));

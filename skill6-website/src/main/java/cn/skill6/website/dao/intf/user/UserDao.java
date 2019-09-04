@@ -9,10 +9,9 @@ import java.util.List;
  * 用户隐私信息接口
  *
  * @author 何明胜
- * @version 1.2
  * @since 2018年8月24日 上午12:30:56
  */
-public interface UserInfoDao {
+public interface UserDao {
     int deleteByUserId(Long userId);
 
     void addUserPrivacyInfo(UserInfo userPrivacyInfo);

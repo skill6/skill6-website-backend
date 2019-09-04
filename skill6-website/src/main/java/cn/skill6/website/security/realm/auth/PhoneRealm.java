@@ -5,8 +5,8 @@ import cn.skill6.common.entity.enums.UserState;
 import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
 import cn.skill6.common.entity.po.user.UserInfo;
-import cn.skill6.website.dao.intf.rbac.RbacRoleInfoDao;
-import cn.skill6.website.dao.intf.user.UserInfoDao;
+import cn.skill6.website.dao.intf.rbac.RbacRoleDao;
+import cn.skill6.website.dao.intf.user.UserDao;
 import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import cn.skill6.website.util.ByteSourceSerializable;
@@ -35,10 +35,10 @@ import java.util.stream.Collectors;
 public class PhoneRealm extends Skill6Realm {
 
     @Autowired
-    private UserInfoDao userInfoDao;
+    private UserDao userDao;
 
     @Autowired
-    private RbacRoleInfoDao rbacRoleInfoDao;
+    private RbacRoleDao rbacRoleDao;
 
     /**
      * 仅支持手机方式登录
@@ -57,7 +57,7 @@ public class PhoneRealm extends Skill6Realm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         // 根据用户名查询当前用户拥有的角色
-        List<RbacRoleInfo> roleInfos = userInfoDao.findRolesByUserPhone(userPhone);
+        List<RbacRoleInfo> roleInfos = userDao.findRolesByUserPhone(userPhone);
 
         // 将角色名称提供给info
         Set<String> roleNames =
@@ -67,7 +67,7 @@ public class PhoneRealm extends Skill6Realm {
 
         // 根据用户名查询当前用户权限
         List<Long> roleIds = roleInfos.stream().map(RbacRoleInfo::getRoleId).collect(Collectors.toList());
-        List<RbacPermissionInfo> permissionInfos = rbacRoleInfoDao.findPermissionByRoleIds(roleIds);
+        List<RbacPermissionInfo> permissionInfos = rbacRoleDao.findPermissionByRoleIds(roleIds);
 
         Set<String> permissionNames =
                 permissionInfos
@@ -87,7 +87,7 @@ public class PhoneRealm extends Skill6Realm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
         String userPhone = (String) token.getPrincipal();
-        UserInfo user = userInfoDao.findUserByUserPhone(userPhone);
+        UserInfo user = userDao.findUserByUserPhone(userPhone);
 
         // 没找到帐号
         if (user == null) {

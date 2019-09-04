@@ -1,9 +1,9 @@
-package cn.skill6.website.dao.impl.other;
+package cn.skill6.website.dao.impl.basic;
 
 import cn.skill6.common.entity.po.other.CategoryInfo;
 import cn.skill6.common.exception.general.NullPointerException;
-import cn.skill6.website.dao.intf.other.CategoryInfoDao;
-import cn.skill6.website.dao.mappers.other.CategoryInfoMapper;
+import cn.skill6.website.dao.intf.basic.CategoryDao;
+import cn.skill6.website.dao.mappers.basic.CategoryInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Slf4j
 @Repository
-public class CategoryInfoDaoImpl implements CategoryInfoDao {
+public class CategoryDaoImpl implements CategoryDao {
 
     @Autowired
     private CategoryInfoMapper categoryInfoMapper;

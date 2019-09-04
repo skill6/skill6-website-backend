@@ -1,4 +1,4 @@
-package cn.skill6.website.dao.mappers.other;
+package cn.skill6.website.dao.mappers.basic;
 
 import cn.skill6.common.entity.po.other.CategoryInfo;
 

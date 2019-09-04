@@ -5,7 +5,7 @@ import cn.skill6.common.entity.po.other.CategoryInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.general.FormatException;
 import cn.skill6.website.basic.CategorySvc;
-import cn.skill6.website.dao.intf.other.CategoryInfoDao;
+import cn.skill6.website.dao.intf.basic.CategoryDao;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,14 +21,14 @@ import org.springframework.stereotype.Component;
 public class CategoryService implements CategorySvc {
 
     @Autowired
-    private CategoryInfoDao categoryInfoDao;
+    private CategoryDao categoryDao;
 
     @Override
     public ResponseJson addCategory(CategoryInfo categoryInfo) {
         ResponseJson responseJson;
 
         try {
-            Long categoryId = categoryInfoDao.addCategoryInfo(categoryInfo);
+            Long categoryId = categoryDao.addCategoryInfo(categoryInfo);
             responseJson = new ResponseJson(true, String.valueOf(categoryId));
         } catch (Exception e) {
             responseJson = new ResponseJson(false, "注册失败");

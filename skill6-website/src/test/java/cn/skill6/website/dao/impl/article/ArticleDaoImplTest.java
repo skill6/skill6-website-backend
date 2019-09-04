@@ -3,8 +3,8 @@ package cn.skill6.website.dao.impl.article;
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
-import cn.skill6.website.Skill6WebsiteApplicationBase;
-import cn.skill6.website.dao.intf.article.ArticleInfoDao;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.dao.intf.article.ArticleDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +22,10 @@ import static org.junit.Assert.assertTrue;
  * @since 2018年9月21日 下午11:24:25
  */
 @Transactional
-public class ArticleInfoDaoOperTest extends Skill6WebsiteApplicationBase {
+public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
 
     @Autowired
-    private ArticleInfoDao articleInfoDao;
+    private ArticleDao articleInfoDao;
 
     @Autowired
     private ArticleInfoTo articleInfoTo;

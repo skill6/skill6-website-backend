@@ -2,7 +2,7 @@ package cn.skill6.website.controller.store;
 
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.transform.JacksonUtil;
-import cn.skill6.website.Skill6WebsiteApplicationBase;
+import cn.skill6.website.Skill6WebsiteApplicationTest;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class StoreFileControllerTest extends Skill6WebsiteApplicationBase {
+public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
 
     private static String urlDownload = null;
 

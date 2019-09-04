@@ -6,7 +6,7 @@ import cn.skill6.common.entity.po.user.UserAdditionInfo;
 import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.website.dao.intf.user.UserAdditionInfoDao;
-import cn.skill6.website.dao.intf.user.UserInfoDao;
+import cn.skill6.website.dao.intf.user.UserDao;
 import cn.skill6.website.sign.SignUpSvc;
 import cn.skill6.website.util.sequence.SequenceManager;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ import java.util.Date;
 public class SignUpService implements SignUpSvc {
 
     @Autowired
-    private UserInfoDao userInfoDao;
+    private UserDao userDao;
 
     @Autowired
     private UserAdditionInfoDao userAdditionInfoDao;
@@ -50,7 +50,7 @@ public class SignUpService implements SignUpSvc {
         userInfo.setUserState(UserState.VALID);
 
         // 创建用户
-        userInfoDao.addUserPrivacyInfo(userInfo);
+        userDao.addUserPrivacyInfo(userInfo);
 
         return userInfo.getUserName();
     }
@@ -64,7 +64,7 @@ public class SignUpService implements SignUpSvc {
         userInfo.setUserPwdSalt("salt");
         userInfo.setUserType("100");
 
-        userInfoDao.addUserPrivacyInfo(userInfo);
+        userDao.addUserPrivacyInfo(userInfo);
 
         UserAdditionInfo userAdditionInfo = new UserAdditionInfo();
         userAdditionInfo.setUserId(userId);

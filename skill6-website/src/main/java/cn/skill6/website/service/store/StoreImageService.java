@@ -83,10 +83,6 @@ public class StoreImageService implements StoreImageSvc {
         imageUrl = StringUtils.join(userHomeDir, imageUrl);
         String imageName = storeImage.getImageName();
 
-        try {
-            fileStoreHandler.fileDownloadHandler(response, imageUrl, imageName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        fileStoreHandler.fileDownloadHandler(response, imageUrl, imageName);
     }
 }
