@@ -4,6 +4,7 @@ import cn.skill6.common.exception.file.FileNotFoundException;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.common.exception.general.ParamsException;
 import cn.skill6.website.util.sequence.SequenceManager;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -19,10 +20,11 @@ import java.util.ArrayList;
  * 文件存储基类
  *
  * @author 何明胜
+ * @version 1.4
  * @since 2018年9月3日 下午11:34:35
  */
 public abstract class BaseStoreHandler {
-    protected void storeFile(InputStream inputStream, String storePath) throws IOException {
+    public void storeFile(InputStream inputStream, String storePath) throws IOException {
         FileOutputStream out = new FileOutputStream(storePath);
         byte[] buffer = new byte[1024];
         int length = 0;
@@ -35,7 +37,8 @@ public abstract class BaseStoreHandler {
         out.close();
     }
 
-    protected void readFile(HttpServletResponse response, String fileUrl, String fileName) throws IOException {
+    public void readFile(HttpServletResponse response, String fileUrl, String fileName)
+            throws IOException {
         File file = new File(fileUrl);
         if (!file.exists()) {
             throw new FileNotFoundException("文件未找到");
@@ -53,7 +56,7 @@ public abstract class BaseStoreHandler {
         // 读取要下载的文件，保存到文件输入流
         FileInputStream in = new FileInputStream(fileUrl);
         // 创建缓冲区
-        byte[] buffer = new byte[1024];
+        byte buffer[] = new byte[1024];
         int len = 0;
         OutputStream outputStream = response.getOutputStream();
         // 循环将输入流中的内容读取到缓冲区当中
@@ -66,7 +69,7 @@ public abstract class BaseStoreHandler {
         outputStream.close();
     }
 
-    protected MultipartHttpServletRequest parseRequest(HttpServletRequest request) {
+    public MultipartHttpServletRequest parseRequest(HttpServletRequest request) throws FileUploadException {
         // 将当前上下文初始化给  CommonsMutipartResolver （多部分解析器）
         ServletContext servletContext = request.getSession().getServletContext();
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(servletContext);
@@ -79,7 +82,7 @@ public abstract class BaseStoreHandler {
         return (MultipartHttpServletRequest) request;
     }
 
-    protected String isFileExist(String parentFilePath, String suffix) {
+    public String isFileExist(String parentFilePath, String suffix) {
         String fileId;
 
         // 判断文件是否已经存在
@@ -97,7 +100,7 @@ public abstract class BaseStoreHandler {
     /**
      * @return 文件后缀
      */
-    protected String getFileSuffix(String fileName) {
+    public String getFileSuffix(String fileName) {
         if (StringUtils.isEmpty(fileName)) {
             throw new NullPointerException("文件名称为null");
         }
@@ -108,13 +111,14 @@ public abstract class BaseStoreHandler {
         specialSuffix.add("tar.bz2");
 
         for (String sSuffix : specialSuffix) {
-            if (fileName.contains(sSuffix)) {
+            if (fileName.indexOf(sSuffix) != -1) {
                 return sSuffix;
             }
         }
 
         int index = fileName.lastIndexOf(".");
+        String suffix = fileName.substring(index + 1);
 
-        return fileName.substring(index + 1);
+        return suffix;
     }
 }

@@ -2,7 +2,7 @@ package cn.skill6.website.dao.mappers.user;
 
 import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.common.transform.JacksonUtil;
-import cn.skill6.website.Skill6WebsiteApplicationTest;
+import cn.skill6.website.Skill6WebsiteApplicationBase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Slf4j
 @Transactional
-public class UserInfoTest extends Skill6WebsiteApplicationTest {
+public class UserInfoTest extends Skill6WebsiteApplicationBase {
 
     @Autowired
     private UserInfoMapper userInfoMapper;

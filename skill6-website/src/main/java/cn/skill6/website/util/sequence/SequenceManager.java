@@ -2,7 +2,7 @@ package cn.skill6.website.util.sequence;
 
 import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.sequence.Sequence;
-import cn.skill6.website.config.Skill6PropertyConfig;
+import cn.skill6.website.config.Skill6Properties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import javax.annotation.PostConstruct;
 public class SequenceManager {
 
     @Autowired
-    private Skill6PropertyConfig skill6PropertyConfig;
+    private Skill6Properties skill6Properties;
 
     /**
      * 分布式Id生成序列
@@ -31,8 +31,8 @@ public class SequenceManager {
 
     @PostConstruct
     public void init() {
-        String workerId = skill6PropertyConfig.getSequence().getWorker().getId();
-        String datacenterId = skill6PropertyConfig.getSequence().getDataCenter().getId();
+        String workerId = skill6Properties.getSequence().getWorker().getId();
+        String datacenterId = skill6Properties.getSequence().getDataCenter().getId();
         if (StringUtils.isEmpty(workerId)) {
             workerId = "0";
             log.info("workerId is empty, initialize to 0.");
