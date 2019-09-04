@@ -3,7 +3,7 @@ package cn.skill6.website.controller.sign;
 import cn.skill6.common.constant.UserAgentType;
 import cn.skill6.common.controller.BaseController;
 import cn.skill6.common.utility.JudgeIsMobile;
-import cn.skill6.website.config.Skill6Properties;
+import cn.skill6.website.config.Skill6PropertyConfig;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class ThirdConnectController extends BaseController {
 
     @Autowired
-    private Skill6Properties skill6Properties;
+    private Skill6PropertyConfig skill6PropertyConfig;
 
     @GetMapping(value = "/github")
     public String connectByGitHub() throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class ThirdConnectController extends BaseController {
             return "redirect:/error";
         }
 
-        Skill6Properties.GitHub github = skill6Properties.getGitHub();
+        Skill6PropertyConfig.GitHub github = skill6PropertyConfig.getGitHub();
 
         String githubAuthUrl = "redirect:" + "https://github.com/login/oauth/authorize" +
                 "?client_id=" + github.getClientId() +
@@ -55,7 +55,7 @@ public class ThirdConnectController extends BaseController {
             return "redirect:/error";
         }
 
-        Skill6Properties.QQ qq = skill6Properties.getQq();
+        Skill6PropertyConfig.QQ qq = skill6PropertyConfig.getQq();
 
         String display = UserAgentType.PC.getEnumName();
         if (JudgeIsMobile.isMobile(request.getHeader("user-agent"))) {

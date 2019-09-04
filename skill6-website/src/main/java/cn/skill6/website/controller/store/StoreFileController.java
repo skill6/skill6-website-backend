@@ -2,7 +2,7 @@ package cn.skill6.website.controller.store;
 
 import cn.skill6.common.entity.enums.FileType;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.microservice.basic.store.StoreFileSvc;
+import cn.skill6.website.store.StoreFileSvc;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

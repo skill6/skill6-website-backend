@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VersionController {
 
     @GetMapping
-    public ResponseJson getVersion(int pageSize, int pageNum) {
+    public ResponseJson getVersionByPage(int pageSize, int pageNum) {
         return null;
     }
 

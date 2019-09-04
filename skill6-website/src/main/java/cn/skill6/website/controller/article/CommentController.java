@@ -18,8 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/comment")
 public class CommentController {
 
+    @GetMapping
+    public ResponseJson getCommentsByPage(int pageSize, int pageNum) {
+        return null;
+    }
+
     @GetMapping("/{commentId}")
-    public ResponseJson getArticleById(@PathVariable("commentId") Long commentId) {
+    public ResponseJson getCommentById(@PathVariable("commentId") long commentId) {
         return null;
     }
 
