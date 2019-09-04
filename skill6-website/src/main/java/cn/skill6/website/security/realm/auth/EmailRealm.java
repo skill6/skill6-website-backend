@@ -5,8 +5,8 @@ import cn.skill6.common.entity.enums.UserState;
 import cn.skill6.common.entity.po.rbac.RbacPermissionInfo;
 import cn.skill6.common.entity.po.rbac.RbacRoleInfo;
 import cn.skill6.common.entity.po.user.UserInfo;
-import cn.skill6.website.dao.intf.rbac.RbacRoleInfoDao;
-import cn.skill6.website.dao.intf.user.UserInfoDao;
+import cn.skill6.website.dao.intf.rbac.RbacRoleDao;
+import cn.skill6.website.dao.intf.user.UserDao;
 import cn.skill6.website.security.realm.Skill6Realm;
 import cn.skill6.website.security.token.AccountPasswordTypeToken;
 import cn.skill6.website.util.ByteSourceSerializable;
@@ -35,10 +35,10 @@ import java.util.stream.Collectors;
 public class EmailRealm extends Skill6Realm {
 
     @Autowired
-    private UserInfoDao userInfoDao;
+    private UserDao userDao;
 
     @Autowired
-    private RbacRoleInfoDao rbacRoleInfoDao;
+    private RbacRoleDao rbacRoleDao;
 
     /**
      * 仅支持邮箱验证码方式登录
@@ -57,7 +57,7 @@ public class EmailRealm extends Skill6Realm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
 
         // 根据用户名查询当前用户拥有的角色
-        List<RbacRoleInfo> roleInfos = userInfoDao.findRolesByUserEmail(userEmail);
+        List<RbacRoleInfo> roleInfos = userDao.findRolesByUserEmail(userEmail);
 
         // 将角色名称提供给info
         Set<String> roleNames = roleInfos.stream().map(RbacRoleInfo::getRoleName).collect(Collectors.toSet());
@@ -66,14 +66,14 @@ public class EmailRealm extends Skill6Realm {
 
         // 根据用户名查询当前用户权限
         List<Long> roleIds =
-                roleInfos.stream().map(RbacRoleInfo::getRoleId).collect(Collectors.toList());
-        List<RbacPermissionInfo> permissionInfos = rbacRoleInfoDao.findPermissionByRoleIds(roleIds);
+            roleInfos.stream().map(RbacRoleInfo::getRoleId).collect(Collectors.toList());
+        List<RbacPermissionInfo> permissionInfos = rbacRoleDao.findPermissionByRoleIds(roleIds);
 
         Set<String> permissionNames =
-                permissionInfos
-                        .stream()
-                        .map(RbacPermissionInfo::getPermissionCode)
-                        .collect(Collectors.toSet());
+            permissionInfos
+                .stream()
+                .map(RbacPermissionInfo::getPermissionCode)
+                .collect(Collectors.toSet());
         authorizationInfo.setRoles(permissionNames);
 
         // 将权限代码提供给info
@@ -85,9 +85,9 @@ public class EmailRealm extends Skill6Realm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
-            throws AuthenticationException {
+        throws AuthenticationException {
         String userEmail = (String) token.getPrincipal();
-        UserInfo user = userInfoDao.findUserByUserEmail(userEmail);
+        UserInfo user = userDao.findUserByUserEmail(userEmail);
 
         // 没找到帐号
         if (user == null) {
@@ -106,6 +106,6 @@ public class EmailRealm extends Skill6Realm {
         // 交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配. 用户名, 密码, salt, realm name
 
         return new SimpleAuthenticationInfo(
-                user.getUserName(), user.getUserPassword(), saltByteSource, getName());
+            user.getUserName(), user.getUserPassword(), saltByteSource, getName());
     }
 }
