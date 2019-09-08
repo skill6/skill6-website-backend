@@ -19,13 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
+
     @Autowired
     private CategorySvc categorySvc;
 
     @PostMapping("/{categoryType}")
-    public ResponseJson addCategoryInfo(
-        CategoryInfo categoryInfo, @PathVariable(name = "categoryType") int categoryType) {
-
+    public ResponseJson addCategoryInfo(CategoryInfo categoryInfo, @PathVariable("categoryType") String categoryType) {
         return categorySvc.addCategory(categoryInfo, categoryType);
     }
 }

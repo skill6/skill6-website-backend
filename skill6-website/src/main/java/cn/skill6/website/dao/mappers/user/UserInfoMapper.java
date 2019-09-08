@@ -2,6 +2,7 @@ package cn.skill6.website.dao.mappers.user;
 
 import cn.skill6.common.entity.po.user.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @since 2018年8月15日 下午11:41:46
  */
 @Mapper
+@Repository
 public interface UserInfoMapper {
     int deleteByPrimaryKey(Long userId);
 
