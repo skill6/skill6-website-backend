@@ -12,8 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * 文章信息实现测试
@@ -62,16 +61,11 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
         ArticleInfo articleInfo = new ArticleInfo();
         articleInfo.setArticleAuthor("何明胜");
 
-        PageSortParam pageSortParam = new PageSortParam();
-        // 根据哪个字段排序
-        pageSortParam.setOrderBy(articleInfoTo.getArticleAuthor());
-
-        // 排序方式
-        pageSortParam.setSortType(SortType.DESCENDING);
-
-        // 设置分页
-        pageSortParam.setPageNum(1);
-        pageSortParam.setPageSize(10);
+        PageSortParam pageSortParam = PageSortParam.builder()
+            .pageSize(10)
+            .pageNum(1)
+            .orderBy(articleInfoTo.getArticleAuthor())
+            .sortType(SortType.DESCENDING).build();
 
         List<ArticleInfo> articleInfos = articleInfoDao.findByParamWithPage(articleInfo, pageSortParam);
 
@@ -79,7 +73,7 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
             System.out.println(articleInfo2.getArticleId());
         }
 
-        assertTrue(true);
+        assertEquals(articleInfos.size(), 10);
     }
 
     @Test
