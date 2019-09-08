@@ -1,7 +1,9 @@
 package cn.skill6.website.controller.home;
 
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.website.home.RecommendSvc;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,29 +19,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/recommend")
 public class RecommendController {
 
+    @Autowired
+    private RecommendSvc recommendSvc;
+
     @GetMapping(value = "/carousel")
     public ResponseJson getCarousel() {
-        return null;
+        return recommendSvc.getRecommendCarousel();
     }
 
     @GetMapping(value = "/video")
     public ResponseJson getVideo() {
-        return null;
+        return recommendSvc.getRecommendVideo();
     }
 
     @GetMapping(value = "/download")
     public ResponseJson getDownload() {
-        return null;
+        return recommendSvc.getRecommendDownload();
     }
 
     @GetMapping(value = "/question")
     public ResponseJson getQuestion() {
-        return null;
+        return recommendSvc.getRecommendQuestion();
     }
 
     @GetMapping(value = "/article")
     public ResponseJson getArticle() {
-        return null;
+        return recommendSvc.getRecommendArticle();
     }
 
 }

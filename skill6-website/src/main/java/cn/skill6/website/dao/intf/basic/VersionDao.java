@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.intf.basic;
 
 import cn.skill6.common.entity.po.other.VersionInfo;
+import cn.skill6.common.entity.vo.PageResult;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface VersionDao {
     List<VersionInfo> findAll();
 
     void modifyByVersionId(VersionInfo versionInfo);
+
+    PageResult getVersionByPage(int pageSize, int pageNum);
 }
