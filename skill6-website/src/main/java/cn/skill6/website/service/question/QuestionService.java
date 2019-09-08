@@ -1,29 +1,29 @@
-package cn.skill6.website.service.home;
+package cn.skill6.website.service.question;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.website.home.StatisticsSvc;
+import cn.skill6.website.question.QuestionSvc;
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * 统计服务类
+ * 提问答疑服务类
  *
  * @author 何明胜 husen@hemingsheng.cn
- * @since 2019-09-05 00:59
+ * @since 2019-09-08 21:48
  */
 @Slf4j
 @Service
 @Component
-public class StatisticsService implements StatisticsSvc {
+public class QuestionService implements QuestionSvc {
 
     @Override
-    public ResponseJson getStatisticsVisit() {
+    public ResponseJson geQuestions(int pageSize, int pageNum) {
         return null;
     }
 
     @Override
-    public ResponseJson getStatisticsOnline() {
+    public ResponseJson getQuestionById(long questionId) {
         return null;
     }
 }

@@ -1,10 +1,13 @@
 package cn.skill6.website.dao.impl.basic;
 
 import cn.skill6.common.entity.po.other.VersionInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.basic.VersionDao;
 import cn.skill6.website.dao.mappers.basic.VersionInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -92,5 +95,17 @@ public class VersionDaoImpl implements VersionDao {
 
         versionInfoMapper.updateByPrimaryKey(versionInfo);
         log.info("成功修改版本信息为{}", versionInfo);
+    }
+
+    @Override
+    public PageResult getVersionByPage(int pageSize, int pageNum) {
+        log.info("getVersionByPage, pageSize: {}, pageNum: {}", pageSize, pageNum);
+
+        Page<VersionInfo> page = PageHelper.startPage(pageNum, pageSize);
+
+        List<VersionInfo> versionInfos = versionInfoMapper.selectAll();
+        log.info("versionInfos size: {}, total: {}", versionInfos.size(), page.getTotal());
+
+        return new PageResult<>(page.getTotal(), pageSize, pageNum, versionInfos);
     }
 }

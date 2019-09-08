@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.impl.article;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import cn.skill6.website.dao.mappers.article.ArticleInfoMapper;
@@ -120,9 +121,17 @@ public class ArticleDaoImpl implements ArticleDao {
 
     @Override
     public List<ArticleInfo> findByParams(ArticleInfo articleInfo) {
+        List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
+        log.info("articleInfos size：{}", articleInfos.size());
+
+        return articleInfos;
+    }
+
+    @Override
+    public List<ArticleInfo> findByParamWithPage(ArticleInfo articleInfo, PageSortParam pageSortParam) {
         // 设置分页数据
-        Page<ArticleInfo> page =
-                PageHelper.startPage(articleInfo.getPageNum(), articleInfo.getPageSize());
+        Page<ArticleInfo> page = PageHelper.startPage(pageSortParam.getPageNum(), pageSortParam.getPageSize(),
+            pageSortParam.orderBy());
 
         List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
         log.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());

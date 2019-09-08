@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.thirdparty;
 
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author 何明胜
  * @since 2018年11月1日 下午11:42:39
  */
+@Repository
 public interface ThirdpartyAuthMapper {
     int deleteByPrimaryKey(Long thirdpartyId);
 

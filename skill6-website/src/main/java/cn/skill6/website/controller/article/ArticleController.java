@@ -25,7 +25,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/{articleId}")
-    public ResponseJson deleteArticleById(@PathVariable(name = "articleId") long articleId) {
+    public ResponseJson deleteArticleById(@PathVariable("articleId") long articleId) {
         return articleSvc.deleteArticleById(articleId);
     }
 
@@ -35,12 +35,12 @@ public class ArticleController {
     }
 
     @GetMapping("/{articleId}")
-    public ResponseJson getArticleById(@PathVariable(name = "articleId") long articleId) {
+    public ResponseJson getArticleById(@PathVariable("articleId") long articleId) {
         return articleSvc.getArticleById(articleId);
     }
 
     @GetMapping
-    public String getArticlesByPage(int pageSize, int pageNum) {
+    public ResponseJson getArticlesByPage(int pageSize, int pageNum) {
         return articleSvc.getAllArticles();
     }
 }

@@ -6,9 +6,9 @@ import cn.skill6.common.entity.vo.FileAttribute;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.utility.DateFormat;
 import cn.skill6.common.utility.RequestParser;
-import cn.skill6.website.store.StoreFileSvc;
 import cn.skill6.website.config.Skill6PropertyConfig;
 import cn.skill6.website.dao.intf.store.StoreFileDao;
+import cn.skill6.website.store.StoreFileSvc;
 import cn.skill6.website.util.storage.FileStoreHandler;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +25,6 @@ import java.util.Map;
  * 文件存储服务类
  *
  * @author 何明胜
- * @version 1.9
  * @since 2018年9月3日 下午11:03:31
  */
 @Service
@@ -43,10 +42,8 @@ public class StoreFileService implements StoreFileSvc {
     private String userHomeDir = System.getProperty("user.home");
 
     @Override
-    public ResponseJson uploadFile(HttpServletRequest request, FileType fileType)
-            throws IOException, FileUploadException {
+    public ResponseJson uploadFile(HttpServletRequest request, FileType fileType) throws IOException, FileUploadException {
         String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
-
         String storeParentPath = StringUtils.join(skill6PropertyConfig.getFilePath(), dateFormat);
 
         FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
@@ -69,16 +66,15 @@ public class StoreFileService implements StoreFileSvc {
         resultMap.put("information", "上传成功");
 
         StringBuffer contextUrl = RequestParser.parseContextIndex(request);
-        String fileUrl =
-                contextUrl
-                        .append("/file/")
-                        .append(dateFormat)
-                        .append("/")
-                        .append(storeFile.getFileId())
-                        .toString();
+        String fileUrl = contextUrl
+            .append("/file/")
+            .append(dateFormat)
+            .append("/")
+            .append(storeFile.getFileId())
+            .toString();
         resultMap.put("file_url", fileUrl);
 
-        return new ResponseJson(true, resultMap);
+        return new ResponseJson(resultMap);
     }
 
     @Override

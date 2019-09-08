@@ -19,7 +19,6 @@ import java.util.ArrayList;
  * 第三方授权连接控制器
  *
  * @author 何明胜
- * @version 1.0
  * @since 2018年12月30日 下午9:59:06
  */
 @Slf4j

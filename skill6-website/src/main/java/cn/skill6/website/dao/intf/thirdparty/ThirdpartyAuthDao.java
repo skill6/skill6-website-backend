@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.intf.thirdparty;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface ThirdpartyAuthDao {
     void updateByThirdpartyId(ThirdpartyAuth thirdpartyAuth);
 
     List<ThirdpartyAuth> findByParams(ThirdpartyAuth thirdpartyAuth);
+
+    public List<ThirdpartyAuth> findByParamWithPage(ThirdpartyAuth thirdpartyAuth, PageSortParam pageSortParam);
 }

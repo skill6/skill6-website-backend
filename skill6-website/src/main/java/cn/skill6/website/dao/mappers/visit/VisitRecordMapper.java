@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.mappers.visit;
 
 import cn.skill6.common.entity.po.visit.VisitRecord;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author 何明胜
  * @since 2018年9月30日 下午10:02:29
  */
+@Repository
 public interface VisitRecordMapper {
     int deleteByPrimaryKey(Long visitId);
 

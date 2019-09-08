@@ -1,10 +1,13 @@
 package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
 import cn.skill6.website.dao.mappers.article.ArticleCommentMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +70,18 @@ public class ArticleCommentDaoImpl implements ArticleCommentDao {
         log.info("找到所有评论,{}", articleComments);
 
         return articleComments;
+    }
+
+    @Override
+    public PageResult<ArticleComment> findCommentsByPage(int pageSize, int pageNum) {
+        log.info("findCommentsByPage, pageSize: {}, pageNum: {}", pageSize, pageNum);
+
+        Page<ArticleComment> page = PageHelper.startPage(pageNum, pageSize);
+
+        List<ArticleComment> articleComments = articleCommentMapper.selectAll();
+        log.info("articleComments size: {}, total: {}", articleComments.size(), page.getTotal());
+
+        return new PageResult<>(page.getTotal(), pageSize, pageNum, articleComments);
     }
 
     @Override

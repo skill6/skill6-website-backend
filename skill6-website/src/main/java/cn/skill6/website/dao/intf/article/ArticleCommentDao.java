@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.intf.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.vo.PageResult;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface ArticleCommentDao {
     ArticleComment findByCommentId(Long commentId);
 
     List<ArticleComment> findAll();
+
+    PageResult<ArticleComment> findCommentsByPage(int pageSize, int pageNum);
 
     int modifyByCommentId(ArticleComment articleComment);
 }

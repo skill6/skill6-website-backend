@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StaticController extends BaseController {
 
-    @GetMapping(value = {"/", "/topic", "/qa", "/code", "/project", "/source", "/talk", "/developing", "/topic/*",
-            "/qa/*", "/code/*", "/project/*", "/source/*", "/talk/*", "/developing/*", "/topic/*/*", "/blog/editor"})
+    @GetMapping({"/", "/topic", "/qa", "/code", "/project", "/source", "/talk", "/developing", "/topic/*",
+        "/qa/*", "/code/*", "/project/*", "/source/*", "/talk/*", "/developing/*", "/topic/*/*", "/blog/editor"})
     public String index() {
         return "/index.html";
     }

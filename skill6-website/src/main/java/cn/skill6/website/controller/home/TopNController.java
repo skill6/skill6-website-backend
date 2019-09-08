@@ -1,7 +1,9 @@
 package cn.skill6.website.controller.home;
 
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.website.home.TopNSvc;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,19 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/topn")
 public class TopNController {
 
+    @Autowired
+    private TopNSvc topNSvc;
+
     @GetMapping("/active-user")
     public ResponseJson getActiveUser() {
-        return null;
+        return topNSvc.getActiveUsers();
     }
 
     @GetMapping("/visit-user")
     public ResponseJson getVisitUser() {
-        return null;
+        return topNSvc.getActiveUsers();
     }
 
     @GetMapping("/publish-article")
     public ResponseJson getPublishArticle() {
-        return null;
+        return topNSvc.getPublishArticles();
     }
 
 }

@@ -1,6 +1,7 @@
 package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.enums.SortType;
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
@@ -11,14 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * 文章信息实现测试
  *
  * @author 何明胜
- * @version 1.2
  * @since 2018年9月21日 下午11:24:25
  */
 @Transactional
@@ -48,16 +47,6 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
         ArticleInfo articleInfo = new ArticleInfo();
         articleInfo.setArticleAuthor("何明胜");
 
-        // 根据哪个字段排序
-        articleInfo.setOrderBy(articleInfoTo.getArticleAuthor());
-
-        // 排序方式
-        articleInfo.setSortType(SortType.DESCENDING);
-
-        // 设置分页
-        articleInfo.setPageNum(1);
-        articleInfo.setPageSize(10);
-
         List<ArticleInfo> articleInfos = articleInfoDao.findByParams(articleInfo);
 
         for (ArticleInfo articleInfo2 : articleInfos) {
@@ -65,6 +54,26 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
         }
 
         assertTrue(true);
+    }
+
+    @Test
+    public void testFindByParamWithPage() {
+        ArticleInfo articleInfo = new ArticleInfo();
+        articleInfo.setArticleAuthor("何明胜");
+
+        PageSortParam pageSortParam = PageSortParam.builder()
+            .pageSize(10)
+            .pageNum(1)
+            .orderBy(articleInfoTo.getArticleAuthor())
+            .sortType(SortType.DESCENDING).build();
+
+        List<ArticleInfo> articleInfos = articleInfoDao.findByParamWithPage(articleInfo, pageSortParam);
+
+        for (ArticleInfo articleInfo2 : articleInfos) {
+            System.out.println(articleInfo2.getArticleId());
+        }
+
+        assertEquals(articleInfos.size(), 10);
     }
 
     @Test

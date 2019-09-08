@@ -3,10 +3,10 @@ package cn.skill6.website.service.basic;
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.other.CategoryInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.common.exception.general.FormatException;
 import cn.skill6.website.basic.CategorySvc;
 import cn.skill6.website.dao.intf.basic.CategoryDao;
 import com.alibaba.dubbo.config.annotation.Service;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
  * @author 何明胜
  * @since 2018年10月5日 下午4:21:03
  */
+@Slf4j
 @Service
 @Component
 public class CategoryService implements CategorySvc {
@@ -25,34 +26,14 @@ public class CategoryService implements CategorySvc {
 
     @Override
     public ResponseJson addCategory(CategoryInfo categoryInfo) {
-        ResponseJson responseJson;
+        Long categoryId = categoryDao.addCategoryInfo(categoryInfo);
 
-        try {
-            Long categoryId = categoryDao.addCategoryInfo(categoryInfo);
-            responseJson = new ResponseJson(true, String.valueOf(categoryId));
-        } catch (Exception e) {
-            responseJson = new ResponseJson(false, "注册失败");
-        }
-
-        return responseJson;
+        return new ResponseJson(categoryId);
     }
 
     @Override
-    public ResponseJson addCategory(CategoryInfo categoryInfo, int categoryType) {
-        switch (categoryType) {
-            case 100:
-                categoryInfo.setCategoryType(CategoryType.ARTICLE);
-                break;
-            case 200:
-                categoryInfo.setCategoryType(CategoryType.DISCUSS_AREA);
-                break;
-            case 300:
-                categoryInfo.setCategoryType(CategoryType.FILE_DOWNLOAD);
-                break;
-
-            default:
-                throw new FormatException("目录格式错误");
-        }
+    public ResponseJson addCategory(CategoryInfo categoryInfo, String categoryType) {
+        categoryInfo.setCategoryType(CategoryType.getEnum(categoryType));
 
         return addCategory(categoryInfo);
     }

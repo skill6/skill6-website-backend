@@ -116,6 +116,5 @@
                 article_author = #{articleAuthor,jdbcType=VARCHAR}
             </if>
         </where>
-        <if test="orderBy != null">ORDER BY #{orderBy} #{sortType.value}</if>
     </select>
 </mapper>

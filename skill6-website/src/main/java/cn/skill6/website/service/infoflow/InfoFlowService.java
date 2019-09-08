@@ -1,34 +1,34 @@
-package cn.skill6.website.service.home;
+package cn.skill6.website.service.infoflow;
 
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.website.home.TopNSvc;
+import cn.skill6.website.infoflow.InfoFlowSvc;
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * top n 服务类
+ * 信息流服务类
  *
  * @author 何明胜 husen@hemingsheng.cn
- * @since 2019-09-05 01:04
+ * @since 2019-09-08 21:45
  */
 @Slf4j
 @Service
 @Component
-public class TopNService implements TopNSvc {
+public class InfoFlowService implements InfoFlowSvc {
 
     @Override
-    public ResponseJson getActiveUsers() {
+    public ResponseJson getLatestUpdate() {
         return null;
     }
 
     @Override
-    public ResponseJson getTrafficUsers() {
+    public ResponseJson getMostBrowse() {
         return null;
     }
 
     @Override
-    public ResponseJson getPublishArticles() {
+    public ResponseJson getMostReply() {
         return null;
     }
 }
