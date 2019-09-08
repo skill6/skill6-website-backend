@@ -25,16 +25,12 @@ public class StoreFileController {
     private StoreFileSvc storeFileSvc;
 
     @PostMapping("/share")
-    public ResponseJson uploadFile(HttpServletRequest request)
-        throws IOException, FileUploadException {
-
+    public ResponseJson uploadFile(HttpServletRequest request) throws IOException, FileUploadException {
         return storeFileSvc.uploadFile(request, FileType.SHARE_FILES);
     }
 
     @PostMapping("/attach")
-    public ResponseJson uploadAttachment(HttpServletRequest request)
-        throws IOException, FileUploadException {
-
+    public ResponseJson uploadAttachment(HttpServletRequest request) throws IOException, FileUploadException {
         return storeFileSvc.uploadFile(request, FileType.ATTACHMENT);
     }
 

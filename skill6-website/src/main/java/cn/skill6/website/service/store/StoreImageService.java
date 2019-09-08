@@ -9,14 +9,12 @@ import cn.skill6.website.config.Skill6PropertyConfig;
 import cn.skill6.website.dao.intf.store.StoreImageDao;
 import cn.skill6.website.store.StoreImageSvc;
 import cn.skill6.website.util.storage.FileStoreHandler;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +22,6 @@ import java.util.Map;
  * 图片存储服务类
  *
  * @author 何明胜
- * @version 1.7
  * @since 2018年9月13日 上午12:45:47
  */
 @Service
@@ -42,15 +39,13 @@ public class StoreImageService implements StoreImageSvc {
     private String userHomeDir = System.getProperty("user.home");
 
     @Override
-    public ResponseJson uploadImage(HttpServletRequest request)
-        throws IOException, FileUploadException {
+    public ResponseJson uploadImage(HttpServletRequest request) {
         String dateFormat = DateFormat.formatDateYMD("yyyy/MM/dd");
         String userHomeDir = System.getProperty("user.home");
         String storeParentPath = StringUtils.join(skill6PropertyConfig.getImagePath(), dateFormat);
 
         StoreImage storeImage = new StoreImage();
-        FileAttribute fileAttribute =
-            fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
+        FileAttribute fileAttribute = fileStoreHandler.fileUploadHandler(request, userHomeDir, storeParentPath);
 
         storeImage.setImageId(Long.valueOf(fileAttribute.getId()));
         storeImage.setImageName(fileAttribute.getName());
@@ -63,13 +58,12 @@ public class StoreImageService implements StoreImageSvc {
         resultMap.put("information", "上传成功");
 
         StringBuffer contextUrl = RequestParser.parseContextIndex(request);
-        String imageUrl =
-            contextUrl
-                .append("/image/")
-                .append(dateFormat)
-                .append("/")
-                .append(storeImage.getImageId())
-                .toString();
+        String imageUrl = contextUrl
+            .append("/image/")
+            .append(dateFormat)
+            .append("/")
+            .append(storeImage.getImageId())
+            .toString();
         resultMap.put("image_url", imageUrl);
 
         return new ResponseJson(true, resultMap);
