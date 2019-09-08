@@ -64,8 +64,8 @@
         thirdparty_auth
         <where>
             <if test="userId != null">AND user_id = #{userId,jdbcType=BIGINT}</if>
-            <if test="thirdpartyPrimaryKey != null">AND thirdparty_primary_key =
-                #{thirdpartyPrimaryKey,jdbcType=VARCHAR}
+            <if test="thirdpartyPrimaryKey != null">
+                AND thirdparty_primary_key = #{thirdpartyPrimaryKey,jdbcType=VARCHAR}
             </if>
             <if test="thirdpartyValid != null">AND thirdparty_valid = #{thirdpartyValid,jdbcType=BIT}</if>
         </where>

@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.impl.thirdparty;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.po.thirdparty.ThirdpartyAuth;
 import cn.skill6.website.dao.intf.thirdparty.ThirdpartyAuthDao;
@@ -73,13 +74,22 @@ public class ThirdpartyAuthDaoImpl implements ThirdpartyAuthDao {
     public List<ThirdpartyAuth> findByParams(ThirdpartyAuth thirdpartyAuth) {
         log.info("根据条件查询第三方授权数据, 条件为{}", thirdpartyAuth);
 
+        List<ThirdpartyAuth> thirdpartyAuthList = thirdpartyAuthMapper.selectByParams(thirdpartyAuth);
+        log.info("thirdpartyAuthList size：{}", thirdpartyAuthList.size());
+
+        return thirdpartyAuthList;
+    }
+
+    @Override
+    public List<ThirdpartyAuth> findByParamWithPage(ThirdpartyAuth thirdpartyAuth, PageSortParam pageSortParam) {
+        log.info("根据条件查询第三方授权数据, 条件为{}", thirdpartyAuth);
+
         // 设置分页数据
-        Page<ArticleInfo> page =
-                PageHelper.startPage(thirdpartyAuth.getPageNum(), thirdpartyAuth.getPageSize());
+        Page<ArticleInfo> page = PageHelper.startPage(pageSortParam.getPageNum(), pageSortParam.getPageSize());
 
-        List<ThirdpartyAuth> thirdpartyAuths = thirdpartyAuthMapper.selectByParams(thirdpartyAuth);
-        log.info("找到数据数量：{}, 所有数据数量为：{}", thirdpartyAuths.size(), page.getTotal());
+        List<ThirdpartyAuth> thirdpartyAuthList = thirdpartyAuthMapper.selectByParams(thirdpartyAuth);
+        log.info("找到数据数量：{}, 所有数据数量为：{}", thirdpartyAuthList.size(), page.getTotal());
 
-        return thirdpartyAuths;
+        return thirdpartyAuthList;
     }
 }

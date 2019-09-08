@@ -3,7 +3,6 @@ package cn.skill6.website.service.article;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.exception.tools.StackTrace2Str;
-import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.ArticleSvc;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -17,7 +16,6 @@ import java.util.List;
  * 文章信息代理服务类，处理Controller转发过来的RestFul请求
  *
  * @author 何明胜
- * @version 1.6
  * @since 2018年8月21日 下午11:07:30
  */
 @Slf4j
@@ -28,6 +26,7 @@ public class ArticleService implements ArticleSvc {
     @Autowired
     private ArticleDao articleDao;
 
+    @Override
     public ResponseJson addArticle(ArticleInfo articleInfo) {
         ResponseJson responseJson;
         try {
@@ -41,11 +40,13 @@ public class ArticleService implements ArticleSvc {
         return responseJson;
     }
 
+    @Override
     public ResponseJson deleteArticleById(Long articleId) {
         articleDao.deleteByPrimaryKey(articleId);
         return new ResponseJson(true, "删除成功");
     }
 
+    @Override
     public ResponseJson modifyArticleById(ArticleInfo articleInfo) {
         ResponseJson responseJson;
 
@@ -60,6 +61,7 @@ public class ArticleService implements ArticleSvc {
         return responseJson;
     }
 
+    @Override
     public ResponseJson getArticleById(Long articleId) {
         ResponseJson responseJson;
 
@@ -74,7 +76,8 @@ public class ArticleService implements ArticleSvc {
         return responseJson;
     }
 
-    public String getAllArticles() {
+    @Override
+    public ResponseJson getAllArticles() {
         ResponseJson responseJson;
 
         try {
@@ -85,6 +88,6 @@ public class ArticleService implements ArticleSvc {
             responseJson = new ResponseJson(false, "获取id所有文章信息失败");
         }
 
-        return JacksonUtil.toStr(responseJson);
+        return responseJson;
     }
 }

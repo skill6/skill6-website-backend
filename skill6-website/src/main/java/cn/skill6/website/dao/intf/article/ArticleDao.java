@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.intf.article;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface ArticleDao {
     void modifyByArticleId(ArticleInfo articleInfo);
 
     List<ArticleInfo> findByParams(ArticleInfo articleInfo);
+
+    List<ArticleInfo> findByParamWithPage(ArticleInfo articleInfo, PageSortParam pageSortParam);
 }
