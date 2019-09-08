@@ -44,7 +44,7 @@ public class StoreFileController {
     }
 
     @GetMapping
-    public ResponseJson getCarousel(String pageSize, String pageNum) {
+    public ResponseJson getFileByPage(String pageSize, String pageNum) {
         return null;
     }
 }

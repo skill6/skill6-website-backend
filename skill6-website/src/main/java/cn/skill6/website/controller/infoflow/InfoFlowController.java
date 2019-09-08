@@ -1,7 +1,9 @@
 package cn.skill6.website.controller.infoflow;
 
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.website.infoflow.InfoFlowSvc;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,19 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/infoflow")
 public class InfoFlowController {
 
+    @Autowired
+    private InfoFlowSvc infoFlowSvc;
+
     @GetMapping("/latest-update")
     public ResponseJson getLatestUpdate() {
-        return null;
+        return infoFlowSvc.getLatestUpdate();
     }
 
     @GetMapping("/most-browse")
     public ResponseJson getMostBrowse() {
-        return null;
+        return infoFlowSvc.getMostBrowse();
     }
 
     @GetMapping("/most-reply")
     public ResponseJson getMostReply() {
-        return null;
+        return infoFlowSvc.getMostReply();
     }
 
 }
