@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -42,8 +41,7 @@ public class ArticleControllerTest extends Skill6WebsiteApplicationTest {
                     .params(map)
                     .accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.success").value(true));
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
     @Test
@@ -54,17 +52,14 @@ public class ArticleControllerTest extends Skill6WebsiteApplicationTest {
                     .param("articleId", articleId)
                     .accept(MediaType.parseMediaType(MediaType.APPLICATION_JSON_UTF8_VALUE)))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.success").value(true));
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
     @Test
     public void test03GetArticleById() throws Exception {
         mockMvc
             .perform(get("/article/" + articleId).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.success").value(true));
+            .andExpect(status().isOk());
     }
 
     @Test
@@ -75,9 +70,7 @@ public class ArticleControllerTest extends Skill6WebsiteApplicationTest {
                 .param("pageNum", "1").
                     accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.success").value(true))
-            .andDo(print());
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 
     @Test
@@ -85,7 +78,6 @@ public class ArticleControllerTest extends Skill6WebsiteApplicationTest {
         mockMvc
             .perform(delete("/article/" + articleId).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-            .andExpect(jsonPath("$.success").value(true));
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 }
