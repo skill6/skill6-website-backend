@@ -1,6 +1,7 @@
 package cn.skill6.website.service.home;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.website.dao.intf.user.UserAdditionInfoDao;
 import cn.skill6.website.dao.intf.user.UserDao;
 import cn.skill6.website.home.TopNSvc;
@@ -8,6 +9,8 @@ import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * top n 服务类
@@ -27,17 +30,17 @@ public class TopNService implements TopNSvc {
     private UserAdditionInfoDao userAdditionInfoDao;
 
     @Override
-    public ResponseJson getActiveUsers() {
+    public List<UserInfo> getActiveUsers() {
         return null;
     }
 
     @Override
-    public ResponseJson getTrafficUsers() {
+    public List<UserInfo> getTrafficUsers() {
         return null;
     }
 
     @Override
-    public ResponseJson getPublishArticles() {
+    public List<ArticleInfo> getPublishArticles() {
         return null;
     }
 }

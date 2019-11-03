@@ -1,7 +1,7 @@
 package cn.skill6.website.service.basic;
 
+import cn.skill6.common.entity.po.other.VersionInfo;
 import cn.skill6.common.entity.vo.PageResult;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.basic.VersionSvc;
 import cn.skill6.website.dao.intf.basic.VersionDao;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -24,9 +24,7 @@ public class VersionService implements VersionSvc {
     private VersionDao versionDao;
 
     @Override
-    public ResponseJson getVersionByPage(int pageSize, int pageNum) {
-        PageResult versionByPage = versionDao.getVersionByPage(pageSize, pageNum);
-
-        return new ResponseJson(versionByPage);
+    public PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum) {
+        return versionDao.getVersionByPage(pageSize, pageNum);
     }
 }

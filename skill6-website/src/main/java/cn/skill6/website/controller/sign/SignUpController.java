@@ -35,7 +35,7 @@ public class SignUpController {
 
         signUpService.createUser(userInfo);
 
-        return JacksonUtil.toStr(new ResponseJson(true, userName));
+        return JacksonUtil.toStr(ResponseJson.build(userName));
     }
 
 }

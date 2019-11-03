@@ -1,7 +1,6 @@
 package cn.skill6.website.service.infoflow;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import cn.skill6.website.infoflow.InfoFlowSvc;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * 信息流服务类
@@ -28,29 +27,29 @@ public class InfoFlowService implements InfoFlowSvc {
     private ArticleDao articleDao;
 
     @Override
-    public ResponseJson getLatestUpdate() {
+    public List<ArticleInfo> getLatestUpdate() {
         List<ArticleInfo> articles = articleDao.findAll();
 
-        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
-
-        return new ResponseJson(sorted);
+        return articles.stream()
+            .sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public ResponseJson getMostBrowse() {
+    public List<ArticleInfo> getMostBrowse() {
         List<ArticleInfo> articles = articleDao.findAll();
 
-        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
-
-        return new ResponseJson(sorted);
+        return articles.stream()
+            .sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime))
+            .collect(Collectors.toList());
     }
 
     @Override
-    public ResponseJson getMostReply() {
+    public List<ArticleInfo> getMostReply() {
         List<ArticleInfo> articles = articleDao.findAll();
 
-        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
-
-        return new ResponseJson(sorted);
+        return articles.stream()
+            .sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime))
+            .collect(Collectors.toList());
     }
 }

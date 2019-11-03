@@ -1,7 +1,6 @@
 package cn.skill6.website.service.home;
 
 import cn.skill6.common.entity.po.visit.VisitStatistics;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.visit.VisitRecordDao;
 import cn.skill6.website.dao.intf.visit.VisitStatisticsDao;
 import cn.skill6.website.home.StatisticsSvc;
@@ -31,14 +30,12 @@ public class StatisticsService implements StatisticsSvc {
     private VisitRecordDao visitRecordDao;
 
     @Override
-    public ResponseJson getStatisticsVisit() {
-        VisitStatistics visitStatistics = visitStatisticsDao.findByCurrentDate();
-
-        return new ResponseJson(visitStatistics);
+    public VisitStatistics getStatisticsVisit() {
+        return visitStatisticsDao.findByCurrentDate();
     }
 
     @Override
-    public ResponseJson getStatisticsOnline() {
+    public int getStatisticsOnline() {
         // 查询当日访问记录数量
         Calendar calendar = Calendar.getInstance();
 
@@ -49,8 +46,6 @@ public class StatisticsService implements StatisticsSvc {
 
         Date calendarTime = calendar.getTime();
 
-        int onlineCount = visitRecordDao.getOnlineCount(calendarTime, new Date());
-
-        return new ResponseJson(onlineCount);
+        return visitRecordDao.getOnlineCount(calendarTime, new Date());
     }
 }

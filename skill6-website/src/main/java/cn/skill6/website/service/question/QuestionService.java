@@ -1,7 +1,6 @@
 package cn.skill6.website.service.question;
 
 import cn.skill6.common.entity.po.question.QuestionInfo;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.question.QuestionDao;
 import cn.skill6.website.question.QuestionSvc;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -26,16 +25,12 @@ public class QuestionService implements QuestionSvc {
     private QuestionDao questionDao;
 
     @Override
-    public ResponseJson geQuestions(int pageSize, int pageNum) {
-        List<QuestionInfo> questionInfos = questionDao.selectAll();
-
-        return new ResponseJson(questionInfos);
+    public List<QuestionInfo> geQuestions(int pageSize, int pageNum) {
+        return questionDao.selectAll();
     }
 
     @Override
-    public ResponseJson getQuestionById(long questionId) {
-        QuestionInfo questionInfo = questionDao.selectByPrimaryKey(questionId);
-
-        return new ResponseJson(questionInfo);
+    public QuestionInfo getQuestionById(long questionId) {
+        return questionDao.selectByPrimaryKey(questionId);
     }
 }

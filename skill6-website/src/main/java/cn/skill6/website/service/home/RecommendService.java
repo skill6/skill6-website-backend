@@ -48,15 +48,13 @@ public class RecommendService implements RecommendSvc {
     }
 
     @Override
-    public ResponseJson getRecommendArticle() {
+    public List<ArticleInfo> getRecommendArticle() {
         PageSortParam pageSortParam = PageSortParam.builder()
             .pageSize(10)
             .pageNum(1)
             .orderBy("article_create_time")
             .sortType(SortType.DESCENDING).build();
 
-        List<ArticleInfo> articleInfos = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
-
-        return new ResponseJson(articleInfos);
+        return articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
     }
 }

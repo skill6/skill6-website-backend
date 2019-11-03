@@ -1,6 +1,7 @@
 package cn.skill6.website.controller.article;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.article.ArticleSvc;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,12 @@ public class ArticleController {
     private ArticleSvc articleSvc;
 
     @PostMapping
-    public ResponseJson addArticle(ArticleInfo articleInfo) {
+    public long addArticle(ArticleInfo articleInfo) {
         return articleSvc.addArticle(articleInfo);
     }
 
     @DeleteMapping("/{articleId}")
-    public ResponseJson deleteArticleById(@PathVariable("articleId") long articleId) {
+    public int deleteArticleById(@PathVariable("articleId") long articleId) {
         return articleSvc.deleteArticleById(articleId);
     }
 
@@ -35,12 +36,12 @@ public class ArticleController {
     }
 
     @GetMapping("/{articleId}")
-    public ResponseJson getArticleById(@PathVariable("articleId") long articleId) {
+    public ArticleInfo getArticleById(@PathVariable("articleId") long articleId) {
         return articleSvc.getArticleById(articleId);
     }
 
     @GetMapping
-    public ResponseJson getArticlesByPage(int pageSize, int pageNum) {
-        return articleSvc.getAllArticles();
+    public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
+        return articleSvc.getArticlesByPage(pageSize, pageNum);
     }
 }

@@ -1,7 +1,6 @@
 package cn.skill6.website.service.video;
 
 import cn.skill6.common.entity.po.video.VideoInfo;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.video.VideoDao;
 import cn.skill6.website.video.VideoSvc;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -26,16 +25,12 @@ public class VideoService implements VideoSvc {
     private VideoDao videoDao;
 
     @Override
-    public ResponseJson getVideosByPage(int pageSize, int pageNum) {
-        List<VideoInfo> videosByPage = videoDao.getVideosByPage(pageSize, pageNum);
-
-        return new ResponseJson(videosByPage);
+    public List<VideoInfo> getVideosByPage(int pageSize, int pageNum) {
+        return videoDao.getVideosByPage(pageSize, pageNum);
     }
 
     @Override
-    public ResponseJson getVideoById(Long videoId) {
-        VideoInfo videoInfo = videoDao.selectByPrimaryKey(videoId);
-
-        return new ResponseJson(videoInfo);
+    public VideoInfo getVideoById(Long videoId) {
+        return videoDao.selectByPrimaryKey(videoId);
     }
 }

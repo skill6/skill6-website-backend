@@ -2,7 +2,6 @@ package cn.skill6.website.service.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
 import cn.skill6.common.entity.vo.PageResult;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.article.CommentSvc;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -25,14 +24,17 @@ public class CommentService implements CommentSvc {
     private ArticleCommentDao articleCommentDao;
 
     @Override
-    public ResponseJson getCommentsByPage(int pageSize, int pageNum) {
-        PageResult<ArticleComment> commentPageResult = articleCommentDao.findCommentsByPage(pageSize, pageNum);
-        return new ResponseJson(commentPageResult);
+    public PageResult<ArticleComment> getCommentsByPage(int pageSize, int pageNum) {
+        return articleCommentDao.findCommentsByPage(pageSize, pageNum);
     }
 
     @Override
-    public ResponseJson getCommentById(long commentId) {
-        ArticleComment articleComment = articleCommentDao.findByCommentId(commentId);
-        return new ResponseJson(articleComment);
+    public ArticleComment getCommentById(long commentId) {
+        return articleCommentDao.findByCommentId(commentId);
+    }
+
+    @Override
+    public Long addArticleComment(ArticleComment articleComment) {
+        return articleCommentDao.addArticleComment(articleComment);
     }
 }

@@ -1,7 +1,6 @@
 package cn.skill6.website.controller.basic;
 
 import cn.skill6.common.entity.po.other.CategoryInfo;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.basic.CategorySvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +23,7 @@ public class CategoryController {
     private CategorySvc categorySvc;
 
     @PostMapping("/{categoryType}")
-    public ResponseJson addCategoryInfo(CategoryInfo categoryInfo, @PathVariable("categoryType") String categoryType) {
+    public Long addCategoryInfo(CategoryInfo categoryInfo, @PathVariable("categoryType") String categoryType) {
         return categorySvc.addCategory(categoryInfo, categoryType);
     }
 }
