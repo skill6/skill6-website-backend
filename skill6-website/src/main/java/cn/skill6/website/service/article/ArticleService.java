@@ -1,11 +1,15 @@
 package cn.skill6.website.service.article;
 
+import cn.skill6.common.entity.enums.SortType;
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
-import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.website.article.ArticleSvc;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,67 +31,42 @@ public class ArticleService implements ArticleSvc {
     private ArticleDao articleDao;
 
     @Override
-    public ResponseJson addArticle(ArticleInfo articleInfo) {
-        ResponseJson responseJson;
-        try {
-            Long articleId = articleDao.addArticleInfo(articleInfo);
-            responseJson = new ResponseJson(true, String.valueOf(articleId));
-        } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-            responseJson = new ResponseJson(false, "注册失败");
-        }
-
-        return responseJson;
+    public long addArticle(ArticleInfo articleInfo) {
+        return articleDao.addArticleInfo(articleInfo);
     }
 
     @Override
-    public ResponseJson deleteArticleById(Long articleId) {
-        articleDao.deleteByPrimaryKey(articleId);
-        return new ResponseJson(true, "删除成功");
+    public int deleteArticleById(Long articleId) {
+        return articleDao.deleteByPrimaryKey(articleId);
     }
 
     @Override
     public ResponseJson modifyArticleById(ArticleInfo articleInfo) {
-        ResponseJson responseJson;
-
-        try {
-            articleDao.modifyByArticleId(articleInfo);
-            responseJson = new ResponseJson(true, "修改成功");
-        } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-            responseJson = new ResponseJson(false, "修改失败");
-        }
-
-        return responseJson;
+        articleDao.modifyByArticleId(articleInfo);
+        return ResponseJson.build("修改成功");
     }
 
     @Override
-    public ResponseJson getArticleById(Long articleId) {
-        ResponseJson responseJson;
-
-        try {
-            ArticleInfo articleInfo = articleDao.findByArticleId(articleId);
-            responseJson = new ResponseJson(true, articleInfo);
-        } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-            responseJson = new ResponseJson(false, "获取id为" + articleId + "的文章信息失败");
-        }
-
-        return responseJson;
+    public ArticleInfo getArticleById(Long articleId) {
+        return articleDao.findByArticleId(articleId);
     }
 
     @Override
-    public ResponseJson getAllArticles() {
-        ResponseJson responseJson;
+    public List<ArticleInfo> getAllArticles() {
+        return articleDao.findAll();
+    }
 
-        try {
-            List<ArticleInfo> articleInfos = articleDao.findAll();
-            responseJson = new ResponseJson(true, articleInfos);
-        } catch (Exception e) {
-            log.error(StackTrace2Str.exceptionStackTrace2Str(e));
-            responseJson = new ResponseJson(false, "获取id所有文章信息失败");
-        }
+    @Override
+    public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
+        PageSortParam pageSortParam = PageSortParam.builder()
+            .pageSize(10)
+            .pageNum(1)
+            .orderBy("article_create_time")
+            .sortType(SortType.DESCENDING).build();
 
-        return responseJson;
+        Page<ArticleInfo> page = PageHelper.startPage(pageNum, pageSize);
+        List<ArticleInfo> articleInfos = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
+
+        return new PageResult<>(page.getTotal(), pageSize, pageNum, articleInfos);
     }
 }
