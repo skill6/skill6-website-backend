@@ -2,6 +2,7 @@ package cn.skill6.website.dao.intf.visit;
 
 import cn.skill6.common.entity.po.visit.VisitRecord;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,4 +22,6 @@ public interface VisitRecordDao {
     List<VisitRecord> findAll();
 
     void modifyByVisitId(VisitRecord visitRecord);
+
+    int getOnlineCount(Date today, Date currentTime);
 }

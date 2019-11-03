@@ -92,4 +92,9 @@ public class VisitRecordDaoImpl implements VisitRecordDao {
         visitRecordMapper.updateByPrimaryKey(visitRecord);
         log.info("成功更新访问记录,{}", visitRecord);
     }
+
+    @Override
+    public int getOnlineCount(Date today, Date currentTime) {
+        return visitRecordMapper.getOnlineCount(today, currentTime);
+    }
 }

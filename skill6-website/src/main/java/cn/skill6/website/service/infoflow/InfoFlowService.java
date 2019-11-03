@@ -1,10 +1,17 @@
 package cn.skill6.website.service.infoflow;
 
+import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.website.dao.intf.article.ArticleDao;
 import cn.skill6.website.infoflow.InfoFlowSvc;
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 信息流服务类
@@ -17,18 +24,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class InfoFlowService implements InfoFlowSvc {
 
+    @Autowired
+    private ArticleDao articleDao;
+
     @Override
     public ResponseJson getLatestUpdate() {
-        return null;
+        List<ArticleInfo> articles = articleDao.findAll();
+
+        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
+
+        return new ResponseJson(sorted);
     }
 
     @Override
     public ResponseJson getMostBrowse() {
-        return null;
+        List<ArticleInfo> articles = articleDao.findAll();
+
+        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
+
+        return new ResponseJson(sorted);
     }
 
     @Override
     public ResponseJson getMostReply() {
-        return null;
+        List<ArticleInfo> articles = articleDao.findAll();
+
+        Stream<ArticleInfo> sorted = articles.stream().sorted(Comparator.comparing(ArticleInfo::getArticleUpdateTime));
+
+        return new ResponseJson(sorted);
     }
 }

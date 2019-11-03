@@ -22,4 +22,6 @@ public interface VisitStatisticsMapper {
     List<VisitStatistics> selectAll();
 
     int updateByPrimaryKey(VisitStatistics visitStatistics);
+
+    VisitStatistics findByCurrentDate();
 }

@@ -1,5 +1,7 @@
 package cn.skill6.website.service.home;
 
+import cn.skill6.common.entity.enums.SortType;
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.article.ArticleDao;
@@ -47,8 +49,13 @@ public class RecommendService implements RecommendSvc {
 
     @Override
     public ResponseJson getRecommendArticle() {
-        ArticleInfo articleInfo = new ArticleInfo();
-        List<ArticleInfo> articleInfos = articleDao.findByParams(articleInfo);
+        PageSortParam pageSortParam = PageSortParam.builder()
+            .pageSize(10)
+            .pageNum(1)
+            .orderBy("article_create_time")
+            .sortType(SortType.DESCENDING).build();
+
+        List<ArticleInfo> articleInfos = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
 
         return new ResponseJson(articleInfos);
     }

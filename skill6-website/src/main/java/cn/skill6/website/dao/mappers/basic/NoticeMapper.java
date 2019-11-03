@@ -22,4 +22,6 @@ public interface NoticeMapper {
     List<Notice> selectAll();
 
     int updateByPrimaryKey(Notice notice);
+
+    List<Notice> getLatestNotice(int topn);
 }

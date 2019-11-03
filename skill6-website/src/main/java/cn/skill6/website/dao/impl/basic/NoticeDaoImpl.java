@@ -46,4 +46,9 @@ public class NoticeDaoImpl implements NoticeDao {
     public int updateByNoticeId(Notice notice) {
         return noticeMapper.updateByPrimaryKey(notice);
     }
+
+    @Override
+    public List<Notice> getLatestNotice(int topn) {
+        return null;
+    }
 }

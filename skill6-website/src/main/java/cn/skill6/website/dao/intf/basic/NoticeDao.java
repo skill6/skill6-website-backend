@@ -20,4 +20,6 @@ public interface NoticeDao {
     List<Notice> findAll();
 
     int updateByNoticeId(Notice notice);
+
+    List<Notice> getLatestNotice(int topn);
 }

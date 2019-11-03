@@ -93,4 +93,10 @@ public class VisitStatisticsDaoImpl implements VisitStatisticsDao {
         visitStatisticsMapper.updateByPrimaryKey(visitStatistics);
         log.info("成功修改当日访问记录,{}", visitStatistics);
     }
+
+    @Override
+    public VisitStatistics findByCurrentDate() {
+        return visitStatisticsMapper.findByCurrentDate();
+    }
+
 }
