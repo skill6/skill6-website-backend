@@ -21,4 +21,6 @@ public interface VisitStatisticsDao {
     List<VisitStatistics> findAll();
 
     void modifyByVisitId(VisitStatistics visitStatistics);
+
+    VisitStatistics findByCurrentDate();
 }

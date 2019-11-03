@@ -1,8 +1,10 @@
 package cn.skill6.website.dao.mappers.visit;
 
 import cn.skill6.common.entity.po.visit.VisitRecord;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,4 +24,6 @@ public interface VisitRecordMapper {
     List<VisitRecord> selectAll();
 
     int updateByPrimaryKey(VisitRecord visitRecord);
+
+    int getOnlineCount(@Param("today") Date today, @Param("currentTime") Date currentTime);
 }

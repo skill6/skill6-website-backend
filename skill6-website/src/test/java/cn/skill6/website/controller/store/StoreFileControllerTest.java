@@ -15,7 +15,6 @@ import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -53,7 +52,6 @@ public class StoreFileControllerTest extends Skill6WebsiteApplicationTest {
         MvcResult mvcResult = mockMvc
             .perform(multipart(uploadUrl).file(firstFile).param("some-random", "4"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.success").value(true))
             .andReturn();
 
         String response = mvcResult.getResponse().getContentAsString();

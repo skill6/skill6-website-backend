@@ -39,7 +39,7 @@ public class ArticleCommentDaoImpl implements ArticleCommentDao {
     public Long addArticleComment(ArticleComment articleComment) {
         // 设置分布id
         Long commentId = SequenceManager.getNextId();
-        if (commentId != null) {
+        if (commentId == null) {
             throw new NullPointerException("获取的Id为空");
         }
         articleComment.setCommentId(commentId);

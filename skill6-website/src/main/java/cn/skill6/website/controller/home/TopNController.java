@@ -1,12 +1,15 @@
 package cn.skill6.website.controller.home;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.po.user.UserInfo;
 import cn.skill6.website.home.TopNSvc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * top n 推荐
@@ -23,17 +26,17 @@ public class TopNController {
     private TopNSvc topNSvc;
 
     @GetMapping("/active-user")
-    public ResponseJson getActiveUser() {
+    public List<UserInfo> getActiveUser() {
         return topNSvc.getActiveUsers();
     }
 
     @GetMapping("/visit-user")
-    public ResponseJson getVisitUser() {
+    public List<UserInfo> getVisitUser() {
         return topNSvc.getActiveUsers();
     }
 
     @GetMapping("/publish-article")
-    public ResponseJson getPublishArticle() {
+    public List<ArticleInfo> getPublishArticle() {
         return topNSvc.getPublishArticles();
     }
 

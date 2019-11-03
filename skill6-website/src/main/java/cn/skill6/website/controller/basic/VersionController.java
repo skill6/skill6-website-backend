@@ -1,6 +1,7 @@
 package cn.skill6.website.controller.basic;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.other.VersionInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.basic.VersionSvc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class VersionController {
     private VersionSvc versionSvc;
 
     @GetMapping
-    public ResponseJson getVersionByPage(int pageSize, int pageNum) {
+    public PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum) {
         return versionSvc.getVersionByPage(pageSize, pageNum);
     }
 

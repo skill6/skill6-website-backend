@@ -26,7 +26,7 @@ public class SignStateController {
         boolean authenticated = subject.isAuthenticated();
         log.info("session id: {}, isAuthenticated： {}", subject.getSession().getId(), authenticated);
 
-        return new ResponseJson(authenticated);
+        return ResponseJson.build(authenticated);
     }
 
     @PostMapping(value = "/logout")
@@ -36,7 +36,7 @@ public class SignStateController {
 
         log.info("logout success");
 
-        return new ResponseJson(true);
+        return ResponseJson.build(true);
     }
 
 }

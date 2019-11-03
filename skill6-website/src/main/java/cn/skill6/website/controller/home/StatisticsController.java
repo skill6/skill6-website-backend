@@ -1,6 +1,6 @@
 package cn.skill6.website.controller.home;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.visit.VisitStatistics;
 import cn.skill6.website.home.StatisticsSvc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +23,12 @@ public class StatisticsController {
     private StatisticsSvc statisticsSvc;
 
     @GetMapping("/visit")
-    public ResponseJson getVisit() {
+    public VisitStatistics getVisit() {
         return statisticsSvc.getStatisticsVisit();
     }
 
     @GetMapping("/online")
-    public ResponseJson getOnline() {
+    public int getOnline() {
         return statisticsSvc.getStatisticsOnline();
     }
 }

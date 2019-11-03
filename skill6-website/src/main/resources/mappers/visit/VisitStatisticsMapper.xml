@@ -52,4 +52,15 @@
                statistics_total_count
         from visit_statistics
     </select>
+
+    <select id="findByCurrentDate" resultMap="BaseResultMap">
+        SELECT statistics_id,
+               statistics_date,
+               statistics_online_max,
+               statistics_current_day,
+               statistics_total_count
+        FROM visit_statistics
+        ORDER BY statistics_date
+        LIMIT 1
+    </select>
 </mapper>

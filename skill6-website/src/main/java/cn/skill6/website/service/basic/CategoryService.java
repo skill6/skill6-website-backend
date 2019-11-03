@@ -2,7 +2,6 @@ package cn.skill6.website.service.basic;
 
 import cn.skill6.common.entity.enums.CategoryType;
 import cn.skill6.common.entity.po.other.CategoryInfo;
-import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.basic.CategorySvc;
 import cn.skill6.website.dao.intf.basic.CategoryDao;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -25,14 +24,12 @@ public class CategoryService implements CategorySvc {
     private CategoryDao categoryDao;
 
     @Override
-    public ResponseJson addCategory(CategoryInfo categoryInfo) {
-        Long categoryId = categoryDao.addCategoryInfo(categoryInfo);
-
-        return new ResponseJson(categoryId);
+    public Long addCategory(CategoryInfo categoryInfo) {
+        return categoryDao.addCategoryInfo(categoryInfo);
     }
 
     @Override
-    public ResponseJson addCategory(CategoryInfo categoryInfo, String categoryType) {
+    public Long addCategory(CategoryInfo categoryInfo, String categoryType) {
         categoryInfo.setCategoryType(CategoryType.getEnum(categoryType));
 
         return addCategory(categoryInfo);

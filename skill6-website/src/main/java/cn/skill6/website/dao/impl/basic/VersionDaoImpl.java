@@ -98,7 +98,7 @@ public class VersionDaoImpl implements VersionDao {
     }
 
     @Override
-    public PageResult getVersionByPage(int pageSize, int pageNum) {
+    public PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum) {
         log.info("getVersionByPage, pageSize: {}, pageNum: {}", pageSize, pageNum);
 
         Page<VersionInfo> page = PageHelper.startPage(pageNum, pageSize);

@@ -1,13 +1,12 @@
 package cn.skill6.website.controller.article;
 
-import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.vo.PageResult;
+import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.CommentSvc;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 文章评论
@@ -24,13 +23,19 @@ public class CommentController {
     private CommentSvc commentSvc;
 
     @GetMapping
-    public ResponseJson getCommentsByPage(int pageSize, int pageNum) {
+    public PageResult<ArticleComment> getCommentsByPage(int pageSize, int pageNum) {
         return commentSvc.getCommentsByPage(pageSize, pageNum);
     }
 
     @GetMapping("/{commentId}")
-    public ResponseJson getCommentById(@PathVariable("commentId") long commentId) {
+    public ArticleComment getCommentById(@PathVariable("commentId") long commentId) {
         return commentSvc.getCommentById(commentId);
+    }
+
+    @PostMapping
+    public Long addArticleComment(@RequestBody ArticleComment articleComment) {
+        log.info("addArticleComment: {}", JacksonUtil.toStr(articleComment));
+        return commentSvc.addArticleComment(articleComment);
     }
 
 }

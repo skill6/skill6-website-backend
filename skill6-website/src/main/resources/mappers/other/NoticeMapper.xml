@@ -37,4 +37,11 @@
         select notice_id, notice_time, notice_content
         from notice
     </select>
+
+    <select id="getLatestNotice" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT notice_id, notice_time, notice_content
+        FROM notice
+        ORDER BY notice_time
+        LIMIT #{topn}
+    </select>
 </mapper>

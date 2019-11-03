@@ -1,6 +1,5 @@
 package cn.skill6.website.util.sequence;
 
-import cn.skill6.common.exception.tools.StackTrace2Str;
 import cn.skill6.common.sequence.Sequence;
 import cn.skill6.website.config.Skill6PropertyConfig;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +46,7 @@ public class SequenceManager {
             log.info("init sequence finished. workerId: {}, dataCenterId: {}.", workerId, datacenterId);
         } catch (NumberFormatException e) {
             sequence = new Sequence(0, 0);
-            log.warn(StackTrace2Str.exceptionStackTrace2Str("config sequence fail, use default config", e));
+            log.warn("config sequence fail, use default config", e);
         }
     }
 

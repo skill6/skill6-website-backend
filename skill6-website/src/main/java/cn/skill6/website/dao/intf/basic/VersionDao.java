@@ -22,5 +22,5 @@ public interface VersionDao {
 
     void modifyByVersionId(VersionInfo versionInfo);
 
-    PageResult getVersionByPage(int pageSize, int pageNum);
+    PageResult<VersionInfo> getVersionByPage(int pageSize, int pageNum);
 }

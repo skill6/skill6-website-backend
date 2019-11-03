@@ -66,7 +66,7 @@ public class StoreImageService implements StoreImageSvc {
             .toString();
         resultMap.put("image_url", imageUrl);
 
-        return new ResponseJson(true, resultMap);
+        return new ResponseJson(resultMap);
     }
 
     @Override
