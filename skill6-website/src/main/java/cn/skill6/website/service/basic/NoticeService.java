@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 通知服务类
@@ -31,6 +33,10 @@ public class NoticeService implements NoticeSvc {
 
     @Override
     public List<Notice> getLatestNotice(int topn) {
-        return noticeDao.getLatestNotice(topn);
+        List<Notice> articles = noticeDao.getLatestNotice(topn);
+
+        return articles.stream()
+            .sorted(Comparator.comparing(Notice::getNoticeTime))
+            .collect(Collectors.toList());
     }
 }

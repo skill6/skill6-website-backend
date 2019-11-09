@@ -24,12 +24,12 @@ public class CategoryService implements CategorySvc {
     private CategoryDao categoryDao;
 
     @Override
-    public Long addCategory(CategoryInfo categoryInfo) {
+    public long addCategory(CategoryInfo categoryInfo) {
         return categoryDao.addCategoryInfo(categoryInfo);
     }
 
     @Override
-    public Long addCategory(CategoryInfo categoryInfo, String categoryType) {
+    public long addCategory(CategoryInfo categoryInfo, String categoryType) {
         categoryInfo.setCategoryType(CategoryType.getEnum(categoryType));
 
         return addCategory(categoryInfo);

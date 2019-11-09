@@ -2,14 +2,18 @@ package cn.skill6.website.dao.impl.video;
 
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.po.video.VideoInfo;
+import cn.skill6.common.entity.vo.PageResult;
+import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.dao.intf.video.VideoDao;
 import cn.skill6.website.dao.mappers.video.VideoInfoMapper;
+import cn.skill6.website.util.sequence.SequenceManager;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,8 +35,17 @@ public class VideoDaoImpl implements VideoDao {
     }
 
     @Override
-    public int insert(VideoInfo videoInfo) {
-        return videoInfoMapper.insert(videoInfo);
+    public long insert(VideoInfo videoInfo) {
+        long videoId = SequenceManager.getNextId();
+
+        VideoInfo video = JacksonUtil.toObj(JacksonUtil.toStr(videoInfo), VideoInfo.class);
+        video.setVideoId(videoId);
+        video.setVideoCreateTime(new Date());
+        video.setVideoUpdateTime(new Date());
+
+        videoInfoMapper.insert(video);
+
+        return videoId;
     }
 
     @Override
@@ -51,13 +64,15 @@ public class VideoDaoImpl implements VideoDao {
     }
 
     @Override
-    public List<VideoInfo> getVideosByPage(int pageSize, int pageNum) {
+    public PageResult<VideoInfo> getVideosByPage(int pageSize, int pageNum) {
+        log.info("getVideosByPage, pageSize: {}, pageNum: {}", pageSize, pageNum);
+
         // 设置分页数据
         Page<ArticleInfo> page = PageHelper.startPage(pageNum, pageSize);
 
         List<VideoInfo> videoInfos = videoInfoMapper.selectAll();
         log.info("找到视频数量：{}, 所有数量为：{}", videoInfos.size(), page.getTotal());
 
-        return videoInfos;
+        return new PageResult<>(page.getTotal(), pageSize, pageNum, videoInfos);
     }
 }

@@ -1,5 +1,6 @@
 package cn.skill6.website.util.sequence;
 
+import cn.skill6.common.exception.Skill6Exception;
 import cn.skill6.common.sequence.Sequence;
 import cn.skill6.website.config.Skill6PropertyConfig;
 import lombok.extern.slf4j.Slf4j;
@@ -53,21 +54,16 @@ public class SequenceManager {
     /**
      * @return Long类型的id
      */
-    public static Long getNextId() {
-        Long id = null;
-
-        for (int i = 1; i < 11; i++) {
+    public static long getNextId() {
+        for (int i = 0; i < 10; i++) {
             try {
-                id = sequence.nextId();
+                return sequence.nextId();
             } catch (Exception e) {
                 log.warn("the {} times create id fail", i);
-                continue;
             }
-
-            break;
         }
 
-        return id;
+        throw new Skill6Exception("create id failed");
     }
 
     /**

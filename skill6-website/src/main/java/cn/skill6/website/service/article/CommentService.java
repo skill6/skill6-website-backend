@@ -34,7 +34,7 @@ public class CommentService implements CommentSvc {
     }
 
     @Override
-    public Long addArticleComment(ArticleComment articleComment) {
+    public long addArticleComment(ArticleComment articleComment) {
         return articleCommentDao.addArticleComment(articleComment);
     }
 }

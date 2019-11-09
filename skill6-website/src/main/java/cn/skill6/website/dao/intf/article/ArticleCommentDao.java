@@ -15,7 +15,7 @@ import java.util.List;
 public interface ArticleCommentDao {
     int deleteByCommentId(Long commentId);
 
-    Long addArticleComment(ArticleComment articleComment);
+    long addArticleComment(ArticleComment articleComment);
 
     ArticleComment findByCommentId(Long commentId);
 

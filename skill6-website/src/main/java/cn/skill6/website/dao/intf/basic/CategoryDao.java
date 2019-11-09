@@ -13,7 +13,7 @@ import java.util.List;
 public interface CategoryDao {
     int deleteByCategoryId(Long categoryId);
 
-    Long addCategoryInfo(CategoryInfo featureCategoryInfo);
+    long addCategoryInfo(CategoryInfo featureCategoryInfo);
 
     CategoryInfo findByCategoryId(Long categoryId);
 

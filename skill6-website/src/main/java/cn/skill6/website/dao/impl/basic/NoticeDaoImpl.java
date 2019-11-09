@@ -49,6 +49,6 @@ public class NoticeDaoImpl implements NoticeDao {
 
     @Override
     public List<Notice> getLatestNotice(int topn) {
-        return null;
+        return noticeMapper.selectAll();
     }
 }

@@ -1,14 +1,13 @@
 package cn.skill6.website.service.video;
 
 import cn.skill6.common.entity.po.video.VideoInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.dao.intf.video.VideoDao;
 import cn.skill6.website.video.VideoSvc;
 import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * 视频服务类
@@ -25,12 +24,17 @@ public class VideoService implements VideoSvc {
     private VideoDao videoDao;
 
     @Override
-    public List<VideoInfo> getVideosByPage(int pageSize, int pageNum) {
+    public PageResult<VideoInfo> getVideosByPage(int pageSize, int pageNum) {
         return videoDao.getVideosByPage(pageSize, pageNum);
     }
 
     @Override
     public VideoInfo getVideoById(Long videoId) {
         return videoDao.selectByPrimaryKey(videoId);
+    }
+
+    @Override
+    public long addVideo(VideoInfo videoInfo) {
+        return videoDao.insert(videoInfo);
     }
 }

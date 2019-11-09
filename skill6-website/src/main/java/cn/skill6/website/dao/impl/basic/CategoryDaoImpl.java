@@ -35,8 +35,8 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public Long addCategoryInfo(CategoryInfo categoryInfo) {
-        Long categoryId = SequenceManager.getNextId();
+    public long addCategoryInfo(CategoryInfo categoryInfo) {
+        long categoryId = SequenceManager.getNextId();
         categoryInfo.setCategoryId(categoryId);
 
         categoryInfo.setCategoryCreateTime(new Date());
