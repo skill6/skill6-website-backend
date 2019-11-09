@@ -27,6 +27,8 @@ public class NoticeController {
 
     @GetMapping
     public List<Notice> getLatestNotice(@Param("topn") int topn) {
+        log.info("getLatestNotice, topn: {}", topn);
+
         return noticeSvc.getLatestNotice(topn);
     }
 }

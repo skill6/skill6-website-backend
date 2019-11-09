@@ -3,6 +3,7 @@ package cn.skill6.website.service.home;
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import cn.skill6.website.home.RecommendSvc;
@@ -55,6 +56,8 @@ public class RecommendService implements RecommendSvc {
             .orderBy("article_create_time")
             .sortType(SortType.DESCENDING).build();
 
-        return articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
+        PageResult<ArticleInfo> articleInfoPageResult = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
+
+        return articleInfoPageResult.getData();
     }
 }

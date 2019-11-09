@@ -4,6 +4,7 @@ import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.to.ArticleInfoTo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import org.junit.Test;
@@ -67,7 +68,8 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
             .orderBy(articleInfoTo.getArticleAuthor())
             .sortType(SortType.DESCENDING).build();
 
-        List<ArticleInfo> articleInfos = articleInfoDao.findByParamWithPage(articleInfo, pageSortParam);
+        PageResult<ArticleInfo> articleInfoPageResult = articleInfoDao.findByParamWithPage(articleInfo, pageSortParam);
+        List<ArticleInfo> articleInfos = articleInfoPageResult.getData();
 
         for (ArticleInfo articleInfo2 : articleInfos) {
             System.out.println(articleInfo2.getArticleId());

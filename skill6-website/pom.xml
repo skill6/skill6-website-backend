@@ -6,7 +6,7 @@
     <parent>
         <artifactId>skill6-website-backend</artifactId>
         <groupId>cn.skill6</groupId>
-        <version>0.2.0-SNAPSHOT</version>
+        <version>0.2.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>skill6-website</artifactId>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>cn.skill6</groupId>
             <artifactId>skill6-common</artifactId>
-            <version>0.2.0-SNAPSHOT</version>
+            <version>0.2.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

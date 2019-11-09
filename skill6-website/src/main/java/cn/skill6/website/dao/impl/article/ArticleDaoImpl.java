@@ -2,6 +2,7 @@ package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
+import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import cn.skill6.website.dao.mappers.article.ArticleInfoMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -128,7 +129,7 @@ public class ArticleDaoImpl implements ArticleDao {
     }
 
     @Override
-    public List<ArticleInfo> findByParamWithPage(ArticleInfo articleInfo, PageSortParam pageSortParam) {
+    public PageResult<ArticleInfo> findByParamWithPage(ArticleInfo articleInfo, PageSortParam pageSortParam) {
         // 设置分页数据
         Page<ArticleInfo> page = PageHelper.startPage(pageSortParam.getPageNum(), pageSortParam.getPageSize(),
             pageSortParam.orderBy());
@@ -136,6 +137,6 @@ public class ArticleDaoImpl implements ArticleDao {
         List<ArticleInfo> articleInfos = articleInfoMapper.selectByParams(articleInfo);
         log.info("找到文章数量：{}, 所有文章数量为：{}", articleInfos.size(), page.getTotal());
 
-        return articleInfos;
+        return new PageResult<>(page.getTotal(), pageSortParam.getPageSize(), pageSortParam.getPageNum(), articleInfos);
     }
 }

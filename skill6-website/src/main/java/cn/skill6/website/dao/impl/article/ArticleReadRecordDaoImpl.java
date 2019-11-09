@@ -2,7 +2,6 @@ package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.po.article.ArticleReadRecord;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleReadRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleReadRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -36,10 +35,7 @@ public class ArticleReadRecordDaoImpl implements ArticleReadRecordDao {
 
     @Override
     public Long addArticleReadRecord(ArticleReadRecord articleReadRecord) {
-        Long articleId = SequenceManager.getNextId();
-        if (articleId == null) {
-            throw new NullPointerException("获取的articleId为空");
-        }
+        long articleId = SequenceManager.getNextId();
         articleReadRecord.setArticleId(articleId);
 
         // 设置当天日期

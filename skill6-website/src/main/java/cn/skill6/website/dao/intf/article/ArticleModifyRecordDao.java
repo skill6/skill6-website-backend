@@ -14,7 +14,7 @@ import java.util.List;
 public interface ArticleModifyRecordDao {
     int deleteByPrimaryKey(Long articleModifyId);
 
-    Long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord);
+    long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord);
 
     ArticleModifyRecord findByPrimaryKey(Long articleModifyId);
 

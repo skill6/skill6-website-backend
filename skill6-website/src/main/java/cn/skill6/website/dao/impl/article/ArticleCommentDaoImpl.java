@@ -2,7 +2,6 @@ package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
 import cn.skill6.common.entity.vo.PageResult;
-import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
 import cn.skill6.website.dao.mappers.article.ArticleCommentMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -36,12 +35,9 @@ public class ArticleCommentDaoImpl implements ArticleCommentDao {
     }
 
     @Override
-    public Long addArticleComment(ArticleComment articleComment) {
+    public long addArticleComment(ArticleComment articleComment) {
         // 设置分布id
-        Long commentId = SequenceManager.getNextId();
-        if (commentId == null) {
-            throw new NullPointerException("获取的Id为空");
-        }
+        long commentId = SequenceManager.getNextId();
         articleComment.setCommentId(commentId);
 
         articleComment.setCommentTime(new Date());

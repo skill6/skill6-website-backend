@@ -6,11 +6,11 @@
     <parent>
         <groupId>cn.skill6</groupId>
         <artifactId>skill6-parent</artifactId>
-        <version>0.2.0-SNAPSHOT</version>
+        <version>0.2.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>skill6-website-backend</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <name>skill6-website-backend</name>

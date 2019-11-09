@@ -8,8 +8,6 @@ import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.website.article.ArticleSvc;
 import cn.skill6.website.dao.intf.article.ArticleDao;
 import com.alibaba.dubbo.config.annotation.Service;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -59,14 +57,11 @@ public class ArticleService implements ArticleSvc {
     @Override
     public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
         PageSortParam pageSortParam = PageSortParam.builder()
-            .pageSize(10)
-            .pageNum(1)
+            .pageSize(pageSize)
+            .pageNum(pageNum)
             .orderBy("article_create_time")
             .sortType(SortType.DESCENDING).build();
 
-        Page<ArticleInfo> page = PageHelper.startPage(pageNum, pageSize);
-        List<ArticleInfo> articleInfos = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
-
-        return new PageResult<>(page.getTotal(), pageSize, pageNum, articleInfos);
+        return articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
     }
 }

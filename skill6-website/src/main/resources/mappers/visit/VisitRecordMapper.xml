@@ -57,14 +57,9 @@
         from visit_record
     </select>
 
-    <select id="getOnlineCount" resultMap="BaseResultMap">
-        SELECT visit_id,
-               user_id,
-               visit_content_id,
-               visit_content_type,
-               visit_start_time,
-               visit_end_time
+    <select id="getOnlineCount" resultType="java.lang.Integer">
+        SELECT count(1)
         FROM visit_record
-        WHERE  visit_start_time > today AND visit_end_time > currentTime
+        WHERE  visit_start_time > #{today} AND visit_end_time > #{currentTime}
     </select>
 </mapper>

@@ -34,7 +34,7 @@
                                    question_update_time, question_attach_file, question_attach_ids,
                                    question_valid, question_solve, question_html_content,
                                    question_md_content)
-        VALUES (#{questionId,jdbcType=BIGINT}, #{categoryid,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+        VALUES (#{questionId,jdbcType=BIGINT}, #{categoryId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
                 #{recommendAnswerId,jdbcType=BIGINT}, #{questionTitle,jdbcType=VARCHAR},
                 #{questionLabel,jdbcType=VARCHAR},
                 #{questionVisitCount,jdbcType=INTEGER}, #{questionCreateTime,jdbcType=TIMESTAMP},
@@ -47,7 +47,7 @@
 
     <update id="updateByPrimaryKey" parameterType="QuestionInfo">
         UPDATE question_info
-        SET categoryId            = #{categoryid,jdbcType=BIGINT},
+        SET categoryId            = #{categoryId,jdbcType=BIGINT},
             user_id               = #{userId,jdbcType=BIGINT},
             recommend_answer_id   = #{recommendAnswerId,jdbcType=BIGINT},
             question_title        = #{questionTitle,jdbcType=VARCHAR},

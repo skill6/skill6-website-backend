@@ -2,7 +2,6 @@ package cn.skill6.website.dao.impl.article;
 
 import cn.skill6.common.entity.po.article.ArticleModifyRecord;
 import cn.skill6.common.exception.Skill6Exception;
-import cn.skill6.common.exception.general.NullPointerException;
 import cn.skill6.website.dao.intf.article.ArticleModifyRecordDao;
 import cn.skill6.website.dao.mappers.article.ArticleModifyRecordMapper;
 import cn.skill6.website.util.sequence.SequenceManager;
@@ -35,12 +34,9 @@ public class ArticleModifyRecordDaoImpl implements ArticleModifyRecordDao {
     }
 
     @Override
-    public Long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord) {
-        Long articleId = SequenceManager.getNextId();
+    public long addArticleModifyRecord(ArticleModifyRecord articleModifyRecord) {
+        long articleId = SequenceManager.getNextId();
 
-        if (articleId == null) {
-            throw new NullPointerException("获取的article为空");
-        }
         // 设置主键
         articleModifyRecord.setArticleId(articleId);
         articleModifyRecord.setArticleUpdateTime(new Date());
