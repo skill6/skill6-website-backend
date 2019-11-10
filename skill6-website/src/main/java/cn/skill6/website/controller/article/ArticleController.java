@@ -4,6 +4,7 @@ import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.entity.vo.article.ArticleCommentVo;
+import cn.skill6.common.entity.vo.article.ArticleInfoVo;
 import cn.skill6.website.article.ArticleSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class ArticleController {
     }
 
     @GetMapping
-    public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
+    public PageResult<ArticleInfoVo> getArticlesByPage(int pageSize, int pageNum) {
         return articleSvc.getArticlesByPage(pageSize, pageNum);
     }
 

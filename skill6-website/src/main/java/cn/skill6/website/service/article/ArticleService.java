@@ -10,6 +10,7 @@ import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.entity.vo.article.ArticleCommentReplyVo;
 import cn.skill6.common.entity.vo.article.ArticleCommentVo;
+import cn.skill6.common.entity.vo.article.ArticleInfoVo;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.ArticleSvc;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
@@ -74,14 +75,21 @@ public class ArticleService implements ArticleSvc {
     }
 
     @Override
-    public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
+    public PageResult<ArticleInfoVo> getArticlesByPage(int pageSize, int pageNum) {
         PageSortParam pageSortParam = PageSortParam.builder()
             .pageSize(pageSize)
             .pageNum(pageNum)
             .orderBy("article_create_time")
             .sortType(SortType.DESCENDING).build();
 
-        return articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
+        PageResult<ArticleInfo> articleInfoPage = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
+        List<ArticleInfo> articleInfos = articleInfoPage.getData();
+
+        List<ArticleInfoVo> articleInfoVos = articleInfos.stream()
+            .map(this::buildArticleInfoVo)
+            .collect(Collectors.toList());
+
+        return new PageResult<>(articleInfoPage.getTotal(), pageSize, pageNum, articleInfoVos);
     }
 
     @Override
@@ -106,6 +114,15 @@ public class ArticleService implements ArticleSvc {
 
         return new PageResult<>(commentsByArticleIdWithPage.getTotal(), pageSize, pageNum, articleCommentVos);
     }
+
+    private ArticleInfoVo buildArticleInfoVo(ArticleInfo articleInfo) {
+        ArticleInfoVo articleInfoVo = JacksonUtil.toObj(JacksonUtil.toStr(articleInfo), ArticleInfoVo.class);
+        // TODO 根据用户ID查询用户信息
+        articleInfoVo.setUserHeadUrl("https://www.hemingsheng.cn/imageDownload.hms?imageUrl=20190623/80059000.jpeg");
+
+        return articleInfoVo;
+    }
+
 
     private ArticleCommentVo buildArticleCommentVo(ArticleComment articleComment) {
         long commentUserId = articleComment.getCommentUserId();
