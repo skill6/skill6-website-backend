@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/topn")
+@RequestMapping("/api/topn")
 public class TopNController {
 
     @Autowired

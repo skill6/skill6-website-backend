@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @since 2018年9月13日 上午12:43:33
  */
 @RestController
-@RequestMapping("/image")
+@RequestMapping("/api/image")
 public class StoreImageController {
 
     @Autowired

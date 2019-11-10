@@ -18,7 +18,7 @@ import java.io.IOException;
  * @since 2018年9月4日 下午9:49:27
  */
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/api/file")
 public class StoreFileController {
 
     @Autowired

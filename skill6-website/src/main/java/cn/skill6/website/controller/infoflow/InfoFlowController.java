@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/infoflow")
+@RequestMapping("/api/infoflow")
 public class InfoFlowController {
 
     @Autowired
