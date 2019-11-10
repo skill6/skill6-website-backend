@@ -3,6 +3,7 @@ package cn.skill6.website.controller.article;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
+import cn.skill6.common.entity.vo.article.ArticleCommentVo;
 import cn.skill6.website.article.ArticleSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.*;
  * @since 2018年8月16日 下午11:05:32
  */
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/api/article")
 public class ArticleController {
 
     @Autowired
     private ArticleSvc articleSvc;
 
     @PostMapping
-    public long addArticle(ArticleInfo articleInfo) {
+    public long addArticle(@RequestBody ArticleInfo articleInfo) {
         return articleSvc.addArticle(articleInfo);
     }
 
@@ -43,5 +44,11 @@ public class ArticleController {
     @GetMapping
     public PageResult<ArticleInfo> getArticlesByPage(int pageSize, int pageNum) {
         return articleSvc.getArticlesByPage(pageSize, pageNum);
+    }
+
+    @GetMapping("/{articleId}/comments")
+    public PageResult<ArticleCommentVo> getCommentsByArticleIdWithPage(@PathVariable("articleId") long articleId,
+                                                                       int pageSize, int pageNum) {
+        return articleSvc.getCommentsByArticleIdWithPage(articleId, pageSize, pageNum);
     }
 }

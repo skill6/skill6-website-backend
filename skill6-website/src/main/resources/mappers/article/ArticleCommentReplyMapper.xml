@@ -32,4 +32,20 @@
                reply_content
         FROM article_comment_reply
     </select>
+
+    <select id="selectByParam" resultMap="BaseResultMap" parameterType="ArticleCommentReply">
+        SELECT reply_id,
+            comment_id,
+            reply_user_id,
+            reply_to_user_id,
+            reply_time,
+            reply_valid,
+            reply_content
+        FROM article_comment_reply
+        <where>
+            <if test="commentId != null">
+                comment_id = #{commentId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
 </mapper>

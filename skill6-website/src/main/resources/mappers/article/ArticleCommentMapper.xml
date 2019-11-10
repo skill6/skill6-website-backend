@@ -65,4 +65,24 @@
                comment_content
         FROM article_comment
     </select>
+
+    <select id="selectByParams" resultMap="BaseResultMap" parameterType="ArticleComment">
+        SELECT comment_id,
+               article_id,
+               user_id,
+               comment_user_id,
+               comment_thumbs_up_count,
+               comment_time,
+               comment_valid,
+               comment_content
+        FROM article_comment
+        <where>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="articleId != null">
+                AND article_id = #{articleId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 </mapper>

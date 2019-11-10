@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.intf.article;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleComment;
 import cn.skill6.common.entity.vo.PageResult;
 
@@ -24,4 +25,7 @@ public interface ArticleCommentDao {
     PageResult<ArticleComment> findCommentsByPage(int pageSize, int pageNum);
 
     int modifyByCommentId(ArticleComment articleComment);
+
+    PageResult<ArticleComment> getCommentsByArticleIdWithPage(
+        ArticleComment articleComment, PageSortParam pageSortParam);
 }

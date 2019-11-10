@@ -1,5 +1,6 @@
 package cn.skill6.website.dao.impl.article;
 
+import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleComment;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.dao.intf.article.ArticleCommentDao;
@@ -18,7 +19,6 @@ import java.util.List;
  * 文章评论操作实现类
  *
  * @author 何明胜
- * @version 1.4
  * @since 2018年8月27日 下午11:47:52
  */
 @Slf4j
@@ -84,5 +84,18 @@ public class ArticleCommentDaoImpl implements ArticleCommentDao {
     public int modifyByCommentId(ArticleComment articleComment) {
         // 暂不支持修改评论
         return 0;
+    }
+
+    @Override
+    public PageResult<ArticleComment> getCommentsByArticleIdWithPage(
+        ArticleComment articleComment, PageSortParam pageSortParam) {
+        // 设置分页数据
+        Page<ArticleComment> page = PageHelper.startPage(pageSortParam.getPageNum(), pageSortParam.getPageSize(),
+            pageSortParam.orderBy());
+
+        List<ArticleComment> articleComments = articleCommentMapper.selectByParams(articleComment);
+        log.info("articleComments size：{}, total size：{}", articleComments.size(), page.getTotal());
+
+        return new PageResult<>(page.getTotal(), pageSortParam.getPageSize(), pageSortParam.getPageNum(), articleComments);
     }
 }

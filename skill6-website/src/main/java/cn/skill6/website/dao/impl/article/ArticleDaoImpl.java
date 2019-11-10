@@ -39,11 +39,8 @@ public class ArticleDaoImpl implements ArticleDao {
     @Override
     public Long addArticleInfo(ArticleInfo articleInfo) {
         // 设置分布式用户id
-        Long articleId = articleInfo.getArticleId();
-        if (articleId == null) {
-            articleId = SequenceManager.getNextId();
-            articleInfo.setArticleId(articleId);
-        }
+        long articleId = SequenceManager.getNextId();
+        articleInfo.setArticleId(articleId);
 
         // 设置创建日期和最后修改日期
         articleInfo.setArticleCreateTime(new Date());
@@ -101,11 +98,9 @@ public class ArticleDaoImpl implements ArticleDao {
         if (StringUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
             articleInfoNew.setArticleMdContent(articleInfo.getArticleMdContent());
         }
-        if (articleInfo.getCategoryId() != null) {
-            articleInfoNew.setCategoryId(articleInfo.getCategoryId());
-        }
-        Boolean artilcePlaceTop = articleInfo.getArticlePlaceTop();
-        if (artilcePlaceTop != null && artilcePlaceTop) {
+        articleInfoNew.setCategoryId(articleInfo.getCategoryId());
+        Boolean articlePlaceTop = articleInfo.getArticlePlaceTop();
+        if (articlePlaceTop != null && articlePlaceTop) {
             articleInfoNew.setArticlePlaceTop(true);
             articleInfoNew.setArticleTopPriority(articleInfo.getArticleTopPriority());
         }
