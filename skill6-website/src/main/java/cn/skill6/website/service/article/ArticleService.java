@@ -6,6 +6,8 @@ import cn.skill6.common.entity.po.article.ArticleComment;
 import cn.skill6.common.entity.po.article.ArticleCommentReply;
 import cn.skill6.common.entity.po.article.ArticleInfo;
 import cn.skill6.common.entity.po.user.UserAdditionInfo;
+import cn.skill6.common.entity.to.article.ArticleCommentTo;
+import cn.skill6.common.entity.to.article.ArticleInfoTo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.entity.vo.article.ArticleCommentReplyVo;
@@ -48,6 +50,12 @@ public class ArticleService implements ArticleSvc {
     @Autowired
     private ArticleCommentReplyDao articleCommentReplyDao;
 
+    @Autowired
+    private ArticleInfoTo articleInfoTo;
+
+    @Autowired
+    private ArticleCommentTo articleCommentTo;
+
     @Override
     public long addArticle(ArticleInfo articleInfo) {
         return articleDao.addArticleInfo(articleInfo);
@@ -79,7 +87,7 @@ public class ArticleService implements ArticleSvc {
         PageSortParam pageSortParam = PageSortParam.builder()
             .pageSize(pageSize)
             .pageNum(pageNum)
-            .orderBy("article_create_time")
+            .orderBy(articleInfoTo.getArticleCreateTime())
             .sortType(SortType.DESCENDING).build();
 
         PageResult<ArticleInfo> articleInfoPage = articleDao.findByParamWithPage(new ArticleInfo(), pageSortParam);
@@ -97,7 +105,7 @@ public class ArticleService implements ArticleSvc {
         PageSortParam pageSortParam = PageSortParam.builder()
             .pageSize(pageSize)
             .pageNum(pageNum)
-            .orderBy("comment_time")
+            .orderBy(articleCommentTo.getCommentTime())
             .sortType(SortType.DESCENDING).build();
 
         ArticleComment articleComment = ArticleComment.builder().articleId(articleId).build();

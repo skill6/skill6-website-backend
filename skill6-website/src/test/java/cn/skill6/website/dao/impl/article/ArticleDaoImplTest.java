@@ -3,7 +3,7 @@ package cn.skill6.website.dao.impl.article;
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
-import cn.skill6.common.entity.to.ArticleInfoTo;
+import cn.skill6.common.entity.to.article.ArticleInfoTo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.article.ArticleDao;
