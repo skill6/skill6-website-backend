@@ -5,7 +5,9 @@ import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.entity.vo.ResponseJson;
 import cn.skill6.common.entity.vo.article.ArticleCommentVo;
 import cn.skill6.common.entity.vo.article.ArticleInfoVo;
+import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.ArticleSvc;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @author 何明胜
  * @since 2018年8月16日 下午11:05:32
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/article")
 public class ArticleController {
@@ -33,7 +36,9 @@ public class ArticleController {
     }
 
     @PutMapping
-    public ResponseJson modifyArticleById(ArticleInfo articleInfo) {
+    public ResponseJson modifyArticleById(@RequestBody ArticleInfo articleInfo) {
+        log.info("modifyArticleById: {}", JacksonUtil.toStr(articleInfo));
+
         return articleSvc.modifyArticleById(articleInfo);
     }
 

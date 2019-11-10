@@ -98,7 +98,9 @@ public class ArticleDaoImpl implements ArticleDao {
         if (StringUtils.isNotEmpty(articleInfo.getArticleMdContent())) {
             articleInfoNew.setArticleMdContent(articleInfo.getArticleMdContent());
         }
-        articleInfoNew.setCategoryId(articleInfo.getCategoryId());
+        if(articleInfo.getCategoryId() != null){
+            articleInfoNew.setCategoryId(articleInfo.getCategoryId());
+        }
         Boolean articlePlaceTop = articleInfo.getArticlePlaceTop();
         if (articlePlaceTop != null && articlePlaceTop) {
             articleInfoNew.setArticlePlaceTop(true);

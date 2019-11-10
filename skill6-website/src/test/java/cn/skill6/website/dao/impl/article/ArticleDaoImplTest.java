@@ -94,16 +94,4 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
         articleInfo.setArticleId(id);
         articleInfoDao.modifyByArticleId(articleInfo);
     }
-
-    @Test
-    public void test01JudgeExist() {
-        boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor");
-        assertTrue(judgeResult);
-    }
-
-    @Test
-    public void test02JudgeExist() {
-        boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor1");
-        assertFalse(judgeResult);
-    }
 }
