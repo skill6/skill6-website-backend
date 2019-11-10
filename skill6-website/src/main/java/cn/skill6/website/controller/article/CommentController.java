@@ -1,6 +1,7 @@
 package cn.skill6.website.controller.article;
 
 import cn.skill6.common.entity.po.article.ArticleComment;
+import cn.skill6.common.entity.po.article.ArticleCommentReply;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.common.transform.JacksonUtil;
 import cn.skill6.website.article.CommentSvc;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/api/comment")
 public class CommentController {
 
     @Autowired
@@ -33,9 +34,14 @@ public class CommentController {
     }
 
     @PostMapping
-    public Long addArticleComment(@RequestBody ArticleComment articleComment) {
+    public long addArticleComment(@RequestBody ArticleComment articleComment) {
         log.info("addArticleComment: {}", JacksonUtil.toStr(articleComment));
         return commentSvc.addArticleComment(articleComment);
     }
 
+    @PostMapping("/reply")
+    public long addArticleCommentReply(@RequestBody ArticleCommentReply articleCommentReply) {
+        log.info("addArticleCommentReply: {}", JacksonUtil.toStr(articleCommentReply));
+        return commentSvc.addArticleCommentReply(articleCommentReply);
+    }
 }

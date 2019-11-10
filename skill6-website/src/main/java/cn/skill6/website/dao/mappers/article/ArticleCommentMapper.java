@@ -22,4 +22,6 @@ public interface ArticleCommentMapper {
     List<ArticleComment> selectAll();
 
     int updateByPrimaryKey(ArticleComment articleComment);
+
+    List<ArticleComment> selectByParams(ArticleComment articleComment);
 }

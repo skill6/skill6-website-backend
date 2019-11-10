@@ -3,7 +3,7 @@ package cn.skill6.website.dao.impl.article;
 import cn.skill6.common.entity.enums.SortType;
 import cn.skill6.common.entity.po.PageSortParam;
 import cn.skill6.common.entity.po.article.ArticleInfo;
-import cn.skill6.common.entity.to.ArticleInfoTo;
+import cn.skill6.common.entity.to.article.ArticleInfoTo;
 import cn.skill6.common.entity.vo.PageResult;
 import cn.skill6.website.Skill6WebsiteApplicationTest;
 import cn.skill6.website.dao.intf.article.ArticleDao;
@@ -93,17 +93,5 @@ public class ArticleDaoImplTest extends Skill6WebsiteApplicationTest {
         Long id = articleInfoDao.addArticleInfo(articleInfo);
         articleInfo.setArticleId(id);
         articleInfoDao.modifyByArticleId(articleInfo);
-    }
-
-    @Test
-    public void test01JudgeExist() {
-        boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor");
-        assertTrue(judgeResult);
-    }
-
-    @Test
-    public void test02JudgeExist() {
-        boolean judgeResult = articleInfoTo.judgeFieldIsExist("articleAuthor1");
-        assertFalse(judgeResult);
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/video")
+@RequestMapping("/api/video")
 public class VideoController {
 
     @Autowired
